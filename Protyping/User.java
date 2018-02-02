@@ -2,38 +2,22 @@ import java.util.Scanner;
 
 public class User{
 
-  private static String Full_name = "John Doe"; // enter VIa command line
-  private static String UID = "00000000"; //university ID number
-  private static String University = "U of C"; //Create a dropdown list of options
-  private static String program_year = "4th";
-  private static String degree = "CPSC";
-  private static double GPA = 3.4;
+  public String Full_name = "John Doe"; // enter VIa command line
+  public String program_year = "4th";
+  public String UID = "00000000"; //university ID number
+  public String University = "U of C"; //Create a dropdown list of options
+  public String degree = "CPSC";
+  public double GPA = 3.4;
+  public Scanner input = new Scanner(System.in);
 
-  public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
-    System.out.print("Welcome to Foli-U please enter your information\n");
-    System.out.println("Press 1 if you are a student or 2 if you are an employer. ")
+  public void set_User_Attributes(){
+    /** A method to set a users attributes based on user input*/
+
+    System.out.println("Press 1 if you are a student or 2 if you are an employer. ");
     System.out.println("Choice: ");
     int choice = input.nextInt();
     System.out.println("Name: ");
     String name = input.nextLine();
-
-    print_Vars();
-  }
-
-  public static void print_Vars(){
-    /** A method that prints a users atributes*/
-    System.out.println("\nSearching database for: "+ Full_name);
-    System.out.println("\n\nUsers Name is: "+ Full_name);
-    System.out.println("\nUsers UID is: "+ UID);
-    System.out.println("\nUsers University is: "+ University);
-    System.out.println("\nUsers Program Year is: "+ program_year);
-    System.out.println("\nUsers Degree is: "+ degree);
-    System.out.println("\nUsers GPA is: "+ GPA);
-  }
-
-  public static void set_User_Attributes(){
-    /** A method to set a users attributes based on user input*/
 
     //This is all sudo code for the time being
 
@@ -49,9 +33,9 @@ public class User{
     GPA = user input */
   }
 
-  public static void calc_GPA(){
+  public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
-    
+
     int amount_of_Courses = 3; // the amount of courses determines the calculation
     if (amount_of_Courses == 3){
       double Course_1 = 3.7;
