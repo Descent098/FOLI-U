@@ -35,15 +35,25 @@ public class User{
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
-
-    int amount_of_Courses = 3; // the amount of courses determines the calculation
-    if (amount_of_Courses == 3){
-      double Course_1 = 3.7;
-      double Course_2 = 4;
-      double Course_3 = 2.7;
-      double GPA = ((Course_1+Course_2+Course_3)/3);
-      System.out.println("\nUsers GPA is: "+ GPA);
-    }
+    Scanner input = new Scanner(System.in);
+		 /** A method to calculate a users GPA based on input */
+		 System.out.println("Enter number of courses: ");
+		 int courseAmount = input.nextInt();
+		 double gpa = 0;
+		 double weightTotal = 0;
+		 for (int i = 0; i < courseAmount; i++) {
+			 System.out.println("Enter grade for course " + (i+1) + ": ");
+			 double grade = 0;
+			 grade = input.nextDouble();
+			 System.out.println("Enter weight for course " + (i+1) + ": ");
+			 double weight = 0;
+			 weight = input.nextDouble();
+			 gpa += (grade*weight);
+			 weightTotal += weight;
+		 }
+		 input.close();
+		 gpa /= weightTotal;
+		 System.out.println("Your GPA is: " + gpa);
   }
 
 }
