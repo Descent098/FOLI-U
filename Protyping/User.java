@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class User{
 
   private static String Full_name = "John Doe"; // enter VIa command line
@@ -8,7 +10,10 @@ public class User{
   private static double GPA = 3.4;
 
   public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
     System.out.print("Welcome to Foli-U please enter your information\n");
+    System.out.print("Name: ");
+    String name = input.nextLine();
     print_Vars();
   }
 
