@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class User{
+public class Student{
 
   public String Full_name = "John Doe"; // enter VIa command line
   public String program_year = "4th";
