@@ -12,8 +12,12 @@ public class User{
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
     System.out.print("Welcome to Foli-U please enter your information\n");
-    System.out.print("Name: ");
+    System.out.println("Press 1 if you are a student or 2 if you are an employer. ")
+    System.out.println("Choice: ");
+    int choice = input.nextInt();
+    System.out.println("Name: ");
     String name = input.nextLine();
+
     print_Vars();
   }
 
@@ -47,6 +51,7 @@ public class User{
 
   public static void calc_GPA(){
     /** A method to calculate a users GPA based on input */
+    
     int amount_of_Courses = 3; // the amount of courses determines the calculation
     if (amount_of_Courses == 3){
       double Course_1 = 3.7;
