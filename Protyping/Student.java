@@ -52,7 +52,7 @@ public class Student{
 		 }
 		 input.close();
 		 GPA /= weightTotal;
-		 System.out.println("Your GPA is: " + gpa);
+		 System.out.println("Your GPA is: " + GPA);
   }
 
 }
