@@ -7,7 +7,7 @@ public class Student{
   public String UID = "00000000"; //university ID number
   public String University = "U of C"; //Create a dropdown list of options
   public String degree = "CPSC";
-  public double GPA = 3.4;
+  public double GPA = 0;
   public Scanner input = new Scanner(System.in);
 
   public void set_User_Attributes(){
@@ -39,7 +39,6 @@ public class Student{
 		 /** A method to calculate a users GPA based on input */
 		 System.out.println("Enter number of courses: ");
 		 int courseAmount = input.nextInt();
-		 double gpa = 0;
 		 double weightTotal = 0;
 		 for (int i = 0; i < courseAmount; i++) {
 			 System.out.println("Enter grade for course " + (i+1) + ": ");
@@ -48,11 +47,11 @@ public class Student{
 			 System.out.println("Enter weight for course " + (i+1) + ": ");
 			 double weight = 0;
 			 weight = input.nextDouble();
-			 gpa += (grade*weight);
+			 GPA += (grade*weight);
 			 weightTotal += weight;
 		 }
 		 input.close();
-		 gpa /= weightTotal;
+		 GPA /= weightTotal;
 		 System.out.println("Your GPA is: " + gpa);
   }
 
