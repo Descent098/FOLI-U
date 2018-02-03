@@ -13,23 +13,9 @@ public class Student{
   public void set_User_Attributes(){
     /** A method to set a users attributes based on user input*/
 
+
     System.out.println("Name: ");
-    Full_name = input.nextLine();
-
-    System.out.println("What year of your degree are you in>:  ");
-    program_year = input.nextLine();
-
-    System.out.println("Please put in your 8 digit UID: ");
-    UID = input.nextLine();
-
-    System.out.println("What university are you at?: ");
-    University = input.nextLine();
-
-    System.out.println("What degree are you in?: ");
-    degree = input.nextLine();
-
-    System.out.println("What is your gpa? (usually this would be a choice to calculate or input): ");
-    GPA = input.nextInt();
+    String name = input.nextLine();
 
     //This is all sudo code for the time being
 

@@ -1,15 +1,21 @@
-
+import java.util.Scanner;
 
 public class Main{
+  // public static Scanner mainclassinput = new Scanner(System.in);
 
   public static void main(String[] args) {
-
+    // System.out.println("Press 1 if you are a student or 2 if you are an employer. ");
+    // System.out.println("Choice: ");
+    // int choice =  mainclassinput.nextInt();
+    // mainclassinput.close();
+ //need an if statement for the slection made and then import the corresponding class
     print_Vars();
 
   }
   public static void print_Vars(){
     /** A method that prints a users atributes*/
     Student s1 = new Student();
+    s1.set_User_Attributes();
     System.out.println("\nSearching database for: "+ s1.Full_name);
     System.out.println("\n\nUsers Name is: "+ s1.Full_name);
     System.out.println("\nUsers UID is: "+ s1.UID);
