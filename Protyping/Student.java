@@ -2,13 +2,21 @@ import java.util.Scanner;
 
 public class Student{
 
-  public String Full_name = "John Doe"; // enter VIa command line
-  public String program_year = "4th";
-  public String UID = "00000000"; //university ID number
-  public String University = "U of C"; //Create a dropdown list of options
+  public String full_name = "John Doe"; // enter VIa command line
+  public int program_year = 4;
+  public String uID = "00000000"; //university ID number
+  public String university = "U of C"; //Create a dropdown list of options
   public String degree = "CPSC";
   public double GPA = 0;
-  public Scanner input = new Scanner(System.in);
+
+  Student() {
+    full_name = "";
+    program_year = 0;
+    uID = "";
+    university = "";
+    degree = "";
+    GPA = 0;
+  }
 
   public void set_User_Attributes(){
     /** A method to set a users attributes based on user input*/
