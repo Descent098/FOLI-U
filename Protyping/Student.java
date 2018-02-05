@@ -10,6 +10,7 @@ public class Student{
   public double GPA = 0.0;
   // Scanners can only take 1 argument of each method, need 4 to take in all arguments
   public Scanner input = new Scanner(System.in);
+  public Scanner input1 = new Scanner(System.in); //GPA Calculation
   public Scanner input2 = new Scanner(System.in);
   public Scanner input3 = new Scanner(System.in);
   public Scanner input4 = new Scanner(System.in);
@@ -35,40 +36,30 @@ public class Student{
     System.out.println("Would You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
 
-    //This is all sudo code for the time being
-
-
-    /*
-    Full_name = userinput
-    UID = userinput
-    University = userinput
-    program_year = userinpit
-    degree = userinput
-
-    //Need to have an option to have GPA calculated or entered
-    GPA = user input */
+    input.close();
+    input2.close();
+    input3.close();
+    input4.close();
   }
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
-    Scanner input1 = new Scanner(System.in);
-		 /** A method to calculate a users GPA based on input */
-		 System.out.println("Enter number of courses: ");
-		 int courseAmount = input1.nextInt();
-		 double weightTotal = 0;
-		 for (int i = 0; i < courseAmount; i++) {
-			 System.out.println("Enter grade for course " + (i+1) + ": ");
-			 double grade = 0;
-			 grade = input1.nextDouble();
-			 System.out.println("Enter weight for course " + (i+1) + ": ");
-			 double weight = 0;
-			 weight = input1.nextDouble();
-			 GPA += (grade*weight);
-			 weightTotal += weight;
-		 }
-		 input1.close();
-		 GPA /= weightTotal;
-		 System.out.println("Your GPA is: " + GPA);
+		System.out.println("Enter number of courses: ");
+		int courseAmount = input1.nextInt();
+		double weightTotal = 0;
+		for (int i = 0; i < courseAmount; i++) {
+		 System.out.println("Enter grade for course " + (i+1) + ": ");
+		 double grade = 0;
+		 grade = input1.nextDouble();
+		 System.out.println("Enter weight for course " + (i+1) + ": ");
+		 double weight = 0;
+		 weight = input1.nextDouble();
+		 GPA += (grade*weight);
+		 weightTotal += weight;
+		}
+		input1.close();
+		GPA /= weightTotal;
+		System.out.println("Your GPA is: " + GPA);
   }
 
 }
