@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Employer {
 
-	public String fullName = "Mr. John Doe";
-	public String companyName = "Google";
+  public String fullName = "Mr. John Doe";
+  public String companyName = "Google";
   public Boolean offeringJobs = true;
   public String phoneNumber = "0000000000";
   public String emailAddress = "johndoe@hotmail.com";
