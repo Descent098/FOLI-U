@@ -7,8 +7,8 @@ public class Student{
   public String UID = "00000000"; //university ID number
   public String University = "U of C"; //Create a dropdown list of options
   public String degree = "CPSC";
-  public double GPA = 0;
-  // Scanners can only take 1 argument of each method
+  public double GPA = 0.0;
+  // Scanners can only take 1 argument of each method, need 4 to take in all arguments
   public Scanner input = new Scanner(System.in);
   public Scanner input2 = new Scanner(System.in);
   public Scanner input3 = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class Student{
     System.out.println("What degree are you in?: ");
     degree = input4.nextLine();
 
-    System.out.println("What is your gpa? (usually this would be a choice to calculate or input): ");
+    System.out.println("Would You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
 
     //This is all sudo code for the time being

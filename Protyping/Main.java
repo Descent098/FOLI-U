@@ -11,7 +11,14 @@ public class Main{
     // mainclassinput.close();
     //need an if statement for the slection made and then import the corresponding class
     s1.set_User_Attributes();
-    s1.calc_GPA();
+    if (s1.GPA == 2){
+      s1.calc_GPA();
+  }
+    if (s1.GPA == 1){
+      Scanner GPAInput = new Scanner(System.in);
+      System.out.println("\nEnter your GPA: ");
+      s1.GPA = GPAInput.nextDouble();
+    }
     print_Vars();
 
   }
