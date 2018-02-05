@@ -9,13 +9,13 @@ public class Student{
   public String degree = "CPSC";
   public double GPA = 0.0;
   // Scanners can only take 1 argument of each method, need 4 to take in all arguments
-  public Scanner input = new Scanner(System.in);
-  public Scanner input1 = new Scanner(System.in); //GPA Calculation
-  public Scanner input2 = new Scanner(System.in);
-  public Scanner input3 = new Scanner(System.in);
-  public Scanner input4 = new Scanner(System.in);
+
 
   public void set_User_Attributes(){
+    Scanner input = new Scanner(System.in);
+    Scanner input2 = new Scanner(System.in);
+    Scanner input3 = new Scanner(System.in);
+    Scanner input4 = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
 
     System.out.println("Name: ");
@@ -44,6 +44,7 @@ public class Student{
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
+    Scanner input1 = new Scanner(System.in); //GPA Calculation
 		System.out.println("Enter number of courses: ");
 		int courseAmount = input1.nextInt();
 		double weightTotal = 0;
