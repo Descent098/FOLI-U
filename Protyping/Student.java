@@ -2,21 +2,17 @@ import java.util.Scanner;
 
 public class Student{
 
-  public String full_name = "John Doe"; // enter VIa command line
+  public String Full_name = "John Doe"; // enter VIa command line
   public int program_year = 4;
-  public String uID = "00000000"; //university ID number
-  public String university = "U of C"; //Create a dropdown list of options
+  public String UID = "00000000"; //university ID number
+  public String University = "U of C"; //Create a dropdown list of options
   public String degree = "CPSC";
   public double GPA = 0;
-
-  Student() {
-    full_name = "";
-    program_year = 0;
-    uID = "";
-    university = "";
-    degree = "";
-    GPA = 0;
-  }
+  // Scanners can only take 1 argument of each method
+  public Scanner input = new Scanner(System.in);
+  public Scanner input2 = new Scanner(System.in);
+  public Scanner input3 = new Scanner(System.in);
+  public Scanner input4 = new Scanner(System.in);
 
   public void set_User_Attributes(){
     /** A method to set a users attributes based on user input*/
@@ -24,20 +20,20 @@ public class Student{
     System.out.println("Name: ");
     Full_name = input.nextLine();
 
-    System.out.println("What year of your degree are you in>:  ");
-    program_year = input.nextLine();
-
-    System.out.println("Please put in your 8 digit UID: ");
-    UID = input.nextLine();
+    System.out.println("What year of your degree are you in?:  ");
+    program_year = input.nextInt();
 
     System.out.println("What university are you at?: ");
-    University = input.nextLine();
+    University = input2.nextLine();
+
+    System.out.println("Please put in your 8 digit UID: ");
+    UID = input3.nextLine();
 
     System.out.println("What degree are you in?: ");
-    degree = input.nextLine();
+    degree = input4.nextLine();
 
     System.out.println("What is your gpa? (usually this would be a choice to calculate or input): ");
-    GPA = input.nextInt();
+    GPA = input2.nextInt();
 
     //This is all sudo code for the time being
 
@@ -55,22 +51,22 @@ public class Student{
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
-    Scanner input = new Scanner(System.in);
+    Scanner input1 = new Scanner(System.in);
 		 /** A method to calculate a users GPA based on input */
 		 System.out.println("Enter number of courses: ");
-		 int courseAmount = input.nextInt();
+		 int courseAmount = input1.nextInt();
 		 double weightTotal = 0;
 		 for (int i = 0; i < courseAmount; i++) {
 			 System.out.println("Enter grade for course " + (i+1) + ": ");
 			 double grade = 0;
-			 grade = input.nextDouble();
+			 grade = input1.nextDouble();
 			 System.out.println("Enter weight for course " + (i+1) + ": ");
 			 double weight = 0;
-			 weight = input.nextDouble();
+			 weight = input1.nextDouble();
 			 GPA += (grade*weight);
 			 weightTotal += weight;
 		 }
-		 input.close();
+		 input1.close();
 		 GPA /= weightTotal;
 		 System.out.println("Your GPA is: " + GPA);
   }
