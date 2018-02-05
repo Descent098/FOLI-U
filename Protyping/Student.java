@@ -36,10 +36,6 @@ public class Student{
     System.out.println("Would You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
 
-    input.close();
-    input2.close();
-    input3.close();
-    input4.close();
   }
 
   public void calc_GPA(){
