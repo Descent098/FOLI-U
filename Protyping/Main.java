@@ -10,8 +10,10 @@ public class Main{
     // int choice =  mainclassinput.nextInt();
     // mainclassinput.close();
     //need an if statement for the slection made and then import the corresponding class
-    selectMenu();
-    print_Vars();
+    while (true){
+      selectMenu();
+    }
+
 
   }
   public static void print_Vars(){
@@ -49,6 +51,7 @@ public static void createUser(){
     System.out.println("2 for printing a users attributes:");
     System.out.println("3 to exit program:");
     int choice = selection.nextInt();
+
     if (choice == 1){
       createUser();
     }
@@ -58,5 +61,6 @@ public static void createUser(){
     if (choice == 3){
       System.exit(0);
     }
+
   }
 }
