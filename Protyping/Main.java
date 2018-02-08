@@ -46,6 +46,7 @@ public static void createUser(){
   public static void selectMenu(){
     /** Gives the user options to select from that call methods*/
     Scanner selection = new Scanner(System.in);
+    Scanner choice2Selector = new Scanner(System.in);
     System.out.println("\nPlease select an option:");
     System.out.println("1 for creating a new user:");
     System.out.println("2 for printing a users attributes:");
@@ -56,7 +57,17 @@ public static void createUser(){
       createUser();
     }
     if (choice == 2){
-      print_Vars();
+      System.out.println("\nPlease select an option: ");
+      System.out.println("1 for printing a prefabbed student class ");
+      System.out.println("2 for printing a prefabbed employer class  ");
+      int choice2Selection = choice2Selector.nextInt();
+
+      switch (choice2Selection){
+        case 1: JohnDoe.print_Vars();
+                break;
+        case 2: Employer.print_Vars();
+                break;
+      }
     }
     if (choice == 3){
       System.exit(0);

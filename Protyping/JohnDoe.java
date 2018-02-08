@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
-public class Student{
+public class JohnDoe extends Student{
 
-  public String Full_name = "John Doe"; // enter VIa command line
-  public String program_year = "4th";
-  public String UID = "00000000"; //university ID number
-  public String University = "U of C"; //Create a dropdown list of options
-  public String degree = "CPSC";
-  public double GPA = 0;
-  public Scanner input = new Scanner(System.in);
+  public static String full_name = "John Doe"; // enter VIa command line
+  public static String program_year = "4th";
+  public static String UID = "00000000"; //university ID number
+  public static String university = "U of C"; //Create a dropdown list of options
+  public static String degree = "CPSC";
+  public static double GPA = 0;
+  public static Scanner input = new Scanner(System.in);
 
   public void set_User_Attributes(){
     /** A method to set a users attributes based on user input*/
@@ -29,6 +29,16 @@ public class Student{
 
     //Need to have an option to have GPA calculated or entered
     GPA = user input */
+  }
+  public static void print_Vars(){
+    /** A method that prints a users atributes*/
+    System.out.println("\nSearching database for: "+ full_name);
+    System.out.println("\n\nUsers Name is: "+ full_name);
+    System.out.println("\nUsers UID is: "+ UID);
+    System.out.println("\nUsers University is: "+ university);
+    System.out.println("\nUsers Program Year is: "+ program_year);
+    System.out.println("\nUsers Degree is: "+ degree);
+    System.out.println("\nUsers GPA is: "+ GPA);
   }
 
   public void calc_GPA(){
