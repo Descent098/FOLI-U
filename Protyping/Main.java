@@ -53,24 +53,25 @@ public static void createUser(){
     System.out.println("3 to exit program:");
     int choice = selection.nextInt();
 
-    if (choice == 1){
-      createUser();
-    }
-    if (choice == 2){
-      System.out.println("\nPlease select an option: ");
-      System.out.println("1 for printing a prefabbed student class ");
-      System.out.println("2 for printing a prefabbed employer class  ");
-      int choice2Selection = choice2Selector.nextInt();
 
-      switch (choice2Selection){
-        case 1: JohnDoe.print_Vars();
-                break;
-        case 2: Employer.print_Vars();
-                break;
+    switch (choice){ //users choice of action with 3 cases
+    case 1: createUser();
+            break;
+
+    case 2: System.out.println("\nPlease select an option: ");
+            System.out.println("1 for printing a prefabbed student class ");
+            System.out.println("2 for printing a prefabbed employer class  ");
+            int choice2Selection = choice2Selector.nextInt();
+
+            switch (choice2Selection){ //users choice of what type of class to print
+              case 1: JohnDoe.print_Vars();
+                  break;
+                  case 2: Employer.print_Vars();
+                  break;
       }
-    }
-    if (choice == 3){
-      System.exit(0);
+            break;
+      case 3: System.exit(0);
+              break;
     }
 
   }
