@@ -54,7 +54,6 @@ public class Student{
 		 GPA += (grade*weight);
 		 weightTotal += weight;
 		}
-		input1.close();
 		GPA /= weightTotal;
 		System.out.println("Your GPA is: " + GPA);
   }
