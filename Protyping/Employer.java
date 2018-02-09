@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Employer {
 
-  public static String fullName = "Mr. John Doe";
+  public static String fullName = "John Doe";
   public static String companyName = "Google";
   public static Boolean offeringJobs = true;
   public static String phoneNumber = "0000000000";
@@ -31,7 +31,7 @@ public class Employer {
     emailAddress = input4.nextLine();
 
     }
-    
+
     public static void print_Vars(){
       /** A method that prints a users atributes*/
       System.out.println("\nSearching database for: "+ fullName);

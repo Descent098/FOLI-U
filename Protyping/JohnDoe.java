@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class JohnDoe extends Student{
 
   public static String fullName = "John Doe"; // enter VIa command line
-  public static String programYear = "4th";
+  public static int programYear = 4;
   public static String UID = "00000000"; //university ID number
   public static String university = "U of C"; //Create a dropdown list of options
   public static String degree = "CPSC";

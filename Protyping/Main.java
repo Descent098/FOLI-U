@@ -20,11 +20,11 @@ public class Main{
     /** A method that prints a users atributes*/
     System.out.println("\nSearching database for: "+ s1.fullName);
     System.out.println("\n\nUsers Name is: "+ s1.fullName);
-    System.out.println("\nUsers UID is: "+ s1.UID);
-    System.out.println("\nUsers University is: "+ s1.university);
-    System.out.println("\nUsers Program Year is: "+ s1.programYear);
-    System.out.println("\nUsers Degree is: "+ s1.degree);
-    System.out.println("\nUsers GPA is: "+ s1.GPA);
+    System.out.println("Users UID is: "+ s1.UID);
+    System.out.println("Users University is: "+ s1.university);
+    System.out.println("Users Program Year is: "+ s1.programYear);
+    System.out.println("Users Degree is: "+ s1.degree);
+    System.out.println("Users GPA is: "+ s1.GPA);
   }
 
 public static void createUser(){
@@ -61,13 +61,16 @@ public static void createUser(){
     case 2: System.out.println("\nPlease select an option: ");
             System.out.println("1 for printing a prefabbed student class ");
             System.out.println("2 for printing a prefabbed employer class  ");
+            System.out.println("3 for printing the just created class (have to have created a class): ");
             int choice2Selection = choice2Selector.nextInt();
 
             switch (choice2Selection){ //users choice of what type of class to print
               case 1: JohnDoe.print_Vars();
                   break;
-                  case 2: Employer.print_Vars();
+              case 2: Employer.print_Vars();
                   break;
+              case 3: print_Vars();
+              break;
       }
             break;
       case 3: System.exit(0);
