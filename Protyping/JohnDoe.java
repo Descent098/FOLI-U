@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class JohnDoe extends Student{
 
-  public static String full_name = "John Doe"; // enter VIa command line
-  public static String program_year = "4th";
+  public static String fullName = "John Doe"; // enter VIa command line
+  public static String programYear = "4th";
   public static String UID = "00000000"; //university ID number
   public static String university = "U of C"; //Create a dropdown list of options
   public static String degree = "CPSC";
@@ -11,32 +11,40 @@ public class JohnDoe extends Student{
   public static Scanner input = new Scanner(System.in);
 
   public void set_User_Attributes(){
+    Scanner input = new Scanner(System.in);
+    Scanner input2 = new Scanner(System.in);
+    Scanner input3 = new Scanner(System.in);
+    Scanner input4 = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
 
-
     System.out.println("Name: ");
-    String name = input.nextLine();
+    fullName = input.nextLine();
 
-    //This is all sudo code for the time being
+    System.out.println("What year of your degree are you in?:  ");
+    programYear = input.nextInt();
 
+    System.out.println("What university are you at?: ");
+    university = input2.nextLine();
 
-    /*
-    Full_name = userinput
-    UID = userinput
-    University = userinput
-    program_year = userinpit
-    degree = userinput
+    System.out.println("Please put in your 8 digit UID: ");
+    UID = input3.nextLine();
 
-    //Need to have an option to have GPA calculated or entered
-    GPA = user input */
+    System.out.println("What degree are you in?: ");
+    degree = input4.nextLine();
+
+    System.out.println("Would You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
+    GPA = input2.nextInt();
+
   }
+
+
   public static void print_Vars(){
     /** A method that prints a users atributes*/
-    System.out.println("\nSearching database for: "+ full_name);
-    System.out.println("\n\nUsers Name is: "+ full_name);
+    System.out.println("\nSearching database for: "+ fullName);
+    System.out.println("\n\nUsers Name is: "+ fullName);
     System.out.println("\nUsers UID is: "+ UID);
     System.out.println("\nUsers University is: "+ university);
-    System.out.println("\nUsers Program Year is: "+ program_year);
+    System.out.println("\nUsers Program Year is: "+ programYear);
     System.out.println("\nUsers Degree is: "+ degree);
     System.out.println("\nUsers GPA is: "+ GPA);
   }

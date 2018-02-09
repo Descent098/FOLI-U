@@ -18,11 +18,11 @@ public class Main{
   }
   public static void print_Vars(){
     /** A method that prints a users atributes*/
-    System.out.println("\nSearching database for: "+ s1.full_name);
-    System.out.println("\n\nUsers Name is: "+ s1.full_name);
+    System.out.println("\nSearching database for: "+ s1.fullName);
+    System.out.println("\n\nUsers Name is: "+ s1.fullName);
     System.out.println("\nUsers UID is: "+ s1.UID);
     System.out.println("\nUsers University is: "+ s1.university);
-    System.out.println("\nUsers Program Year is: "+ s1.program_year);
+    System.out.println("\nUsers Program Year is: "+ s1.programYear);
     System.out.println("\nUsers Degree is: "+ s1.degree);
     System.out.println("\nUsers GPA is: "+ s1.GPA);
   }

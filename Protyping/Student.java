@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Student{
 
-  public String full_name = "John Doe"; // enter VIa command line
-  public int program_year = 4;
-  public String UID = "00000000"; //university ID number
-  public String university = "U of C"; //Create a dropdown list of options
-  public String degree = "CPSC";
-  public double GPA = 0.0;
+  public String fullName; // enter VIa command line
+  public int programYear;
+  public String UID; //university ID number
+  public String university; //Create a dropdown list of options
+  public String degree;
+  public double GPA;
   // Scanners can only take 1 argument of each method, need 4 to take in all arguments
 
 
@@ -18,22 +18,22 @@ public class Student{
     Scanner input4 = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
 
-    System.out.println("Name: ");
-    full_name = input.nextLine();
+    System.out.println("\nName: ");
+    fullName = input.nextLine();
 
-    System.out.println("What year of your degree are you in?:  ");
-    program_year = input.nextInt();
+    System.out.println("\nWhat year of your degree are you in?:  ");
+    programYear = input.nextInt();
 
-    System.out.println("What university are you at?: ");
+    System.out.println("\nWhat university are you at?: ");
     university = input2.nextLine();
 
-    System.out.println("Please put in your 8 digit UID: ");
+    System.out.println("\nPlease put in your 8 digit UID: ");
     UID = input3.nextLine();
 
-    System.out.println("What degree are you in?: ");
+    System.out.println("\nWhat degree are you in?: ");
     degree = input4.nextLine();
 
-    System.out.println("Would You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
+    System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
 
   }

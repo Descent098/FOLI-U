@@ -31,6 +31,7 @@ public class Employer {
     emailAddress = input4.nextLine();
 
     }
+    
     public static void print_Vars(){
       /** A method that prints a users atributes*/
       System.out.println("\nSearching database for: "+ fullName);
