@@ -4,7 +4,7 @@ public class Menu{
   // public static Scanner mainclassinput = new Scanner(System.in);
   public Student s1 = new Student();
   public JohnDoe jd = new JohnDoe();
-  public Employer e = new Employer();
+  public EmployerJohnDoe e = new EmployerJohnDoe();
 
 public void createUser(){
   /** method to call all methods needed to create a user*/

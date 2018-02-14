@@ -67,6 +67,11 @@ public class Student extends User{
     System.out.println("Users Program Year is: "+ programYear);
     System.out.println("Users Degree is: "+ degree);
     System.out.println("Users GPA is: "+ GPA);
+    System.out.println("Phone Numebr: "+ phoneNumber);
+    System.out.println("Email Address: "+ email);
+    System.out.println("Country: " + country);
+    System.out.println("Province: " + province);
+    System.out.println("City: " + city);
   }
 
 }
