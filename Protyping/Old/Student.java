@@ -1,23 +1,25 @@
 import java.util.Scanner;
 
-public class Student extends User{
+public class Student{
 
-
+  public String fullName; // enter VIa command line
   public int programYear;
   public String UID; //university ID number
   public String university; //Create a dropdown list of options
   public String degree;
   public double GPA;
+  // Scanners can only take 1 argument of each method, need 4 to take in all arguments
 
 
   public void set_User_Attributes(){
-    setContactInfo();
     Scanner input = new Scanner(System.in);
     Scanner input2 = new Scanner(System.in);
     Scanner input3 = new Scanner(System.in);
     Scanner input4 = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
 
+    System.out.println("\nName: ");
+    fullName = input.nextLine();
 
     System.out.println("\nWhat year of your degree are you in?:  ");
     programYear = input.nextInt();
@@ -38,6 +40,7 @@ public class Student extends User{
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
+    GPA = 0;
     Scanner input1 = new Scanner(System.in); //GPA Calculation
 		System.out.println("Enter number of courses: ");
 		int courseAmount = input1.nextInt();
@@ -54,19 +57,6 @@ public class Student extends User{
 		}
 		GPA /= weightTotal;
 		System.out.println("Your GPA is: " + GPA);
-  }
-
-
-  public void print_Vars(){
-    /** A method that prints a users atributes*/
-    System.out.println("\nSearching database for: " + fullName);
-
-    printContactInfo();
-    System.out.println("Users UID is: "+ UID);
-    System.out.println("Users University is: "+ university);
-    System.out.println("Users Program Year is: "+ programYear);
-    System.out.println("Users Degree is: "+ degree);
-    System.out.println("Users GPA is: "+ GPA);
   }
 
 }

@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Employer {
 
-  public String fullName = "John Doe";
-  public String companyName = "Google";
-  public Boolean offeringJobs = true;
-  public String phoneNumber = "0000000000";
-  public String emailAddress = "johndoe@hotmail.com";
+  public static String fullName = "John Doe";
+  public static String companyName = "Google";
+  public static Boolean offeringJobs = true;
+  public static String phoneNumber = "0000000000";
+  public static String emailAddress = "johndoe@hotmail.com";
 
 
   public void setEmployerAttributes() {
@@ -32,7 +32,7 @@ public class Employer {
 
     }
 
-    public void print_Vars(){
+    public static void print_Vars(){
       /** A method that prints a users atributes*/
       System.out.println("\nSearching database for: "+ fullName);
       System.out.println("\nUser Name: "+ fullName);

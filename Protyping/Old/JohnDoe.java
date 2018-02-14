@@ -1,13 +1,14 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class JohnDoe extends Student{
-  public String fullName = createRandomName(); // enter VIa command line
-  public int programYear = 4;
-  public String UID = createRandomUIDNumber(); //university ID number
-  public String university = "U of C"; //Create a dropdown list of options
-  public String degree = "CPSC";
-  public double GPA = 0;
-  public Scanner input = new Scanner(System.in);
+
+  public static String fullName = "John Doe"; // enter VIa command line
+  public static int programYear = 4;
+  public static String UID = "00000000"; //university ID number
+  public static String university = "U of C"; //Create a dropdown list of options
+  public static String degree = "CPSC";
+  public static double GPA = 0;
+  public static Scanner input = new Scanner(System.in);
 
   public void set_User_Attributes(){
     Scanner input = new Scanner(System.in);
@@ -35,25 +36,9 @@ public class JohnDoe extends Student{
     GPA = input2.nextInt();
 
   }
-  /** A method to create a random UID #*/
-  public String createRandomUIDNumber(){
-    Random rand = new Random();
-
-    int n = (30000000 + rand.nextInt(900000) + 1);
-    String randomUID = Integer.toString(n);
-    return randomUID;
-  }
-
-  /** A method to create a random Name*/
-  public String createRandomName(){
-    Random rand = new Random();
-    String names[] = {"Nicola Racine","Synthia Mershon","Hank Carboni","Antonietta Chambers","Melda Kimmer","Aileen Agron","Burton Hemingway","Inge Fort","Kurtis Popham","Robbyn Hutto","Jerrold Berrios","Gena Moniz","Micha Erb","Conchita Holtzman","Hobert Cawley","Elissa Hogge","Towanda Merideth","Rubin Landis","Elouise Chance","Williams Losee","Lurlene Merrihew","Lacresha Mackey","Elodia Fischbach","Calvin Caouette","Richie Esterly","Agnus Collman","Drew Wolfe","Sona Orme","Fred Whelan", "Kitty Royals"};
-    String randomFullName = (names[(rand.nextInt(29))]);
-    return randomFullName;
-  }
 
 
-  public void print_Vars(){
+  public static void print_Vars(){
     /** A method that prints a users atributes*/
     System.out.println("\nSearching database for: "+ fullName);
     System.out.println("\n\nUsers Name is: "+ fullName);
