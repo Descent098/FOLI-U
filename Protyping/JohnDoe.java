@@ -64,26 +64,5 @@ public class JohnDoe extends Student{
     System.out.println("\nUsers GPA is: "+ GPA);
   }
 
-  public void calc_GPA(){
-    /** A method to calculate a users GPA based on input */
-    Scanner input = new Scanner(System.in);
-		 /** A method to calculate a users GPA based on input */
-		 System.out.println("Enter number of courses: ");
-		 int courseAmount = input.nextInt();
-		 double weightTotal = 0;
-		 for (int i = 0; i < courseAmount; i++) {
-			 System.out.println("Enter grade for course " + (i+1) + ": ");
-			 double grade = 0;
-			 grade = input.nextDouble();
-			 System.out.println("Enter weight for course " + (i+1) + ": ");
-			 double weight = 0;
-			 weight = input.nextDouble();
-			 GPA += (grade*weight);
-			 weightTotal += weight;
-		 }
-		 input.close();
-		 GPA /= weightTotal;
-		 System.out.println("Your GPA is: " + GPA);
-  }
 
 }

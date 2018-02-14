@@ -8,8 +8,6 @@ public class Databasing{
 
   for(int i=1; i<11; i++){
     JohnDoe temp = newJohnDoe();
-    System.out.println(temp);
-    System.out.println(newJohnDoe());
     database.put(temp.UID, temp);
   }
   System.out.println(database);
