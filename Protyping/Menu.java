@@ -44,9 +44,11 @@ public void createUser(){
             int choice2Selection = choice2Selector.nextInt();
 
             switch (choice2Selection){ //users choice of what type of class to print
-              case 1: jd.print_Vars();
+              case 1: jd.randomUser();
+                  jd.print_Vars();
                   break;
-              case 2: e.print_Vars();
+              case 2: e.randomUser();
+                  e.print_Vars();
                   break;
               case 3: s1.print_Vars();
               break;
