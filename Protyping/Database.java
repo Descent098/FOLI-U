@@ -5,6 +5,7 @@ import java.util.*;
 public class Database{
 
   public void createandSearchDatabase() {
+  Scanner continuetoSearch = new Scanner(System.in);
   HashMap<String, User> database = new HashMap();
   int JohnDoeS = howManyRandos();
   for(int i=0; i<JohnDoeS; i++){
@@ -16,6 +17,11 @@ public class Database{
   String searchedUser = searchUser();
   System.out.println("\nDatabase Returned: ");
   database.get(searchedUser).printContactInfo();
+  System.out.println("\nWould you like to search again? (1 for no, 2 for yes): ");
+  if (continuetoSearch.nextInt() == 1){
+    break;
+  }
+
 }
  }
 
