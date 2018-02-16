@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("unchecked")    //temporary use for mac compiling
 /**class that holds all the database specific methods and initialization*/
 public class Databasing{
 
