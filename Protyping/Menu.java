@@ -5,6 +5,7 @@ public class Menu{
   public Student s1 = new Student();
   public JohnDoe jd = new JohnDoe();
   public EmployerJohnDoe e = new EmployerJohnDoe();
+  public Database db = new Database();
 
 public void createUser(){
   /** method to call all methods needed to create a user*/
@@ -41,6 +42,7 @@ public void createUser(){
             System.out.println("1 for printing a prefabbed student class ");
             System.out.println("2 for printing a prefabbed employer class  ");
             System.out.println("3 for printing the just created class (have to have created a class): ");
+            System.out.println("4 for creating a random database and searching for a user: ");
             int choice2Selection = choice2Selector.nextInt();
 
             switch (choice2Selection){ //users choice of what type of class to print
@@ -51,6 +53,8 @@ public void createUser(){
                   e.print_Vars();
                   break;
               case 3: s1.print_Vars();
+              break;
+              case 4: db.createandSearchDatabase();
               break;
       }
             break;
