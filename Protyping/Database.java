@@ -28,6 +28,6 @@ public static int howManyRandos(){
   return randos.nextInt();
 }
 
-public
+public void methodName() {
 
 }
