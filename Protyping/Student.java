@@ -38,6 +38,7 @@ public class Student extends User{
 
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
+    GPA = 0;
     Scanner input1 = new Scanner(System.in); //GPA Calculation
 		System.out.println("Enter number of courses: ");
 		int courseAmount = input1.nextInt();
