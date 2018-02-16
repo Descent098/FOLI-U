@@ -7,6 +7,10 @@ public class JohnDoe extends Student{
   public String degree = "CPSC";
   public double GPA = 0;
 
+
+  JohnDoe(){
+    randomUser();
+  }
   /** A method to create a random UID #*/
   public String createRandomUIDNumber(){
     Random rand = new Random();
