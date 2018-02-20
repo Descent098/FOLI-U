@@ -98,15 +98,15 @@ public class User{
 
   public void createRandomProvinceState(){
     Random rand = new Random();
-    String names[] = {"Alberta ", "California","New York","Ontario", "British Columbia", "Tuscany", "Sicily", "Emilia-Romagna", "Occitanie", "Provence-Alpes-Côte d'Azur", "Brittany", "Staffordshire", "Warwickshire", "Worcestershire"};
+    String names[] = {"Alberta ", "California","New York","Ontario", "British Columbia", "Tuscany", "Sicily", "Occitanie", "Provence-Alpes-Côte d'Azur", "Brittany", "Staffordshire", "Warwickshire", "Worcestershire"};
     String randomProvinceState = (names[(rand.nextInt(8) + 1)]);
     province =  randomProvinceState;
   }
 
   public void createRandomCity(){
     Random rand = new Random();
-    String names[] = {"Alberta ", "California","New York","Ontario", "British Columbia", "Tuscany", "Sicily", "	Emilia-Romagna", "Occitanie", "Provence-Alpes-Côte d'Azur", "Brittany", "Staffordshire", "Warwickshire", "Worcestershire"};
-    String randomCity = (names[(rand.nextInt(8) + 1)]);
+    String names[] = {"Calgary ", "Edmonton","Manhatten","Toronto", "Victoria", "Cortona", "Venice", "Rome", "Chamonix", "Nice", "Stoke on Trent", "Leeks", "Blurton", "Fenton"};
+    String randomCity = (names[(rand.nextInt(13) + 1)]);
     city =  randomCity;
   }
 
