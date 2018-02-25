@@ -35,14 +35,14 @@ public class Student extends User{
     System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
     if (GPA == 1){
-      System.out.println("\nPlease Enter your GPA: ")
-      GPA = input4.nextInt();
+      System.out.println("\nPlease Enter your GPA: ");
+      GPA = input4.nextDouble();
     }
     if (GPA == 2){
       calc_GPA();
     }
 
-    System.out.println("\nAre you an undergraduate (1)student, (2)masters student, or (3)doctoral candidate?: ");
+    System.out.println("\nAre you an (1)undergraduate student, (2)masters student, or (3)doctoral candidate?: ");
     int choice = input3.nextInt();
 
     switch(choice){
