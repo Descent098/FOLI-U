@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class JohnDoe extends Student{
   public int programYear;
@@ -43,8 +44,10 @@ public class JohnDoe extends Student{
 
   /** A method to create a random GPA #*/
   public void createRandomGPA(){
+    double rangeMin = 2.0;
+    double rangeMax = 4.0;
     Random rand = new Random();
-    Double n = (rand.nextDouble());
+    double n = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();
     GPA = n;
   }
 
@@ -52,20 +55,21 @@ public class JohnDoe extends Student{
   public void createRandomDegree(){
     Random rand = new Random();
     String names[] = {" CPSC","BIO", "MED", "ENG", "SOCI", "PSYC"};
-    String randomUniversity = (names[(rand.nextInt(5))]);
-    university = randomUniversity;
+    String randomDegree = (names[(rand.nextInt(5))]);
+    degree = randomDegree;
   }
 
 
   public void printContactInfo(){
     /** A method that prints a users atributes*/
+    DecimalFormat twoDecimals = new DecimalFormat(".##");
     System.out.println("\nSearching database for: "+ fullName);
     System.out.println("\n\nUsers Name is: "+ fullName);
     System.out.println("Users UID is: "+ UID);
     System.out.println("Users University is: "+ university);
     System.out.println("Users Program Year is: "+ programYear);
     System.out.println("Users Degree is: "+ degree);
-    System.out.println("Users GPA is: "+ GPA);
+    System.out.println("Users GPA is: "+ twoDecimals.format(GPA));
     System.out.println("Phone Numebr: "+ phoneNumber);
     System.out.println("Email Address: "+ email);
     System.out.println("Country: " + country);

@@ -88,7 +88,7 @@ public class User{
     country =  randomCountry;
   }
 
-  /** A method to create a random Country Name*/
+  /** A method to create a random Phone number*/
   public void createRandomPhoneNumber(){
     Random rand = new Random();
     String names[] = {"(403)251-1234 ", "(403)679-1234","(403)382-1234","(403)765-1234", "(403)257-3124"};
@@ -96,6 +96,7 @@ public class User{
     phoneNumber = randomPhoneNumber;
   }
 
+  /** A method to create a random Province/State*/
   public void createRandomProvinceState(){
     Random rand = new Random();
     String names[] = {"Alberta ", "California","New York","Ontario", "British Columbia", "Tuscany", "Sicily", "Occitanie", "Provence-Alpes-Côte d'Azur", "Brittany", "Staffordshire", "Warwickshire", "Worcestershire"};
@@ -103,6 +104,7 @@ public class User{
     province =  randomProvinceState;
   }
 
+  /** A method to create a random City*/
   public void createRandomCity(){
     Random rand = new Random();
     String names[] = {"Calgary ", "Edmonton","Manhatten","Toronto", "Victoria", "Cortona", "Venice", "Rome", "Chamonix", "Nice", "Stoke on Trent", "Leeks", "Blurton", "Fenton"};
