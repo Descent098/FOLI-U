@@ -7,7 +7,7 @@ public class JohnDoe extends Student{
   public String university; //Create a dropdown list of options
   public String degree;
   public double GPA;
-
+  public String studentType;
 
   JohnDoe(){
     randomUser();
@@ -16,6 +16,17 @@ public class JohnDoe extends Student{
     createRandomDegree();
     createRandomYear();
     createRandomGPA();
+    if (programYear < 5){
+      studentType = "Undergraduate Student";
+    }
+
+    if (programYear > 5 && programYear < 8){
+      studentType = "Masters Student";
+    }
+
+    if (programYear > 8){
+      studentType = "Doctoral Candidate";
+    }
 
   }
   /** A method to create a random UID #*/
@@ -68,6 +79,7 @@ public class JohnDoe extends Student{
     System.out.println("Users UID is: "+ UID);
     System.out.println("Users University is: "+ university);
     System.out.println("Users Program Year is: "+ programYear);
+    System.out.println("User is a : "+ studentType);
     System.out.println("Users Degree is: "+ degree);
     System.out.println("Users GPA is: "+ twoDecimals.format(GPA));
     System.out.println("Phone Numebr: "+ phoneNumber);

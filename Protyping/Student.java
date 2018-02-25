@@ -8,6 +8,7 @@ public class Student extends User{
   public String university; //Create a dropdown list of options
   public String degree;
   public double GPA;
+  public String studentType;
 
 
   public void set_User_Attributes(){
@@ -33,7 +34,26 @@ public class Student extends User{
 
     System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     GPA = input2.nextInt();
+    if (GPA == 1){
+      System.out.println("\nPlease Enter your GPA: ")
+      GPA = input4.nextInt();
+    }
+    if (GPA == 2){
+      calc_GPA();
+    }
 
+    System.out.println("\nAre you an undergraduate (1)student, (2)masters student, or (3)doctoral candidate?: ");
+    int choice = input3.nextInt();
+
+    switch(choice){
+      case 1: studentType = "Undergraduate Student";
+        break;
+      case 2: studentType = "Masters Student";
+        break;
+      case 3: studentType = "Doctoral Candidate";
+      break;
+
+    }
   }
 
   public void calc_GPA(){
@@ -65,6 +85,7 @@ public class Student extends User{
     printContactInfo();
     System.out.println("Users UID is: "+ UID);
     System.out.println("Users University is: "+ university);
+    System.out.println("User is a : "+ studentType);
     System.out.println("Users Program Year is: "+ programYear);
     System.out.println("Users Degree is: "+ degree);
     System.out.println("Users GPA is: "+ GPA);
