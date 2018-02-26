@@ -30,7 +30,7 @@ public class FileIO {
             try {
               data.createNewFile();
               createOrLoadFile = true;
-              System.out.println("File craeted. ");
+              System.out.println("File created. ");
             } catch (IOException e) {
               createOrLoadFile = false;
               System.out.println("File could not be created.");
@@ -76,6 +76,10 @@ public class FileIO {
       sChoice = sChoice.toUpperCase();
       if (sChoice.equals("S")) {
         try {
+          FileOutputStream outClear = new FileOutputStream(data);
+          outClear.write(("").getBytes());
+          outClear.close();
+
           FileOutputStream out = new FileOutputStream(data);
           ObjectOutputStream writer = new ObjectOutputStream(out);
 
