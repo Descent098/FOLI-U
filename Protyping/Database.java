@@ -6,9 +6,10 @@ public class Database{
 
   public HashMap<String, User> database = new HashMap();
 
-
+/** A method to create users, and add them to the database*/
   public void createandSearchDatabase() {
-  Scanner continuetoSearch = new Scanner(System.in);
+  Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
+  or not you want to continue searching */
 
   int JohnDoeS = howManyRandos();
   for(int i=0; i<JohnDoeS; i++){

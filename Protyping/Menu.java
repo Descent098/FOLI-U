@@ -36,6 +36,8 @@ public void createUser(){
 
     switch (choice){ //users choice of action with 3 cases
     case 1: createUser();
+      db.database.put(s1.UID,s1);
+      s1 = new Student();
             break;
 
     case 2: System.out.println("\nPlease select an option: ");
