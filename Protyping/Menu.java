@@ -6,8 +6,9 @@ public class Menu{
   public JohnDoe jd = new JohnDoe();
   public EmployerJohnDoe e = new EmployerJohnDoe();
   public Database db = new Database();
-
-public void createUser(){
+  public Employer ep = new Employer();
+  public int employerCount = 0;
+public void createStudent(){
   /** method to call all methods needed to create a user*/
   s1.set_User_Attributes();
 
@@ -28,23 +29,25 @@ public void createUser(){
     Scanner selection = new Scanner(System.in);
     Scanner choice2Selector = new Scanner(System.in);
     System.out.println("\nPlease select an option:");
-    System.out.println("1 for creating a new user:");
+    System.out.println("1 for creating a new Student:");
     System.out.println("2 for printing a users attributes:");
     System.out.println("3 to exit program:");
+    System.out.println("4 for creating an Employer: ")
     int choice = selection.nextInt();
 
 
     switch (choice){ //users choice of action with 3 cases
-    case 1: createUser();
+    case 1: createStudent();
       db.database.put(s1.UID,s1);
       s1 = new Student();
             break;
 
     case 2: System.out.println("\nPlease select an option: ");
-            System.out.println("1 for printing a prefabbed student class ");
-            System.out.println("2 for printing a prefabbed employer class  ");
-            System.out.println("3 for printing the just created class (have to have created a class): ");
+            System.out.println("1 for printing a randomly generated student class ");
+            System.out.println("2 for printing a randomly generated employer class  ");
+            System.out.println("3 for printing the just created class (The most recently Created one): ");
             System.out.println("4 for creating a random database and searching for a user: ");
+
             int choice2Selection = choice2Selector.nextInt();
 
             switch (choice2Selection){ //users choice of what type of class to print
@@ -58,10 +61,15 @@ public void createUser(){
               break;
               case 4: db.createandSearchDatabase();
               break;
+
       }
             break;
       case 3: System.exit(0);
               break;
+
+      case 4: ep.setEmployerAttributes();
+      db.database.put(s1.UID,s1);
+      s1 = new Student();
     }
 
   }
