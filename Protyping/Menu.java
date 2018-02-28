@@ -56,31 +56,17 @@ public void createStudent(){
       break;
 
     case 4: System.out.println("\nPlease select an option: ");
-            System.out.println("1 for creating and printing a randomly generated student class ");
-            System.out.println("2 for creating and printing a randomly generated employer class  ");
-            System.out.println("3 for creating a database of random students: ");
-            System.out.println("4 for creating a database of random Employers: ");
+            System.out.println("1 for creating a database of random students: ");
+            System.out.println("2 for creating a database of random Employers: ");
 
             int choice2Selection = choice2Selector.nextInt();
 
             switch (choice2Selection){ //users choice of what type of class to print
-              case 1:jd = new JohnDoe(); //Resets Class after its creation
-                  jd.randomUser();
-                  jd.print_Vars();
-                  db.database.put(jd.UID,jd);
 
-                  break;
-              case 2: e.randomUser();
-                  e.print_Vars();
-                  currentCount = Integer.toString(employerCount);
-                  db.database.put(currentCount,e);
-                  e = new EmployerJohnDoe(); //Resets Class after its creation
-                  employerCount += 1 ;
-                  break;
-              case 3: db.createRandomStudents();
+              case 1: db.createRandomStudents();
               break;
 
-              case 4: employerCount = db.createRandomEmployers(employerCount);
+              case 2: employerCount = db.createRandomEmployers(employerCount);
               break;
       }
             break;
