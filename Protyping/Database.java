@@ -16,9 +16,10 @@ public class Database{
     JohnDoe temp = newJohnDoe();
     database.put(temp.UID, temp);
   }
-  System.out.println(database);
+
   while (true){
     searchUser();
+    System.out.println("\nWould you like to search again? (1 for no, 2 for yes): ");
     if (continuetoSearch.nextInt() == 1){
       break;
     }
@@ -27,13 +28,14 @@ public class Database{
 /** A method that takes user input and returns a string to be used to search
 the database for the corresponding user */
 public void searchUser(){
+  System.out.println(database);
   Scanner searchUID = new Scanner(System.in);
 
   System.out.println("\nPlease enter the UID of the user you would like to find: ");
   String searchedUser = searchUID.nextLine();
   System.out.println("\nDatabase Returned: ");
   database.get(searchedUser).printContactInfo();
-  System.out.println("\nWould you like to search again? (1 for no, 2 for yes): ");
+
 }
 
 
