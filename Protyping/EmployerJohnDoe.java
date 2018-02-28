@@ -4,7 +4,10 @@ public class EmployerJohnDoe extends Employer{
   public String companyName = createRandomCompany();
   public Boolean offeringJobs = true;
 
-
+  EmployerJohnDoe(){
+    randomUser();
+    createRandomCompany();
+  }
     /** A method to create a random Company Name*/
     public String createRandomCompany(){
       Random rand = new Random();

@@ -8,6 +8,7 @@ public class Menu{
   public Database db = new Database();
   public Employer ep = new Employer();
   public int employerCount = 0; //Count of the amount of employers (acts like UID)
+  String currentCount;
 public void createStudent(){
   /** method to call all methods needed to create a user*/
   s1.set_User_Attributes();
@@ -30,24 +31,35 @@ public void createStudent(){
     Scanner choice2Selector = new Scanner(System.in);
     System.out.println("\nPlease select an option:");
     System.out.println("1 for creating a new Student:");
-    System.out.println("2 for printing a users attributes:");
-    System.out.println("3 to exit program:");
-    System.out.println("4 for creating an Employer: ");
-    System.out.println("5 Search for a user: ");
+    System.out.println("2 for creating an Employer: ");
+    System.out.println("3 Search for a user: ");
+    System.out.println("4 for creating and printing random users:");
+    System.out.println("5 to exit program:");
+
     int choice = selection.nextInt();
 
 
     switch (choice){ //users choice of action with 3 cases
-    case 1: createStudent();
+    case 1: createStudent(); //If they select 1 at the first menu create a new student and add to database
       db.database.put(s1.UID,s1);
       s1 = new Student();
             break;
 
-    case 2: System.out.println("\nPlease select an option: ");
+    case 2: ep.setEmployerAttributes();
+      currentCount = Integer.toString(employerCount);
+      db.database.put(currentCount,ep);
+      ep = new Employer(); //Resets Class after its creation
+      employerCount += 1 ;
+      break;
+
+    case 3:db.searchUser();
+      break;
+
+    case 4: System.out.println("\nPlease select an option: ");
             System.out.println("1 for creating and printing a randomly generated student class ");
             System.out.println("2 for creating and printing a randomly generated employer class  ");
-            System.out.println("3 for printing the just created class (The most recently Created one): ");
-            System.out.println("4 for creating a random database and searching for a user: ");
+            System.out.println("3 for creating a database of random students: ");
+            System.out.println("4 for creating a database of random Employers: ");
 
             int choice2Selection = choice2Selector.nextInt();
 
@@ -60,30 +72,24 @@ public void createStudent(){
                   break;
               case 2: e.randomUser();
                   e.print_Vars();
-                  String currentCount = Integer.toString(employerCount);
+                  currentCount = Integer.toString(employerCount);
                   db.database.put(currentCount,e);
                   e = new EmployerJohnDoe(); //Resets Class after its creation
                   employerCount += 1 ;
                   break;
-              case 3: s1.print_Vars();
-              break;
-              case 4: db.createandSearchDatabase();
+              case 3: db.createRandomStudents();
               break;
 
+              case 4: employerCount = db.createRandomEmployers(employerCount);
+              break;
       }
             break;
-      case 3: System.exit(0);
+      case 5: System.exit(0);
               break;
 
-      case 4: ep.setEmployerAttributes();
-      String currentCount = Integer.toString(employerCount);
-      db.database.put(currentCount,ep);
-      ep = new Employer(); //Resets Class after its creation
-      employerCount += 1 ;
-      break;
 
-      case 5:db.searchUser();
-      break;
+
+
     }
 
   }
