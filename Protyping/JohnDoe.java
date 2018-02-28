@@ -1,7 +1,8 @@
 import java.util.*;
 import java.text.DecimalFormat;
+import java.io.*;
 
-public class JohnDoe extends Student{
+public class JohnDoe extends Student implements Serializable{
   public int programYear;
   public String UID; //university ID number
   public String university; //Create a dropdown list of options

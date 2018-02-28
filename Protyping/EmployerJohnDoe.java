@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-public class EmployerJohnDoe extends Employer{
+public class EmployerJohnDoe extends Employer implements Serializable{
   public String companyName = createRandomCompany();
   public Boolean offeringJobs = true;
 

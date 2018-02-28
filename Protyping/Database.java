@@ -1,26 +1,43 @@
 import java.util.*;
+import java.io.*;
 
-@SuppressWarnings("unchecked")    //temporary use for mac compiling
+@SuppressWarnings("unchecked")    //temporary use for compiling
 /**class that holds all the database specific methods and initialization*/
-public class Database{
+public class Database implements Serializable{
 
   public HashMap<String, User> database = new HashMap();
   public String randomEmployerCount;
+  public FileIO f = new FileIO();
 
+  Database() {
+
+  }
+  Database(HashMap<String, User> db) {
+    database = db;
+  }
 /** A method to create Random Students, and add them to the database*/
   public void createRandomStudents() {
+    Scanner input = new Scanner(System.in);
   Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
   or not you want to continue searching */
 
   int JohnDoeS = howManyRandos();
   for(int i=0; i<JohnDoeS; i++){
-    JohnDoe temp = newJohnDoe();
+    JohnDoe temp = new JohnDoe();
     database.put(temp.UID, temp);
+  }
+  System.out.println("Enter S to save: ");
+  input = new Scanner(System.in);
+  String sChoice = input.nextLine();
+  sChoice = sChoice.toUpperCase();
+  if (sChoice.equals("S")) {
+    f.fileSave(database);
   }
 }
 
 /** A method to create Random Employers, and add them to the database*/
   public int createRandomEmployers(int count) {
+    Scanner input = new Scanner(System.in);
   Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
   or not you want to continue searching */
 
@@ -30,7 +47,13 @@ public class Database{
     EmployerJohnDoe temp = new EmployerJohnDoe();
     database.put(randomEmployerCount, temp);
     count += 1;
-
+  }
+  System.out.println("Enter S to save: ");
+  input = new Scanner(System.in);
+  String sChoice = input.nextLine();
+  sChoice = sChoice.toUpperCase();
+  if (sChoice.equals("S")) {
+    f.fileSave(database);
   }
   return count;
 }

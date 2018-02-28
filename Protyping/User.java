@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-public class User{
+public class User implements Serializable{
 
   public String fullName;
   public String phoneNumber;
