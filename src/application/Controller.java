@@ -19,26 +19,26 @@ import javafx.scene.control.Alert.AlertType;
 import java.util.Stack;
 
 public class Controller {
-	
-	//user data from input
+
+	//updates user database from input. not in use yet.
 	@FXML
-	public Label studentFirstName, studentLastName, studentUsername, studentPassword, studentUni, studentDegree, studentYear, 
+	public Label studentFirstName, studentLastName, studentUsername, studentPassword, studentUni, studentDegree, studentYear,
 	studentDOB;
-	
+
 	//main page
 	@FXML
 	private Button newUser;
 	@FXML
 	private Button returningUser;
-	
+
 	//new user page
-	@FXML 
+	@FXML
 	private Button newStudent;
-	
+
 	//new employer page
 	@FXML
 	private Button newEmployer;
-	
+
 	//new student or employer page
 	@FXML
 	private TextField enterFullName;
@@ -48,7 +48,7 @@ public class Controller {
 	private TextField enterPassword;
 	@FXML
 	private TextField confirmPassword;
-	@FXML 
+	@FXML
 	private Button continueNewStudent;
 	@FXML
 	private Button continueNewEmployer;
@@ -58,7 +58,7 @@ public class Controller {
 	private ChoiceBox<String> provinceName;
 	@FXML
 	private TextField countryName;
-	
+
 	//continue new student
 	@FXML
 	private ChoiceBox<String> universityName;
@@ -76,7 +76,7 @@ public class Controller {
 	private RadioButton dontCalculateGPA;
 	@FXML
 	private ToggleGroup gpaGroup;
-	
+
 	//continue new employer
 	@FXML
 	private TextField companyName;
@@ -90,7 +90,7 @@ public class Controller {
 	private ChoiceBox<String> lookingToHire;
 	@FXML
 	private Button finishNewEmployer;
-	
+
 	//back buttons
 	@FXML
 	private Button backToMenu;
@@ -100,7 +100,7 @@ public class Controller {
 	private Button backToStudent;
 	@FXML
 	private Button backToEmployer;
-	
+
 	//returning user page
 	@FXML
 	private Button signIn;
@@ -108,7 +108,7 @@ public class Controller {
 	private TextField username;
 	@FXML
 	private TextField password;
-	
+
 	//in app home, settings, search, and profile page
 	@FXML
 	private Stack<Scene> pages;
@@ -120,28 +120,29 @@ public class Controller {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 	@FXML
-	private Student student;
-	
+	private Student student; //not in use yet
+
 	@FXML
 	private void initialize() {
 	}
-	
-	// Event Listener on Button[#newUser].onAction
+
+	//when user clicks new user button
 	@FXML
 	public void newUserClicked(ActionEvent event) throws IOException {
+		//sets new stage for the new page
 		Stage stage;
 		Parent root;
 		stage = (Stage) newUser.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("newuserpage.fxml"));
+		root = FXMLLoader.load(getClass().getResource("newuserpage.fxml")); //new page
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
-	
-	// Event Listener on Button[#returningUser].onAction
+
+	// user clicks returning user button
 	@FXML
 	public void returningUserClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -151,13 +152,14 @@ public class Controller {
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
-	
-	public void newStudent(Student student) {
+
+	public void newStudent(Student student) { //not in use yet
 		this.student = student;
 	}
-	
+
+	//new student button clicked
 	@FXML
 	public void newStudentClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -167,9 +169,10 @@ public class Controller {
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
-	
+
+	//new employer button clicked
 	@FXML
 	public void newEmployerClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -179,24 +182,37 @@ public class Controller {
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
-	
+
+ //continue student creation button clicked
 	@FXML
 	public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
+				//will add if statement to make sure username isn't already taken
+				//will add if statements to check other fields as well
+				//if user leaves fields blank, displays error to user
         if (enterFullName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
+				//if the user chooses a username that is too short/long
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Your username must be longer than 3 characters!");
         		alert.showAndWait();
         }
+				//if the passwords do not match
+				else if (!enterPassword.getText().equals(confirmPassword.getText())) {
+						alert.setTitle("Error");
+						alert.setHeaderText(null);
+						alert.setContentText("Passwords do not match!");
+						alert.showAndWait();
+				}
+				//continues onto next page
         else {
         		Stage stage;
         		Parent root;
@@ -207,13 +223,14 @@ public class Controller {
         		stage.setScene(scene);
         		stage.show();
         }
-        
+
         //student.setFirstName(enterFullName.getText());
-		//student.setLastName(enterFullName.getText());
-		//student.setUsername(enterUsername.getText());
-		//student.setPassword(enterPassword.getText());
+				//student.setLastName(enterFullName.getText());
+				//student.setUsername(enterUsername.getText());
+				//student.setPassword(enterPassword.getText());
 	}
-	
+
+ // continue employer creation button clicked
 	@FXML
 	public void continueButtonClickedEmployer(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
@@ -223,19 +240,19 @@ public class Controller {
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
-        
+
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
-    		alert.setTitle("Error");
-    		alert.setHeaderText(null);
-    		alert.setContentText("Your username must be between 3 and 20 characters!");
-    		alert.showAndWait();
-    }
-        //if (enterPassword.getText().equals(confirmPassword.getText())) {
-        		//alert.setTitle("Error");
-        		//alert.setHeaderText(null);
-        		//alert.setContentText("Passwords do not match!");
-        		//alert.showAndWait();
-        //}
+    				alert.setTitle("Error");
+    				alert.setHeaderText(null);
+    				alert.setContentText("Your username must be between 3 and 20 characters!");
+    				alert.showAndWait();
+    		}
+				else if (!enterPassword.getText().equals(confirmPassword.getText())) {
+						alert.setTitle("Error");
+						alert.setHeaderText(null);
+						alert.setContentText("Passwords do not match!");
+						alert.showAndWait();
+				}
         else {
         		Stage stage;
         		Parent root;
@@ -246,15 +263,17 @@ public class Controller {
         		stage.setScene(scene);
         		stage.show();
         }
-        
+
 	}
-	
+
+ 	//finish student creation button clicked
 	@FXML
 	public void finishButtonClickedStudent(ActionEvent event) throws IOException {
-		
+
 		Alert alert = new Alert(AlertType.ERROR);
 		Alert gpa = new Alert(AlertType.INFORMATION);
-        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() || 
+				//if user user leaves fields blank
+        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() ||
         		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || yearOfStudy.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -262,13 +281,16 @@ public class Controller {
         		alert.showAndWait();
         }
         else {
+						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
+							//add code for calculating GPA later
         			System.out.println("test");
         			gpa.setTitle("Information Dialog");
         			gpa.setHeaderText("Look, an Information Dialog");
         			gpa.setContentText("GPA Calculator!");
         			gpa.showAndWait();
         		}
+						//otherwise, sign up is completed
         		else {
         			Stage stage;
         			Parent root;
@@ -280,25 +302,28 @@ public class Controller {
         			stage.show();
         		}
         }
-        
+
         //student.setUni(universityName.getSelectionModel().getSelectedItem().toString());
 		//student.setDegree(degree.getSelectionModel().getSelectedItem().toString());
 		//student.setYear(yearOfStudy.getSelectionModel().getSelectedItem().toString());
 		//student.setDOB(dateOfBirth.toString());
 	}
-	
+
+	//finish employer button clicked
 	@FXML
 	public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
-		
+
 		Alert alert = new Alert(AlertType.ERROR);
-        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() || 
-        		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || emailAddress.getText().isEmpty() || 
+        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() ||
+        		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || emailAddress.getText().isEmpty() ||
         		phoneNumber.getText().isEmpty() || lookingToHire.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
+				//checks if email address is in valid format
+				//letters/digits followed by @ followed by letters/digits followed by . followed by letters
         else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
 		      "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
         		alert.setTitle("Error");
@@ -306,7 +331,9 @@ public class Controller {
         		alert.setContentText("Invalid email address!");
         		alert.showAndWait();
         }
-        else if (!phoneNumber.getText().matches("\\d{3}-\\d{7}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+				//checks if phone number is in the right format
+				//both 000-000-0000 and 0000000000 work
+				else if (!phoneNumber.getText().matches("\\d{3}-\\d{3}-\\d{4}") || !phoneNumber.getText().matches("\\d{10}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
           		alert.setTitle("Error");
           		alert.setHeaderText(null);
           		alert.setContentText("Invalid phone number!");
@@ -322,9 +349,10 @@ public class Controller {
         		stage.setScene(scene);
         		stage.show();
         }
-        
+
 	}
-	
+
+ //back to menu back
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -336,7 +364,8 @@ public class Controller {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+  //back button in student sign up
 	@FXML
 	public void backButtonClickedStudent(ActionEvent event) throws IOException {
 		Stage stage;
@@ -348,7 +377,8 @@ public class Controller {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	//back button in employer sign up
 	@FXML
 	public void backButtonClickedEmployer(ActionEvent event) throws IOException {
 		Stage stage;
@@ -360,7 +390,8 @@ public class Controller {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	//back button after choosing new user
 	@FXML
 	public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 		Stage stage;
@@ -372,16 +403,19 @@ public class Controller {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	//sign in button for returning user, brings you into app
 	@FXML
 	public void signInButtonClicked(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
+				//if the ser leaves fields empty
         if(username.getText().isEmpty() || password.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Incorrect username and/or password!");
         		alert.showAndWait();
         }
+				//will add another if statement to make sure username/password are in database
         else {
         		Stage stage;
         		Parent root;
@@ -392,10 +426,12 @@ public class Controller {
         		stage.setScene(scene);
         		stage.show();
         }
-        
+
 	}
-	
+
+	//change between different pages in app itself (home, settings, searcg, profile page)
 	public void changePage(ActionEvent event) throws IOException {
+		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {
 			Stage stage;
 			Parent root;
@@ -406,6 +442,7 @@ public class Controller {
     			stage.setScene(scene);
     			stage.show();
 		}
+		//if search button clicked
 		else if (event.getTarget() == search) {
 			Stage stage;
 			Parent root;
@@ -415,6 +452,7 @@ public class Controller {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+		//if settings button clicked
 		}
 		else if (event.getTarget() == settings) {
 			Stage stage;
@@ -426,6 +464,7 @@ public class Controller {
 			stage.setScene(scene);
 			stage.show();
 		}
+		//if profile button clicked
 		else if (event.getTarget() == myProfile) {
 			Stage stage;
 			Parent root;
@@ -437,17 +476,18 @@ public class Controller {
 			stage.show();
 		}
 	}
-	
+
+  //not in use yet, for database later maybe? idk yet 
 	public void setStudentDetails(Student student) {
 		studentFirstName.setText(enterFullName.getText());
 		studentLastName.setText(enterFullName.getText());
 		studentUsername.setText(enterUsername.getText());
 		studentPassword.setText(enterPassword.getText());
-			
+
 		studentUni.setText(universityName.getSelectionModel().getSelectedItem().toString());
 		studentDegree.setText(degree.getSelectionModel().getSelectedItem().toString());
 		studentYear.setText(yearOfStudy.getSelectionModel().getSelectedItem().toString());
 		studentDOB.setText(dateOfBirth.toString());
 	}
-	
+
 }
