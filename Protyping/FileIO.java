@@ -13,7 +13,7 @@ public void fileSave(HashMap<String,User> db) {
 
 
         /*
-           START OF FILE CREATION/LOAD FILE
+           START OF FILE CREATION
          */
         String fileName = "dataFile";
         do {

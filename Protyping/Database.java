@@ -85,4 +85,8 @@ public int howManyRandos(){
   System.out.println("\nHow Many randos?: ");
   return randos.nextInt();
   }
+
+  public HashMap<String, User> getDatabase() {
+    return database;
+  }
 }
