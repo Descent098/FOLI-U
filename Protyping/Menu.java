@@ -76,7 +76,7 @@ public void selectMenu(){
         case 5: db = new Database(f.fileLoad());
                 break;
 
-        case 6: System.out.println("Saving database ...")
+        case 6: System.out.println("Saving database ...");
                 f.fileSave(db.getDatabase());
                 System.exit(0);
                 break;
