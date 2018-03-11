@@ -2,12 +2,11 @@ import java.util.*;
 import java.io.*;
 
 public class EmployerJohnDoe extends Employer implements Serializable{
-  public String companyName = createRandomCompany();
-  public Boolean offeringJobs = true;
+
 
   EmployerJohnDoe(){
     randomUser();
-    createRandomCompany();
+    setCompanyName(createRandomCompany());
   }
     /** A method to create a random Company Name*/
     public String createRandomCompany(){
@@ -20,14 +19,16 @@ public class EmployerJohnDoe extends Employer implements Serializable{
 
     public void print_Vars(){
       /** A method that prints a users atributes*/
-      System.out.println("\nSearching database for: "+ fullName);
-      System.out.println("\nUser Name: "+ fullName);
-      System.out.println("User Company: "+ companyName);
-      System.out.println("Offering Jobs: "+ offeringJobs);
-      System.out.println("Phone Numebr: "+ phoneNumber);
-      System.out.println("Email Address: "+ email);
-      System.out.println("Country: " + country);
-      System.out.println("Province: " + province);
-      System.out.println("City: " + city);
+      System.out.println("\nSearching database for: "+ getFullName());
+      System.out.println("\nUser Name: "+ getFullName());
+      System.out.println("User Company: "+ getCompanyName());
+      System.out.println("Offering Jobs: "+ getOfferingJobs());
+      System.out.println("Phone Numebr: "+ getPhoneNumber());
+      System.out.println("Email Address: "+ getEmail());
+      System.out.println("Country: " + getCountry());
+      System.out.println("Province: " + getProvince());
+      System.out.println("City: " + getCity());
     }
+
+
 }

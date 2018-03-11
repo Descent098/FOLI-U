@@ -24,7 +24,7 @@ public class Database implements Serializable{
   int JohnDoeS = howManyRandos();
   for(int i=0; i<JohnDoeS; i++){
     JohnDoe temp = new JohnDoe();
-    database.put(temp.UID, temp);
+    database.put(temp.getUID(), temp);
   }
   System.out.println("Enter S to save: ");
   input = new Scanner(System.in);

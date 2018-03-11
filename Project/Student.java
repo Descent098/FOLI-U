@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class Student extends User{
 
 
-  public int programYear;
-  public String UID; //university ID number
-  public String university; //Create a dropdown list of options
-  public String degree;
-  public double GPA;
-  public String studentType;
+  private int programYear;
+  private String UID; //university ID number
+  private String university; //Create a dropdown list of options
+  private String degree;
+  private double GPA;
+  private String studentType;
 
 
   public void set_User_Attributes(){
@@ -80,16 +80,83 @@ public class Student extends User{
 
   public void print_Vars(){
     /** A method that prints a users atributes*/
-    System.out.println("\nSearching database for: " + fullName);
+    System.out.println("\nSearching database for: " + getFullName());
 
     printContactInfo();
-    System.out.println("Users UID is: "+ UID);
-    System.out.println("Users University is: "+ university);
-    System.out.println("User is a : "+ studentType);
-    System.out.println("Users Program Year is: "+ programYear);
-    System.out.println("Users Degree is: "+ degree);
-    System.out.println("Users GPA is: "+ GPA);
+    System.out.println("Users UID is: "+ getUID());
+    System.out.println("Users University is: "+ getUniversity());
+    System.out.println("User is a : "+ getStudentType());
+    System.out.println("Users Program Year is: "+ getProgramYear());
+    System.out.println("Users Degree is: "+ getDegree());
+    System.out.println("Users GPA is: "+ getGPA());
 
   }
+
+  /** Setter for UID*/
+  public void setUID(String newUID){
+    UID = newUID;
+  }
+
+  /** Getter for UID*/
+  public String getUID(){
+    String printedUID = new String(UID);
+    return printedUID;
+  }
+
+  /** Setter for University*/
+  public void setUniversity(String newUniversity){
+    university = newUniversity;
+  }
+
+  /** Getter for University*/
+  public String getUniversity(){
+    String printedUniversity = new String(university);
+    return printedUniversity;
+  }
+
+  /** Setter for StudentType*/
+  public void setStudentType(String newStudentType){
+    studentType = newStudentType;
+  }
+
+  /** Getter for University*/
+  public String getStudentType(){
+    String printedStudentType = new String(studentType);
+    return printedStudentType;
+  }
+
+  /** Setter for ProgramYear*/
+  public void setProgramYear(int newProgramYear){
+    programYear = newProgramYear;
+  }
+
+  /** Getter for ProgramYear*/
+  public int getProgramYear(){
+    int printedProgramYear = new Integer(programYear);
+    return printedProgramYear;
+  }
+
+  /** Setter for Degree*/
+  public void setDegree(String newDegree){
+    degree = newDegree;
+  }
+
+  /** Getter for Degree*/
+  public String getDegree(){
+    String printedDegree = new String(degree);
+    return printedDegree;
+  }
+
+  /** Setter for GPA*/
+  public void setGPA(Double newGPA){
+    GPA = newGPA;
+  }
+
+  /** Getter for GPA*/
+  public Double getGPA(){
+    Double printedGPA = new Double(GPA);
+    return printedGPA;
+  }
+
 
 }

@@ -14,14 +14,14 @@ public void createStudent(){
         /** method to call all methods needed to create a user*/
         s1.set_User_Attributes();
 
-        if (s1.GPA == 2) {
+        if (s1.getGPA() == 2) {
                 s1.calc_GPA();
         }
 
-        if (s1.GPA == 1) {
+        if (s1.getGPA() == 1) {
                 Scanner GPAInput = new Scanner(System.in);
                 System.out.println("\nEnter your GPA: ");
-                s1.GPA = GPAInput.nextDouble();
+                s1.setGPA(GPAInput.nextDouble());
         }
 }
 
@@ -43,7 +43,7 @@ public void selectMenu(){
 
         switch (choice) { //users choice of action with 3 cases
         case 1: createStudent(); //If they select 1 at the first menu create a new student and add to database
-                db.database.put(s1.UID,s1);
+                db.database.put(s1.getUID(),s1);
                 s1 = new Student();
                 break;
 
