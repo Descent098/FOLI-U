@@ -57,7 +57,7 @@ public class Controller {
 	@FXML
 	private ChoiceBox<String> provinceName;
 	@FXML
-	private TextField countryName;
+	private ChoiceBox<String> countryName;
 
 	//continue new student
 	@FXML
@@ -273,7 +273,7 @@ public class Controller {
 		Alert alert = new Alert(AlertType.ERROR);
 		Alert gpa = new Alert(AlertType.INFORMATION);
 				//if user user leaves fields blank
-        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() ||
+        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || yearOfStudy.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -314,7 +314,7 @@ public class Controller {
 	public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
 
 		Alert alert = new Alert(AlertType.ERROR);
-        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getText().isEmpty() ||
+        if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || emailAddress.getText().isEmpty() ||
         		phoneNumber.getText().isEmpty() || lookingToHire.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
@@ -333,7 +333,7 @@ public class Controller {
         }
 				//checks if phone number is in the right format
 				//both 000-000-0000 and 0000000000 work
-				else if (!phoneNumber.getText().matches("\\d{3}-\\d{3}-\\d{4}") || !phoneNumber.getText().matches("\\d{10}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+				else if (!phoneNumber.getText().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
           		alert.setTitle("Error");
           		alert.setHeaderText(null);
           		alert.setContentText("Invalid phone number!");

@@ -83,7 +83,7 @@
       <DatePicker fx:id="dateOfBirth" layoutX="159.0" layoutY="396.0" prefHeight="27.0" prefWidth="167.0" />
       <Button fx:id="finishNewStudent" layoutX="160.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedStudent" text="Finish" />
       <Button fx:id="backToStudent" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backButtonClickedStudent" text="Back" />
-      <Label layoutX="34.0" layoutY="100.0" text="City:">
+      <Label layoutX="34.0" layoutY="200.0" text="City:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
@@ -93,13 +93,12 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="200.0" text="Country:">
+      <Label layoutX="34.0" layoutY="100.0" text="Country:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cityName" layoutX="159.0" layoutY="96.0" />
-      <TextField fx:id="countryName" layoutX="159.0" layoutY="196.0" />
+      <TextField fx:id="cityName" layoutX="159.0" layoutY="196.0" />
       <ChoiceBox fx:id="provinceName" layoutX="159.0" layoutY="146.0" prefHeight="27.0" prefWidth="167.0">
       	<items>
         		<FXCollections fx:factory="observableArrayList">
@@ -125,5 +124,13 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="dontCalculateGPA" layoutX="285.0" layoutY="450.0" mnemonicParsing="false" text="No" toggleGroup="$gpaGroup" />
+      <ChoiceBox fx:id="countryName" layoutX="159.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0">
+      	<items>
+        		<FXCollections fx:factory="observableArrayList">
+            		<String fx:value="Canada" />
+            		<String fx:value="USA" />
+        		</FXCollections>
+    		</items>
+	  </ChoiceBox>
    </children>
 </AnchorPane>
