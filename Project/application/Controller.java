@@ -244,10 +244,11 @@ public class Controller {
         		stage.show();
         }
 
-        //student.setFirstName(enterFullName.getText());
-				//student.setLastName(enterFullName.getText());
-				//student.setUsername(enterUsername.getText());
-				//student.setPassword(enterPassword.getText());
+				demoStudent.setFirstName(enterFullName.getText());
+				demoStudent.setLastName(enterFullName.getText());
+				demoStudent.setUsername(enterUsername.getText());
+				demoStudent.setPassword(enterPassword.getText());
+				
 	}
 
  // continue employer creation button clicked
@@ -323,10 +324,10 @@ public class Controller {
         		}
         }
 
-        //student.setUni(universityName.getSelectionModel().getSelectedItem().toString());
-		//student.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-		//student.setYear(yearOfStudy.getSelectionModel().getSelectedItem().toString());
-		//student.setDOB(dateOfBirth.toString());
+				demoStudent.setUni(universityName.getSelectionModel().getSelectedItem().toString());
+				demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+				demoStudent.setYear(yearOfStudy.getSelectionModel().getSelectedItem().toString());
+				demoStudent.setDOB(dateOfBirth.toString());
 	}
 
 	//finish employer button clicked
