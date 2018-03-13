@@ -18,11 +18,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import java.util.Stack;
 
+
 public class Controller {
 
 	//updates user database from input. not in use yet.
-	@FXML
-	Student demoStudent;
+	//Student demoStudent;
+	Student demoStudent = new Student();
+
 
 	//user data from input
 	@FXML
