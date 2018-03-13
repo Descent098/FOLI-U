@@ -36,6 +36,42 @@
             </Button>
         </items>
       </ToolBar>
-      <Label layoutX="154.0" layoutY="224.0" text="this is the profile page" />
+      <Label layoutX="167.0" layoutY="372.0" text="this is the profile page" />
+      <Label fx:id="studentFirstName" layoutX="94.0" layoutY="15.0" text="hello" />
+      <Label layoutX="14.0" layoutY="14.0" text="Name:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="53.0" text="City:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="94.0" text="Country:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="studentCity" layoutX="94.0" layoutY="54.0" text="hello" />
+      <Label fx:id="studentCountry" layoutX="94.0" layoutY="95.0" text="hello" />
+      <Label layoutX="14.0" layoutY="135.0" text="University:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="176.0" text="Degree:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="217.0" text="Year of Study:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="studentUni" layoutX="124.0" layoutY="136.0" text="hello" />
+      <Label fx:id="studentDegree" layoutX="124.0" layoutY="177.0" text="hello" />
+      <Label fx:id="studentYear" layoutX="139.0" layoutY="218.0" text="hello" />
    </children>
 </AnchorPane>
