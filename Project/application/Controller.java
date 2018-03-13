@@ -23,7 +23,7 @@ public class Controller {
 
 	//updates user database from input. not in use yet.
 	//Student demoStudent;
-	Student demoStudent = new Student();
+	JohnDoe demoStudent = new JohnDoe();
 
 
 	//user data from input
