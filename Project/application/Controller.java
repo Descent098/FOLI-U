@@ -321,7 +321,6 @@ public class Controller {
 
 				demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
 				demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-				demoStudent.setProgramYear(yearOfStudy.getSelectionModel().getSelectedItem().toString());
 
 	}
 
