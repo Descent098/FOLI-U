@@ -121,8 +121,7 @@ public class Controller {
 	@FXML
 	private Button myProfile;
 
-	@FXML
-	private Student student; //not in use yet
+
 
 	@FXML
 	private void initialize() {
@@ -153,10 +152,6 @@ public class Controller {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-	}
-
-	public void newStudent(Student student) { //not in use yet
-		this.student = student;
 	}
 
 	//new student button clicked
@@ -477,17 +472,5 @@ public class Controller {
 		}
 	}
 
-  //not in use yet, for database later maybe? idk yet 
-	public void setStudentDetails(Student student) {
-		studentFirstName.setText(enterFullName.getText());
-		studentLastName.setText(enterFullName.getText());
-		studentUsername.setText(enterUsername.getText());
-		studentPassword.setText(enterPassword.getText());
-
-		studentUni.setText(universityName.getSelectionModel().getSelectedItem().toString());
-		studentDegree.setText(degree.getSelectionModel().getSelectedItem().toString());
-		studentYear.setText(yearOfStudy.getSelectionModel().getSelectedItem().toString());
-		studentDOB.setText(dateOfBirth.toString());
-	}
 
 }
