@@ -22,8 +22,31 @@ public class Controller {
 
 	//updates user database from input. not in use yet.
 	@FXML
-	public Label studentFirstName, studentLastName, studentUsername, studentPassword, studentUni, studentDegree, studentYear,
-	studentDOB;
+	Student demoStudent;
+
+	//user data from input
+	@FXML
+	private Label studentFirstName;
+	@FXML
+	private Label studentLastName;
+	@FXML
+	private Label studentUsername;
+	@FXML
+	private Label studentPassword;
+	@FXML
+	private Label studentCity;
+	@FXML
+	private Label studentProvince;
+	@FXML
+	private Label studentCountry;
+	@FXML
+	private Label studentUni;
+	@FXML
+	private Label studentDegree;
+	@FXML
+	private Label studentYear;
+	@FXML
+	private Label studentDOB;
 
 	//main page
 	@FXML
