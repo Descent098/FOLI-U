@@ -87,7 +87,7 @@ public class Student extends User{
     printContactInfo();
     System.out.println("Users UID is: "+ getUID());
     System.out.println("Users University is: "+ getUniversity());
-    System.out.println("User is a : "+ getStudentType());
+    System.out.println("User is a: "+ getStudentType());
     System.out.println("Users Program Year is: "+ getProgramYear());
     System.out.println("Users Degree is: "+ getDegree());
     System.out.println("Users GPA is: "+ getGPA());

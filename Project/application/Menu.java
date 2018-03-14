@@ -1,5 +1,6 @@
 package application;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
 // public static Scanner mainclassinput = new Scanner(System.in);
@@ -38,7 +39,8 @@ public void selectMenu(){
         System.out.println("3 Search for a user: ");
         System.out.println("4 for creating and printing random users:");
         System.out.println("5 Load database: ");
-        System.out.println("6 to exit program:");
+		System.out.println("6 Search by 'first name':"); //will expand this to search by other criteria too
+        System.out.println("7 to exit program:");
 
         input = new Scanner(System.in);
         int choice = input.nextInt();
@@ -93,7 +95,23 @@ public void selectMenu(){
         case 5: db = new Database(f.fileLoad());
                 break;
 
-        case 6:
+				
+		case 6: System.out.println("Enter the 'first name' to search for: ");
+				
+				input = new Scanner(System.in);
+				String name = input.nextLine();
+				
+				ArrayList<User> tempList = new ArrayList<User>();
+				tempList = db.searchName(name); //finds the users with search method
+				
+				for (User user : tempList) { //iterate through arraylist
+					user.printContactInfo(); //print each users info, 
+					//#NOTE: this method needs to be changed to work better with the GUI later
+					//because the method always prints to the console, it should rather return the text
+				}
+				break;		
+				
+        case 7:
                 System.out.println("Checking for save ...");
                 if (f.exitCheck()) {
                     f.fileSave(db.getDatabase());
@@ -106,4 +124,4 @@ public void selectMenu(){
         }
 
 }
-}
+} //end of class

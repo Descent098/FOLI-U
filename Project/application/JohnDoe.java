@@ -16,11 +16,11 @@ public class JohnDoe extends Student implements Serializable{
       setStudentType("Undergraduate Student");
     }
 
-    if (getProgramYear() > 5 && getProgramYear() < 8){
+    if (getProgramYear() >= 5 && getProgramYear() < 8){
       setStudentType("Masters Student");
     }
 
-    if (getProgramYear() > 8){
+    if (getProgramYear() >= 8){
       setStudentType("Doctoral Candidate");
     }
 
@@ -45,7 +45,7 @@ public class JohnDoe extends Student implements Serializable{
   /** A method to create a random Year*/
   public void createRandomYear(){
     Random rand = new Random();
-    int n = (rand.nextInt(7));
+    int n = (rand.nextInt(7)+1);
     setProgramYear(n);
   }
 
