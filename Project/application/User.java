@@ -42,27 +42,27 @@ public class User implements Serializable{
 
     System.out.println("\nPlease enter your last Name: ");
     input = new Scanner(System.in);
-    this.lastName = input6.nextLine();
+    this.lastName = input.nextLine();
 
     System.out.println("\nPlease enter your Phone Number: ");
     input = new Scanner(System.in);
-    this.phoneNumber = input2.nextLine();
+    this.phoneNumber = input.nextLine();
 
     System.out.println("\nPlease enter your Email: ");
     input = new Scanner(System.in);
-    this.email = input3.nextLine();
+    this.email = input.nextLine();
 
     System.out.println("\nPlease enter your City: ");
     input = new Scanner(System.in);
-    this.city = input4.nextLine();
+    this.city = input.nextLine();
 
     System.out.println("\nPlease enter your Province: ");
     input = new Scanner(System.in);
-    this.province = input6.nextLine();
+    this.province = input.nextLine();
 
     System.out.println("\nPlease enter your Country: ");
     input = new Scanner(System.in);
-    this.country = input5.nextLine();
+    this.country = input.nextLine();
 
   }
 
