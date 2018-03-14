@@ -88,16 +88,7 @@ public ArrayList<User> searchName(String name) {
 
 	//Iterate through database and get an arraylist of the keys with the right name
 	for (String key : database.keySet()) {
-<<<<<<< HEAD
 		User tempUser = database.get(key); //just a temporary user to do checks with 
-=======
-		User tempUser = database.get(key); //just a temporary user to do checks with
-
-		if (tempUser instanceof Employer) { //employers don't have a first name, so don't search them
-			continue;
-		}
->>>>>>> 8b2087c56ec8ece56726d44b581fb533ab3384ac
-
 		if (tempUser.getFirstName().equals(name)) { //if the name matches the search criteria...
 			//System.out.println("Found: "+tempUser.getFirstName());
 			nameList.add(tempUser);
