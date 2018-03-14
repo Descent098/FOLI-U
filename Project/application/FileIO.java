@@ -101,5 +101,19 @@ public HashMap<String, User> fileLoad() {
         return null;
 }
 
+public boolean exitCheck() {
+        Scanner input = new Scanner(System.in);
+        File data;
+        String fileName = "dataFile";
+        System.out.println("Enter name of the file: ");
+        input = new Scanner(System.in);
+        fileName = input.nextLine();
+        data = new File(fileName + ".dat");
+
+        if(data.exists()) {
+          return false;
+        }
+        return true;
+}
 
 }

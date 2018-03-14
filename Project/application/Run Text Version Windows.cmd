@@ -1,2 +1,3 @@
 javac *.java
-java Program
+cd ..
+java application.Program

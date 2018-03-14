@@ -18,7 +18,6 @@ public class Database implements Serializable{
   }
 /** A method to create Random Students, and add them to the database*/
   public void createRandomStudents() {
-    Scanner input = new Scanner(System.in);
   Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
   or not you want to continue searching */
 
@@ -27,18 +26,10 @@ public class Database implements Serializable{
     JohnDoe temp = new JohnDoe();
     database.put(temp.getUID(), temp);
   }
-  System.out.println("Enter S to save: ");
-  input = new Scanner(System.in);
-  String sChoice = input.nextLine();
-  sChoice = sChoice.toUpperCase();
-  if (sChoice.equals("S")) {
-    f.fileSave(database);
-  }
 }
 
 /** A method to create Random Employers, and add them to the database*/
   public int createRandomEmployers(int count) {
-    Scanner input = new Scanner(System.in);
   Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
   or not you want to continue searching */
 
@@ -48,13 +39,6 @@ public class Database implements Serializable{
     EmployerJohnDoe temp = new EmployerJohnDoe();
     database.put(randomEmployerCount, temp);
     count += 1;
-  }
-  System.out.println("Enter S to save: ");
-  input = new Scanner(System.in);
-  String sChoice = input.nextLine();
-  sChoice = sChoice.toUpperCase();
-  if (sChoice.equals("S")) {
-    f.fileSave(database);
   }
   return count;
 }

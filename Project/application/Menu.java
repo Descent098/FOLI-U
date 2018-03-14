@@ -29,8 +29,9 @@ public void createStudent(){
 
 public void selectMenu(){
         /** Gives the user options to select from that call methods*/
-        Scanner selection = new Scanner(System.in);
-        Scanner choice2Selector = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
+        String sChoice = "";
+
         System.out.println("\nPlease select an option:");
         System.out.println("1 for creating a new Student:");
         System.out.println("2 for creating an Employer: ");
@@ -39,8 +40,8 @@ public void selectMenu(){
         System.out.println("5 Load database: ");
         System.out.println("6 to exit program:");
 
-        int choice = selection.nextInt();
-
+        input = new Scanner(System.in);
+        int choice = input.nextInt();
 
         switch (choice) { //users choice of action with 3 cases
         case 1: createStudent(); //If they select 1 at the first menu create a new student and add to database
@@ -62,14 +63,29 @@ public void selectMenu(){
                 System.out.println("1 for creating a database of random students: ");
                 System.out.println("2 for creating a database of random Employers: ");
 
-                int choice2Selection = choice2Selector.nextInt();
+                input = new Scanner(System.in);
+                int choice2Selection = input.nextInt();
 
                 switch (choice2Selection) { //users choice of what type of class to print
 
                 case 1: db.createRandomStudents();
+                System.out.println("Enter S to save: ");
+                input = new Scanner(System.in);
+                sChoice = input.nextLine();
+                sChoice = sChoice.toUpperCase();
+                if (sChoice.equals("S")) {
+                  f.fileSave(db.getDatabase());
+                }
                         break;
 
                 case 2: employerCount = db.createRandomEmployers(employerCount);
+                System.out.println("Enter S to save: ");
+                input = new Scanner(System.in);
+                sChoice = input.nextLine();
+                sChoice = sChoice.toUpperCase();
+                if (sChoice.equals("S")) {
+                  f.fileSave(db.getDatabase());
+                }
                         break;
                 }
                 break;
@@ -77,13 +93,15 @@ public void selectMenu(){
         case 5: db = new Database(f.fileLoad());
                 break;
 
-        case 6: System.out.println("Saving database ...");
-                f.fileSave(db.getDatabase());
-                System.exit(0);
+        case 6:
+                System.out.println("Checking for save ...");
+                if (f.exitCheck()) {
+                    f.fileSave(db.getDatabase());
+                } else {
+                  System.exit(0);
+                }
+
                 break;
-
-
-
 
         }
 
