@@ -5,6 +5,9 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
@@ -37,41 +40,57 @@
         </items>
       </ToolBar>
       <Label layoutX="167.0" layoutY="372.0" text="this is the profile page" />
-      <Label fx:id="studentFirstName" layoutX="94.0" layoutY="15.0" text="hello" />
-      <Label layoutX="14.0" layoutY="14.0" text="Name:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="53.0" text="City:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="94.0" text="Country:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="studentCity" layoutX="94.0" layoutY="54.0" text="hello" />
-      <Label fx:id="studentCountry" layoutX="94.0" layoutY="95.0" text="hello" />
-      <Label layoutX="14.0" layoutY="135.0" text="University:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="176.0" text="Degree:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="217.0" text="Year of Study:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="studentUni" layoutX="124.0" layoutY="136.0" text="hello" />
-      <Label fx:id="studentDegree" layoutX="124.0" layoutY="177.0" text="hello" />
-      <Label fx:id="studentYear" layoutX="139.0" layoutY="218.0" text="hello" />
+      <GridPane layoutX="22.0" layoutY="26.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Name:">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label text="City:" GridPane.rowIndex="1">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Country:" GridPane.rowIndex="2">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label text="University:" GridPane.rowIndex="3">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Degree:" GridPane.rowIndex="4">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Year of Study:" GridPane.rowIndex="5">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="studentName" text="hello" GridPane.columnIndex="1" />
+            <Label fx:id="studentCountry" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="studentUni" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="studentDegree" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="studentYear" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="studentCity" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

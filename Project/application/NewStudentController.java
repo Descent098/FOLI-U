@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 
 public class NewStudentController {
 
-	Student demoStudent = new Student();
-
 	//new student or employer page
 	@FXML
 	private TextField enterFullName;
@@ -73,18 +71,6 @@ public class NewStudentController {
 	}
 
 	@FXML
-	public void newStudentClicked(ActionEvent event) throws IOException {
-		Stage stage;
-		Parent root;
-		stage = (Stage) newStudent.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("newstudent.fxml"));
-
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-
-	@FXML
 	public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
 				//will add if statement to make sure username isn't already taken
@@ -113,8 +99,8 @@ public class NewStudentController {
 				//continues onto next page
         else {
 
-        		demoStudent.setFullName(enterFullName.getText());
-        		System.out.println(demoStudent.getFullName());
+//        		demoStudent.setFullName(enterFullName.getText());
+//        		System.out.println(demoStudent.getFullName());
 
         		Stage stage;
         		Parent root;
@@ -142,14 +128,14 @@ public class NewStudentController {
         		alert.showAndWait();
         }
         else {
-        		demoStudent.setCity(cityName.getText());
-        		demoStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-        		demoStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-        		demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-			demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-			System.out.println(demoStudent.getCountry());
-			System.out.println(demoStudent.getProvince());
-			System.out.println(demoStudent.getUniversity());
+//        		demoStudent.setCity(cityName.getText());
+//        		demoStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+//        		demoStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+//        		demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
+//			demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+//			System.out.println(demoStudent.getCountry());
+//			System.out.println(demoStudent.getProvince());
+//			System.out.println(demoStudent.getUniversity());
 
 						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
@@ -161,8 +147,6 @@ public class NewStudentController {
         		}
 						//otherwise, sign up is completed
         		else {
-
-        			System.out.println(demoStudent.getFullName());
 
         			Stage stage;
         			Parent root;

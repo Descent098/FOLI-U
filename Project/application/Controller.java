@@ -17,6 +17,7 @@ import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import java.util.Stack;
+import application.Main;
 
 
 public class Controller {
@@ -29,9 +30,7 @@ public class Controller {
 
 	//user data from input
 	@FXML
-	private Label studentFirstName;
-	@FXML
-	private Label studentLastName;
+	private Label studentName;
 	@FXML
 	private Label studentUsername;
 	@FXML
@@ -147,13 +146,9 @@ public class Controller {
 	@FXML
 	private Button myProfile;
 	
+	private Main mainApp;
+	
 	public Controller() {
-		//if (demoStudent != null) {
-			//demoStudent = new Student;
-		//}
-		//if (demoEmployer != null) {
-			//demoEmployer = new Employer();
-		//}
 		System.out.println("new controller");
 		System.out.println(demoStudent.getFullName());
 	}
@@ -162,6 +157,10 @@ public class Controller {
 	public void initialize() {
 		System.out.println("end controller");
 		System.out.println(demoStudent.getFullName());
+	}
+	
+	public void setMain(Main mainApp) {
+		this.mainApp = mainApp;
 	}
 
 
