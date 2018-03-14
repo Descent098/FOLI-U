@@ -23,7 +23,8 @@ public class Controller {
 
 	//updates user database from input. not in use yet.
 	//Student demoStudent;
-	JohnDoe demoStudent = new JohnDoe();
+	Student demoStudent = new Student();
+	Employer demoEmployer = new Employer();
 
 
 	//user data from input
@@ -145,12 +146,24 @@ public class Controller {
 	private Button search;
 	@FXML
 	private Button myProfile;
-
-
-
-	@FXML
-	private void initialize() {
+	
+	public Controller() {
+		//if (demoStudent != null) {
+			//demoStudent = new Student;
+		//}
+		//if (demoEmployer != null) {
+			//demoEmployer = new Employer();
+		//}
+		System.out.println("new controller");
+		System.out.println(demoStudent.getFullName());
 	}
+	
+	@FXML
+	public void initialize() {
+		System.out.println("end controller");
+		System.out.println(demoStudent.getFullName());
+	}
+
 
 	//when user clicks new user button
 	@FXML
@@ -234,6 +247,10 @@ public class Controller {
 				}
 				//continues onto next page
         else {
+        	
+        		demoStudent.setFullName(enterFullName.getText());
+        		System.out.println(demoStudent.getFullName());
+        		
         		Stage stage;
         		Parent root;
         		stage = (Stage) continueNewStudent.getScene().getWindow();
@@ -270,6 +287,7 @@ public class Controller {
 						alert.showAndWait();
 				}
         else {
+        		
         		Stage stage;
         		Parent root;
         		stage = (Stage) continueNewEmployer.getScene().getWindow();
@@ -297,10 +315,18 @@ public class Controller {
         		alert.showAndWait();
         }
         else {
+        		demoStudent.setCity(cityName.getText());
+        		demoStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+        		demoStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+        		demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
+			demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+			System.out.println(demoStudent.getCountry());
+			System.out.println(demoStudent.getProvince());
+			System.out.println(demoStudent.getUniversity());
+
 						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
 							//add code for calculating GPA later
-        			System.out.println("test");
         			gpa.setTitle("Information Dialog");
         			gpa.setHeaderText("Look, an Information Dialog");
         			gpa.setContentText("GPA Calculator!");
@@ -308,6 +334,9 @@ public class Controller {
         		}
 						//otherwise, sign up is completed
         		else {
+        			
+        			System.out.println(demoStudent.getFullName());
+        			
         			Stage stage;
         			Parent root;
         			stage = (Stage) finishNewStudent.getScene().getWindow();
@@ -318,9 +347,6 @@ public class Controller {
         			stage.show();
         		}
         }
-
-				demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-				demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
 				
 
 	}
@@ -356,6 +382,16 @@ public class Controller {
           		alert.showAndWait();
           }
         else {
+        	
+        		demoEmployer.setCity(cityName.getText());
+        		demoEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+        		demoEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+        		demoEmployer.setCompanyName(companyName.getText());
+        		demoEmployer.setEmail(emailAddress.getText());
+        		demoEmployer.setPhoneNumber(phoneNumber.getText());
+        		demoEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
+        		System.out.println(demoEmployer.getCountry());
+        	
         		Stage stage;
         		Parent root;
         		stage = (Stage) finishNewEmployer.getScene().getWindow();

@@ -4,12 +4,12 @@ import java.io.*;
 
 public class User implements Serializable{
 
-  private String fullName;
-  private String phoneNumber;
-  private String email;
-  private String city;
-  private String province;
-  private String country;
+  private String fullName = "";
+  private String phoneNumber = "";
+  private String email = "";
+  private String city = "";
+  private String province = "";
+  private String country = "";
 
   /**A method called to set up a Users Startup info initially*/
   public void setContactInfo(){
