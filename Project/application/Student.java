@@ -16,10 +16,7 @@ public class Student extends User{
   public void set_User_Attributes(){
     setContactInfo();
     Scanner input = new Scanner(System.in);
-    input = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
-
-
     System.out.println("\nWhat year of your degree are you in?:  ");
     input = new Scanner(System.in);
     programYear = input.nextInt();
@@ -66,17 +63,20 @@ public class Student extends User{
   public void calc_GPA(){
     /** A method to calculate a users GPA based on input */
     GPA = 0;
-    Scanner input1 = new Scanner(System.in); //GPA Calculation
+    Scanner input = new Scanner(System.in); //GPA Calculation
 		System.out.println("Enter number of courses: ");
-		int courseAmount = input1.nextInt();
+    input = new Scanner(System.in);
+		int courseAmount = input.nextInt();
 		double weightTotal = 0;
 		for (int i = 0; i < courseAmount; i++) {
 		 System.out.println("Enter grade for course " + (i+1) + ": ");
 		 double grade = 0;
-		 grade = input1.nextDouble();
+     input = new Scanner(System.in);
+		 grade = input.nextDouble();
 		 System.out.println("Enter weight for course " + (i+1) + ": ");
 		 double weight = 0;
-		 weight = input1.nextDouble();
+     input = new Scanner(System.in);
+		 weight = input.nextDouble();
 		 GPA += (grade*weight);
 		 weightTotal += weight;
 		}

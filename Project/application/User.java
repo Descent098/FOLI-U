@@ -20,48 +20,49 @@ public class User implements Serializable{
   private final StringProperty firstNameGUI;
   private final StringProperty lastNameGUI;
 
-  
+
   public User(String firstName, String lastName) {
 	  this.firstNameGUI = new SimpleStringProperty(firstName);
 	  this.lastNameGUI = new SimpleStringProperty(lastName);
   }
-  
+
   public User() {
 	  this(null, null);
   }
-  
+
   /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
   public void setContactInfo(){
     Scanner input = new Scanner(System.in);
-    Scanner input2 = new Scanner(System.in);
-    Scanner input3 = new Scanner(System.in);
-    Scanner input4 = new Scanner(System.in);
-    Scanner input5 = new Scanner(System.in);
-    Scanner input6 = new Scanner(System.in);
+
     System.out.println("Please enter your contact info: \n");
 
     System.out.println("\nPlease enter your first Name: ");
+    input = new Scanner(System.in);
     this.firstName = input.nextLine();
 
     System.out.println("\nPlease enter your last Name: ");
+    input = new Scanner(System.in);
     this.lastName = input6.nextLine();
 
     System.out.println("\nPlease enter your Phone Number: ");
+    input = new Scanner(System.in);
     this.phoneNumber = input2.nextLine();
 
     System.out.println("\nPlease enter your Email: ");
+    input = new Scanner(System.in);
     this.email = input3.nextLine();
 
     System.out.println("\nPlease enter your City: ");
+    input = new Scanner(System.in);
     this.city = input4.nextLine();
 
     System.out.println("\nPlease enter your Province: ");
+    input = new Scanner(System.in);
     this.province = input6.nextLine();
 
     System.out.println("\nPlease enter your Country: ");
+    input = new Scanner(System.in);
     this.country = input5.nextLine();
-
-
 
   }
 
@@ -150,7 +151,7 @@ public class User implements Serializable{
     String printedFirstName = new String(firstName);
     return printedFirstName;
   }
-  
+
   public StringProperty firstNameProperty() {
 	  return firstNameGUI;
   }
@@ -165,7 +166,7 @@ public class User implements Serializable{
     String printedlastName = new String(lastName);
     return printedlastName;
   }
-  
+
   public StringProperty lastNameProperty() {
 	  return lastNameGUI;
   }
