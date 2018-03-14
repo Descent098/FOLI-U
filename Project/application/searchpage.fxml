@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployerSearchController">
    <children>
       <ToolBar layoutY="519.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-border-color: white;">
         <items>
@@ -40,7 +40,7 @@
             </Button>
         </items>
       </ToolBar>
-      <TextField fx:id="searchBar" layoutX="39.0" layoutY="14.0" prefHeight="27.0" prefWidth="322.0" promptText="Search" />
+      <TextField fx:id="searchBar" layoutX="39.0" layoutY="14.0" onAction="#initialize" prefHeight="27.0" prefWidth="322.0" promptText="Search" />
       <Circle fill="#edf1f5" layoutX="18.0" layoutY="24.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="-92.0" layoutX="120.5" layoutY="33.0" rotate="54.0" startX="-100.0" strokeWidth="2.0" />
       <TableView fx:id="employerSearch" layoutY="53.0" prefHeight="466.0" prefWidth="375.0">

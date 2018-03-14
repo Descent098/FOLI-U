@@ -21,7 +21,9 @@ public class NewStudentController {
 
 	//new student or employer page
 	@FXML
-	private TextField enterFullName;
+	private TextField enterFirstName;
+	@FXML
+	private TextField enterLastName;
 	@FXML
 	private TextField enterUsername;
 	@FXML
@@ -78,7 +80,7 @@ public class NewStudentController {
 				//will add if statement to make sure username isn't already taken
 				//will add if statements to check other fields as well
 				//if user leaves fields blank, displays error to user
-        if (enterFullName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -161,6 +163,18 @@ public class NewStudentController {
         		}
         }
 
+	}
+	
+	@FXML
+	public void backButtonClickedNewUser(ActionEvent event) throws IOException {
+		Stage stage;
+		Parent root;
+		stage = (Stage) backToNewUser.getScene().getWindow();
+		root = FXMLLoader.load(getClass().getResource("newuserpage.fxml"));
+
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 	@FXML

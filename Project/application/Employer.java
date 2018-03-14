@@ -1,10 +1,28 @@
 package application;
 import java.util.Scanner;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Employer extends User{
 
   private String companyName = "Google";
   private String offeringJobs = "Yes";
+  private final StringProperty companyNameGUI;
+  private final StringProperty offeringJobsGUI;
+  
+  public Employer(String firstName, String lastName) {
+	  super(firstName, lastName);
+	  this.companyNameGUI = new SimpleStringProperty("Google");
+	  this.offeringJobsGUI = new SimpleStringProperty("Yes");
+  }
+  
+  public Employer() {
+	  this(null, null);
+  }
 
   public void setEmployerAttributes() {
     Scanner input1 = new Scanner(System.in);
@@ -53,6 +71,14 @@ public class Employer extends User{
 
     public void setCompanyName(String newCompanyName){
       companyName = newCompanyName;
+    }
+    
+    public StringProperty companyNameProperty() {
+    	return companyNameGUI;
+    }
+    
+    public StringProperty offeringJobsProperty() {
+    	return offeringJobsGUI;
     }
 
 }
