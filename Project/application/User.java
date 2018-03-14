@@ -91,7 +91,7 @@ public class User implements Serializable{
     createRandomPhoneNumber();
     createRandomProvinceState();
     createRandomCity();
-
+    createRandomLastName();
   }
 
   /** A method to create a random Name*/
@@ -101,6 +101,14 @@ public class User implements Serializable{
     String names[] = {"Nicola","Synthia","Hank","Antonietta","Melda","Aileen","Burton","Inge","Kurtis","Robbyn","Jerrold","Gena","Micha","Conchita","Hobert","Elissa","Towanda","Rubin","Elouise","Williams","Lurlene","Lacresha","Elodia","Calvin","Richie","Agnus","Drew","Sona","Fred", "Kitty", "Elon"};
 	String randomFullName = (names[(rand.nextInt(31))]);
     setFirstName(randomFullName);
+  }
+
+  /** A method to create a random lastName*/
+  public void createRandomLastName(){
+    Random rand = new Random();
+    String names[] = {"Racine","Mershon","Carboni","Chambers","Kimmer","Agron","Hemingway","Fort","Popham","Hutto","Berrios","Moniz","Erb","Holtzman","Cawley","Hogge","Merideth","Landis","Chance","Losee","Merrihew","Mackey","Fischbach" , "Caouette","Esterly","Collman","Wolfe","Orme","Whelan", "Royals"};
+	String randomFullName = (names[(rand.nextInt(31))]);
+    setLastName(randomFullName);
   }
 
   /** A method to create a random Company Name*/
