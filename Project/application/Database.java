@@ -75,31 +75,27 @@ public int howManyRandos(){
   public HashMap<String, User> getDatabase() {
     return database;
   }
-  
-  
+
+
 //-------------------------------------------------------
-/** 
+/**
 * TEST VERSION: searches the database for a certainn trait of the user and returns them
 * @param name 				search criteria
-* @return ArrayList<User> 	list of users found to match the search criteria		
+* @return ArrayList<User> 	list of users found to match the search criteria
 */
 public ArrayList<User> searchName(String name) {
-	ArrayList<User> nameList = new ArrayList<User>(); //make an arrayList to return	
-	
+	ArrayList<User> nameList = new ArrayList<User>(); //make an arrayList to return
+
 	//Iterate through database and get an arraylist of the keys with the right name
 	for (String key : database.keySet()) {
 		User tempUser = database.get(key); //just a temporary user to do checks with 
-		
-		if (tempUser instanceof Employer) { //employers don't have a first name, so don't search them
-			continue;	
-		}
-		
+
 		if (tempUser.getFirstName().equals(name)) { //if the name matches the search criteria...
 			//System.out.println("Found: "+tempUser.getFirstName());
 			nameList.add(tempUser);
 		}
 	}
-	return nameList; 	
+	return nameList;
 } //end of method
 
 } //end of class
