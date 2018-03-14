@@ -22,8 +22,8 @@ public class Employer extends User{
 
     public void print_Vars(){
       /** A method that prints a users atributes*/
-      System.out.println("\nSearching database for: "+ getFullName());
-      System.out.println("\nUser Name: "+ getFullName());
+      System.out.println("\nSearching database for: "+ getFirstName() + " " + getLastName());
+      System.out.println("\nUser Name: "+ getFirstName() + " " + getLastName());
       System.out.println("User Company: "+ getCompanyName());
       System.out.println("Offering Jobs: "+ getOfferingJobs());
       System.out.println("Phone Numebr: "+ getPhoneNumber());

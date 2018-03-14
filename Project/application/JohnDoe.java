@@ -70,8 +70,8 @@ public class JohnDoe extends Student implements Serializable{
   public void printContactInfo(){
     /** A method that prints a users atributes*/
     DecimalFormat twoDecimals = new DecimalFormat(".##");
-    System.out.println("\nSearching database for: "+ getFullName());
-    System.out.println("\n\nUsers Name is: "+ getFullName());
+    System.out.println("\nSearching database for: "+ getFirstName() + " " + getLastName());
+    System.out.println("\n\nUsers Name is: " + getFirstName() + " " + getLastName());
     System.out.println("Users UID is: "+ getUID());
     System.out.println("Users University is: "+ getUniversity());
     System.out.println("Users Program Year is: "+ getProgramYear());

@@ -72,7 +72,7 @@ public class Controller {
 
 	//new student or employer page
 	@FXML
-	private TextField enterFullName;
+	private TextField enterFirstName;
 	@FXML
 	private TextField enterUsername;
 	@FXML
@@ -151,7 +151,7 @@ public class Controller {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 	//searching test
 	@FXML
 	private TextField searchBar;
@@ -165,21 +165,21 @@ public class Controller {
 	private TableColumn<EmployerJohnDoe, String> companyColumn;
 
 	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
-	
+
 	private Main mainApp;
-	
-	
+
+
 	public Controller() {
 		System.out.println("new controller");
-		System.out.println(demoStudent.getFullName());
+		System.out.println(demoStudent.getFirstName());
 	}
-	
+
 	@FXML
 	public void initialize() {
 		System.out.println("end controller");
-		System.out.println(demoStudent.getFullName());
+		System.out.println(demoStudent.getFirstName());
 	}
-	
+
 	public void setMain(Main mainApp) {
 		this.mainApp = mainApp;
 	}
@@ -245,7 +245,7 @@ public class Controller {
 				//will add if statement to make sure username isn't already taken
 				//will add if statements to check other fields as well
 				//if user leaves fields blank, displays error to user
-        if (enterFullName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -267,10 +267,10 @@ public class Controller {
 				}
 				//continues onto next page
         else {
-        	
-        		demoStudent.setFullName(enterFullName.getText());
-        		System.out.println(demoStudent.getFullName());
-        		
+
+        		demoStudent.setFirstName(enterFirstName.getText());
+        		System.out.println(demoStudent.getFirstName());
+
         		Stage stage;
         		Parent root;
         		stage = (Stage) continueNewStudent.getScene().getWindow();
@@ -287,7 +287,7 @@ public class Controller {
 	@FXML
 	public void continueButtonClickedEmployer(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
-        if (enterFullName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -307,7 +307,7 @@ public class Controller {
 						alert.showAndWait();
 				}
         else {
-        		
+
         		Stage stage;
         		Parent root;
         		stage = (Stage) continueNewEmployer.getScene().getWindow();
@@ -354,9 +354,9 @@ public class Controller {
         		}
 						//otherwise, sign up is completed
         		else {
-        			
-        			System.out.println(demoStudent.getFullName());
-        			
+
+        			System.out.println(demoStudent.getFirstName());
+
         			Stage stage;
         			Parent root;
         			stage = (Stage) finishNewStudent.getScene().getWindow();
@@ -367,7 +367,7 @@ public class Controller {
         			stage.show();
         		}
         }
-				
+
 
 	}
 
@@ -402,7 +402,7 @@ public class Controller {
           		alert.showAndWait();
           }
         else {
-        	
+
         		demoEmployer.setCity(cityName.getText());
         		demoEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
         		demoEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -411,7 +411,7 @@ public class Controller {
         		demoEmployer.setPhoneNumber(phoneNumber.getText());
         		demoEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
         		System.out.println(demoEmployer.getCountry());
-        	
+
         		Stage stage;
         		Parent root;
         		stage = (Stage) finishNewEmployer.getScene().getWindow();

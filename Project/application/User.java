@@ -4,14 +4,15 @@ import java.io.*;
 
 public class User implements Serializable{
 
-  private String fullName = "";
+  private String firstName = "";
+  private String lastName = "";
   private String phoneNumber = "";
   private String email = "";
   private String city = "";
   private String province = "";
   private String country = "";
 
-  /**A method called to set up a Users Startup info initially*/
+  /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
   public void setContactInfo(){
     Scanner input = new Scanner(System.in);
     Scanner input2 = new Scanner(System.in);
@@ -21,8 +22,11 @@ public class User implements Serializable{
     Scanner input6 = new Scanner(System.in);
     System.out.println("Please enter your contact info: \n");
 
-    System.out.println("\nPlease enter your Name: ");
-    this.fullName = input.nextLine();
+    System.out.println("\nPlease enter your first Name: ");
+    this.firstName = input.nextLine();
+
+    System.out.println("\nPlease enter your last Name: ");
+    this.lastName = input6.nextLine();
 
     System.out.println("\nPlease enter your Phone Number: ");
     this.phoneNumber = input2.nextLine();
@@ -45,7 +49,7 @@ public class User implements Serializable{
 
   /** A method to allow you to print all a users contact into*/
   public void printContactInfo(){
-    System.out.println("\nName: " + fullName);
+    System.out.println("\nName: " + firstName + " " + lastName);
     System.out.println("Phone Number: " + phoneNumber);
     System.out.println("Email: " + email);
     System.out.println("Country: " + country);
@@ -57,7 +61,7 @@ public class User implements Serializable{
   /**The code below is for creating JohnDoe(random) Users*/
 
   public void randomUser(){
-    createRandomName();
+    createRandomFirstName();
     createRandomEmail();
     createRandomCountry();
     createRandomPhoneNumber();
@@ -67,11 +71,11 @@ public class User implements Serializable{
   }
 
   /** A method to create a random Name*/
-  public void createRandomName(){
+  public void createRandomFirstName(){
     Random rand = new Random();
     String names[] = {"Nicola Racine","Synthia Mershon","Hank Carboni","Antonietta Chambers","Melda Kimmer","Aileen Agron","Burton Hemingway","Inge Fort","Kurtis Popham","Robbyn Hutto","Jerrold Berrios","Gena Moniz","Micha Erb","Conchita Holtzman","Hobert Cawley","Elissa Hogge","Towanda Merideth","Rubin Landis","Elouise Chance","Williams Losee","Lurlene Merrihew","Lacresha Mackey","Elodia Fischbach","Calvin Caouette","Richie Esterly","Agnus Collman","Drew Wolfe","Sona Orme","Fred Whelan", "Kitty Royals"};
     String randomFullName = (names[(rand.nextInt(29))]);
-    setFullName(randomFullName);
+    setFirstName(randomFullName);
   }
 
   /** A method to create a random Company Name*/
@@ -117,15 +121,26 @@ public class User implements Serializable{
           //All setters and Getters are below
 
 
-  /** Setter for FullName*/
-  public void setFullName(String newName){
-    fullName = newName;
+  /** Setter for FirstName*/
+  public void setFirstName(String newName){
+    firstName = newName;
   }
 
-  /** Getter for FullName*/
-  public String getFullName(){
-    String printedFullName = new String(fullName);
-    return printedFullName;
+  /** Getter for FirstName*/
+  public String getFirstName(){
+    String printedFirstName = new String(firstName);
+    return printedFirstName;
+  }
+
+  /** Setter for lastName*/
+  public void setLastName(String newName){
+    lastName = newName;
+  }
+
+  /** Getter for lastName*/
+  public String getLastName(){
+    String printedlastName = new String(lastName);
+    return printedlastName;
   }
 
   /** Setter for PhoneNumber*/
