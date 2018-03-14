@@ -7,20 +7,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 
 public class EmployerSearchController {
 	
 	//searching test
-		@FXML
-		private TextField searchBar;
-		@FXML
-		private TableView<EmployerJohnDoe> employerSearch;
-		@FXML
-		private TableColumn<EmployerJohnDoe, String> firstNameColumn;
-		@FXML
-		private TableColumn<EmployerJohnDoe, String> lastNameColumn;
-		@FXML
-		private TableColumn<EmployerJohnDoe, String> companyColumn;
+	@FXML
+	private TextField searchBar;
+	@FXML
+	private TableView<EmployerJohnDoe> employerSearch;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> firstNameColumn;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> lastNameColumn;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> companyColumn;
 
-		private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
+	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
+		
+	public EmployerSearchController() {
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+	}
+	
+	@FXML
+	private void initialize() {
+		
+	}
+		
+		
 }
