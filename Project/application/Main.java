@@ -17,8 +17,6 @@ public class Main extends Application { //main class
 	private AnchorPane mainPage;
 	private Scene mainScene;
 	
-	private ObservableList<String> studentData = FXCollections.observableArrayList();
-	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -41,18 +39,7 @@ public class Main extends Application { //main class
 	}
 	
 	public Main() {
-		studentData.add("Rulan Lu");
-		studentData.add("Calgary");
-		studentData.add("Canada");
-		studentData.add("U of C");
-		studentData.add("Computer Science");
-		studentData.add("1");
 	}
-	
-	public ObservableList<String> getStudentData() {
-		return studentData;
-	}
-
 
 	public static void main(String[] args) { //launch app
 		launch(args);

@@ -18,6 +18,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import java.util.Stack;
 import application.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 
 
 public class Controller {
@@ -146,7 +152,22 @@ public class Controller {
 	@FXML
 	private Button myProfile;
 	
+	//searching test
+	@FXML
+	private TextField searchBar;
+	@FXML
+	private TableView<EmployerJohnDoe> employerSearch;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> firstNameColumn;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> lastNameColumn;
+	@FXML
+	private TableColumn<EmployerJohnDoe, String> companyColumn;
+
+	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
+	
 	private Main mainApp;
+	
 	
 	public Controller() {
 		System.out.println("new controller");
