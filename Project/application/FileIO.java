@@ -105,7 +105,7 @@ public boolean exitCheck() {
         Scanner input = new Scanner(System.in);
         File data;
         String fileName = "dataFile";
-        System.out.println("Enter name of the file: ");
+        System.out.println("Enter name of the file to check: ");
         input = new Scanner(System.in);
         fileName = input.nextLine();
         data = new File(fileName + ".dat");

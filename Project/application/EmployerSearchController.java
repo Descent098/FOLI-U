@@ -19,7 +19,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 
 public class EmployerSearchController {
-	
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -30,7 +30,7 @@ public class EmployerSearchController {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 	//searching test
 	@FXML
 	private TextField searchBar;
@@ -44,22 +44,23 @@ public class EmployerSearchController {
 	private TableColumn<Employer, String> companyColumn;
 
 	private ObservableList<Employer> employerData = FXCollections.observableArrayList();
-		
+	/*
 	public EmployerSearchController() {
 		employerData.add(new Employer("Jane", "Doe"));
 		employerData.add(new Employer("Suzy", "Brown"));
 		employerData.add(new Employer("Edward", "White"));
 		employerData.add(new Employer("Bob", "Green"));
 	}
-	
+	*/
 	@FXML
 	private void initialize() {
+		/*
 		firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         companyColumn.setCellValueFactory(cellData -> cellData.getValue().companyNameProperty());
-        
+        */
         FilteredList<Employer> filteredEmployers = new FilteredList<>(employerData, p -> false);
-        
+
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredEmployers.setPredicate(employer -> {
                 // If filter text is empty, display all persons.
@@ -73,7 +74,7 @@ public class EmployerSearchController {
 
                 if (employer.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
-                } 
+                }
                 else if (employer.getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
@@ -83,14 +84,14 @@ public class EmployerSearchController {
                 return false; // Does not match.
             });
         });
-        
+
         SortedList<Employer> sortedEmployers = new SortedList<>(filteredEmployers);
-        
+
         sortedEmployers.comparatorProperty().bind(employerSearch.comparatorProperty());
-        
+
         employerSearch.setItems(employerData);
 	}
-	
+
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {
@@ -137,6 +138,6 @@ public class EmployerSearchController {
 			stage.show();
 		}
 	}
-		
-		
+
+
 }

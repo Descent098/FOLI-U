@@ -1,12 +1,14 @@
 package application;
 import java.util.*;
 import java.io.*;
+/*
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+*/
 
 public class User implements Serializable{
 
@@ -17,10 +19,12 @@ public class User implements Serializable{
   private String city = "";
   private String province = "";
   private String country = "";
+  /*
   private final StringProperty firstNameGUI;
   private final StringProperty lastNameGUI;
+  */
 
-
+  /*
   public User(String firstName, String lastName) {
 	  this.firstNameGUI = new SimpleStringProperty(firstName);
 	  this.lastNameGUI = new SimpleStringProperty(lastName);
@@ -29,6 +33,7 @@ public class User implements Serializable{
   public User() {
 	  this(null, null);
   }
+  */
 
   /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
   public void setContactInfo(){
@@ -151,10 +156,10 @@ public class User implements Serializable{
     String printedFirstName = new String(firstName);
     return printedFirstName;
   }
-
+  /*
   public StringProperty firstNameProperty() {
 	  return firstNameGUI;
-  }
+  }*/
 
   /** Setter for lastName*/
   public void setLastName(String newName){
@@ -166,10 +171,11 @@ public class User implements Serializable{
     String printedlastName = new String(lastName);
     return printedlastName;
   }
-
+  /*
   public StringProperty lastNameProperty() {
 	  return lastNameGUI;
   }
+  */
 
   /** Setter for PhoneNumber*/
   public void setPhoneNumber(String newPhoneNumber){

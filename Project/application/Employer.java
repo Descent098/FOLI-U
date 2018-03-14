@@ -1,20 +1,22 @@
 package application;
 import java.util.Scanner;
 import java.io.*;
+/*
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+*/
 public class Employer extends User implements Serializable{
 
   private String companyName = "Google";
-  private String offeringJobs = "Yes";
+  private String offeringJobs = "Yes";/*
   private final StringProperty companyNameGUI;
   private final StringProperty offeringJobsGUI;
-
+  */
+  /*
   public Employer(String firstName, String lastName) {
 	  super(firstName, lastName);
 	  this.companyNameGUI = new SimpleStringProperty("Google");
@@ -24,7 +26,7 @@ public class Employer extends User implements Serializable{
   public Employer() {
 	  this(null, null);
   }
-
+  */
   public void setEmployerAttributes() {
     Scanner input1 = new Scanner(System.in);
     Scanner input2 = new Scanner(System.in);
@@ -73,7 +75,7 @@ public class Employer extends User implements Serializable{
     public void setCompanyName(String newCompanyName){
       companyName = newCompanyName;
     }
-
+    /*
     public StringProperty companyNameProperty() {
     	return companyNameGUI;
     }
@@ -81,5 +83,6 @@ public class Employer extends User implements Serializable{
     public StringProperty offeringJobsProperty() {
     	return offeringJobsGUI;
     }
+    */
 
 }
