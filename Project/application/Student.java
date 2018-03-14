@@ -16,36 +16,41 @@ public class Student extends User{
   public void set_User_Attributes(){
     setContactInfo();
     Scanner input = new Scanner(System.in);
-    Scanner input2 = new Scanner(System.in);
-    Scanner input3 = new Scanner(System.in);
-    Scanner input4 = new Scanner(System.in);
+    input = new Scanner(System.in);
     /** A method to set a users attributes based on user input*/
 
 
     System.out.println("\nWhat year of your degree are you in?:  ");
+    input = new Scanner(System.in);
     programYear = input.nextInt();
 
     System.out.println("\nWhat university are you at?: ");
-    university = input2.nextLine();
+    input = new Scanner(System.in);
+    university = input.nextLine();
 
     System.out.println("\nPlease put in your 8 digit UID: ");
-    UID = input3.nextLine();
+    input = new Scanner(System.in);
+    UID = input.nextLine();
 
     System.out.println("\nWhat degree are you in?: ");
-    degree = input4.nextLine();
+    input = new Scanner(System.in);
+    degree = input.nextLine();
 
     System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
-    GPA = input2.nextInt();
+    input = new Scanner(System.in);
+    GPA = input.nextInt();
     if (GPA == 1){
       System.out.println("\nPlease Enter your GPA: ");
-      GPA = input4.nextDouble();
+      input = new Scanner(System.in);
+      GPA = input.nextDouble();
     }
     if (GPA == 2){
       calc_GPA();
     }
 
     System.out.println("\nAre you an (1)undergraduate student, (2)masters student, or (3)doctoral candidate?: ");
-    int choice = input3.nextInt();
+    input = new Scanner(System.in);
+    int choice = input.nextInt();
 
     switch(choice){
       case 1: studentType = "Undergraduate Student";
