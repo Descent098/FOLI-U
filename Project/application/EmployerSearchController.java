@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.CheckBox;
 
 public class EmployerSearchController {
 
@@ -50,8 +51,18 @@ public class EmployerSearchController {
 
 	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
 	private ObservableList<EmployerJohnDoe> filteredEmployers = FXCollections.observableArrayList();
+	
+	@FXML
+	private CheckBox searchByName;
+	@FXML
+	private CheckBox searchByCompany;
 
 	public EmployerSearchController() {
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
@@ -118,6 +129,9 @@ public class EmployerSearchController {
         } 
         else if (employer.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
             return true;
+        }
+        else if (employer.getCompanyName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+        		return true;
         }
 
         return false; // Does not match

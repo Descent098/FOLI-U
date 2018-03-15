@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -43,7 +45,7 @@
       <TextField fx:id="searchBar" layoutX="39.0" layoutY="14.0" prefHeight="27.0" prefWidth="322.0" promptText="Search" />
       <Circle fill="#edf1f5" layoutX="18.0" layoutY="24.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="-92.0" layoutX="120.5" layoutY="33.0" rotate="54.0" startX="-100.0" strokeWidth="2.0" />
-      <TableView fx:id="employerList" layoutY="53.0" prefHeight="466.0" prefWidth="375.0">
+      <TableView fx:id="employerList" layoutY="78.0" prefHeight="441.0" prefWidth="375.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="101.0" text="First Name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="109.0" text="Last Name" />
@@ -53,5 +55,20 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label layoutX="12.0" layoutY="52.0" text="Search by:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="searchByName" layoutX="90.0" layoutY="52.0" mnemonicParsing="false" text="Name">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="searchByCompany" layoutX="158.0" layoutY="52.0" mnemonicParsing="false" text="Company">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
