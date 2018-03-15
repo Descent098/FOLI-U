@@ -104,26 +104,34 @@ public void selectMenu(){
 
             input = new Scanner(System.in);
             int searchBy = input.nextInt();
+            ArrayList<User> tempList = new ArrayList<User>();
             if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
               if (searchBy == 1) {
                 System.out.println("Enter the first name to search for: ");
+                input = new Scanner(System.in);
+    				    String searchTerm = input.nextLine();
+                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
               } else if (searchBy == 2) {
                 System.out.println("Enter the last name to search for: ");
+                input = new Scanner(System.in);
+    				    String searchTerm = input.nextLine();
+                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
               } else if (searchBy == 3) {
                 System.out.println("Enter the major to search for: ");
+                input = new Scanner(System.in);
+    				    String searchTerm = input.nextLine();
+                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
               }
-  				    input = new Scanner(System.in);
-  				    String searchTerm = input.nextLine();
-              ArrayList<User> tempList = new ArrayList<User>();
-      				tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-
       				for (User user : tempList) { //iterate through arraylist
       					user.printContactInfo(); //print each users info,
       					//#NOTE: this method needs to be changed to work better with the GUI later
       					//because the method always prints to the console, it should rather return the text
       				}
             } else if (searchBy == 4) {
-
+              System.out.println("Enter the minimum GPA to search for: ");
+              input = new Scanner(System.in);
+              double searchTerm = input.nextDouble();
+              tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
             }
 
 

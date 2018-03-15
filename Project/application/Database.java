@@ -109,6 +109,21 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
 	return nameList;
 } //end of method
 
+  public ArrayList<User> searchNum(double searchTerm, int searchBy) {
+    ArrayList<User> nameList = new ArrayList<User>();
+
+    for (String key : database.keySet()) {
+  		User tempUser = database.get(key); //just a temporary user to do checks with
+      if (searchBy == 4) {
+        if (tempUser.getGPA() >= searchTerm) { //if the name matches the search criteria...
+    			//System.out.println("Found: "+tempUser.getFirstName());
+    			nameList.add(tempUser);
+        }
+      }
+    }
+    return nameList;
+  }
+
   public HashMap<String, String> returnAllNames(){
     HashMap<String, String> names = new HashMap();
     for (String key : database.keySet()) {

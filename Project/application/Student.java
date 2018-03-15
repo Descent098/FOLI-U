@@ -161,7 +161,7 @@ public class Student extends User{
 
   /** Getter for GPA*/
   public Double getGPA(){
-    Double printedGPA = new Double(GPA);
+    double printedGPA = new Double(GPA);
     return printedGPA;
   }
 
