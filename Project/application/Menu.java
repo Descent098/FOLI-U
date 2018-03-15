@@ -134,6 +134,11 @@ public void selectMenu(){
                 double searchTerm = input.nextDouble();
                 tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
             }
+            for (User user : tempList) { //iterate through arraylist
+              user.printContactInfo(); //print each users info,
+              //#NOTE: this method needs to be changed to work better with the GUI later
+              //because the method always prints to the console, it should rather return the text
+            }
             }
 
 
