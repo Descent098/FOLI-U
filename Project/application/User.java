@@ -239,5 +239,28 @@ public class User implements Serializable{
     return printedCountry;
   }
 
+  public Double getGPA(){ //Class will be overridden in student
+    return 3.0;
+  }
+
+  public String getDegree(){ //Class will be overridden in student
+    return "hello";
+  }
+
+  public String getStudentType(){ //Class will be overridden in student
+    return "hello";
+  }
+
+  public String getUniversity(){ //Class will be overridden in student
+    return "hello";
+  }
+
+  public String getCompanyName(){ //Class will be overridden in student
+    return "hello";
+  }
+
+  public String getOfferingJobs(){ //Class will be overridden in student
+    return "hello";
+  }
 
 }

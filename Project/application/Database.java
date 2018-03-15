@@ -99,12 +99,12 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
   			//System.out.println("Found: "+tempUser.getLastName());
   			nameList.add(tempUser);
       }
-    } /*else if (searchBy == 3) {
+    } else if (searchBy == 3) {
       if (tempUser.getDegree().equals(searchTerm)) { //if the name matches the search criteria...
-  			//System.out.println("Found: "+tempUser.getFirstName());
+  			System.out.println("Found: "+tempUser.getFirstName());
   			nameList.add(tempUser);
       }
-    }*/
+    }
 	}
 	return nameList;
 } //end of method
