@@ -106,7 +106,7 @@ public class User implements Serializable{
   public void createRandomLastName(){
     Random rand = new Random();
     String names[] = {"Racine","Mershon","Carboni","Chambers","Kimmer","Agron","Hemingway","Fort","Popham","Hutto","Berrios","Moniz","Erb","Holtzman","Cawley","Hogge","Merideth","Landis","Chance","Losee","Merrihew","Mackey","Fischbach" , "Caouette","Esterly","Collman","Wolfe","Orme","Whelan", "Royals"};
-	String randomFullName = (names[(rand.nextInt(31))]);
+	String randomFullName = (names[(rand.nextInt(30))]);
     setLastName(randomFullName);
   }
 
