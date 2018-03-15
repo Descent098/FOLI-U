@@ -128,10 +128,12 @@ public void selectMenu(){
       					//because the method always prints to the console, it should rather return the text
       				}
             } else if (searchBy == 4) {
-              System.out.println("Enter the minimum GPA to search for: ");
-              input = new Scanner(System.in);
-              double searchTerm = input.nextDouble();
-              tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
+              if (searchBy == 4) {
+                System.out.println("Enter the minimum GPA to search for: ");
+                input = new Scanner(System.in);
+                double searchTerm = input.nextDouble();
+                tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
+            }
             }
 
 
