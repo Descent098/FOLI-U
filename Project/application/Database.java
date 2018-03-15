@@ -83,16 +83,28 @@ public int howManyRandos(){
 * @param name 				search criteria
 * @return ArrayList<User> 	list of users found to match the search criteria
 */
-public ArrayList<User> searchName(String name) {
+public ArrayList<User> searchStr(String searchTerm, int searchBy) {
 	ArrayList<User> nameList = new ArrayList<User>(); //make an arrayList to return
 
 	//Iterate through database and get an arraylist of the keys with the right name
 	for (String key : database.keySet()) {
-		User tempUser = database.get(key); //just a temporary user to do checks with 
-		if (tempUser.getFirstName().equals(name)) { //if the name matches the search criteria...
-			//System.out.println("Found: "+tempUser.getFirstName());
-			nameList.add(tempUser);
-		}
+		User tempUser = database.get(key); //just a temporary user to do checks with
+    if (searchBy == 1) {
+      if (tempUser.getFirstName().equals(searchTerm)) { //if the name matches the search criteria...
+  			//System.out.println("Found: "+tempUser.getFirstName());
+  			nameList.add(tempUser);
+      }
+		} else if (searchBy == 2) {
+      if (tempUser.getLastName().equals(searchTerm)) { //if the name matches the search criteria...
+  			//System.out.println("Found: "+tempUser.getLastName());
+  			nameList.add(tempUser);
+      }
+    } /*else if (searchBy == 3) {
+      if (tempUser.getDegree().equals(searchTerm)) { //if the name matches the search criteria...
+  			//System.out.println("Found: "+tempUser.getFirstName());
+  			nameList.add(tempUser);
+      }
+    }*/
 	}
 	return nameList;
 } //end of method

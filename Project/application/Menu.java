@@ -39,9 +39,9 @@ public void selectMenu(){
         System.out.println("3 Search for a user: ");
         System.out.println("4 for creating and printing random users:");
         System.out.println("5 Load database: ");
-	      System.out.println("6 Search by 'first name':"); //will expand this to search by other criteria too
-        System.out.println("7 print all names in db:");
-        System.out.println("8 to exit program:");
+	      System.out.println("6 Search for multiple users: "); //will expand this to search by other criteria too
+        System.out.println("7 Print all names in db: ");
+        System.out.println("8 Exit program: ");
 
         input = new Scanner(System.in);
         int choice = input.nextInt();
@@ -97,19 +97,37 @@ public void selectMenu(){
                 break;
 
 
-		case 6: System.out.println("Enter the 'first name' to search for: ");
+		case 6: System.out.println("Enter 1 to search by first name: ");
+            System.out.println("Enter 2 to search by last name: ");
+            System.out.println("Enter 3 to search by major: ");
+            System.out.println("Enter 4 to search by GPA: ");
 
-				input = new Scanner(System.in);
-				String name = input.nextLine();
+            input = new Scanner(System.in);
+            int searchBy = input.nextInt();
+            if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
+              if (searchBy == 1) {
+                System.out.println("Enter the first name to search for: ");
+              } else if (searchBy == 2) {
+                System.out.println("Enter the last name to search for: ");
+              } else if (searchBy == 3) {
+                System.out.println("Enter the major to search for: ");
+              }
+  				    input = new Scanner(System.in);
+  				    String searchTerm = input.nextLine();
+              ArrayList<User> tempList = new ArrayList<User>();
+      				tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
 
-				ArrayList<User> tempList = new ArrayList<User>();
-				tempList = db.searchName(name); //finds the users with search method
+      				for (User user : tempList) { //iterate through arraylist
+      					user.printContactInfo(); //print each users info,
+      					//#NOTE: this method needs to be changed to work better with the GUI later
+      					//because the method always prints to the console, it should rather return the text
+      				}
+            } else if (searchBy == 4) {
 
-				for (User user : tempList) { //iterate through arraylist
-					user.printContactInfo(); //print each users info,
-					//#NOTE: this method needs to be changed to work better with the GUI later
-					//because the method always prints to the console, it should rather return the text
-				}
+            }
+
+
+
 				break;
 
 
