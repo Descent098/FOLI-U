@@ -61,7 +61,7 @@ public class JohnDoe extends Student implements Serializable{
   /** A method to create a random University*/
   public void createRandomDegree(){
     Random rand = new Random();
-    String names[] = {" CPSC","BIO", "MED", "ENG", "SOCI", "PSYC"};
+    String names[] = {"CPSC","BIO", "MED", "ENG", "SOCI", "PSYC"};
     String randomDegree = (names[(rand.nextInt(5))]);
     setDegree(randomDegree);
   }
