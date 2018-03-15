@@ -40,10 +40,10 @@
             </Button>
         </items>
       </ToolBar>
-      <TextField fx:id="searchBar" layoutX="39.0" layoutY="14.0" onAction="#initialize" prefHeight="27.0" prefWidth="322.0" promptText="Search" />
+      <TextField fx:id="searchBar" layoutX="39.0" layoutY="14.0" prefHeight="27.0" prefWidth="322.0" promptText="Search" />
       <Circle fill="#edf1f5" layoutX="18.0" layoutY="24.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="-92.0" layoutX="120.5" layoutY="33.0" rotate="54.0" startX="-100.0" strokeWidth="2.0" />
-      <TableView fx:id="employerSearch" layoutY="53.0" prefHeight="466.0" prefWidth="375.0">
+      <TableView fx:id="employerList" layoutY="53.0" prefHeight="466.0" prefWidth="375.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="101.0" text="First Name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="109.0" text="Last Name" />

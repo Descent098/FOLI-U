@@ -17,6 +17,11 @@ import javafx.stage.Stage;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.collections.ListChangeListener;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.util.ArrayList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class EmployerSearchController {
 
@@ -35,62 +40,95 @@ public class EmployerSearchController {
 	@FXML
 	private TextField searchBar;
 	@FXML
-	private TableView<Employer> employerSearch;
+	private TableView<EmployerJohnDoe> employerList;
 	@FXML
-	private TableColumn<Employer, String> firstNameColumn;
+	private TableColumn<EmployerJohnDoe, String> firstNameColumn;
 	@FXML
-	private TableColumn<Employer, String> lastNameColumn;
+	private TableColumn<EmployerJohnDoe, String> lastNameColumn;
 	@FXML
-	private TableColumn<Employer, String> companyColumn;
+	private TableColumn<EmployerJohnDoe, String> companyColumn;
 
-	private ObservableList<Employer> employerData = FXCollections.observableArrayList();
-	/*
+	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
+	private ObservableList<EmployerJohnDoe> filteredEmployers = FXCollections.observableArrayList();
+
 	public EmployerSearchController() {
-		employerData.add(new Employer("Jane", "Doe"));
-		employerData.add(new Employer("Suzy", "Brown"));
-		employerData.add(new Employer("Edward", "White"));
-		employerData.add(new Employer("Bob", "Green"));
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		
+		filteredEmployers.addAll(employerData);
+		
+		employerData.addListener(new ListChangeListener<EmployerJohnDoe>() {
+            @Override
+            public void onChanged(ListChangeListener.Change<? extends EmployerJohnDoe> change) {
+                updateFilteredEmployers();
+            }
+        });
 	}
-	*/
+	
 	@FXML
 	private void initialize() {
-		/*
-		firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        companyColumn.setCellValueFactory(cellData -> cellData.getValue().companyNameProperty());
-        */
-        FilteredList<Employer> filteredEmployers = new FilteredList<>(employerData, p -> false);
+        firstNameColumn.setCellValueFactory(
+                new PropertyValueFactory<EmployerJohnDoe, String>("firstName"));
+        lastNameColumn.setCellValueFactory(
+                new PropertyValueFactory<EmployerJohnDoe, String>("lastName"));
+        companyColumn.setCellValueFactory(
+                new PropertyValueFactory<EmployerJohnDoe, String>("companyName"));
 
-        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredEmployers.setPredicate(employer -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                		System.out.println("empty");
-                    return true;
-                }
+        // Add filtered data to the table
+        employerList.setItems(filteredEmployers);
 
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
+        // Listen for text changes in the filter text field
+        searchBar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                    String oldValue, String newValue) {
 
-                if (employer.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                }
-                else if (employer.getLastName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                }
-                else if (employer.getCompanyName().toLowerCase().contains(lowerCaseFilter)) {
-                		return true;
-                }
-                return false; // Does not match.
-            });
+                updateFilteredEmployers();
+            }
         });
-
-        SortedList<Employer> sortedEmployers = new SortedList<>(filteredEmployers);
-
-        sortedEmployers.comparatorProperty().bind(employerSearch.comparatorProperty());
-
-        employerSearch.setItems(employerData);
 	}
+	
+	private void updateFilteredEmployers() {
+        filteredEmployers.clear();
+
+        for (EmployerJohnDoe e : employerData) {
+            if (matchesSearch(e)) {
+                filteredEmployers.add(e);
+            }
+        }
+
+        // Must re-sort table after items changed
+        reapplyTableSortOrder();
+    }
+	
+	private boolean matchesSearch(EmployerJohnDoe employer) {
+        String filterSearch = searchBar.getText();
+        if (filterSearch == null || filterSearch.isEmpty()) {
+            // No filter --> Add all.
+            return true;
+        }
+
+        String lowerCaseFilterSearch = filterSearch.toLowerCase();
+
+        if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+            return true;
+        } 
+        else if (employer.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+            return true;
+        }
+
+        return false; // Does not match
+    }
+
+    private void reapplyTableSortOrder() {
+        ArrayList<TableColumn<EmployerJohnDoe, ?>> sortOrder = new ArrayList<>(employerList.getSortOrder());
+        employerList.getSortOrder().clear();
+        employerList.getSortOrder().addAll(sortOrder);
+    }
+
 
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
