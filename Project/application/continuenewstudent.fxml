@@ -44,6 +44,34 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="countryName" layoutX="159.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0">
+      	<items>
+        		<FXCollections fx:factory="observableArrayList">
+            		<String fx:value="Canada" />
+            		<String fx:value="USA" />
+        		</FXCollections>
+    		</items>
+	  </ChoiceBox>
+      <ChoiceBox fx:id="provinceName" layoutX="159.0" layoutY="146.0" prefHeight="27.0" prefWidth="167.0">
+      	<items>
+        		<FXCollections fx:factory="observableArrayList">
+            		<String fx:value="AB" />
+            		<String fx:value="BC" />
+            		<String fx:value="MB" />
+            		<String fx:value="NB" />
+            		<String fx:value="NL" />
+            		<String fx:value="NS" />
+            		<String fx:value="NT" />
+            		<String fx:value="NU" />
+            		<String fx:value="ON" />
+            		<String fx:value="PE" />
+            		<String fx:value="QC" />
+            		<String fx:value="SK" />
+            		<String fx:value="YT" />
+        		</FXCollections>
+    		</items>
+	  </ChoiceBox>
+      <TextField fx:id="cityName" layoutX="159.0" layoutY="196.0" />
       <ChoiceBox fx:id="universityName" layoutX="159.0" layoutY="246.0" prefHeight="27.0" prefWidth="167.0">
       	<items>
         		<FXCollections fx:factory="observableArrayList">
@@ -81,7 +109,6 @@
     		</items>
 	  </ChoiceBox>
       <DatePicker fx:id="dateOfBirth" layoutX="159.0" layoutY="396.0" prefHeight="27.0" prefWidth="167.0" />
-      <Button fx:id="finishNewStudent" layoutX="160.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedStudent" text="Finish" />
       <Button fx:id="backToStudent" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backButtonClickedStudent" text="Back" />
       <Label layoutX="34.0" layoutY="200.0" text="City:">
          <font>
@@ -98,39 +125,12 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cityName" layoutX="159.0" layoutY="196.0" />
-      <ChoiceBox fx:id="provinceName" layoutX="159.0" layoutY="146.0" prefHeight="27.0" prefWidth="167.0">
-      	<items>
-        		<FXCollections fx:factory="observableArrayList">
-            		<String fx:value="AB" />
-            		<String fx:value="BC" />
-            		<String fx:value="MB" />
-            		<String fx:value="NB" />
-            		<String fx:value="NL" />
-            		<String fx:value="NS" />
-            		<String fx:value="NT" />
-            		<String fx:value="NU" />
-            		<String fx:value="ON" />
-            		<String fx:value="PE" />
-            		<String fx:value="QC" />
-            		<String fx:value="SK" />
-            		<String fx:value="YT" />
-        		</FXCollections>
-    		</items>
-	  </ChoiceBox>
       <RadioButton fx:id="calculateGPA" layoutX="214.0" layoutY="450.0" mnemonicParsing="false" text="Yes">
          <toggleGroup>
             <ToggleGroup fx:id="gpaGroup" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="dontCalculateGPA" layoutX="285.0" layoutY="450.0" mnemonicParsing="false" text="No" toggleGroup="$gpaGroup" />
-      <ChoiceBox fx:id="countryName" layoutX="159.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0">
-      	<items>
-        		<FXCollections fx:factory="observableArrayList">
-            		<String fx:value="Canada" />
-            		<String fx:value="USA" />
-        		</FXCollections>
-    		</items>
-	  </ChoiceBox>
+      <Button fx:id="finishNewStudent" layoutX="160.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedStudent" text="Finish" />
    </children>
 </AnchorPane>

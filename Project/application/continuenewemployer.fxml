@@ -41,7 +41,35 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="finishNewEmployer" layoutX="161.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedEmployer" text="Finish" />
+      <Button fx:id="backToEmployer" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backButtonClickedEmployer" text="Back" />
+      <ChoiceBox fx:id="countryName" layoutX="160.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0">
+      	<items>
+        		<FXCollections fx:factory="observableArrayList">
+            		<String fx:value="Canada" />
+            		<String fx:value="USA" />
+        		</FXCollections>
+    		</items>
+	  </ChoiceBox>
+      <ChoiceBox fx:id="provinceName" layoutX="160.0" layoutY="146.0" prefHeight="27.0" prefWidth="167.0">
+      	<items>
+        		<FXCollections fx:factory="observableArrayList">
+            		<String fx:value="AB" />
+            		<String fx:value="BC" />
+            		<String fx:value="MB" />
+            		<String fx:value="NB" />
+            		<String fx:value="NL" />
+            		<String fx:value="NS" />
+            		<String fx:value="NT" />
+            		<String fx:value="NU" />
+            		<String fx:value="ON" />
+            		<String fx:value="PE" />
+            		<String fx:value="QC" />
+            		<String fx:value="SK" />
+            		<String fx:value="YT" />
+        		</FXCollections>
+    		</items>
+	  </ChoiceBox>
+      <TextField fx:id="cityName" layoutX="160.0" layoutY="196.0" />
       <TextField fx:id="companyName" layoutX="160.0" layoutY="246.0" />
       <ChoiceBox fx:id="field" layoutX="160.0" layoutY="296.0" prefHeight="27.0" prefWidth="167.0">
       	<items>
@@ -66,13 +94,12 @@
         		</FXCollections>
     		</items>
 	  </ChoiceBox>
-      <Button fx:id="backToEmployer" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backButtonClickedEmployer" text="Back" />
+      <Button fx:id="finishNewEmployer" layoutX="161.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedEmployer" text="Finish" />
       <Label layoutX="38.0" layoutY="200.0" text="City:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cityName" layoutX="160.0" layoutY="196.0" />
       <Label layoutX="34.0" layoutY="150.0" text="Province:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
@@ -83,32 +110,5 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="provinceName" layoutX="160.0" layoutY="146.0" prefHeight="27.0" prefWidth="167.0">
-      	<items>
-        		<FXCollections fx:factory="observableArrayList">
-            		<String fx:value="AB" />
-            		<String fx:value="BC" />
-            		<String fx:value="MB" />
-            		<String fx:value="NB" />
-            		<String fx:value="NL" />
-            		<String fx:value="NS" />
-            		<String fx:value="NT" />
-            		<String fx:value="NU" />
-            		<String fx:value="ON" />
-            		<String fx:value="PE" />
-            		<String fx:value="QC" />
-            		<String fx:value="SK" />
-            		<String fx:value="YT" />
-        		</FXCollections>
-    		</items>
-	  </ChoiceBox>
-      <ChoiceBox fx:id="countryName" layoutX="160.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0">
-      	<items>
-        		<FXCollections fx:factory="observableArrayList">
-            		<String fx:value="Canada" />
-            		<String fx:value="USA" />
-        		</FXCollections>
-    		</items>
-	  </ChoiceBox>
    </children>
 </AnchorPane>
