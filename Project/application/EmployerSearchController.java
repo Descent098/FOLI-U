@@ -36,6 +36,7 @@ public class EmployerSearchController {
 	private Button search;
 	@FXML
 	private Button myProfile;
+	
 
 	//searching test
 	@FXML
@@ -58,6 +59,22 @@ public class EmployerSearchController {
 	private CheckBox searchByCompany;
 
 	public EmployerSearchController() {
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
+		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
@@ -123,15 +140,19 @@ public class EmployerSearchController {
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
-
-        if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-            return true;
-        } 
-        else if (employer.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-            return true;
+        
+        if (searchByName.isSelected()) {
+        		if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+                return true;
+            } 
+        		else if (employer.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+                    return true;
+                }
         }
-        else if (employer.getCompanyName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-        		return true;
+        if (searchByCompany.isSelected()) {
+        		if (employer.getCompanyName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+        			return true;
+        		}
         }
 
         return false; // Does not match

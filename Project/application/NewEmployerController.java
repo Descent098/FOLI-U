@@ -176,7 +176,7 @@ public class NewEmployerController {
         		Stage stage;
         		Parent root;
         		stage = (Stage) finishNewEmployer.getScene().getWindow();
-        		root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        		root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
 
         		Scene scene = new Scene(root);
         		stage.setScene(scene);
@@ -228,7 +228,7 @@ public class NewEmployerController {
 			Stage stage;
 			Parent root;
     			stage = (Stage) home.getScene().getWindow();
-    			root = FXMLLoader.load(getClass().getResource("home.fxml"));
+    			root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
 
     			Scene scene = new Scene(root);
     			stage.setScene(scene);
@@ -239,7 +239,7 @@ public class NewEmployerController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) search.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("searchpage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("searchemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
@@ -250,7 +250,7 @@ public class NewEmployerController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) settings.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("settingspage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("settingsemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
@@ -261,7 +261,7 @@ public class NewEmployerController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) myProfile.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("profilepage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("profileemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);

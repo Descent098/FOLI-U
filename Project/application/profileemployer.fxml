@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,11 +10,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentProfileController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployerProfileController">
    <children>
-      <ToolBar layoutY="519.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-border-color: white; -fx-effect: null;">
-        <items>
-          <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
+      <ToolBar layoutY="517.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-border-color: white; -fx-effect: null;">
+         <items>
+            <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
                <font>
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
@@ -38,21 +38,22 @@
                   <Glow level="1.0" />
                </effect>
             </Button>
-        </items>
+         </items>
       </ToolBar>
-      <GridPane layoutX="22.0" layoutY="24.0" prefHeight="182.0" prefWidth="339.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <GridPane layoutX="32.0" layoutY="38.0" prefHeight="208.0" prefWidth="314.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Label text="Name:">
                <font>
@@ -69,34 +70,34 @@
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label text="University:" GridPane.rowIndex="3">
+            <Label text="Company:" GridPane.rowIndex="3">
                <font>
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label text="Degree:" GridPane.rowIndex="4">
+            <Label text="Curently Hiring:" GridPane.rowIndex="6">
                <font>
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label text="University ID:" GridPane.rowIndex="5">
+            <Label fx:id="employerName" text="hello" GridPane.columnIndex="1" />
+            <Label fx:id="employerCountry" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="employerCompany" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="employerHiring" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="employerCity" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="106.0" text="Email:" GridPane.rowIndex="4">
                <font>
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="studentName" text="hello" GridPane.columnIndex="1" />
-            <Label fx:id="studentCountry" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="studentUni" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="studentDegree" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="studentID" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="studentCity" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="136.0" text="Phone Number:" GridPane.rowIndex="5">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="employerEmail" layoutX="110.0" layoutY="107.0" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="employerNumber" layoutX="110.0" layoutY="137.0" text="hello" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <TextArea fx:id="aboutMe" layoutX="22.0" layoutY="247.0" prefHeight="123.0" prefWidth="333.0" />
-      <Label layoutX="22.0" layoutY="222.0" text="About Me">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

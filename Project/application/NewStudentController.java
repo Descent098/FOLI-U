@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Stack;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 
@@ -97,6 +98,17 @@ public class NewStudentController {
 	private Button backToStudent;
 	
 	@FXML
+	private Stack<Scene> pages;
+	@FXML
+	private Button home;
+	@FXML
+	private Button settings;
+	@FXML
+	private Button search;
+	@FXML
+	private Button myProfile;
+	
+	@FXML
 	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
 			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
 	@FXML
@@ -122,24 +134,6 @@ public class NewStudentController {
 		System.out.println("student controller");
 	}
 	
-	@FXML
-	void openNewStage(ActionEvent event) {
-		
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("profilepage.fxml"));
-			Parent root = loader.load();
-			
-			ProfilePageController profileController = loader.getController();
-			profileController.myFunction(studentName.getText());
-			
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root));
-			stage.show();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	@FXML
 	public void continueButtonClickedStudent(ActionEvent event) throws IOException {
@@ -290,4 +284,52 @@ public class NewStudentController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public void changePage(ActionEvent event) throws IOException {
+		//if home button clicked or if no button specified (default home)
+		if (event.getTarget() == home || event.getTarget() == null) {
+			Stage stage;
+			Parent root;
+    			stage = (Stage) home.getScene().getWindow();
+    			root = FXMLLoader.load(getClass().getResource("home.fxml"));
+
+    			Scene scene = new Scene(root);
+    			stage.setScene(scene);
+    			stage.show();
+		}
+		//if search button clicked
+		else if (event.getTarget() == search) {
+			Stage stage;
+			Parent root;
+			stage = (Stage) search.getScene().getWindow();
+			root = FXMLLoader.load(getClass().getResource("searchpage.fxml"));
+
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		//if settings button clicked
+		}
+		else if (event.getTarget() == settings) {
+			Stage stage;
+			Parent root;
+			stage = (Stage) settings.getScene().getWindow();
+			root = FXMLLoader.load(getClass().getResource("settingspage.fxml"));
+
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+		//if profile button clicked
+		else if (event.getTarget() == myProfile) {
+			Stage stage;
+			Parent root;
+			stage = (Stage) myProfile.getScene().getWindow();
+			root = FXMLLoader.load(getClass().getResource("profilepage.fxml"));
+
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+	}
+	
 }

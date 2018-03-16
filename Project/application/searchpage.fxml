@@ -60,7 +60,7 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <CheckBox fx:id="searchByName" layoutX="90.0" layoutY="52.0" mnemonicParsing="false" text="Name">
+      <CheckBox fx:id="searchByName" layoutX="90.0" layoutY="52.0" mnemonicParsing="false" selected="true" text="Name">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>

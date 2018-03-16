@@ -48,6 +48,9 @@ public class StudentSearchController {
 	private TableColumn<JohnDoe, String> lastNameColumn;
 	@FXML
 	private TableColumn<JohnDoe, String> degreeColumn;
+	@FXML
+	private TableColumn<JohnDoe, String> idColumn;
+
 
 	private ObservableList<JohnDoe> studentData = FXCollections.observableArrayList();
 	private ObservableList<JohnDoe> filteredStudents = FXCollections.observableArrayList();
@@ -56,8 +59,19 @@ public class StudentSearchController {
 	private CheckBox searchByName;
 	@FXML
 	private CheckBox searchByDegree;
+	@FXML
+	private CheckBox searchByID;
 
 	public StudentSearchController() {
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
+		studentData.add(new JohnDoe());
 		studentData.add(new JohnDoe());
 		studentData.add(new JohnDoe());
 		studentData.add(new JohnDoe());
@@ -87,6 +101,8 @@ public class StudentSearchController {
                 new PropertyValueFactory<JohnDoe, String>("lastName"));
         degreeColumn.setCellValueFactory(
                 new PropertyValueFactory<JohnDoe, String>("degree"));
+        idColumn.setCellValueFactory(
+                new PropertyValueFactory<JohnDoe, String>("UID"));
 
         // Add filtered data to the table
         studentList.setItems(filteredStudents);
@@ -123,15 +139,24 @@ public class StudentSearchController {
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
-
-        if (student.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-            return true;
-        } 
-        else if (student.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-            return true;
+        
+        if (searchByName.isSelected()) {
+        		if (student.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+                return true;
+            } 
+            else if (student.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+                return true;
+            }
         }
-        else if (student.getDegree().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
-        		return true;
+        if (searchByDegree.isSelected()) {
+        		if (student.getDegree().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+        			return true;
+        		}
+        }
+        if (searchByID.isSelected()) {
+        		if (student.getUID().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
+        			return true;
+            }
         }
 
         return false; // Does not match
@@ -150,7 +175,7 @@ public class StudentSearchController {
 			Stage stage;
 			Parent root;
     			stage = (Stage) home.getScene().getWindow();
-    			root = FXMLLoader.load(getClass().getResource("home.fxml"));
+    			root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
 
     			Scene scene = new Scene(root);
     			stage.setScene(scene);
@@ -161,7 +186,7 @@ public class StudentSearchController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) search.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("searchpage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("searchemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
@@ -183,7 +208,7 @@ public class StudentSearchController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) myProfile.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("profilepage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("profileemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
