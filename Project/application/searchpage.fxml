@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -60,15 +60,15 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <CheckBox fx:id="searchByName" layoutX="90.0" layoutY="52.0" mnemonicParsing="false" selected="true" text="Name">
+      <RadioButton fx:id="searchByName" layoutX="88.0" layoutY="52.0" mnemonicParsing="false" selected="true" text="Name">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
-      </CheckBox>
-      <CheckBox fx:id="searchByCompany" layoutX="158.0" layoutY="52.0" mnemonicParsing="false" text="Company">
+      </RadioButton>
+      <RadioButton fx:id="searchByCompany" layoutX="158.0" layoutY="52.0" mnemonicParsing="false" text="Company">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
-      </CheckBox>
+      </RadioButton>
    </children>
 </AnchorPane>

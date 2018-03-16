@@ -28,6 +28,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle; 
+import javafx.scene.control.ToggleButton; 
+import javafx.scene.control.ToggleGroup;
 
 public class StudentSearchController {
 
@@ -61,11 +65,14 @@ public class StudentSearchController {
 	private ObservableList<JohnDoe> filteredStudents = FXCollections.observableArrayList();
 	
 	@FXML
-	private CheckBox searchByName;
+	private RadioButton searchByName;
 	@FXML
-	private CheckBox searchByDegree;
+	private RadioButton searchByDegree;
 	@FXML
-	private CheckBox searchByID;
+	private RadioButton searchByID;
+	
+	@FXML
+	private ToggleGroup toggleGroup = new ToggleGroup();
 	
 
 	public StudentSearchController() {
@@ -167,6 +174,11 @@ public class StudentSearchController {
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
+        
+        searchByName.setToggleGroup(toggleGroup);
+        searchByDegree.setToggleGroup(toggleGroup);
+        searchByID.setToggleGroup(toggleGroup);
+    
         
         if (searchByName.isSelected()) {
         		if (student.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {

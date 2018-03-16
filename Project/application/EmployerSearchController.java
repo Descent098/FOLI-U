@@ -27,6 +27,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle; 
+import javafx.scene.control.ToggleButton; 
+import javafx.scene.control.ToggleGroup;
 
 public class EmployerSearchController {
 
@@ -58,9 +62,12 @@ public class EmployerSearchController {
 	private ObservableList<EmployerJohnDoe> filteredEmployers = FXCollections.observableArrayList();
 	
 	@FXML
-	private CheckBox searchByName;
+	private RadioButton searchByName;
 	@FXML
-	private CheckBox searchByCompany;
+	private RadioButton searchByCompany;
+	
+	@FXML
+	private ToggleGroup toggleGroup = new ToggleGroup();
 
 	public EmployerSearchController() {
 		employerData.add(new EmployerJohnDoe());
@@ -164,6 +171,8 @@ public class EmployerSearchController {
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
+        searchByName.setToggleGroup(toggleGroup);
+        searchByCompany.setToggleGroup(toggleGroup);
         
         if (searchByName.isSelected()) {
         		if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
