@@ -34,6 +34,11 @@ import javafx.scene.control.ToggleGroup;
 
 public class EmployerSearchController {
 
+	/**
+	 * controller that controls the searchemployer.fxml
+	 * searches for employers in created database, displays information for said employer when selected
+	 * can search by first name, last name, and company
+	 */
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -46,7 +51,7 @@ public class EmployerSearchController {
 	private Button myProfile;
 	
 
-	//searching test
+	//variables for search bar and table that displays searched employers
 	@FXML
 	private TextField searchBar;
 	@FXML
@@ -69,6 +74,10 @@ public class EmployerSearchController {
 	@FXML
 	private ToggleGroup toggleGroup = new ToggleGroup();
 
+	/**
+	 * constructor called at beginning of class instance, currently just adding
+	 * randomly generated employers to search from
+	 */
 	public EmployerSearchController() {
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
@@ -97,6 +106,7 @@ public class EmployerSearchController {
 		employerData.add(new EmployerJohnDoe());
 		employerData.add(new EmployerJohnDoe());
 		
+		//no filters yet, all employers shown
 		filteredEmployers.addAll(employerData);
 		
 		employerData.addListener(new ListChangeListener<EmployerJohnDoe>() {
@@ -108,6 +118,10 @@ public class EmployerSearchController {
 		
 	}
 	
+	/**
+	 * automatically called
+	 * initializes the table with employer information
+	 */
 	@FXML
 	private void initialize() {
         firstNameColumn.setCellValueFactory(
@@ -117,10 +131,10 @@ public class EmployerSearchController {
         companyColumn.setCellValueFactory(
                 new PropertyValueFactory<EmployerJohnDoe, String>("companyName"));
 
-        // Add filtered data to the table
+        // adds filtered employers to list of employers shown on table
         employerList.setItems(filteredEmployers);
 
-        // Listen for text changes in the filter text field
+        // if search bar text field is changed, updates the employers shown
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -130,6 +144,7 @@ public class EmployerSearchController {
             }
         });
         
+        //when user clicks on an employer object, new window pops up that displays employer information
         employerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmployerJohnDoe>() {
             @Override
             public void changed(ObservableValue<? extends EmployerJohnDoe> observable, EmployerJohnDoe oldValue, EmployerJohnDoe newValue){
@@ -150,6 +165,10 @@ public class EmployerSearchController {
         });
 	}
 	
+	/**
+	 * updates filtered employers, if search bar text matches employer information
+	 * then table changes
+	 */
 	private void updateFilteredEmployers() {
         filteredEmployers.clear();
 
@@ -159,21 +178,28 @@ public class EmployerSearchController {
             }
         }
 
-        // Must re-sort table after items changed
+        // must re-sort table after items changed
         reapplyTableSortOrder();
     }
 	
+	/**
+	 * looks to see if search bar texts matches any emplyoer info
+	 * @param employer
+	 * @return
+	 */
 	private boolean matchesSearch(EmployerJohnDoe employer) {
         String filterSearch = searchBar.getText();
         if (filterSearch == null || filterSearch.isEmpty()) {
-            // No filter --> Add all.
+            // if there is nothing in the search bar, display all employers
             return true;
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
+        //makes radio buttons apart of same group so only one can be selected at a time
         searchByName.setToggleGroup(toggleGroup);
         searchByCompany.setToggleGroup(toggleGroup);
         
+        //if search by name is selected, then will only display names that match with search text
         if (searchByName.isSelected()) {
         		if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                 return true;
@@ -182,15 +208,19 @@ public class EmployerSearchController {
                     return true;
                 }
         }
+        //same thing for company name 
         if (searchByCompany.isSelected()) {
         		if (employer.getCompanyName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
         			return true;
         		}
         }
 
-        return false; // Does not match
+        return false; //does not match
     }
 
+	/**
+	 * clears the table and reupdates it 
+	 */
     private void reapplyTableSortOrder() {
         ArrayList<TableColumn<EmployerJohnDoe, ?>> sortOrder = new ArrayList<>(employerList.getSortOrder());
         employerList.getSortOrder().clear();
@@ -198,6 +228,11 @@ public class EmployerSearchController {
     }
 
 
+    /**
+     * changes pages
+     * @param event
+     * @throws IOException
+     */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

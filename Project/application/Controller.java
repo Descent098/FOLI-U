@@ -30,38 +30,20 @@ import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
-	//updates user database from input. not in use yet.
-	//Student demoStudent;
+	/**
+	 * main controller as of now
+	 * almost done splitting it all up into separate smaller controller classes
+	 */
 	Student demoStudent = new Student();
 	Employer demoEmployer = new Employer();
 
 
 	@FXML
 	private AnchorPane root;
-	
-	//user data from input
-	@FXML
-	private Label studentName;
-	@FXML
-	private Label studentUsername;
-	@FXML
-	private Label studentPassword;
-	@FXML
-	private Label studentCity;
-	@FXML
-	private Label studentProvince;
-	@FXML
-	private Label studentCountry;
-	@FXML
-	private Label studentUni;
-	@FXML
-	private Label studentDegree;
-	@FXML
-	private Label studentYear;
-	@FXML
-	private Label studentDOB;
 
-	//main page
+	/**
+	 * buttons used in controller
+	 */
 	@FXML
 	private Button newUser;
 	@FXML
@@ -113,13 +95,18 @@ public class Controller {
 	private Boolean isStudent = true;
 	
 
+	/**
+	 * initialize method, automatically called after all FXML methods have finished running
+	 */
     public void initialize() {
         System.out.println("end controller");
     }
 
+    /**
+     * contructor method automatically called at the beginning
+     */
 	public Controller() {
 		System.out.println("new controller");
-		System.out.println(demoStudent.getFirstName());
 	}
 
 	public void setMain(Main mainApp) {
@@ -127,7 +114,11 @@ public class Controller {
 	}
 
 
-	//when user clicks new user button
+	/**
+	 * method that takes user to new user page when "new user" button is clicked
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void newUserClicked(ActionEvent event) throws IOException {
 		//sets new stage for the new page
@@ -141,7 +132,11 @@ public class Controller {
 		stage.show();
 	}
 
-	// user clicks returning user button
+	/**
+	 * method that takes user to returning user page
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void returningUserClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -154,7 +149,11 @@ public class Controller {
 		stage.show();
 	}
 
-	//new student button clicked
+	/**
+	 * creates a new student user
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void newStudentClicked(ActionEvent event) throws IOException {
 		isStudent = true;
@@ -168,7 +167,11 @@ public class Controller {
 		stage.show();
 	}
 
-	//new employer button clicked
+	/**
+	 * creates a new employer user
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void newEmployerClicked(ActionEvent event) throws IOException {
 		isStudent = false;
@@ -212,14 +215,13 @@ public class Controller {
 	@FXML
 	public void signInButtonClicked(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
-				//if the ser leaves fields empty
-        if(username.getText().isEmpty() || password.getText().isEmpty()) {
+		//alert popup box		
+        if(username.getText().isEmpty() || password.getText().isEmpty()) { //if username and password fields are empty
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Incorrect username and/or password!");
         		alert.showAndWait();
         }
-				//will add another if statement to make sure username/password are in database
         else {
         		Stage stage;
         		Parent root;
@@ -233,7 +235,11 @@ public class Controller {
 
 	}
 
-	//change between different pages in app itself (home, settings, searcg, profile page)
+	/**
+	 * changes the page in app
+	 * @param event
+	 * @throws IOException
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

@@ -17,7 +17,15 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 
 public class EmployerProfileController {
+	
+	/**
+	 * controller that controls the profileemployer.fxml page
+	 * will access the database and display user information on this page
+	 * 
+	 */
 
+	//labels that will take info from database and display it on page
+	
 	@FXML
 	private Label employerName;
 	@FXML
@@ -52,12 +60,17 @@ public class EmployerProfileController {
 	@FXML
 	private Button myProfile;
 	
+	
 	@FXML
 	private TextArea aboutMe;
 	
+	//temporary random employer to display on profile page
 	@FXML
 	private EmployerJohnDoe johnDoe = new EmployerJohnDoe();
 	
+	/**
+	 * sets the label text to user info
+	 */
 	@FXML
 	public void initialize() {
 		employerName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());
@@ -69,6 +82,11 @@ public class EmployerProfileController {
 		employerHiring.setText(johnDoe.getOfferingJobs());
 	}
 	
+	/**
+	 * changes page in app
+	 * @param event
+	 * @throws IOException
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

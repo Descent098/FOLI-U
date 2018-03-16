@@ -17,7 +17,9 @@ public class Main extends Application { //main class
 	private AnchorPane mainPage;
 	private Scene mainScene;
 
-
+	/**
+	 * start method that loads primary stage, sets the scene
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.stage = primaryStage;
@@ -27,13 +29,17 @@ public class Main extends Application { //main class
 		mainPage = loader.load(getClass().getResource("mainpage.fxml")); //connects to mainpage.fxml
 		mainScene = new Scene(mainPage, 375, 559);
 
-		Controller controller = loader.getController();
+		Controller controller = loader.getController(); //main controller
 
         primaryStage.setTitle("Foli-U"); //title of stage
         primaryStage.setScene(mainScene);
         primaryStage.show(); //displays stage/app
 	}
 
+	/**
+	 * returns primary stage
+	 * @return
+	 */
 	public Stage getPrimaryStage() {
 		return stage;
 	}
@@ -41,7 +47,11 @@ public class Main extends Application { //main class
 	public Main() {
 	}
 
-	public static void main(String[] args) { //launch app
+	/**
+	 * main method, launches GUI
+	 * @param args
+	 */
+	public static void main(String[] args) { 
 		launch(args);
 	}
 }

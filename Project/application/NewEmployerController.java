@@ -19,6 +19,11 @@ import javafx.stage.Stage;
 
 public class NewEmployerController {
 	
+	/**
+	 *controller that controls all pages that help create a new employer
+	 *will save info entered by user and add it to database
+	 */
+	
 	@FXML
 	private TextField enterFirstName;
 	@FXML
@@ -60,6 +65,7 @@ public class NewEmployerController {
 	@FXML
 	private Button backToEmployer;
 	
+	//lists for provinces and states that will change depending on country chosen
 	@FXML
 	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
 			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
@@ -87,9 +93,15 @@ public class NewEmployerController {
 		System.out.println("employer controller");
 	}
 	
+	/**
+	 * continue button clicked and continues employer user creation
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void continueButtonClickedEmployer(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
+		//makes sure all text fields are filled before user can move onto next page
         if (enterFirstName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -97,12 +109,13 @@ public class NewEmployerController {
         		alert.showAndWait();
         }
 
+        //makes sure username is correct length
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
     				alert.setTitle("Error");
     				alert.setHeaderText(null);
     				alert.setContentText("Your username must be between 3 and 20 characters!");
     				alert.showAndWait();
-    		}
+    		}		//makes sure that password fields match
 				else if (!enterPassword.getText().equals(confirmPassword.getText())) {
 						alert.setTitle("Error");
 						alert.setHeaderText(null);
@@ -123,6 +136,7 @@ public class NewEmployerController {
 
 	}
 	
+	//when country combobox is changed, updates province/states to correspond
 	@FXML
 	public void changeCountry(ActionEvent event) throws IOException {
 		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canada")) {
@@ -133,10 +147,12 @@ public class NewEmployerController {
 		}
 	}
 	
+	//finishes employer user creation
 	@FXML
 	public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
 
 		Alert alert = new Alert(AlertType.ERROR);
+		//makes sure all fields are filled
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || emailAddress.getText().isEmpty() ||
         		phoneNumber.getText().isEmpty() || lookingToHire.getSelectionModel().isEmpty()) {
@@ -185,6 +201,7 @@ public class NewEmployerController {
 
 	}
 	
+	//back button, goes back to previous page
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
 		Stage stage;

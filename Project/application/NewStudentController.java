@@ -27,31 +27,17 @@ import javafx.collections.ObservableList;
 
 public class NewStudentController {
 	
-	//user data from input
-	@FXML
-	private Label studentName;
-	@FXML
-	private Label studentUsername;
-	@FXML
-	private Label studentPassword;
-	@FXML
-	private Label studentCity;
-	@FXML
-	private Label studentProvince;
-	@FXML
-	private Label studentCountry;
-	@FXML
-	private Label studentUni;
-	@FXML
-	private Label studentDegree;
-	@FXML
-	private Label studentYear;
-	@FXML
-	private Label studentDOB;
+	/**
+	 * controller that controls all pages that create a new student
+	 * will save info and add to database
+	 */
 
-	//new student or employer page
+	/**
+	 * text fields that take in user input
+	 * this is all the student info that we will need added to database
+	 */
 	@FXML
-	private TextField enterFirstName;
+	private TextField enterFirstName; 
 	@FXML
 	private TextField enterLastName;
 	@FXML
@@ -108,6 +94,7 @@ public class NewStudentController {
 	@FXML
 	private Button myProfile;
 	
+	//provinces and states 
 	@FXML
 	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
 			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
@@ -118,29 +105,37 @@ public class NewStudentController {
 			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", 
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
+	//universities that are in alberta
 	@FXML
 	private ObservableList<String> albertaSchools = FXCollections.observableArrayList("University of Calgary", "Mount Royal University", "SAIT", "University of Alberta", "ACAD", 
 			"University of Alberta", "University of Lethbridge", "MacEwan University");
 	
+	//universities in BC
 	@FXML
 	private ObservableList<String> bcSchools = FXCollections.observableArrayList("University of British Columbia", "University of Victoria", 
 			"Simon Fraser University", "Douglas College");
 	
+	//list of random universities
 	@FXML
 	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University One", "this is a University", "University of :)", "another University");
+	
 	
 	@FXML
 	public void initialize() {
 		System.out.println("student controller");
 	}
 	
-
+	/**
+	 * button to continue student creation
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
-				//will add if statement to make sure username isn't already taken
-				//will add if statements to check other fields as well
-				//if user leaves fields blank, displays error to user
+		//will add if statement to make sure username isn't already taken
+		//will add if statements to check other fields as well
+		//gets the text from user input and checks to make sure it's valid
         if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -179,6 +174,9 @@ public class NewStudentController {
 
 	}
 	
+	/*
+	 * changes the province/state combobox depending on whether user chooses canada or usa
+	 */
 	@FXML
 	public void changeCountry(ActionEvent event) throws IOException {
 		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canada")) {
@@ -189,6 +187,11 @@ public class NewStudentController {
 		}
 	}
 	
+	/**
+	 * changes university list to match province/state chosen
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void changeProvince(ActionEvent event) throws IOException {
 		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Alberta")) {
@@ -202,6 +205,7 @@ public class NewStudentController {
 		}
 	}
 
+	//finishes student creation
 	@FXML
 	public void finishButtonClickedStudent(ActionEvent event) throws IOException {
 
