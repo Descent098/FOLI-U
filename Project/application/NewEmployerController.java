@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 import java.util.Stack;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -34,20 +36,20 @@ public class NewEmployerController {
 	@FXML
 	private TextField cityName;
 	@FXML
-	private ChoiceBox<String> provinceName;
+	private ComboBox<String> provinceName;
 	@FXML
-	private ChoiceBox<String> countryName;
+	private ComboBox<String> countryName;
 	
 	@FXML
 	private TextField companyName;
 	@FXML
-	private ChoiceBox<String> field;
+	private ComboBox<String> field;
 	@FXML
 	private TextField emailAddress;
 	@FXML
 	private TextField phoneNumber;
 	@FXML
-	private ChoiceBox<String> lookingToHire;
+	private ComboBox<String> lookingToHire;
 	@FXML
 	private Button finishNewEmployer;
 	
@@ -57,6 +59,17 @@ public class NewEmployerController {
 	private Button backToNewUser;
 	@FXML
 	private Button backToEmployer;
+	
+	@FXML
+	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
+			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
+	@FXML
+	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
+			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", 
+			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey", 
+			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", 
+			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
+
 	
 	@FXML
 	private Stack<Scene> pages;
@@ -108,6 +121,16 @@ public class NewEmployerController {
         		stage.show();
         }
 
+	}
+	
+	@FXML
+	public void changeCountry(ActionEvent event) throws IOException {
+		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canada")) {
+			provinceName.setItems(provinces);
+		}
+		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("USA")) {
+			provinceName.setItems(states);
+		}
 	}
 	
 	@FXML

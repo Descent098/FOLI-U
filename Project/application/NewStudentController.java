@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,15 +10,43 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 public class NewStudentController {
+	
+	//user data from input
+	@FXML
+	private Label studentName;
+	@FXML
+	private Label studentUsername;
+	@FXML
+	private Label studentPassword;
+	@FXML
+	private Label studentCity;
+	@FXML
+	private Label studentProvince;
+	@FXML
+	private Label studentCountry;
+	@FXML
+	private Label studentUni;
+	@FXML
+	private Label studentDegree;
+	@FXML
+	private Label studentYear;
+	@FXML
+	private Label studentDOB;
 
 	//new student or employer page
 	@FXML
@@ -37,17 +66,17 @@ public class NewStudentController {
 	@FXML
 	private TextField cityName;
 	@FXML
-	private ChoiceBox<String> provinceName;
+	private ComboBox<String> provinceName;
 	@FXML
-	private ChoiceBox<String> countryName;
+	private ComboBox<String> countryName;
 
 	//continue new student
 	@FXML
-	private ChoiceBox<String> universityName;
+	private ComboBox<String> universityName;
 	@FXML
-	private ChoiceBox<String> degree;
+	private ComboBox<String> degree;
 	@FXML
-	private ChoiceBox<String> yearOfStudy;
+	private ComboBox<String> yearOfStudy;
 	@FXML
 	private DatePicker dateOfBirth;
 	@FXML
@@ -66,12 +95,50 @@ public class NewStudentController {
 	private Button backToNewUser;
 	@FXML
 	private Button backToStudent;
+	
+	@FXML
+	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
+			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
+	@FXML
+	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
+			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", 
+			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey", 
+			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", 
+			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
-	//new student button clicked
-
+	@FXML
+	private ObservableList<String> albertaSchools = FXCollections.observableArrayList("University of Calgary", "Mount Royal University", "SAIT", "University of Alberta", "ACAD", 
+			"University of Alberta", "University of Lethbridge", "MacEwan University");
+	
+	@FXML
+	private ObservableList<String> bcSchools = FXCollections.observableArrayList("University of British Columbia", "University of Victoria", 
+			"Simon Fraser University", "Douglas College");
+	
+	@FXML
+	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University One", "this is a University", "University of :)", "another University");
+	
 	@FXML
 	public void initialize() {
 		System.out.println("student controller");
+	}
+	
+	@FXML
+	void openNewStage(ActionEvent event) {
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("profilepage.fxml"));
+			Parent root = loader.load();
+			
+			ProfilePageController profileController = loader.getController();
+			profileController.myFunction(studentName.getText());
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -116,6 +183,29 @@ public class NewStudentController {
         		stage.show();
         }
 
+	}
+	
+	@FXML
+	public void changeCountry(ActionEvent event) throws IOException {
+		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canada")) {
+			provinceName.setItems(provinces);
+		}
+		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("USA")) {
+			provinceName.setItems(states);
+		}
+	}
+	
+	@FXML
+	public void changeProvince(ActionEvent event) throws IOException {
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Alberta")) {
+			universityName.setItems(albertaSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("British Columbia")) {
+			universityName.setItems(bcSchools);
+		}
+		if (!provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("British Columbia") && !provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Alberta")) {
+			universityName.setItems(otherSchools);
+		}
 	}
 
 	@FXML
