@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class EmployerSearchController {
 
@@ -94,6 +98,7 @@ public class EmployerSearchController {
                 updateFilteredEmployers();
             }
         });
+		
 	}
 	
 	@FXML
@@ -115,6 +120,25 @@ public class EmployerSearchController {
                     String oldValue, String newValue) {
 
                 updateFilteredEmployers();
+            }
+        });
+        
+        employerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmployerJohnDoe>() {
+            @Override
+            public void changed(ObservableValue<? extends EmployerJohnDoe> observable, EmployerJohnDoe oldValue, EmployerJohnDoe newValue){
+                if(newValue!=null){
+                		Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Employer Information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' + 
+                    		"Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
+                    		'\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
+                    		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
+                    		"City: " + newValue.getCity());
+
+                    alert.showAndWait();
+                }
+
             }
         });
 	}

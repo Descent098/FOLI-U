@@ -23,6 +23,11 @@ import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
+import javafx.stage.Popup;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class StudentSearchController {
 
@@ -61,6 +66,7 @@ public class StudentSearchController {
 	private CheckBox searchByDegree;
 	@FXML
 	private CheckBox searchByID;
+	
 
 	public StudentSearchController() {
 		studentData.add(new JohnDoe());
@@ -114,6 +120,28 @@ public class StudentSearchController {
                     String oldValue, String newValue) {
 
                 updateFilteredStudents();
+            }
+        });
+        
+        
+        studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JohnDoe>() {
+            @Override
+            public void changed(ObservableValue<? extends JohnDoe> observable,JohnDoe oldValue, JohnDoe newValue){
+                if(newValue!=null){
+                		  Alert alert = new Alert(AlertType.INFORMATION);
+                      alert.setTitle("Student Information");
+                      alert.setHeaderText(null);
+                      alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' + 
+                      		"UID: " + newValue.getUID() + '\n' + "University: " + newValue.getUniversity() +
+                      		'\n' + "Degree: " + newValue.getDegree() + '\n' + "Phone Number: " + newValue.getPhoneNumber() + 
+                      		'\n' + "Email Address: " + newValue.getEmail() +
+                      		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
+                      		"City: " + newValue.getCity());
+
+                      alert.showAndWait();
+                }
+            //you can add any other value from Student class via getter(getAdr,getMail,...)
+
             }
         });
 	}
