@@ -18,24 +18,24 @@ public void fileSave(HashMap<String,User> db) {
          */
         String fileName = "dataFile";
         do {
-                System.out.println("Enter name of the file: ");
-                input = new Scanner(System.in);
-                fileName = input.nextLine();
+                // System.out.println("Enter name of the file: ");
+                // input = new Scanner(System.in);
+                // fileName = input.nextLine();
                 data = new File(fileName + ".dat");
-
-                if (data.exists()) {
-                        System.out.println("Error, file name already exists. ");
-                } else if (!data.exists()) {
-                        try {
-                                data.createNewFile();
-                                createOrLoadFile = true;
-                                System.out.println("File created. ");
-                        } catch (IOException e) {
-                                createOrLoadFile = false;
-                                System.out.println("File could not be created.");
-                                System.err.println("IOException:	"+ e.getMessage());
-                        }
-                }
+                //
+                // if (data.exists()) {
+                //         System.out.println("Error, file name already exists. ");
+                // } else if (!data.exists()) {
+                //         try {
+                //                 data.createNewFile();
+                //                 createOrLoadFile = true;
+                //                 System.out.println("File created. ");
+                //         } catch (IOException e) {
+                //                 createOrLoadFile = false;
+                //                 System.out.println("File could not be created.");
+                //                 System.err.println("IOException:	"+ e.getMessage());
+                //         }
+                // }
         } while (createOrLoadFile != true);
 
         try {
@@ -69,9 +69,9 @@ public HashMap<String, User> fileLoad() {
 
         String fileName = "dataFile";
         do {
-                System.out.println("Enter name of the file: ");
-                input = new Scanner(System.in);
-                fileName = input.nextLine();
+                // System.out.println("Enter name of the file: ");
+                // input = new Scanner(System.in);
+                // fileName = input.nextLine();
                 data = new File(fileName + ".dat");
 
                 if (data.exists()) {
