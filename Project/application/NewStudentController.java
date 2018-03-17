@@ -41,6 +41,8 @@ public class NewStudentController {
 	@FXML
 	private TextField enterLastName;
 	@FXML
+	private TextField enterUID;
+	@FXML
 	private TextField enterUsername;
 	@FXML
 	private TextField enterPassword;
@@ -136,7 +138,8 @@ public class NewStudentController {
 		//will add if statement to make sure username isn't already taken
 		//will add if statements to check other fields as well
 		//gets the text from user input and checks to make sure it's valid
-        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || enterUsername.getText().isEmpty() || 
+        		enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
