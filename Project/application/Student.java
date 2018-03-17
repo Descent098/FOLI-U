@@ -12,9 +12,12 @@ public class Student extends User{
   private double GPA;
   private String studentType;
 
+  Student(){
+    
+  }
 
   Student(User toCopy) {
-    
+
   }
 
   public void set_User_Attributes(){
