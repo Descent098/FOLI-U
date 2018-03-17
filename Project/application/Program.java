@@ -18,9 +18,9 @@ public class Program{
         case 2:Menu m1 = new Menu();
           while (true){
             m1.selectMenu();
-            break;
+          }
 
-    }
+
   }
 }
 }

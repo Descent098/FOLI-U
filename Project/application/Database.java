@@ -123,14 +123,14 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
     return nameList;
   }
 
-  public HashMap<String, String> returnAllNames(){
-    HashMap<String, String> names = new HashMap();
-    for (String key : database.keySet()) {
-      User tempUser = database.get(key); //just a temporary user to do checks with
-      names.put(tempUser.getFirstName(), tempUser.getLastName());
-    }
-    return names;
-  }
+  // public HashMap<String, String> returnAllNames(){
+  //   HashMap<String, String> names = new HashMap();
+  //   for (String key : database.keySet()) {
+  //     User tempUser = database.get(key); //just a temporary user to do checks with
+  //     names.put(tempUser.getFirstName(), tempUser.getLastName());
+  //   }
+  //   return names;
+  // }
 
 
 
