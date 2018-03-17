@@ -26,15 +26,15 @@ public void fileSave(HashMap<String,User> db) {
                 // if (data.exists()) {
                 //         System.out.println("Error, file name already exists. ");
                 // } else if (!data.exists()) {
-                //         try {
-                //                 data.createNewFile();
-                //                 createOrLoadFile = true;
-                //                 System.out.println("File created. ");
-                //         } catch (IOException e) {
-                //                 createOrLoadFile = false;
-                //                 System.out.println("File could not be created.");
-                //                 System.err.println("IOException:	"+ e.getMessage());
-                //         }
+                        try {
+                                data.createNewFile();
+                                createOrLoadFile = true;
+                                System.out.println("File created. ");
+                        } catch (IOException e) {
+                                createOrLoadFile = false;
+                                System.out.println("File could not be created.");
+                                System.err.println("IOException:	"+ e.getMessage());
+                        }
                 // }
         } while (createOrLoadFile != true);
 
