@@ -12,10 +12,12 @@ public class Student extends User{
   private double GPA;
   private String studentType;
 
+  //Default Constructor
   Student(){
-    
+
   }
 
+  //Copy Constructor used to make user to student
   Student(User toCopy) {
 
   }
