@@ -261,6 +261,25 @@ public Database db = new Database();
 						//otherwise, sign up is completed
         		else {
 
+					//---------------------------------------
+					Student tempStudent = (db.getDatabase()).get(Storage.UID);
+					tempStudent.setCity(cityName.getText());
+					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
+					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
+					tempStudent.setProgramYear(Integer.parseInt(year));
+					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
+
+					//Storage.UID = (tempStudent.getUID());
+					System.out.println("UID after:"+ Storage.UID);
+								
+					FileIO saver = new FileIO();
+					saver.fileSave(db.getDatabase());
+					//--------------------------------------
+				
+				
         			Stage stage;
         			Parent root;
         			stage = (Stage) finishNewStudent.getScene().getWindow();
