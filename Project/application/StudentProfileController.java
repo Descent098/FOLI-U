@@ -18,6 +18,10 @@ import java.util.Stack;
 
 public class StudentProfileController {
 	
+	/**
+	 * controller for the student profile page
+	 * tkaes user info from database and displays it here
+	 */
 	@FXML
 	private Label studentName;
 	@FXML
@@ -59,6 +63,9 @@ public class StudentProfileController {
 	@FXML
 	private JohnDoe johnDoe = new JohnDoe();
 	
+	/**
+	 * automatically called at end of instance creation, sets labels to display users information
+	 */
 	@FXML
 	public void initialize() {
 		studentName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());

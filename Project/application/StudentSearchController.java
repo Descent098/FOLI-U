@@ -35,6 +35,10 @@ import javafx.scene.control.ToggleGroup;
 
 public class StudentSearchController {
 
+	/**
+	 * controller that controls searchpage.fxml
+	 * searches for students in the database and can display their information to the user
+	 */
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -75,6 +79,10 @@ public class StudentSearchController {
 	private ToggleGroup toggleGroup = new ToggleGroup();
 	
 
+	/**
+	 * called at beginning of controller instance, temporarily adding random users to database to display
+	 * can search students by name, degree, and university ID number
+	 */
 	public StudentSearchController() {
 		studentData.add(new JohnDoe());
 		studentData.add(new JohnDoe());
@@ -106,6 +114,10 @@ public class StudentSearchController {
         });
 	}
 	
+	/**
+	 * automatically called at the end of controller instance
+	 * sets table to display all students' information
+	 */
 	@FXML
 	private void initialize() {
         firstNameColumn.setCellValueFactory(
@@ -117,10 +129,10 @@ public class StudentSearchController {
         idColumn.setCellValueFactory(
                 new PropertyValueFactory<JohnDoe, String>("UID"));
 
-        // Add filtered data to the table
+        // add filtered data to the table
         studentList.setItems(filteredStudents);
 
-        // Listen for text changes in the filter text field
+        //if changes are made in search bar text field, will update which students are shown
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -130,7 +142,7 @@ public class StudentSearchController {
             }
         });
         
-        
+        //if student is selected by user, popup window will show up displaying student info
         studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JohnDoe>() {
             @Override
             public void changed(ObservableValue<? extends JohnDoe> observable,JohnDoe oldValue, JohnDoe newValue){
@@ -147,12 +159,12 @@ public class StudentSearchController {
 
                       alert.showAndWait();
                 }
-            //you can add any other value from Student class via getter(getAdr,getMail,...)
 
             }
         });
 	}
 	
+	//updates filtered students, if student into matches input in search bar, updates
 	private void updateFilteredStudents() {
         filteredStudents.clear();
 
@@ -162,14 +174,14 @@ public class StudentSearchController {
             }
         }
 
-        // Must re-sort table after items changed
+        // must re-sort table after items changed
         reapplyTableSortOrder();
     }
 	
 	private boolean matchesSearch(JohnDoe student) {
         String filterSearch = searchBar.getText();
         if (filterSearch == null || filterSearch.isEmpty()) {
-            // No filter --> Add all.
+            //nothing in search bar, displays all student info
             return true;
         }
 
@@ -180,6 +192,7 @@ public class StudentSearchController {
         searchByID.setToggleGroup(toggleGroup);
     
         
+        //if search by name is selected, only search by student names
         if (searchByName.isSelected()) {
         		if (student.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                 return true;
@@ -188,6 +201,7 @@ public class StudentSearchController {
                 return true;
             }
         }
+        //same for degree + ID
         if (searchByDegree.isSelected()) {
         		if (student.getDegree().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
         			return true;
@@ -199,9 +213,10 @@ public class StudentSearchController {
             }
         }
 
-        return false; // Does not match
+        return false; //does not match
     }
 
+	//clears table and rearranges it whenever updated
     private void reapplyTableSortOrder() {
         ArrayList<TableColumn<JohnDoe, ?>> sortOrder = new ArrayList<>(studentList.getSortOrder());
         studentList.getSortOrder().clear();
