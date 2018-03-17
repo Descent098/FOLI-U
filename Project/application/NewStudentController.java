@@ -25,8 +25,15 @@ import java.util.Stack;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 
+
+
 public class NewStudentController {
-	
+
+//----------------------------------------
+public Database db = new Database();	
+//Storage locker = new Storage();
+//---------------------------------------
+
 	/**
 	 * controller that controls all pages that create a new student
 	 * will save info and add to database
@@ -162,8 +169,19 @@ public class NewStudentController {
 				//continues onto next page
         else {
 
-//        		demoStudent.setFullName(enterFullName.getText());
-//        		System.out.println(demoStudent.getFullName());
+				//-------------------------------------
+				Student tempStudent = new Student();
+				tempStudent.setFirstName(enterFirstName.getText());
+				tempStudent.setLastName(enterLastName.getText());
+				tempStudent.setUID(enterUID.getText());
+				(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
+
+				Storage.UID = (tempStudent.getUID());
+				System.out.println("UID before:"+ Storage.UID);
+							
+				FileIO saver = new FileIO();
+				saver.fileSave(db.getDatabase());
+				//------------------------------------------	
 
         		Stage stage;
         		Parent root;
