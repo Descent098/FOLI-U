@@ -73,7 +73,6 @@ public HashMap<String, User> fileLoad() {
                 // input = new Scanner(System.in);
                 // fileName = input.nextLine();
                 data = new File(fileName + ".dat");
-
                 if (data.exists()) {
                         try {
                                 FileInputStream in = new FileInputStream(data);
@@ -81,6 +80,7 @@ public HashMap<String, User> fileLoad() {
 
                                 HashMap<String, User> loadedData = (HashMap<String,User>)readDatabase.readObject();
                                 readDatabase.close();
+                                System.out.println("Data loaded.");
                                 return(loadedData);
                         } catch (FileNotFoundException e) {
                                 createOrLoadFile = false;
@@ -105,9 +105,10 @@ public boolean exitCheck() {
         Scanner input = new Scanner(System.in);
         File data;
         String fileName = "dataFile";
-        System.out.println("Enter name of the file to check: ");
+        /*System.out.println("Enter name of the file to check: ");
         input = new Scanner(System.in);
         fileName = input.nextLine();
+        */
         data = new File(fileName + ".dat");
 
         if(data.exists()) {

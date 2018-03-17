@@ -23,6 +23,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Stack;
 import java.util.ArrayList;
+import java.util.*;
 import javafx.collections.ObservableList;
 
 
@@ -30,7 +31,7 @@ import javafx.collections.ObservableList;
 public class NewStudentController {
 
 //----------------------------------------
-public Database db = new Database();	
+public Database db = new Database();
 //Storage locker = new Storage();
 //---------------------------------------
 
@@ -44,7 +45,7 @@ public Database db = new Database();
 	 * this is all the student info that we will need added to database
 	 */
 	@FXML
-	private TextField enterFirstName; 
+	private TextField enterFirstName;
 	@FXML
 	private TextField enterLastName;
 	@FXML
@@ -91,7 +92,7 @@ public Database db = new Database();
 	private Button backToNewUser;
 	@FXML
 	private Button backToStudent;
-	
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -102,38 +103,38 @@ public Database db = new Database();
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
-	//provinces and states 
+
+	//provinces and states
 	@FXML
-	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
+	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba",
 			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
 	@FXML
-	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
-			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", 
-			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey", 
-			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", 
+	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey",
+			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
 	//universities that are in alberta
 	@FXML
-	private ObservableList<String> albertaSchools = FXCollections.observableArrayList("University of Calgary", "Mount Royal University", "SAIT", "University of Alberta", "ACAD", 
+	private ObservableList<String> albertaSchools = FXCollections.observableArrayList("University of Calgary", "Mount Royal University", "SAIT", "University of Alberta", "ACAD",
 			"University of Alberta", "University of Lethbridge", "MacEwan University");
-	
+
 	//universities in BC
 	@FXML
-	private ObservableList<String> bcSchools = FXCollections.observableArrayList("University of British Columbia", "University of Victoria", 
+	private ObservableList<String> bcSchools = FXCollections.observableArrayList("University of British Columbia", "University of Victoria",
 			"Simon Fraser University", "Douglas College");
-	
+
 	//list of random universities
 	@FXML
 	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University One", "this is a University", "University of :)", "another University");
-	
-	
+
+
 	@FXML
 	public void initialize() {
 		System.out.println("student controller");
 	}
-	
+
 	/**
 	 * button to continue student creation
 	 * @param event
@@ -145,7 +146,7 @@ public Database db = new Database();
 		//will add if statement to make sure username isn't already taken
 		//will add if statements to check other fields as well
 		//gets the text from user input and checks to make sure it's valid
-        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || enterUsername.getText().isEmpty() || 
+        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || enterUsername.getText().isEmpty() ||
         		enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -178,10 +179,10 @@ public Database db = new Database();
 
 				Storage.UID = (tempStudent.getUID());
 				System.out.println("UID before:"+ Storage.UID);
-							
+
 				FileIO saver = new FileIO();
 				saver.fileSave(db.getDatabase());
-				//------------------------------------------	
+				//------------------------------------------
 
         		Stage stage;
         		Parent root;
@@ -194,7 +195,7 @@ public Database db = new Database();
         }
 
 	}
-	
+
 	/*
 	 * changes the province/state combobox depending on whether user chooses canada or usa
 	 */
@@ -207,7 +208,7 @@ public Database db = new Database();
 			provinceName.setItems(states);
 		}
 	}
-	
+
 	/**
 	 * changes university list to match province/state chosen
 	 * @param event
@@ -262,7 +263,8 @@ public Database db = new Database();
         		else {
 
 					//---------------------------------------
-					Student tempStudent = (db.getDatabase()).get(Storage.UID);
+					HashMap<String, User> data = db.getDatabase();
+					Student tempStudent = new Student(data.get(Storage.UID));
 					tempStudent.setCity(cityName.getText());
 					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -274,12 +276,12 @@ public Database db = new Database();
 
 					//Storage.UID = (tempStudent.getUID());
 					System.out.println("UID after:"+ Storage.UID);
-								
+
 					FileIO saver = new FileIO();
 					saver.fileSave(db.getDatabase());
 					//--------------------------------------
-				
-				
+
+
         			Stage stage;
         			Parent root;
         			stage = (Stage) finishNewStudent.getScene().getWindow();
@@ -292,7 +294,7 @@ public Database db = new Database();
         }
 
 	}
-	
+
 	@FXML
 	public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 		Stage stage;
@@ -328,7 +330,7 @@ public Database db = new Database();
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {
@@ -375,5 +377,5 @@ public Database db = new Database();
 			stage.show();
 		}
 	}
-	
+
 }

@@ -13,6 +13,10 @@ public class Student extends User{
   private String studentType;
 
 
+  Student(User toCopy) {
+    
+  }
+
   public void set_User_Attributes(){
     setContactInfo();
     Scanner input = new Scanner(System.in);
