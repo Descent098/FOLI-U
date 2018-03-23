@@ -10,6 +10,8 @@ public static void main(String[] args) {
 
 //Tests found Below
 
+/** Test to ensure that the setter and geters for first and last name
+Work for valid inputs*/
 public static void test_Setter_and_Getter_Names_valid(){
     User nametest = new User();
     nametest.setFirstName("John");
@@ -21,6 +23,9 @@ public static void test_Setter_and_Getter_Names_valid(){
     System.out.println("All tests for first and last name passed");
 }
 
+
+/** Test to ensure that the setter and geters for City, Country, and province
+Work for valid inputs*/
 public static void test_Setter_and_Getter_Locations_valid(){
     User LocationsTest = new User();
     LocationsTest.setCity("Calgary");
@@ -36,6 +41,8 @@ public static void test_Setter_and_Getter_Locations_valid(){
     System.out.println("All tests for Locations passed");
 }
 
+/** Test to ensure that the setter and geters for email and phone number 
+Work for valid inputs*/
 public static void test_Setter_and_Getter_Contact_valid(){
     User ContactTest = new User();
     ContactTest.setEmail("uofc@ucalgary.ca");
