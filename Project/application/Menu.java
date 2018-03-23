@@ -155,6 +155,7 @@ public void selectMenu(){
                   String overwrite = input.nextLine().toUpperCase();
                   if (overwrite.equals("Y")) {
                     f.fileSave(db.getDatabase());
+                    System.exit(0);
                   } else {
                     System.exit(0);
                   }
