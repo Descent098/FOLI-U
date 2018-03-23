@@ -150,7 +150,14 @@ public void selectMenu(){
                 if (f.exitCheck()) {
                     f.fileSave(db.getDatabase());
                 } else {
-                  System.exit(0);
+                  System.out.println("Do you want to overwrite your current database? (Y/N) ");
+                  input = new Scanner(System.in);
+                  String overwrite = input.nextLine().toUpperCase();
+                  if (overwrite.equals("Y")) {
+                    f.fileSave(db.getDatabase());
+                  } else {
+                    System.exit(0);
+                  }
                 }
 
                 break;
