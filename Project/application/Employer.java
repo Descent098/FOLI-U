@@ -32,11 +32,11 @@ public class Employer extends User implements Serializable{
     Scanner input2 = new Scanner(System.in);
     Scanner input3 = new Scanner(System.in);
     Scanner input4 = new Scanner(System.in);
-    setContactInfo();
+    setContactInfo();   //calls the super class's method to set common traits of a user
     System.out.println("\nWhat is your company name: ");
     companyName = input2.nextLine();
 
-    System.out.println("Is your company currently looking to hire?: ");
+    System.out.println("Is your company currently looking to hire?: ('Yes' or 'No')");
     offeringJobs = input1.nextLine();
 
     }
