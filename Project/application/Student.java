@@ -93,12 +93,12 @@ public class Student extends User{
 		System.out.println("Your GPA is: " + GPA);
   }
 
-
-  public void print_Vars(){
+  @Override
+  public void printContactInfo(){
     /** A method that prints a users atributes*/
     System.out.println("\nSearching database for: " + getFirstName());
 
-    printContactInfo();
+    super.printContactInfo();
     System.out.println("Users UID is: "+ getUID());
     System.out.println("Users University is: "+ getUniversity());
     System.out.println("User is a: "+ getStudentType());

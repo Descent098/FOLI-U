@@ -33,7 +33,7 @@ public class Employer extends User implements Serializable{
     Scanner input3 = new Scanner(System.in);
     Scanner input4 = new Scanner(System.in);
     setContactInfo();
-    System.out.println("What is your company name: ");
+    System.out.println("\nWhat is your company name: ");
     companyName = input2.nextLine();
 
     System.out.println("Is your company currently looking to hire?: ");
@@ -41,17 +41,20 @@ public class Employer extends User implements Serializable{
 
     }
 
-    public void print_Vars(){
+    @Override
+    public void printContactInfo(){
       /** A method that prints a users atributes*/
-      System.out.println("\nSearching database for: "+ getFirstName() + " " + getLastName());
-      System.out.println("\nUser Name: "+ getFirstName() + " " + getLastName());
+
+      super.printContactInfo();
+      //System.out.println("\nSearching database for: "+ getFirstName() + " " + getLastName());
+      //System.out.println("\nUser Name: "+ getFirstName() + " " + getLastName());
       System.out.println("User Company: "+ getCompanyName());
       System.out.println("Offering Jobs: "+ getOfferingJobs());
-      System.out.println("Phone Numebr: "+ getPhoneNumber());
-      System.out.println("Email Address: "+ getEmail());
-      System.out.println("Country: " + getCountry());
-      System.out.println("Province: " + getProvince());
-      System.out.println("City: " + getCity());
+      //System.out.println("Phone Numebr: "+ getPhoneNumber());
+      //System.out.println("Email Address: "+ getEmail());
+      //System.out.println("Country: " + getCountry());
+      //System.out.println("Province: " + getProvince());
+      //System.out.println("City: " + getCity());
     }
 
     /** getter for offeringJobs*/
