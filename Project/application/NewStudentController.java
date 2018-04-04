@@ -27,11 +27,11 @@ import java.util.*;
 import javafx.collections.ObservableList;
 
 
-
 public class NewStudentController {
 
 //----------------------------------------
-public Database db = new Database();
+private FileIO f = new FileIO();
+private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
 //Storage locker = new Storage();
 //---------------------------------------
 
@@ -180,8 +180,9 @@ public Database db = new Database();
 				Storage.UID = (tempStudent.getUID());
 				System.out.println("UID before:"+ Storage.UID);
 
-				FileIO saver = new FileIO();
-				saver.fileSave(db.getDatabase());
+				//FileIO saver = new FileIO();
+				//saver.fileSave(db.getDatabase());
+				f.fileSave(db.getDatabase());
 				//------------------------------------------
 
         		Stage stage;
@@ -262,9 +263,11 @@ public Database db = new Database();
 						//otherwise, sign up is completed
         		else {
 
+					//saving information from the second page
 					//---------------------------------------
 					HashMap<String, User> data = db.getDatabase();
-					Student tempStudent = new Student(data.get(Storage.UID));
+					//Student tempStudent = new Student(data.get(Storage.UID));
+					Student tempStudent = (Student)data.get(Storage.UID); //?
 					tempStudent.setCity(cityName.getText());
 					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -274,11 +277,17 @@ public Database db = new Database();
 					tempStudent.setProgramYear(Integer.parseInt(year));
 					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
-					//Storage.UID = (tempStudent.getUID());
+					//testing....
+					System.out.println("The temp student's year:"+tempStudent.getProgramYear());
+					System.out.println("The temp student's name:"+tempStudent.getFirstName());
 					System.out.println("UID after:"+ Storage.UID);
+					//tempStudent.printContactInfo(); //holy grail of tests
 
-					FileIO saver = new FileIO();
-					saver.fileSave(db.getDatabase());
+
+					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent); //need to put the student back in??
+					//FileIO saver = new FileIO();
+					//saver.fileSave(db.getDatabase();
+					f.fileSave(db.getDatabase());
 					//--------------------------------------
 
 

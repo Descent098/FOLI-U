@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 
 public class StudentProfileController {
-	
+
 	/**
 	 * controller for the student profile page
 	 * tkaes user info from database and displays it here
@@ -44,8 +44,8 @@ public class StudentProfileController {
 	private Label studentDOB;
 	@FXML
 	private Label studentID;
-	
-	
+
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -56,27 +56,45 @@ public class StudentProfileController {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 	@FXML
 	private TextArea aboutMe;
-	
+
+
+	//loading the file, and grabbing the current student out of it to use
+	private FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad());
+	//HashMap<String, User> data = db.getDatabase();
+	Student tempStudent = (Student)((db.getDatabase()).get(Storage.UID)); //retrieve the student from the hashmap within the database class while casting it
+
+
+
 	@FXML
 	private JohnDoe johnDoe = new JohnDoe();
-	
+
 	/**
 	 * automatically called at end of instance creation, sets labels to display users information
 	 */
+	// @FXML
+	// public void initialize() {
+	// 	studentName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());
+	// 	studentCity.setText(johnDoe.getCity());
+	// 	studentCountry.setText(johnDoe.getCountry());
+	// 	studentUni.setText(johnDoe.getUniversity());
+	// 	studentDegree.setText(johnDoe.getDegree());
+	// 	studentID.setText(johnDoe.getUID());
+	// }
 	@FXML
 	public void initialize() {
-		studentName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());
-		studentCity.setText(johnDoe.getCity());
-		studentCountry.setText(johnDoe.getCountry());
-		studentUni.setText(johnDoe.getUniversity());
-		studentDegree.setText(johnDoe.getDegree());
-		studentID.setText(johnDoe.getUID());
+		studentName.setText(tempStudent.getFirstName() + " " + tempStudent.getLastName());
+		studentCity.setText(tempStudent.getCity());
+		studentCountry.setText(tempStudent.getCountry());
+		studentUni.setText(tempStudent.getUniversity());
+		studentDegree.setText(tempStudent.getDegree());
+		studentID.setText(tempStudent.getUID());
 	}
-	
-	
+
+
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

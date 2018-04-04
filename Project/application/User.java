@@ -35,6 +35,23 @@ public class User implements Serializable{
   }
   */
 
+  //blank constructor
+  User() {
+
+  }
+
+  //copy constructor used by student and employer for common attributes
+  // User(User oldUser) {
+  //   firstName = oldUser.getFirstName();
+  //   lastName = oldUser.getLastName();
+  //   phoneNumber = oldUser.getPhoneNumber();
+  //   email = oldUser.getEmail();
+  //   city = oldUser.getCity();
+  //   province = oldUser.getProvince();
+  //   country = oldUser.getCountry();
+  // }
+
+
   /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
   public void setContactInfo(){
     Scanner input = new Scanner(System.in);

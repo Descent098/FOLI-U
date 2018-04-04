@@ -95,7 +95,7 @@ public HashMap<String, User> fileLoad() {
                                 System.out.println("Class could not be used to cast object.");
                                 System.err.println("ClassNotFoundException: " + e.getMessage());
                         }
-                }
+                } //NEED TO THROW AN ERROR IF FILE DOES NOT EXIST
 
         } while (createOrLoadFile != true);
         return null;

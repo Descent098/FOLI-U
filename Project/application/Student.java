@@ -18,9 +18,9 @@ public class Student extends User{
   }
 
   //Copy Constructor used to make user to student
-  Student(User toCopy) {
-
-  }
+  // Student(User toCopy) {
+  //   super(toCopy); //calls the User class's constructor to copy common attributes (like name for example)
+  // }
 
   public void set_User_Attributes(){
     setContactInfo();
