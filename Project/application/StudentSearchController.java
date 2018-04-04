@@ -29,8 +29,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle; 
-import javafx.scene.control.ToggleButton; 
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 public class StudentSearchController {
@@ -54,66 +54,96 @@ public class StudentSearchController {
 	@FXML
 	private TextField searchBar;
 	@FXML
-	private TableView<JohnDoe> studentList;
+	// private TableView<JohnDoe> studentList;
+	private TableView<Student> studentList;
 	@FXML
-	private TableColumn<JohnDoe, String> firstNameColumn;
+	// private TableColumn<JohnDoe, String> firstNameColumn;
+	private TableColumn<Student, String> firstNameColumn;
 	@FXML
-	private TableColumn<JohnDoe, String> lastNameColumn;
+	// private TableColumn<JohnDoe, String> lastNameColumn;
+	private TableColumn<Student, String> lastNameColumn;
 	@FXML
-	private TableColumn<JohnDoe, String> degreeColumn;
+	// private TableColumn<JohnDoe, String> degreeColumn;
+	private TableColumn<Student, String> degreeColumn;
 	@FXML
-	private TableColumn<JohnDoe, String> idColumn;
+	// private TableColumn<JohnDoe, String> idColumn;
+	private TableColumn<Student, String> idColumn;
 
 
-	private ObservableList<JohnDoe> studentData = FXCollections.observableArrayList();
-	private ObservableList<JohnDoe> filteredStudents = FXCollections.observableArrayList();
-	
+	// private ObservableList<JohnDoe> studentData = FXCollections.observableArrayList();
+	// private ObservableList<JohnDoe> filteredStudents = FXCollections.observableArrayList();
+	private ObservableList<Student> studentData = FXCollections.observableArrayList();
+	private ObservableList<Student> filteredStudents = FXCollections.observableArrayList();
+
 	@FXML
 	private RadioButton searchByName;
 	@FXML
 	private RadioButton searchByDegree;
 	@FXML
 	private RadioButton searchByID;
-	
+
 	@FXML
 	private ToggleGroup toggleGroup = new ToggleGroup();
-	
+
+
+	//loading the file to use for the page
+	private FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad());
+
+
 
 	/**
 	 * called at beginning of controller instance, temporarily adding random users to database to display
 	 * can search students by name, degree, and university ID number
 	 */
 	public StudentSearchController() {
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
-		studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
+		// studentData.add(new JohnDoe());
 
-		
+		//TESTING adding the real database to the search page...
+		//------------------------------------------------------
+		  for (User s : (db.getDatabase()).values()) {
+				if (s instanceof Student) {
+					System.out.println("Found a student!"+ s.getFirstName());
+					studentData.add((Student)s);
+				}
+
+			}
+
+
 		filteredStudents.addAll(studentData);
-		
-		studentData.addListener(new ListChangeListener<JohnDoe>() {
+
+		// studentData.addListener(new ListChangeListener<JohnDoe>() {
+    //         @Override
+    //         public void onChanged(ListChangeListener.Change<? extends JohnDoe> change) {
+    //             updateFilteredStudents();
+    //         }
+    //     });
+
+		studentData.addListener(new ListChangeListener<Student>() {
             @Override
-            public void onChanged(ListChangeListener.Change<? extends JohnDoe> change) {
+            public void onChanged(ListChangeListener.Change<? extends Student> change) {
                 updateFilteredStudents();
             }
         });
 	}
-	
+
 	/**
 	 * automatically called at the end of controller instance
 	 * sets table to display all students' information
@@ -121,13 +151,17 @@ public class StudentSearchController {
 	@FXML
 	private void initialize() {
         firstNameColumn.setCellValueFactory(
-                new PropertyValueFactory<JohnDoe, String>("firstName"));
+                // new PropertyValueFactory<JohnDoe, String>("firstName"));
+								new PropertyValueFactory<Student, String>("firstName"));
         lastNameColumn.setCellValueFactory(
-                new PropertyValueFactory<JohnDoe, String>("lastName"));
+                // new PropertyValueFactory<JohnDoe, String>("lastName"));
+								new PropertyValueFactory<Student, String>("lastName"));
         degreeColumn.setCellValueFactory(
-                new PropertyValueFactory<JohnDoe, String>("degree"));
+                // new PropertyValueFactory<JohnDoe, String>("degree"));
+								new PropertyValueFactory<Student, String>("degree"));
         idColumn.setCellValueFactory(
-                new PropertyValueFactory<JohnDoe, String>("UID"));
+                // new PropertyValueFactory<JohnDoe, String>("UID"));
+								new PropertyValueFactory<Student, String>("UID"));
 
         // add filtered data to the table
         studentList.setItems(filteredStudents);
@@ -141,18 +175,20 @@ public class StudentSearchController {
                 updateFilteredStudents();
             }
         });
-        
+
         //if student is selected by user, popup window will show up displaying student info
-        studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JohnDoe>() {
+        // studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<JohnDoe>() {
+				studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Student>() {
             @Override
-            public void changed(ObservableValue<? extends JohnDoe> observable,JohnDoe oldValue, JohnDoe newValue){
+            // public void changed(ObservableValue<? extends JohnDoe> observable,JohnDoe oldValue, JohnDoe newValue){
+						public void changed(ObservableValue<? extends Student> observable,Student oldValue, Student newValue){
                 if(newValue!=null){
                 		  Alert alert = new Alert(AlertType.INFORMATION);
                       alert.setTitle("Student Information");
                       alert.setHeaderText(null);
-                      alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' + 
+                      alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' +
                       		"UID: " + newValue.getUID() + '\n' + "University: " + newValue.getUniversity() +
-                      		'\n' + "Degree: " + newValue.getDegree() + '\n' + "Phone Number: " + newValue.getPhoneNumber() + 
+                      		'\n' + "Degree: " + newValue.getDegree() + '\n' + "Phone Number: " + newValue.getPhoneNumber() +
                       		'\n' + "Email Address: " + newValue.getEmail() +
                       		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
                       		"City: " + newValue.getCity());
@@ -163,12 +199,13 @@ public class StudentSearchController {
             }
         });
 	}
-	
+
 	//updates filtered students, if student into matches input in search bar, updates
 	private void updateFilteredStudents() {
         filteredStudents.clear();
 
-        for (JohnDoe s : studentData) {
+        //for (JohnDoe s : studentData) {
+				for (Student s : studentData) {
             if (matchesSearch(s)) {
                 filteredStudents.add(s);
             }
@@ -177,8 +214,9 @@ public class StudentSearchController {
         // must re-sort table after items changed
         reapplyTableSortOrder();
     }
-	
-	private boolean matchesSearch(JohnDoe student) {
+
+	//private boolean matchesSearch(JohnDoe student) {
+	private boolean matchesSearch(Student student) {
         String filterSearch = searchBar.getText();
         if (filterSearch == null || filterSearch.isEmpty()) {
             //nothing in search bar, displays all student info
@@ -186,17 +224,17 @@ public class StudentSearchController {
         }
 
         String lowerCaseFilterSearch = filterSearch.toLowerCase();
-        
+
         searchByName.setToggleGroup(toggleGroup);
         searchByDegree.setToggleGroup(toggleGroup);
         searchByID.setToggleGroup(toggleGroup);
-    
-        
+
+
         //if search by name is selected, only search by student names
         if (searchByName.isSelected()) {
         		if (student.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                 return true;
-            } 
+            }
             else if (student.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                 return true;
             }
@@ -218,7 +256,8 @@ public class StudentSearchController {
 
 	//clears table and rearranges it whenever updated
     private void reapplyTableSortOrder() {
-        ArrayList<TableColumn<JohnDoe, ?>> sortOrder = new ArrayList<>(studentList.getSortOrder());
+        // ArrayList<TableColumn<JohnDoe, ?>> sortOrder = new ArrayList<>(studentList.getSortOrder());
+				ArrayList<TableColumn<Student, ?>> sortOrder = new ArrayList<>(studentList.getSortOrder());
         studentList.getSortOrder().clear();
         studentList.getSortOrder().addAll(sortOrder);
     }
