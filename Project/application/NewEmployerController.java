@@ -180,15 +180,6 @@ public class NewEmployerController {
           }
         else {
 
-//        		demoEmployer.setCity(cityName.getText());
-//        		demoEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-//        		demoEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-//        		demoEmployer.setCompanyName(companyName.getText());
-//        		demoEmployer.setEmail(emailAddress.getText());
-//        		demoEmployer.setPhoneNumber(phoneNumber.getText());
-//        		demoEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
-//        		System.out.println(demoEmployer.getCountry());
-
         		Stage stage;
         		Parent root;
         		stage = (Stage) finishNewEmployer.getScene().getWindow();

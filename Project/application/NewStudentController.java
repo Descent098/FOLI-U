@@ -153,6 +153,12 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
+        else if (!enterUID.getText().matches("[0-9]+") || enterUID.getText().length() != 8) {
+        		alert.setTitle("Error");
+        		alert.setHeaderText(null);
+        		alert.setContentText("Invalid UID!");
+        		alert.showAndWait();
+        }
 				//if the user chooses a username that is too short/long
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
         		alert.setTitle("Error");
@@ -243,14 +249,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         		alert.showAndWait();
         }
         else {
-//        		demoStudent.setCity(cityName.getText());
-//        		demoStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-//        		demoStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-//        		demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-//			demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-//			System.out.println(demoStudent.getCountry());
-//			System.out.println(demoStudent.getProvince());
-//			System.out.println(demoStudent.getUniversity());
 
 						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {

@@ -9,7 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.TextAlignment;
+
+import java.util.Optional;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,7 +63,9 @@ public class StudentProfileController {
 	private Button myProfile;
 
 	@FXML
-	private TextArea aboutMe;
+	private Label aboutMe;
+	@FXML
+	private Button editAboutMe;
 
 
 	//loading the file, and grabbing the current student out of it to use
@@ -72,18 +79,6 @@ public class StudentProfileController {
 	@FXML
 	private JohnDoe johnDoe = new JohnDoe();
 
-	/**
-	 * automatically called at end of instance creation, sets labels to display users information
-	 */
-	// @FXML
-	// public void initialize() {
-	// 	studentName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());
-	// 	studentCity.setText(johnDoe.getCity());
-	// 	studentCountry.setText(johnDoe.getCountry());
-	// 	studentUni.setText(johnDoe.getUniversity());
-	// 	studentDegree.setText(johnDoe.getDegree());
-	// 	studentID.setText(johnDoe.getUID());
-	// }
 	@FXML
 	public void initialize() {
 		studentName.setText(tempStudent.getFirstName() + " " + tempStudent.getLastName());
@@ -92,6 +87,16 @@ public class StudentProfileController {
 		studentUni.setText(tempStudent.getUniversity());
 		studentDegree.setText(tempStudent.getDegree());
 		studentID.setText(tempStudent.getUID());
+	}
+	
+	public void editAbout(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit About Me");
+		dialog.setContentText("About Me:");
+		dialog.getEditor().setPrefSize(300, 200);
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		aboutMe.setText(text.get());
 	}
 
 
