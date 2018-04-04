@@ -41,7 +41,7 @@
             <Font name="AppleGothic Regular" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="studentName" layoutX="22.0" layoutY="22.0" prefHeight="33.0" prefWidth="96.0" text="name">
+      <Label fx:id="studentName" alignment="TOP_LEFT" layoutX="22.0" layoutY="15.0" prefHeight="82.0" prefWidth="123.0" text="name">
          <font>
             <Font name="AppleGothic Regular" size="21.0" />
          </font>
