@@ -41,7 +41,8 @@ public void selectMenu(){
         System.out.println("4 for creating and printing random users:");
         System.out.println("5 Load database: ");
 	      System.out.println("6 Search for multiple users: "); //will expand this to search by other criteria too
-        System.out.println("7 Exit program: ");
+        System.out.println("7 Generate Statistics: "); //will expand this to search by other criteria too
+        System.out.println("8 Exit program: ");
 
         input = new Scanner(System.in);
         int choice = input.nextInt();
@@ -146,6 +147,12 @@ public void selectMenu(){
 				break;
 
         case 7:
+                Statistics data = new Statistics(db.getDatabase());
+                data.countStudents();
+                break;
+
+
+        case 8:
                 System.out.println("Checking for save ...");
                 if (f.exitCheck()) {
                     f.fileSave(db.getDatabase());

@@ -36,7 +36,7 @@ public class User implements Serializable{
   */
 
   //blank constructor
-  User() {
+  public User() {
 
   }
 
