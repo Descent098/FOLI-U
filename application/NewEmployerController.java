@@ -2,6 +2,13 @@ package application;
 
 import java.io.IOException;
 import java.util.Stack;
+import java.util.HashMap; 
+import users.Student;
+import users.Employer;
+import users.User;
+import utilities.Database;
+import utilities.FileIO;
+import utilities.Storage;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,12 +25,19 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class NewEmployerController {
-	
+
+
+	//----------------------------------------
+	public FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
+	//---------------------------------------
+
+
 	/**
 	 *controller that controls all pages that help create a new employer
 	 *will save info entered by user and add it to database
 	 */
-	
+
 	@FXML
 	private TextField enterFirstName;
 	@FXML
@@ -44,7 +58,7 @@ public class NewEmployerController {
 	private ComboBox<String> provinceName;
 	@FXML
 	private ComboBox<String> countryName;
-	
+
 	@FXML
 	private TextField companyName;
 	@FXML
@@ -57,26 +71,26 @@ public class NewEmployerController {
 	private ComboBox<String> lookingToHire;
 	@FXML
 	private Button finishNewEmployer;
-	
+
 	@FXML
 	private Button backToMenu;
 	@FXML
 	private Button backToNewUser;
 	@FXML
 	private Button backToEmployer;
-	
+
 	//lists for provinces and states that will change depending on country chosen
 	@FXML
-	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba", 
+	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba",
 			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
 	@FXML
-	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
-			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", 
-			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey", 
-			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", 
+	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey",
+			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
-	
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -87,12 +101,13 @@ public class NewEmployerController {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 	@FXML
 	public void initialize() {
 		System.out.println("employer controller");
+		System.out.println("say something");
 	}
-	
+
 	/**
 	 * continue button clicked and continues employer user creation
 	 * @param event
@@ -124,7 +139,19 @@ public class NewEmployerController {
 				}
         else {
 
-        		Stage stage;
+						//saving of entered information into a new employer
+						//-------------------------------------
+						Employer tempEmployer = new Employer(); 	//creating the temporary employer object
+						tempEmployer.setFirstName(enterFirstName.getText());
+						tempEmployer.setLastName(enterLastName.getText());
+
+						Storage.employerName = (tempEmployer.getFirstName() + tempEmployer.getLastName()); //their full name will act as the hashmap key because it is unique
+						(db.getDatabase()).put(Storage.employerName, tempEmployer); 	//putting the employer object into the hashmap
+
+						f.fileSave(db.getDatabase());	//saving the hashmap to the database file
+						//------------------------------------------
+
+						Stage stage;
         		Parent root;
         		stage = (Stage) continueNewEmployer.getScene().getWindow();
         		root = FXMLLoader.load(getClass().getResource("continuenewemployer.fxml"));
@@ -135,7 +162,7 @@ public class NewEmployerController {
         }
 
 	}
-	
+
 	//when country combobox is changed, updates province/states to correspond
 	@FXML
 	public void changeCountry(ActionEvent event) throws IOException {
@@ -146,7 +173,7 @@ public class NewEmployerController {
 			provinceName.setItems(states);
 		}
 	}
-	
+
 	//finishes employer user creation
 	@FXML
 	public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
@@ -180,6 +207,24 @@ public class NewEmployerController {
           }
         else {
 
+					//saving information from the second page for the employer
+					//---------------------------------------
+					HashMap<String, User> data = db.getDatabase();	//making a convenience variable of the hashmap
+					Employer tempEmployer = (Employer)data.get(Storage.employerName); //getting the emplyer back out of the hashmap to keep editing
+
+					//setting attributes of employer based on the entered information
+					tempEmployer.setCity(cityName.getText());
+					tempEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+					tempEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+					tempEmployer.setCompanyName(companyName.getText());
+					tempEmployer.setEmail(emailAddress.getText());
+					tempEmployer.setPhoneNumber(phoneNumber.getText());
+					tempEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
+
+					f.fileSave(db.getDatabase()); //saving the hashmap again to the file to finish creation of a new employer
+					//--------------------------------------
+
+
 //        		demoEmployer.setCity(cityName.getText());
 //        		demoEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
 //        		demoEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -200,7 +245,7 @@ public class NewEmployerController {
         }
 
 	}
-	
+
 	//back button, goes back to previous page
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
@@ -285,5 +330,5 @@ public class NewEmployerController {
 			stage.show();
 		}
 	}
-	
+
 }
