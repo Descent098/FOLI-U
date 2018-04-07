@@ -16,6 +16,11 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.text.TextAlignment;
 
 import java.util.Optional;
+import users.Employer;
+import users.User;
+import utilities.Database;
+import utilities.FileIO;
+import utilities.Storage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,15 +28,15 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 
 public class EmployerProfileController {
-	
+
 	/**
 	 * controller that controls the profileemployer.fxml page
 	 * will access the database and display user information on this page
-	 * 
+	 *
 	 */
 
 	//labels that will take info from database and display it on page
-	
+
 	@FXML
 	private Label employerName;
 	@FXML
@@ -54,7 +59,7 @@ public class EmployerProfileController {
 	private Label employerEmail;
 	@FXML
 	private Label employerNumber;
-	
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -65,31 +70,38 @@ public class EmployerProfileController {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
-	
+
+
 	@FXML
 	private Label aboutMe;
 	@FXML
 	private Button editAboutMe;
-	
+
 	//temporary random employer to display on profile page
-	@FXML
-	private EmployerJohnDoe johnDoe = new EmployerJohnDoe();
-	
+	//@FXML
+	//private EmployerJohnDoe johnDoe = new EmployerJohnDoe();
+
+	//loading the file, and grabbing the current employer out of it to use
+	private FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad());
+	private Employer tempEmployer = (Employer)((db.getDatabase()).get(Storage.employerName)); 	//retrieve the student from the hashmap within the
+
+
+
 	/**
 	 * sets the label text to user info
 	 */
 	@FXML
 	public void initialize() {
-		employerName.setText(johnDoe.getFirstName() + " " + johnDoe.getLastName());
-		employerCity.setText(johnDoe.getCity());
-		employerCountry.setText(johnDoe.getCountry());
-		employerCompany.setText(johnDoe.getCompanyName());
-		employerEmail.setText(johnDoe.getEmail());
-		employerNumber.setText(johnDoe.getPhoneNumber());
-		employerHiring.setText(johnDoe.getOfferingJobs());
+		employerName.setText(tempEmployer.getFirstName() + " " + tempEmployer.getLastName());
+		employerCity.setText(tempEmployer.getCity());
+		employerCountry.setText(tempEmployer.getCountry());
+		employerCompany.setText(tempEmployer.getCompanyName());
+		employerEmail.setText(tempEmployer.getEmail());
+		employerNumber.setText(tempEmployer.getPhoneNumber());
+		employerHiring.setText(tempEmployer.getOfferingJobs());
 	}
-	
+
 	public void editAbout(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit About Me");
@@ -99,7 +111,7 @@ public class EmployerProfileController {
 		Optional<String> text = dialog.showAndWait();
 		aboutMe.setText(text.get());
 	}
-	
+
 	/**
 	 * changes page in app
 	 * @param event
@@ -151,6 +163,6 @@ public class EmployerProfileController {
 			stage.show();
 		}
 	}
-	
-	
+
+
 }

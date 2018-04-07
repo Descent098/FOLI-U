@@ -27,10 +27,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import utilityUsers.EmployerJohnDoe;
+//import utilityUsers.EmployerJohnDoe;
+
+import users.Employer;
+import users.User;
+import utilities.Database;
+import utilities.FileIO;
+//import utilities.Storage;
+
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle; 
-import javafx.scene.control.ToggleButton; 
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 public class EmployerSearchController {
@@ -50,75 +57,91 @@ public class EmployerSearchController {
 	private Button search;
 	@FXML
 	private Button myProfile;
-	
+
 
 	//variables for search bar and table that displays searched employers
 	@FXML
 	private TextField searchBar;
 	@FXML
-	private TableView<EmployerJohnDoe> employerList;
+	private TableView<Employer> employerList;
 	@FXML
-	private TableColumn<EmployerJohnDoe, String> firstNameColumn;
+	private TableColumn<Employer, String> firstNameColumn;
 	@FXML
-	private TableColumn<EmployerJohnDoe, String> lastNameColumn;
+	private TableColumn<Employer, String> lastNameColumn;
 	@FXML
-	private TableColumn<EmployerJohnDoe, String> companyColumn;
+	private TableColumn<Employer, String> companyColumn;
 
-	private ObservableList<EmployerJohnDoe> employerData = FXCollections.observableArrayList();
-	private ObservableList<EmployerJohnDoe> filteredEmployers = FXCollections.observableArrayList();
-	
+	private ObservableList<Employer> employerData = FXCollections.observableArrayList();
+	private ObservableList<Employer> filteredEmployers = FXCollections.observableArrayList();
+
 	@FXML
 	private RadioButton searchByName;
 	@FXML
 	private RadioButton searchByCompany;
-	
+
 	@FXML
 	private ToggleGroup toggleGroup = new ToggleGroup();
+
+	//loading the file to use for the page
+	private FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad());
 
 	/**
 	 * constructor called at beginning of class instance, currently just adding
 	 * randomly generated employers to search from
 	 */
 	public EmployerSearchController() {
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		employerData.add(new EmployerJohnDoe());
-		
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+		// employerData.add(new EmployerJohnDoe());
+
+		//TESTING adding the real database to the search page...
+		//------------------------------------------------------
+		  for (User s : (db.getDatabase()).values()) {
+				if (s instanceof Employer) {
+					System.out.println("Found an employer!"+ s.getFirstName());
+					employerData.add((Employer)s);
+				}
+
+			}
+
+
+
 		//no filters yet, all employers shown
 		filteredEmployers.addAll(employerData);
-		
-		employerData.addListener(new ListChangeListener<EmployerJohnDoe>() {
+
+		employerData.addListener(new ListChangeListener<Employer>() {
             @Override
-            public void onChanged(ListChangeListener.Change<? extends EmployerJohnDoe> change) {
+            public void onChanged(ListChangeListener.Change<? extends Employer> change) {
                 updateFilteredEmployers();
             }
         });
-		
+
 	}
-	
+
 	/**
 	 * automatically called
 	 * initializes the table with employer information
@@ -126,11 +149,11 @@ public class EmployerSearchController {
 	@FXML
 	private void initialize() {
         firstNameColumn.setCellValueFactory(
-                new PropertyValueFactory<EmployerJohnDoe, String>("firstName"));
+                new PropertyValueFactory<Employer, String>("firstName"));
         lastNameColumn.setCellValueFactory(
-                new PropertyValueFactory<EmployerJohnDoe, String>("lastName"));
+                new PropertyValueFactory<Employer, String>("lastName"));
         companyColumn.setCellValueFactory(
-                new PropertyValueFactory<EmployerJohnDoe, String>("companyName"));
+                new PropertyValueFactory<Employer, String>("companyName"));
 
         // adds filtered employers to list of employers shown on table
         employerList.setItems(filteredEmployers);
@@ -144,16 +167,16 @@ public class EmployerSearchController {
                 updateFilteredEmployers();
             }
         });
-        
+
         //when user clicks on an employer object, new window pops up that displays employer information
-        employerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmployerJohnDoe>() {
+        employerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Employer>() {
             @Override
-            public void changed(ObservableValue<? extends EmployerJohnDoe> observable, EmployerJohnDoe oldValue, EmployerJohnDoe newValue){
+            public void changed(ObservableValue<? extends Employer> observable, Employer oldValue, Employer newValue){
                 if(newValue!=null){
                 		Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Employer Information");
                     alert.setHeaderText(null);
-                    alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' + 
+                    alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' +
                     		"Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
                     		'\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
                     		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
@@ -165,7 +188,7 @@ public class EmployerSearchController {
             }
         });
 	}
-	
+
 	/**
 	 * updates filtered employers, if search bar text matches employer information
 	 * then table changes
@@ -173,7 +196,7 @@ public class EmployerSearchController {
 	private void updateFilteredEmployers() {
         filteredEmployers.clear();
 
-        for (EmployerJohnDoe e : employerData) {
+        for (Employer e : employerData) {
             if (matchesSearch(e)) {
                 filteredEmployers.add(e);
             }
@@ -182,13 +205,13 @@ public class EmployerSearchController {
         // must re-sort table after items changed
         reapplyTableSortOrder();
     }
-	
+
 	/**
 	 * looks to see if search bar texts matches any emplyoer info
 	 * @param employer
 	 * @return
 	 */
-	private boolean matchesSearch(EmployerJohnDoe employer) {
+	private boolean matchesSearch(Employer employer) {
         String filterSearch = searchBar.getText();
         if (filterSearch == null || filterSearch.isEmpty()) {
             // if there is nothing in the search bar, display all employers
@@ -199,17 +222,17 @@ public class EmployerSearchController {
         //makes radio buttons apart of same group so only one can be selected at a time
         searchByName.setToggleGroup(toggleGroup);
         searchByCompany.setToggleGroup(toggleGroup);
-        
+
         //if search by name is selected, then will only display names that match with search text
         if (searchByName.isSelected()) {
         		if (employer.getFirstName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                 return true;
-            } 
+            }
         		else if (employer.getLastName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
                     return true;
                 }
         }
-        //same thing for company name 
+        //same thing for company name
         if (searchByCompany.isSelected()) {
         		if (employer.getCompanyName().toLowerCase().indexOf(lowerCaseFilterSearch) != -1) {
         			return true;
@@ -220,10 +243,10 @@ public class EmployerSearchController {
     }
 
 	/**
-	 * clears the table and reupdates it 
+	 * clears the table and reupdates it
 	 */
     private void reapplyTableSortOrder() {
-        ArrayList<TableColumn<EmployerJohnDoe, ?>> sortOrder = new ArrayList<>(employerList.getSortOrder());
+        ArrayList<TableColumn<Employer, ?>> sortOrder = new ArrayList<>(employerList.getSortOrder());
         employerList.getSortOrder().clear();
         employerList.getSortOrder().addAll(sortOrder);
     }
