@@ -10,7 +10,7 @@ public class Student extends User{
   private String university; //Create a dropdown list of options
   private String degree;
   private double GPA;
-  private String studentType;
+  private String studentType = "";
 
   //Default Constructor
   public Student(){

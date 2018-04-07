@@ -47,7 +47,6 @@ public class NewStudentController {
 //----------------------------------------
 private FileIO f = new FileIO();
 private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
-//Storage locker = new Storage();
 //---------------------------------------
 
 	/**
@@ -147,7 +146,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	@FXML
 	public void initialize() {
-		System.out.println("student controller");
+		System.out.println("student controller");	//for testing
 	}
 
 	/**
@@ -173,7 +172,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
     		alert.setHeaderText(null);
     		alert.setContentText("Invalid UID!");
     		alert.showAndWait();
-    }
+    		}
 				//if the user chooses a username that is too short/long
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
         		alert.setTitle("Error");
@@ -188,9 +187,11 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 						alert.setContentText("Passwords do not match!");
 						alert.showAndWait();
 				}
-				//continues onto next page
-        else {
 
+        else { 	//continues onto next page
+
+				//Creates a temporary student object and saves the entered info to it, then they are saved to
+				//the hashmap in database. This database object is then saved to a file.
 				//-------------------------------------
 				Student tempStudent = new Student();
 				tempStudent.setFirstName(enterFirstName.getText());
@@ -198,11 +199,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 				tempStudent.setUID(enterUID.getText());
 				(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
-				Storage.UID = (tempStudent.getUID());
-				System.out.println("UID before:"+ Storage.UID);
+				//Storage.UID = (tempStudent.getUID());//testing
+				//System.out.println("UID before:"+ Storage.UID);
 
-				//FileIO saver = new FileIO();
-				//saver.fileSave(db.getDatabase());
 				f.fileSave(db.getDatabase());
 				//------------------------------------------
 
@@ -320,15 +319,11 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
 					//testing....
-					System.out.println("The temp student's year:"+tempStudent.getProgramYear());
-					System.out.println("The temp student's name:"+tempStudent.getFirstName());
-					System.out.println("UID after:"+ Storage.UID);
+					//System.out.println("The temp student's year:"+tempStudent.getProgramYear());
+					//System.out.println("The temp student's name:"+tempStudent.getFirstName());
+					//System.out.println("UID after:"+ Storage.UID);
 					//tempStudent.printContactInfo(); //holy grail of tests
 
-
-					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent); //need to put the student back in??
-					//FileIO saver = new FileIO();
-					//saver.fileSave(db.getDatabase();
 					f.fileSave(db.getDatabase());
 					//--------------------------------------
 
