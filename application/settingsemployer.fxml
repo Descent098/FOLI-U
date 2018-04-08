@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewEmployerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployerSettingsController">
    <children>
-      <ToolBar layoutY="516.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-effect: null; -fx-border-color: white;">
-         <items>
-            <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
+      <ToolBar layoutY="519.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-effect: null; -fx-border-color: white;">
+        <items>
+          <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
                <font>
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
@@ -34,7 +34,137 @@
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Button>
-         </items>
+        </items>
       </ToolBar>
+      <Label layoutX="14.0" layoutY="60.0" text="Name:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="110.0" text="City:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="160.0" text="Province:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="14.0" text="Edit Information">
+         <font>
+            <Font name="AppleGothic Regular" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="210.0" text="Country:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="260.0" text="Company:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="310.0" text="Phone Number:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="360.0" text="Email Address:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerName" layoutX="154.0" layoutY="60.0" text="name">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerCity" layoutX="154.0" layoutY="109.0" text="city">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerProvince" layoutX="154.0" layoutY="159.0" text="province">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerCountry" layoutX="154.0" layoutY="209.0" text="country">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerCompany" layoutX="154.0" layoutY="259.0" text="company">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerNumber" layoutX="154.0" layoutY="309.0" text="number">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerEmail" layoutX="154.0" layoutY="359.0" text="email">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="296.0" layoutY="464.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="64.0" style="-fx-background-color: black;" text="Save" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="109.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="159.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="209.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="259.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="309.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="328.0" layoutY="359.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Label layoutX="14.0" layoutY="410.0" text="Hiring:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="employerHiring" layoutX="154.0" layoutY="409.0" text="hiring">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="328.0" layoutY="409.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
