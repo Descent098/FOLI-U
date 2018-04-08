@@ -6,6 +6,7 @@ import users.Student;
 import users.User;
 import utilityUsers.EmployerJohnDoe;
 import utilityUsers.JohnDoe;
+import java.text.DecimalFormat;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,8 @@ public void selectMenu(){
         System.out.println("4 for creating and printing random users:");
         System.out.println("5 Load database: ");
 	      System.out.println("6 Search for multiple users: "); //will expand this to search by other criteria too
-        System.out.println("7 Exit program: ");
+        System.out.println("7 Generate Statistics: ");
+        System.out.println("8 Exit program: ");
 
         input = new Scanner(System.in);
         int choice = input.nextInt();
@@ -152,7 +154,18 @@ public void selectMenu(){
 
 				break;
 
-        case 7:
+
+        case 7: Statistics textStats = new Statistics();
+        DecimalFormat df = new DecimalFormat("#.##"); //Strips everything after the second decimal place for nice printing
+          System.out.println("There are: " + textStats.howManyStudents(db.getDatabase()) +  " Student(s) in the database");
+          System.out.println("They Make up: %" + df.format(textStats.percentageofStudents(db.getDatabase())) +  " of the user(s) in the database\n\n");
+
+          System.out.println("There are: " + textStats.howManyEmployers(db.getDatabase()) +  " Employer(s) in the database");
+          System.out.println("They Make up: %" + df.format(textStats.percentageofEmployers(db.getDatabase())) +  " of the user(s) in the database\n\n");
+
+
+          break;
+        case 8:
                 System.out.println("Checking for save ...");
                 if (f.exitCheck()) {
                     f.fileSave(db.getDatabase());
