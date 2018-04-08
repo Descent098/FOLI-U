@@ -25,6 +25,8 @@ import utilities.FileIO;
 import utilities.Storage;
 import javafx.fxml.Initializable;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 import java.util.Stack;
 import java.util.ArrayList;
@@ -151,7 +153,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	@FXML
 	public void initialize() {
-		System.out.println("student controller");
+		dateOfBirth.setValue(LocalDate.of(2000, 1, 1));
 	}
 
 	/**
@@ -283,11 +285,17 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 				//if user user leaves fields blank
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || degreeType.getSelectionModel().isEmpty() 
-        		|| yearOfStudy.getSelectionModel().isEmpty()) {
+        		|| yearOfStudy.getSelectionModel().isEmpty() || dateOfBirth.getValue().equals(null)) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
+        }
+        else if (dateOfBirth.getValue().isAfter(LocalDate.now())) {
+        	alert.setTitle("Error");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Invalid date of birth!");
+    		alert.showAndWait();
         }
         else {
 

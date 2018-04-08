@@ -156,7 +156,7 @@
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="154.0" layoutY="390.0" text="gpa">
+      <Label fx:id="studentGPA" layoutX="154.0" layoutY="390.0" text="gpa">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
@@ -166,42 +166,42 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editName" layoutX="328.0" layoutY="59.0" mnemonicParsing="false" onAction="#editName" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="89.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editCity" layoutX="328.0" layoutY="89.0" mnemonicParsing="false" onAction="#editCity" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="119.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editProvince" layoutX="328.0" layoutY="119.0" mnemonicParsing="false" onAction="#editProvince" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="149.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editCountry" layoutX="328.0" layoutY="149.0" mnemonicParsing="false" onAction="#editCountry" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="179.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editUni" layoutX="328.0" layoutY="179.0" mnemonicParsing="false" onAction="#editUni" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="209.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editDegree" layoutX="328.0" layoutY="209.0" mnemonicParsing="false" onAction="#editDegree" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="239.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editType" layoutX="328.0" layoutY="239.0" mnemonicParsing="false" onAction="#editType" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="269.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editYear" layoutX="328.0" layoutY="269.0" mnemonicParsing="false" onAction="#editYear" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
@@ -211,17 +211,17 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="329.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editPhone" layoutX="328.0" layoutY="329.0" mnemonicParsing="false" onAction="#editNumber" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="359.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editEmail" layoutX="328.0" layoutY="359.0" mnemonicParsing="false" onAction="#editEmail" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="328.0" layoutY="389.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
+      <Button fx:id="editGPA" layoutX="328.0" layoutY="389.0" mnemonicParsing="false" onAction="#editGPA" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: black;" text="edit" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
