@@ -47,6 +47,7 @@ public class NewStudentController {
 //----------------------------------------
 private FileIO f = new FileIO();
 private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
+//Storage locker = new Storage();
 //---------------------------------------
 
 	/**
@@ -73,7 +74,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	private Button continueNewStudent;
 	@FXML
-	private Button continueNewEmployer;
+	private TextField emailAddress;
+	@FXML
+	private TextField phoneNumber;
 	@FXML
 	private TextField cityName;
 	@FXML
@@ -86,6 +89,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	private ComboBox<String> universityName;
 	@FXML
 	private ComboBox<String> degree;
+	@FXML
+	private ComboBox<String> degreeType;
 	@FXML
 	private ComboBox<String> yearOfStudy;
 	@FXML
@@ -146,7 +151,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	@FXML
 	public void initialize() {
-		System.out.println("student controller");	//for testing
+		System.out.println("student controller");
 	}
 
 	/**
@@ -161,7 +166,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		//will add if statements to check other fields as well
 		//gets the text from user input and checks to make sure it's valid
         if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || enterUsername.getText().isEmpty() ||
-        		enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        		enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty() || emailAddress.getText().isEmpty() ||
+        		phoneNumber.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -172,7 +178,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
     		alert.setHeaderText(null);
     		alert.setContentText("Invalid UID!");
     		alert.showAndWait();
-    		}
+    }
 				//if the user chooses a username that is too short/long
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
         		alert.setTitle("Error");
@@ -187,21 +193,41 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 						alert.setContentText("Passwords do not match!");
 						alert.showAndWait();
 				}
-
-        else { 	//continues onto next page
-
-				//Creates a temporary student object and saves the entered info to it, then they are saved to
+			//checks if email address is in valid format
+			//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+			else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+					"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Invalid email address!");
+				alert.showAndWait();
+			}
+			//checks if phone number is in the right format
+			//both 000-000-0000 and 0000000000 work
+			else if (!phoneNumber.getText().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Invalid phone number!");
+				alert.showAndWait();
+			}
+				//continues onto next page
+        else {
+        		//Creates a temporary student object and saves the entered info to it, then they are saved to
 				//the hashmap in database. This database object is then saved to a file.
 				//-------------------------------------
 				Student tempStudent = new Student();
 				tempStudent.setFirstName(enterFirstName.getText());
 				tempStudent.setLastName(enterLastName.getText());
 				tempStudent.setUID(enterUID.getText());
+				tempStudent.setPhoneNumber(phoneNumber.getText());
+				tempStudent.setEmail(emailAddress.getText());
 				(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
-				//Storage.UID = (tempStudent.getUID());//testing
-				//System.out.println("UID before:"+ Storage.UID);
+				Storage.UID = (tempStudent.getUID());
+				System.out.println("UID before:"+ Storage.UID);
 
+				//FileIO saver = new FileIO();
+				//saver.fileSave(db.getDatabase());
 				f.fileSave(db.getDatabase());
 				//------------------------------------------
 
@@ -256,7 +282,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		TextInputDialog gpa = new TextInputDialog();
 				//if user user leaves fields blank
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
-        		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || yearOfStudy.getSelectionModel().isEmpty()) {
+        		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || degreeType.getSelectionModel().isEmpty() 
+        		|| yearOfStudy.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -314,14 +341,15 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
 					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setProgramYear(Integer.parseInt(year));
 					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
 					//testing....
-					//System.out.println("The temp student's year:"+tempStudent.getProgramYear());
-					//System.out.println("The temp student's name:"+tempStudent.getFirstName());
-					//System.out.println("UID after:"+ Storage.UID);
+//					System.out.println("The temp student's year:"+tempStudent.getProgramYear());
+//					System.out.println("The temp student's name:"+tempStudent.getFirstName());
+//					System.out.println("UID after:"+ Storage.UID);
 					//tempStudent.printContactInfo(); //holy grail of tests
 
 					f.fileSave(db.getDatabase());

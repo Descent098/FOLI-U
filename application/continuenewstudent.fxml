@@ -19,57 +19,62 @@
             <Font name="AppleGothic Regular" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="250.0" text="University:">
+      <Label layoutX="34.0" layoutY="220.0" text="University:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="300.0" text="Degree:">
+      <Label layoutX="34.0" layoutY="270.0" text="Degree:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="350.0" text="Year of Study:">
+      <Label layoutX="34.0" layoutY="370.0" text="Year of Study:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="400.0" text="Date of Birth:">
+      <Label layoutX="34.0" layoutY="420.0" text="Date of Birth:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="450.0" text="Calculate GPA (optional):">
+      <Label layoutX="34.0" layoutY="470.0" text="Calculate GPA (optional):">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cityName" layoutX="159.0" layoutY="196.0" />
-      <DatePicker fx:id="dateOfBirth" layoutX="159.0" layoutY="396.0" prefHeight="27.0" prefWidth="167.0" />
+      <TextField fx:id="cityName" layoutX="159.0" layoutY="166.0" />
+      <DatePicker fx:id="dateOfBirth" layoutX="159.0" layoutY="416.0" prefHeight="27.0" prefWidth="167.0" />
       <Button fx:id="backToStudent" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backButtonClickedStudent" text="Back" />
-      <Label layoutX="34.0" layoutY="200.0" text="City:">
+      <Label layoutX="34.0" layoutY="170.0" text="City:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="150.0" text="Province:">
+      <Label layoutX="34.0" layoutY="120.0" text="Province:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="100.0" text="Country:">
+      <Label layoutX="34.0" layoutY="320.0" text="Degree Type:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <RadioButton fx:id="calculateGPA" layoutX="214.0" layoutY="450.0" mnemonicParsing="false" text="Yes">
+      <Label layoutX="34.0" layoutY="70.0" text="Country:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="calculateGPA" layoutX="214.0" layoutY="470.0" mnemonicParsing="false" text="Yes">
          <toggleGroup>
             <ToggleGroup fx:id="gpaGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="dontCalculateGPA" layoutX="285.0" layoutY="450.0" mnemonicParsing="false" text="No" toggleGroup="$gpaGroup" />
+      <RadioButton fx:id="dontCalculateGPA" layoutX="285.0" layoutY="470.0" mnemonicParsing="false" text="No" toggleGroup="$gpaGroup" />
       <Button fx:id="finishNewStudent" layoutX="160.0" layoutY="510.0" mnemonicParsing="false" onAction="#finishButtonClickedStudent" text="Finish" />
-      <ComboBox fx:id="countryName" layoutX="159.0" layoutY="96.0" onAction="#changeCountry" prefHeight="27.0" prefWidth="167.0">
+      <ComboBox fx:id="countryName" layoutX="159.0" layoutY="66.0" onAction="#changeCountry" prefHeight="27.0" prefWidth="167.0">
       	<items>
         		<FXCollections fx:factory="observableArrayList">
             		<String fx:value="Canada" />
@@ -77,8 +82,8 @@
         		</FXCollections>
     		</items>
 	  </ComboBox>
-      <ComboBox fx:id="provinceName" layoutX="159.0" layoutY="146.0" onAction="#changeProvince" prefHeight="27.0" prefWidth="167.0" />
-      <ComboBox fx:id="universityName" layoutX="159.0" layoutY="246.0" prefHeight="27.0" prefWidth="167.0">
+      <ComboBox fx:id="provinceName" layoutX="159.0" layoutY="116.0" onAction="#changeProvince" prefHeight="27.0" prefWidth="167.0" />
+      <ComboBox fx:id="universityName" layoutX="159.0" layoutY="216.0" prefHeight="27.0" prefWidth="167.0">
       	<items>
         		<FXCollections fx:factory="observableArrayList">
             		<String fx:value="University of Calgary" />
@@ -91,7 +96,7 @@
         		</FXCollections>
     		</items>
 	  </ComboBox>
-      <ComboBox fx:id="degree" layoutX="159.0" layoutY="296.0" prefHeight="27.0" prefWidth="167.0">
+      <ComboBox fx:id="degree" layoutX="159.0" layoutY="266.0" prefHeight="27.0" prefWidth="167.0">
 		<items>
         		<FXCollections fx:factory="observableArrayList">
             		<String fx:value="Computer Science" />
@@ -104,7 +109,16 @@
         		</FXCollections>
     		</items>
 	  </ComboBox>
-      <ComboBox fx:id="yearOfStudy" layoutX="159.0" layoutY="346.0" prefHeight="27.0" prefWidth="167.0">
+      <ComboBox fx:id="degreeType" layoutX="159.0" layoutY="316.0" prefHeight="27.0" prefWidth="167.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Undergraduate" />
+               <String fx:value="Masters" />
+               <String fx:value="Doctoral" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="yearOfStudy" layoutX="159.0" layoutY="366.0" prefHeight="27.0" prefWidth="167.0">
       	<items>
         		<FXCollections fx:factory="observableArrayList">
             		<String fx:value="1" />

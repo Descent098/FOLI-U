@@ -1,36 +1,30 @@
 package application;
 
+import java.io.IOException;
+import java.util.Optional;
+import java.util.Stack;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import users.Student;
 import utilities.Database;
 import utilities.FileIO;
 import utilities.Storage;
 import utilityUsers.JohnDoe;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.text.TextAlignment;
-import javafx.geometry.Pos;
 
-import java.util.Optional;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.Stack;
-
-public class StudentProfileController {
+public class StudentSettingsController {
 
 	/**
-	 * controller for the student profile page
-	 * tkaes user info from database and displays it here
+	 * controller for the student settings page
+	 * takes user info from database and displays it here, allows user to edit their info
 	 */
 	@FXML
 	private Label studentName;
@@ -73,10 +67,6 @@ public class StudentProfileController {
 	@FXML
 	private Button myProfile;
 
-	@FXML
-	private Label aboutMe;
-	@FXML
-	private Button editAboutMe;
 
 
 	//loading the file, and grabbing the current student out of it to use
@@ -93,24 +83,17 @@ public class StudentProfileController {
 	@FXML
 	public void initialize() {
 		studentName.setText(tempStudent.getFirstName() + " " + tempStudent.getLastName());
-		studentCity.setText(tempStudent.getCity() + ", " + tempStudent.getProvince());
+		studentCity.setText(tempStudent.getCity());
+		studentProvince.setText(tempStudent.getProvince());
 		studentCountry.setText(tempStudent.getCountry());
 		studentUni.setText(tempStudent.getUniversity());
 		studentDegree.setText(tempStudent.getDegree());
-		studentID.setText(tempStudent.getUID());
+		studentType.setText(tempStudent.getStudentType());
+		String year = Integer.toString(tempStudent.getProgramYear());
+		studentYear.setText(year);
 		studentNumber.setText(tempStudent.getPhoneNumber());
 		studentEmail.setText(tempStudent.getEmail());
-		studentType.setText(tempStudent.getStudentType());
-	}
-	
-	public void editAbout(ActionEvent event) throws IOException {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit About Me");
-		dialog.setContentText("About Me:");
-		dialog.getEditor().setPrefSize(300, 200);
-		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
-		Optional<String> text = dialog.showAndWait();
-		aboutMe.setText(text.get());
+
 	}
 
 
