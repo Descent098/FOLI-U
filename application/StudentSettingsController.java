@@ -324,7 +324,7 @@ public class StudentSettingsController {
 		else if (Double.parseDouble(text.get()) < 0 || Double.parseDouble(text.get()) > 4.3) {
 			alert.setTitle("Error");
 			alert.setHeaderText(null);
-			alert.setContentText("Invalid email address!");
+			alert.setContentText("Invalid GPA!");
 			alert.showAndWait();
 		}
 		else {
@@ -334,6 +334,7 @@ public class StudentSettingsController {
 	
 	public void calculateGPA(ActionEvent event) throws IOException {
 		TextInputDialog gpa = new TextInputDialog();
+		
 		GridPane grid = new GridPane();
 		grid.setHgap(10);
 		grid.setVgap(10);
@@ -343,30 +344,26 @@ public class StudentSettingsController {
 		TextField numOfCourses = new TextField();
 		numOfCourses.setPromptText("0");
 		Button numCoursesButton = new Button("Enter");
-		TextField firstCourse = new TextField();
-		firstCourse.setPromptText("0");
-		Button firstCourseButton = new Button("Enter");
-		TextField secondCourse = new TextField();
-		secondCourse.setPromptText("0");
-		Button secondCourseButton = new Button("Enter");
-
+		
 		grid.add(new Label("Enter number of courses: "), 0, 0);
 		grid.add(numOfCourses, 1, 0);
 		grid.add(numCoursesButton, 2, 0);
-		grid.add(new Label("Enter First Class: "), 0, 1);
-		grid.add(firstCourse, 1, 1);
-		grid.add(firstCourseButton, 2, 1);
-		grid.add(new Label("Enter Second Class: "), 0, 2);
-		grid.add(secondCourse, 1, 2);
-		grid.add(secondCourseButton, 2, 2);
-
+		
 		gpa.getDialogPane().setContent(grid);
 		gpa.setTitle("GPA Calculator");
+		
+		numCoursesButton.setOnAction((ActionEvent)->{
+			for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
+				TextField course = new TextField();
+				course.setPromptText("Between 0.0 and 4.3");
+				grid.add(new Label("Grade for class" + " " + (i + 1)), 0, i + 1);
+				grid.add(course, 1, i + 1);
+				gpa.getDialogPane().setContent(grid);
+				gpa.getDialogPane().getScene().getWindow().sizeToScene();
+			}
+	    });
 
-		Optional<String> result = gpa.showAndWait();
-		if (!result.get().isEmpty()){
-		    System.out.println("1");
-		}
+		gpa.showAndWait();
 	}
 	
 	public void saveButton(ActionEvent event) throws IOException {
