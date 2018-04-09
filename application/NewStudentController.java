@@ -153,7 +153,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	@FXML
 	public void initialize() {
-		dateOfBirth.setValue(LocalDate.of(2000, 1, 1));
+		System.out.println("student controller");
 	}
 
 	/**
@@ -350,6 +350,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
+					System.out.println(dateOfBirth.getValue().toString());
 					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setProgramYear(Integer.parseInt(year));
 					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);

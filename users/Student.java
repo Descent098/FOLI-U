@@ -11,6 +11,7 @@ public class Student extends User{
   private String degree;
   private double GPA;
   private String studentType = "";
+  private String DOB;
 
   //Default Constructor
   public Student(){
@@ -173,6 +174,14 @@ public class Student extends User{
     double printedGPA = new Double(GPA);
     return printedGPA;
   }
+  
+  public String getDOB() {
+	  String printedDOB = new String(DOB);
+	  return printedDOB;
+  }
 
+  public void setDOB(String dob) {
+	  DOB = dob;
+  }
 
 }

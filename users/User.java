@@ -279,5 +279,9 @@ public class User implements Serializable{
   public String getOfferingJobs(){ //Class will be overridden in student
     return "hello";
   }
+  
+  public String getDOB() {
+	  return "hello";
+  }
 
 }

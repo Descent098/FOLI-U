@@ -179,7 +179,7 @@ public class StudentSearchController {
                       alert.setHeaderText(null);
                       alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' +
                       		"UID: " + newValue.getUID() + '\n' + "University: " + newValue.getUniversity() +
-                      		'\n' + "Degree: " + newValue.getDegree() + '\n' + "Phone Number: " + newValue.getPhoneNumber() +
+                      		'\n' + "Degree: " + newValue.getDegree() + "Degree Type: " + newValue.getStudentType() + '\n' + "Phone Number: " + newValue.getPhoneNumber() +
                       		'\n' + "Email Address: " + newValue.getEmail() +
                       		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
                       		"City: " + newValue.getCity());

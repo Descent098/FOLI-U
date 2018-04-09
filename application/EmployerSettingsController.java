@@ -1,20 +1,31 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import users.Employer;
+import users.Student;
+import users.User;
 import utilities.Database;
 import utilities.FileIO;
 import utilities.Storage;
@@ -27,7 +38,9 @@ public class EmployerSettingsController {
 	 * takes user info from database and displays it here, allows user to edit their info
 	 */
 	@FXML
-	private Label employerName;
+	private Label employerFirstName;
+	@FXML
+	private Label employerLastName;
 	@FXML
 	private Label employerUsername;
 	@FXML
@@ -46,6 +59,27 @@ public class EmployerSettingsController {
 	private Label employerNumber;
 	@FXML
 	private Label employerHiring;
+	
+	@FXML
+	private Button editFirstName;
+	@FXML
+	private Button editLastName;
+	@FXML
+	private Button editCity;
+	@FXML
+	private Button editProvince;
+	@FXML
+	private Button editCountry;
+	@FXML
+	private Button editCompany;
+	@FXML
+	private Button editHiring;
+	@FXML
+	private Button editEmail;
+	@FXML
+	private Button editPhone;
+	@FXML
+	private Button saveChanges;
 
 
 	@FXML
@@ -74,7 +108,8 @@ public class EmployerSettingsController {
 
 	@FXML
 	public void initialize() {
-		employerName.setText(tempEmployer.getFirstName() + " " + tempEmployer.getLastName());
+		employerFirstName.setText(tempEmployer.getFirstName());
+		employerLastName.setText(tempEmployer.getLastName());
 		employerCity.setText(tempEmployer.getCity());
 		employerProvince.setText(tempEmployer.getProvince());
 		employerCountry.setText(tempEmployer.getCountry());
@@ -83,6 +118,173 @@ public class EmployerSettingsController {
 		employerNumber.setText(tempEmployer.getPhoneNumber());
 		employerEmail.setText(tempEmployer.getEmail());
 
+	}
+	
+	public void editFirstName(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit City");
+		dialog.setContentText("City:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerFirstName.setText(tempEmployer.getFirstName());
+		}
+		else {
+			employerFirstName.setText(text.get());
+		}
+	}
+	
+	public void editLastName(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit City");
+		dialog.setContentText("City:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerLastName.setText(tempEmployer.getLastName());
+		}
+		else {
+			employerLastName.setText(text.get());
+		}
+	}
+	
+	public void editCity(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit City");
+		dialog.setContentText("City:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerCity.setText(tempEmployer.getCity());
+		}
+		else {
+			employerCity.setText(text.get());
+		}
+	}
+
+	public void editProvince(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit Province");
+		dialog.setContentText("Province:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerProvince.setText(tempEmployer.getProvince());
+		}
+		else {
+			employerProvince.setText(text.get());
+		}
+	}
+	
+	public void editCountry(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit Country");
+		dialog.setContentText("Country:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerCountry.setText(tempEmployer.getCountry());
+		}
+		else {
+			employerCountry.setText(text.get());
+		}
+	}
+	
+	public void editCompany(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit Company");
+		dialog.setContentText("Company name:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerCompany.setText(tempEmployer.getCompanyName());
+		}
+		else {
+			employerCompany.setText(text.get());
+		}
+	}
+	
+	public void editHiring(ActionEvent event) throws IOException {
+		List<String> choices = new ArrayList<>();
+		choices.add("Yes");
+		choices.add("No");
+
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("Yes", choices);
+		dialog.setTitle("Edit Hiring");
+		dialog.setContentText("Currently hiring:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.get().isEmpty()) {
+			employerHiring.setText(tempEmployer.getOfferingJobs());
+		}
+		else {
+			employerHiring.setText(result.get());
+		}
+	}
+	
+	public void editNumber(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		Alert alert = new Alert(AlertType.ERROR);
+		dialog.setTitle("Edit Phone Number");
+		dialog.setContentText("Phone number:");
+		dialog.getEditor().setPromptText("000-000-0000");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerNumber.setText(tempEmployer.getPhoneNumber());
+		}
+		else if (!text.get().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid phone number!");
+			alert.showAndWait();
+		}
+		else {
+			employerNumber.setText(text.get());
+		}
+	}
+	
+	public void editEmail(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		Alert alert = new Alert(AlertType.ERROR);
+		dialog.setTitle("Edit Email");
+		dialog.setContentText("Email address:");
+		dialog.getEditor().setPromptText("johndoe@gmail.com");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			employerEmail.setText(tempEmployer.getEmail());
+		}
+		else if (!text.get().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+				"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid email address!");
+			alert.showAndWait();
+		}
+		else {
+			employerEmail.setText(text.get());
+		}
+	}
+	
+	public void saveButton(ActionEvent event) throws IOException {
+		
+		HashMap<String, User> data = db.getDatabase();
+		//Student tempStudent = new Student(data.get(Storage.UID));
+		Employer tempEmployer = (Employer)data.get(Storage.employerName); //?
+		
+		tempEmployer.setFirstName(employerFirstName.getText());
+		tempEmployer.setLastName(employerLastName.getText());
+		tempEmployer.setCity(employerCity.getText());
+		tempEmployer.setProvince(employerProvince.getText());
+		tempEmployer.setCountry(employerCountry.getText());
+		tempEmployer.setCompanyName(employerCompany.getText());
+		tempEmployer.setOfferingJobs(employerHiring.getText());
+		tempEmployer.setEmail(employerEmail.getText());
+		tempEmployer.setPhoneNumber(employerNumber.getText());
+		
+		f.fileSave(db.getDatabase());
 	}
 
 

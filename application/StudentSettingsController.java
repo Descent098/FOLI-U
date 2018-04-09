@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.Stack;
 
@@ -11,13 +12,16 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import users.Student;
+import users.User;
 import utilities.Database;
 import utilities.FileIO;
 import utilities.Storage;
@@ -30,7 +34,9 @@ public class StudentSettingsController {
 	 * takes user info from database and displays it here, allows user to edit their info
 	 */
 	@FXML
-	private Label studentName;
+	private Label studentFirstName;
+	@FXML
+	private Label studentLastName;
 	@FXML
 	private Label studentUsername;
 	@FXML
@@ -61,7 +67,9 @@ public class StudentSettingsController {
 	private Label studentGPA;
 	
 	@FXML
-	private Button editName;
+	private Button editFirstName;
+	@FXML
+	private Button editLastName;
 	@FXML
 	private Button editCity;
 	@FXML
@@ -86,6 +94,8 @@ public class StudentSettingsController {
 	private Button editDOB;
 	@FXML
 	private Button calculateGPA;
+	@FXML
+	private Button saveChanges;
 
 
 	@FXML
@@ -114,7 +124,8 @@ public class StudentSettingsController {
 
 	@FXML
 	public void initialize() {
-		studentName.setText(tempStudent.getFirstName() + " " + tempStudent.getLastName());
+		studentFirstName.setText(tempStudent.getFirstName());
+		studentLastName.setText(tempStudent.getLastName());
 		studentCity.setText(tempStudent.getCity());
 		studentProvince.setText(tempStudent.getProvince());
 		studentCountry.setText(tempStudent.getCountry());
@@ -128,15 +139,32 @@ public class StudentSettingsController {
 
 	}
 	
-	public void editName(ActionEvent event) throws IOException {
+	public void editFirstName(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit Name");
-		dialog.setContentText("Full name:");
+		dialog.setTitle("Edit City");
+		dialog.setContentText("City:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		tempStudent.setFirstName(text.get().substring(0, 1));
-		tempStudent.setLastName(text.get().substring(1));
-		studentName.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentFirstName.setText(tempStudent.getFirstName());
+		}
+		else {
+			studentFirstName.setText(text.get());
+		}
+	}
+	
+	public void editLastName(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit City");
+		dialog.setContentText("City:");
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		if (text.get().isEmpty()) {
+			studentLastName.setText(tempStudent.getLastName());
+		}
+		else {
+			studentLastName.setText(text.get());
+		}
 	}
 	
 	public void editCity(ActionEvent event) throws IOException {
@@ -145,7 +173,12 @@ public class StudentSettingsController {
 		dialog.setContentText("City:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentCity.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentCity.setText(tempStudent.getCity());
+		}
+		else {
+			studentCity.setText(text.get());
+		}
 	}
 
 	public void editProvince(ActionEvent event) throws IOException {
@@ -154,7 +187,12 @@ public class StudentSettingsController {
 		dialog.setContentText("Province:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentProvince.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentProvince.setText(tempStudent.getProvince());
+		}
+		else {
+			studentProvince.setText(text.get());
+		}
 	}
 	
 	public void editCountry(ActionEvent event) throws IOException {
@@ -163,7 +201,12 @@ public class StudentSettingsController {
 		dialog.setContentText("Country:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentCountry.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentCountry.setText(tempStudent.getCountry());
+		}
+		else {
+			studentCountry.setText(text.get());
+		}
 	}
 	
 	public void editUni(ActionEvent event) throws IOException {
@@ -172,7 +215,12 @@ public class StudentSettingsController {
 		dialog.setContentText("University name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentUni.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentUni.setText(tempStudent.getUniversity());
+		}
+		else {
+			studentUni.setText(text.get());
+		}
 	}
 	
 	public void editDegree(ActionEvent event) throws IOException {
@@ -181,7 +229,12 @@ public class StudentSettingsController {
 		dialog.setContentText("Degree name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentDegree.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentDegree.setText(tempStudent.getDegree());
+		}
+		else {
+			studentDegree.setText(text.get());
+		}
 	}
 	
 	public void editYear(ActionEvent event) throws IOException {
@@ -190,7 +243,12 @@ public class StudentSettingsController {
 		dialog.setContentText("Year of study:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentYear.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentYear.setText(Integer.toString(tempStudent.getProgramYear()));
+		}
+		else {
+			studentYear.setText(text.get());
+		}
 	}
 	
 	public void editType(ActionEvent event) throws IOException {
@@ -199,43 +257,79 @@ public class StudentSettingsController {
 		dialog.setContentText("Degree type:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentType.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentType.setText(tempStudent.getStudentType());
+		}
+		else {
+			studentType.setText(text.get());
+		}
 	}
 	
-	public void editDOB(ActionEvent event) throws IOException {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit Birthday");
-		dialog.setContentText("Date of birth:");
-		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
-		Optional<String> text = dialog.showAndWait();
-		studentDOB.setText(text.get());
-	}
 	
 	public void editNumber(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
+		Alert alert = new Alert(AlertType.ERROR);
 		dialog.setTitle("Edit Phone Number");
 		dialog.setContentText("Phone number:");
+		dialog.getEditor().setPromptText("000-000-0000");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentNumber.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentNumber.setText(tempStudent.getPhoneNumber());
+		}
+		else if (!text.get().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid phone number!");
+			alert.showAndWait();
+		}
+		else {
+			studentNumber.setText(text.get());
+		}
 	}
 	
 	public void editEmail(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
+		Alert alert = new Alert(AlertType.ERROR);
 		dialog.setTitle("Edit Email");
 		dialog.setContentText("Email address:");
+		dialog.getEditor().setPromptText("johndoe@gmail.com");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentEmail.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentEmail.setText(tempStudent.getEmail());
+		}
+		else if (!text.get().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+				"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid email address!");
+			alert.showAndWait();
+		}
+		else {
+			studentEmail.setText(text.get());
+		}
 	}
 	
 	public void editGPA(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
+		Alert alert = new Alert(AlertType.ERROR);
 		dialog.setTitle("Edit GPA");
 		dialog.setContentText("GPA:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
-		studentGPA.setText(text.get());
+		if (text.get().isEmpty()) {
+			studentGPA.setText(Double.toString(tempStudent.getGPA()));
+		}
+		else if (Double.parseDouble(text.get()) < 0 || Double.parseDouble(text.get()) > 4.3) {
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid email address!");
+			alert.showAndWait();
+		}
+		else {
+			studentGPA.setText(text.get());
+		}
 	}
 	
 	public void calculateGPA(ActionEvent event) throws IOException {
@@ -276,8 +370,13 @@ public class StudentSettingsController {
 	}
 	
 	public void saveButton(ActionEvent event) throws IOException {
-		tempStudent.setFirstName(studentName.getText().substring(0, 1));
-		tempStudent.setLastName(studentName.getText().substring(1));
+		
+		HashMap<String, User> data = db.getDatabase();
+		//Student tempStudent = new Student(data.get(Storage.UID));
+		Student tempStudent = (Student)data.get(Storage.UID); //?
+		
+		tempStudent.setFirstName(studentFirstName.getText());
+		tempStudent.setLastName(studentLastName.getText());
 		tempStudent.setCity(studentCity.getText());
 		tempStudent.setProvince(studentProvince.getText());
 		tempStudent.setCountry(studentCountry.getText());
@@ -287,8 +386,6 @@ public class StudentSettingsController {
 		tempStudent.setProgramYear(Integer.parseInt(year));
 		tempStudent.setEmail(studentEmail.getText());
 		tempStudent.setPhoneNumber(studentNumber.getText());
-		String gpa = studentGPA.getText();
-		tempStudent.setGPA(Double.parseDouble(gpa));
 		
 		f.fileSave(db.getDatabase());
 	}
