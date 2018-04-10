@@ -96,13 +96,15 @@ public class EmployerHomeController {
 		 
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
-		            new PieChart.Data("Business", stats.howManyStudentsInDegree(db.getDatabase(), "Business")),
-		            new PieChart.Data("Computer Science", stats.howManyStudentsInDegree(db.getDatabase(), "Computer Science")),
-		            new PieChart.Data("Engineering", stats.howManyStudentsInDegree(db.getDatabase(), "Engineering")),
-		            new PieChart.Data("Mathamatics", stats.howManyStudentsInDegree(db.getDatabase(), "Mathamatics")),
-		            new PieChart.Data("Biology", stats.howManyStudentsInDegree(db.getDatabase(), "Biology")),
-		            new PieChart.Data("Education", stats.howManyStudentsInDegree(db.getDatabase(), "Education")),
-		            new PieChart.Data("Psychology", stats.howManyStudentsInDegree(db.getDatabase(), "Psychology")));
+		            new PieChart.Data("BIO", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),
+				    new PieChart.Data("CPSC", stats.howManyStudentsInDegree(db.getDatabase(), "CPSC")),
+				    new PieChart.Data("ENG", stats.howManyStudentsInDegree(db.getDatabase(), "ENG")),
+				    new PieChart.Data("MED", stats.howManyStudentsInDegree(db.getDatabase(), "MED")),
+				    new PieChart.Data("COM", stats.howManyStudentsInDegree(db.getDatabase(), "COM")),
+				    new PieChart.Data("SOCI", stats.howManyStudentsInDegree(db.getDatabase(), "SOCI")),
+				    new PieChart.Data("PSYC", stats.howManyStudentsInDegree(db.getDatabase(), "PSYC")),
+				    new PieChart.Data("CMF", stats.howManyStudentsInDegree(db.getDatabase(), "CMF")),
+				    new PieChart.Data("LING", stats.howManyStudentsInDegree(db.getDatabase(), "LING")));
 		            
 
 		 studentsPerDegree.setData(studentsDegree);

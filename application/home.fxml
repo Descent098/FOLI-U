@@ -53,6 +53,6 @@
           <NumberAxis fx:id="yAxis" label="Amount" side="LEFT" />
         </yAxis>
       </BarChart>
-      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="327.0" prefHeight="177.0" prefWidth="234.0" title="Most Popular Degrees" />
+      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="333.0" prefHeight="171.0" prefWidth="227.0" title="Most Popular Degrees" />
    </children>
 </AnchorPane>

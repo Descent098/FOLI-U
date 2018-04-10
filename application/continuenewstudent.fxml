@@ -100,11 +100,13 @@
 		<items>
         		<FXCollections fx:factory="observableArrayList">
             		<String fx:value="Computer Science" />
-            		<String fx:value="Business" />
+            		<String fx:value="Medicine" />
             		<String fx:value="Engineering" />
-            		<String fx:value="Mathamatics" />
+            		<String fx:value="Commerce" />
+            		<String fx:value="Sociology" />
+            		<String fx:value="Communications, Media, and Film" />
+            		<String fx:value="Linguistics" />
             		<String fx:value="Biology" />
-            		<String fx:value="Education" />
             		<String fx:value="Psychology" />
         		</FXCollections>
     		</items>
