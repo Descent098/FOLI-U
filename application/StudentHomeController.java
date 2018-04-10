@@ -58,11 +58,13 @@ public class StudentHomeController {
 	@FXML
 	private PieChart percentageOfStudents;
 	@FXML
-	CategoryAxis xAxis    = new CategoryAxis();
+	CategoryAxis xAxis = new CategoryAxis();
 	@FXML
 	NumberAxis yAxis = new NumberAxis();
 	@FXML
-	BarChart<String, Number> numberOfStudents = new BarChart<String, Number>(xAxis, yAxis);
+	BarChart<?, ?> numberOfStudents;
+	@FXML
+	private PieChart studentsPerDegree;
 
 
 
@@ -77,6 +79,7 @@ public class StudentHomeController {
 
 	@FXML
 	public void initialize() {
+		//pie chart displays the percentage of employers and students
 		 ObservableList<PieChart.Data> studentsPercentage =
 		            FXCollections.observableArrayList(
 		            new PieChart.Data("Students", stats.percentageofStudents(db.getDatabase())),
@@ -84,9 +87,25 @@ public class StudentHomeController {
 
 		 percentageOfStudents.setData(studentsPercentage);
 		 
+		 //bar graph displays the number of employers and students
+		 XYChart.Series userTypes = new XYChart.Series<>();
+		 userTypes.getData().add(new XYChart.Data("Students", stats.howManyStudents(db.getDatabase())));
+		 userTypes.getData().add(new XYChart.Data("Employers", stats.howManyEmployers(db.getDatabase())));
 		 
-		 xAxis.setLabel("Users");
-		 yAxis.setLabel("Number");
+		 numberOfStudents.getData().addAll(userTypes);
+		 
+		 ObservableList<PieChart.Data> studentsDegree =
+		            FXCollections.observableArrayList(
+		            new PieChart.Data("Business", stats.howManyStudentsInDegree(db.getDatabase(), "Business")),
+		            new PieChart.Data("Computer Science", stats.howManyStudentsInDegree(db.getDatabase(), "Computer Science")),
+		            new PieChart.Data("Engineering", stats.howManyStudentsInDegree(db.getDatabase(), "Engineering")),
+		            new PieChart.Data("Mathamatics", stats.howManyStudentsInDegree(db.getDatabase(), "Mathamatics")),
+		            new PieChart.Data("Biology", stats.howManyStudentsInDegree(db.getDatabase(), "Biology")),
+		            new PieChart.Data("Education", stats.howManyStudentsInDegree(db.getDatabase(), "Education")),
+		            new PieChart.Data("Psychology", stats.howManyStudentsInDegree(db.getDatabase(), "Psychology")));
+		            
+
+		 studentsPerDegree.setData(studentsDegree);
 
 	}
 	
