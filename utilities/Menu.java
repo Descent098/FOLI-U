@@ -145,14 +145,44 @@ public void selectMenu(){
 
         case 7: Statistics textStats = new Statistics();
         DecimalFormat df = new DecimalFormat("#.##"); //Strips everything after the second decimal place for nice printing
+        Scanner degreeChoice = new Scanner(System.in);
+        int selectedChoice;
           System.out.println("There are: " + textStats.howManyStudents(db.getDatabase()) +  " Student(s) in the database");
           System.out.println("They Make up: %" + df.format(textStats.percentageofStudents(db.getDatabase())) +  " of the user(s) in the database\n\n");
 
           System.out.println("There are: " + textStats.howManyEmployers(db.getDatabase()) +  " Employer(s) in the database");
           System.out.println("They Make up: %" + df.format(textStats.percentageofEmployers(db.getDatabase())) +  " of the user(s) in the database\n\n");
 
+          System.out.println("Which Degree would you like information about?");
+          System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
 
-          break;
+          selectedChoice = degreeChoice.nextInt();
+          switch(selectedChoice){
+            case 1: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "BIO") +  " Students taking BIO in the database");
+            break;
+            case 2: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "ENG") +  " Students taking ENG in the database");
+            break;
+            case 3: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "MED") +  " Students taking MED in the database");
+            break;
+            case 4: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CPSC") +  " Students taking CPSC in the database");
+            break;
+            case 5: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "COMM") +  " Students taking COMM in the database");
+            break;
+            case 6: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "psyc") +  " Students taking PSYC in the database");
+            break;
+            case 7: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "SOCI") +  " Students taking SOCI in the database");
+            break;
+            case 8: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CMF") +  " Students taking CMF in the database");
+            break;
+            case 9: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "LING") +  " Students taking LING in the database");
+            break;
+
+          }
+
+
+
+        break;
+
         case 8:
                 System.out.println("Checking for save ...");
                 if (f.exitCheck()) {
