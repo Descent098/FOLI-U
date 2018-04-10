@@ -44,14 +44,15 @@
          <font>
             <Font name="AppleGothic Regular" size="19.0" />
          </font></Label>
-      <PieChart fx:id="percentageOfStudents" layoutX="88.0" layoutY="62.0" prefHeight="154.0" prefWidth="200.0" title="Percentage of Users" />
-      <BarChart fx:id="numberOfStudents" layoutX="81.0" layoutY="231.0" prefHeight="171.0" prefWidth="214.0" title="Number of Users">
+      <PieChart fx:id="percentageOfStudents" layoutX="14.0" layoutY="48.0" prefHeight="154.0" prefWidth="200.0" title="Percentage of Users" />
+      <BarChart fx:id="numberOfStudents" layoutX="137.0" layoutY="186.0" prefHeight="171.0" prefWidth="214.0" title="Number of Users">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis label="Users" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis fx:id="yAxis" label="Amount" side="LEFT" />
         </yAxis>
       </BarChart>
+      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="327.0" prefHeight="177.0" prefWidth="234.0" title="Most Popular Degrees" />
    </children>
 </AnchorPane>
