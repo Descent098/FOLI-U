@@ -279,7 +279,7 @@ public class StudentSearchController {
 			Stage stage;
 			Parent root;
 			stage = (Stage) settings.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("settingspage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("settingsemployer.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewEmployerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployerHomeController">
    <children>
-      <ToolBar layoutY="517.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-effect: null; -fx-border-color: white;">
-         <items>
-            <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
+      <ToolBar layoutY="519.0" prefHeight="40.0" prefWidth="375.0" style="-fx-background-color: black; -fx-effect: null; -fx-border-color: white;">
+        <items>
+          <Button fx:id="home" mnemonicParsing="false" onAction="#changePage" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: black; -fx-border-color: white;" text="Home" textFill="WHITE">
                <font>
                   <Font name="AppleGothic Regular" size="14.0" />
                </font>
@@ -33,7 +38,21 @@
                   <Font name="AppleGothic Regular" size="13.0" />
                </font>
             </Button>
-         </items>
+        </items>
       </ToolBar>
+      <Label layoutX="106.0" layoutY="14.0" text="Welcome to Foli-U">
+         <font>
+            <Font name="AppleGothic Regular" size="19.0" />
+         </font></Label>
+      <PieChart fx:id="percentageOfStudents" layoutX="14.0" layoutY="48.0" prefHeight="154.0" prefWidth="200.0" title="Percentage of Users" />
+      <BarChart fx:id="numberOfStudents" layoutX="137.0" layoutY="186.0" prefHeight="171.0" prefWidth="214.0" title="Number of Users">
+        <xAxis>
+          <CategoryAxis label="Users" side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" label="Amount" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="327.0" prefHeight="177.0" prefWidth="234.0" title="Most Popular Degrees" />
    </children>
 </AnchorPane>
