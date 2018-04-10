@@ -38,7 +38,69 @@ public class Student extends User{
 
     System.out.println("\nWhat university are you at?: ");
     input = new Scanner(System.in);
-    university = input.nextLine();
+
+
+    switch(this.getProvince()){
+
+      case("Alberta"):
+      System.out.println("(1)University of Calgary \n(2)University of Lethbridge \n(3)SAIT \n(4)Mount Royal \n(5)Athabasca University");
+      decision = input.nextInt();
+
+      switch(decision){//Inside Alberta
+        case 1: this.university = "University of Calgary";
+        break;
+
+        case 2: this.university = "University of Lethbridge";
+        break;
+
+        case 3: this.university = "SAIT";
+        break;
+
+        case 4: this.university = "Mount Royal";
+        break;
+
+        case 5: this.university = "Athabasca University";
+        break;
+
+      }
+      break;
+
+      case("Illinois"):
+      System.out.println("(1)University of Chicago \n(2)Boston University");
+      decision = input.nextInt();
+
+      switch(decision){// Inside Illinois
+        case 1: this.university = "University of Chicago";
+        break;
+
+        case 2: this.university = "Boston University";
+        break;
+
+      }
+      break;
+
+      case("Nevada"):
+      System.out.println("(1)University of Vegas ");
+      decision = input.nextInt();
+
+      switch(decision){//Inside Nevada
+        case 1: this.university = "University of Vegas";
+        break;
+        }
+      break;
+
+
+        case("Massachusetts"):
+        System.out.println("(1)MIT");
+        decision = input.nextInt();
+
+        switch(decision){
+          case 1: this.university = "MIT";
+          break;
+          }
+      break;
+    }
+
 
     System.out.println("\nPlease put in your 8 digit UID: ");
     input = new Scanner(System.in);
@@ -72,19 +134,19 @@ public class Student extends User{
       break;
 
       case 6: this.degree = "PSYC";
-      System.out.println("Degree Program set to PSYC (Psychology)");
+      System.out.println("\nDegree Program set to PSYC (Psychology)");
       break;
 
       case 7: this.degree = "SOCI";
-      System.out.println("Degree Program set to SOCI (Sociology)");
+      System.out.println("\nDegree Program set to SOCI (Sociology)");
       break;
 
       case 8: this.degree = "CMF";
-      System.out.println("Degree Program set to CMF (Communications, Media, and Film)");
+      System.out.println("\nDegree Program set to CMF (Communications, Media, and Film)");
       break;
 
       case 9: this.degree = "LING";
-      System.out.println("Degree Program set to LING (Linguistics)");
+      System.out.println("\nDegree Program set to LING (Linguistics)");
       break;
 
     }
