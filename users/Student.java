@@ -30,6 +30,7 @@ public class Student extends User{
   public void set_User_Attributes(){
     setContactInfo();
     Scanner input = new Scanner(System.in);
+    int decision;
     /** A method to set a users attributes based on user input*/
     System.out.println("\nWhat year of your degree are you in?:  ");
     input = new Scanner(System.in);
@@ -43,9 +44,50 @@ public class Student extends User{
     input = new Scanner(System.in);
     UID = input.nextLine();
 
-    System.out.println("\nWhat degree are you in?: ");
+    System.out.println("\nWhat degree program are you in?: ");
+    System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
     input = new Scanner(System.in);
-    degree = input.nextLine();
+    decision = input.nextInt();
+
+    switch(decision){
+
+      case 1: this.degree = "BIO";
+      System.out.println("\nDegree Program set to BIO (Biology)");
+      break;
+
+      case 2: this.degree = "ENG";
+      System.out.println("\nDegree Program set to ENG (Engineering)");
+      break;
+
+      case 3: this.degree = "MED";
+      System.out.println("\nDegree Program set to MED (Medicine)");
+      break;
+
+      case 4: this.degree = "CPSC";
+      System.out.println("\nDegree Program set to CPSC (Biology)");
+      break;
+
+      case 5: this.degree = "COMM";
+      System.out.println("\nDegree Program set to COMM (Commerce)");
+      break;
+
+      case 6: this.degree = "PSYC";
+      System.out.println("Degree Program set to PSYC (Psychology)");
+      break;
+
+      case 7: this.degree = "SOCI";
+      System.out.println("Degree Program set to SOCI (Sociology)");
+      break;
+
+      case 8: this.degree = "CMF";
+      System.out.println("Degree Program set to CMF (Communications, Media, and Film)");
+      break;
+
+      case 9: this.degree = "LING";
+      System.out.println("Degree Program set to LING (Linguistics)");
+      break;
+
+    }
 
     System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
     input = new Scanner(System.in);

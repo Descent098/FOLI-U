@@ -1,14 +1,6 @@
 package users;
 import java.util.*;
 import java.io.*;
-/*
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-*/
 
 public class User implements Serializable{
 
@@ -19,21 +11,7 @@ public class User implements Serializable{
   private String city = "";
   private String province = "";
   private String country = "";
-  /*
-  private final StringProperty firstNameGUI;
-  private final StringProperty lastNameGUI;
-  */
 
-  /*
-  public User(String firstName, String lastName) {
-	  this.firstNameGUI = new SimpleStringProperty(firstName);
-	  this.lastNameGUI = new SimpleStringProperty(lastName);
-  }
-
-  public User() {
-	  this(null, null);
-  }
-  */
 
   //blank constructor
   public User() {
@@ -55,6 +33,7 @@ public class User implements Serializable{
   /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
   public void setContactInfo(){
     Scanner input = new Scanner(System.in);
+    int selection;
 
     System.out.println("Please enter your contact info: \n");
 
@@ -74,17 +53,84 @@ public class User implements Serializable{
     input = new Scanner(System.in);
     this.email = input.nextLine();
 
-    System.out.println("\nPlease enter your City: ");
+    System.out.println("\nPlease Select your City:");
+    System.out.println("(1)Calgary \n(2)Edmonton \n(3)Lethbridge \n(4)Boston \n(5)Chicago \n(6)Vegas"); //List of Cities
     input = new Scanner(System.in);
-    this.city = input.nextLine();
+    selection = input.nextInt();
+    switch(selection){ //Assign a city based on User input
 
-    System.out.println("\nPlease enter your Province: ");
-    input = new Scanner(System.in);
-    this.province = input.nextLine();
+      case 1: this.city = "Calgary";
+      break;
 
-    System.out.println("\nPlease enter your Country: ");
-    input = new Scanner(System.in);
-    this.country = input.nextLine();
+      case 2: this.city = "Edmonton";
+      break;
+
+      case 3: this.city = "Lethbridge";
+      break;
+
+      case 4: this.city = "Boston";
+      break;
+
+      case 5: this.city = "Chicago";
+      break;
+
+      case 6: this.city = "Vegas";
+      break;
+
+
+    }
+
+    //Switch Statement to Assign Province based on City
+    switch(this.city){
+
+      case("Calgary"): this.province = "Alberta";
+      System.out.println("\nProvince set to Alberta");
+      break;
+
+      case("Lethbridge"): this.province = "Alberta";
+      System.out.println("\nProvince set to Alberta");
+      break;
+
+      case("Edmonton"): this.province = "Alberta";
+      System.out.println("\nProvince set to Alberta");
+      break;
+
+
+      case("Boston"): this.province = "Massachusetts";
+      System.out.println("\nState Set to Massachusetts");
+      break;
+
+      case("Chicago"): this.province = "Illinois";
+      System.out.println("\nState Set to Illinois");
+      break;
+
+      case("Vegas"): this.province = "Nevada";
+      System.out.println("\nState Set to Nevada");
+      break;
+
+
+    }
+
+    //Sets country based on Province
+    switch(this.province){
+
+      case("Alberta"): this.country = "Canada";
+      System.out.println("\nCountry Set to Canada");
+      break;
+
+      case("Illinios"): this.country = "USA";
+      System.out.println("\nCountry Set to USA");
+      break;
+
+      case("Nevada"): this.country = "USA";
+      System.out.println("\nCountry Set to USA");
+      break;
+
+      case("Massachusetts"): this.country = "USA";
+      System.out.println("\nCountry Set to USA");
+      break;
+
+    }
 
   }
 
@@ -279,7 +325,7 @@ public class User implements Serializable{
   public String getOfferingJobs(){ //Class will be overridden in student
     return "hello";
   }
-  
+
   public String getDOB() {
 	  return "hello";
   }

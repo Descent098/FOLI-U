@@ -81,23 +81,11 @@ public void selectMenu(){
                 switch (choice2Selection) { //users choice of what type of class to print
 
                 case 1: db.createRandomStudents();
-                // System.out.println("Enter S to save: ");
-                // input = new Scanner(System.in);
-                // sChoice = input.nextLine();
-                // sChoice = sChoice.toUpperCase();
-                // if (sChoice.equals("S")) {
                   f.fileSave(db.getDatabase());
-                // }
                         break;
 
                 case 2: employerCount = db.createRandomEmployers(employerCount);
-                // System.out.println("Enter S to save: ");
-                // input = new Scanner(System.in);
-                // sChoice = input.nextLine();
-                // sChoice = sChoice.toUpperCase();
-                // if (sChoice.equals("S")) {
                   f.fileSave(db.getDatabase());
-                // }
                         break;
                 }
                 break;
