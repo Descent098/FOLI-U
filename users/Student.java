@@ -23,6 +23,10 @@ public class Student extends User{
   //   super(toCopy); //calls the User class's constructor to copy common attributes (like name for example)
   // }
 
+
+  /**
+    * Method for setting instance variables for student
+    */
   public void set_User_Attributes(){
     setContactInfo();
     Scanner input = new Scanner(System.in);
@@ -70,8 +74,10 @@ public class Student extends User{
     }
   }
 
+  /**
+    * Method for calculating the gpa and setting it to instance variable
+    */
   public void calc_GPA(){
-    /** A method to calculate a users GPA based on input */
     GPA = 0;
     Scanner input = new Scanner(System.in); //GPA Calculation
 		System.out.println("Enter number of courses: ");
@@ -94,11 +100,12 @@ public class Student extends User{
 		System.out.println("Your GPA is: " + GPA);
   }
 
+  /**
+    * Method equivalent to toString
+    */
   @Override
   public void printContactInfo(){
-    /** A method that prints a users atributes*/
     System.out.println("\nSearching database for: " + getFirstName());
-
     super.printContactInfo();
     System.out.println("Users UID is: "+ getUID());
     System.out.println("Users University is: "+ getUniversity());
@@ -114,7 +121,9 @@ public class Student extends User{
     UID = newUID;
   }
 
-  /** Getter for UID*/
+  /** Getter for UID
+    * @return UID
+    */
   public String getUID(){
     String printedUID = new String(UID);
     return printedUID;
@@ -125,7 +134,9 @@ public class Student extends User{
     university = newUniversity;
   }
 
-  /** Getter for University*/
+  /** Getter for University
+    * @return printedUniversity
+    */
   public String getUniversity(){
     String printedUniversity = new String(university);
     return printedUniversity;
@@ -136,7 +147,9 @@ public class Student extends User{
     studentType = newStudentType;
   }
 
-  /** Getter for University*/
+  /** Getter for StudentType
+    * @return printedStudentType
+    */
   public String getStudentType(){
     String printedStudentType = new String(studentType);
     return printedStudentType;
@@ -147,7 +160,9 @@ public class Student extends User{
     programYear = newProgramYear;
   }
 
-  /** Getter for ProgramYear*/
+  /** Getter for ProgramYear
+    * @return printedProgramYear
+    */
   public int getProgramYear(){
     int printedProgramYear = new Integer(programYear);
     return printedProgramYear;
@@ -158,7 +173,9 @@ public class Student extends User{
     degree = newDegree;
   }
 
-  /** Getter for Degree*/
+  /** Getter for Degree
+    * @return printedDegree
+    */
   public String getDegree(){
     String printedDegree = new String(degree);
     return printedDegree;
@@ -169,12 +186,17 @@ public class Student extends User{
     GPA = newGPA;
   }
 
-  /** Getter for GPA*/
+  /** Getter for GPA
+    * @return printedGPA
+    */
   public Double getGPA(){
     double printedGPA = new Double(GPA);
     return printedGPA;
   }
-  
+
+  /** Getter for Date of birth
+    * @return printedDOB
+    */
   public String getDOB() {
 	  String printedDOB = new String(DOB);
 	  return printedDOB;
