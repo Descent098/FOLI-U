@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;

@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -320,18 +321,68 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         			gpa.getDialogPane().setContent(grid);
         			gpa.setTitle("GPA Calculator");
         			
+        			ArrayList<TextField> course = new ArrayList<TextField>();
+        			ArrayList<TextField> weightForCourse = new ArrayList<TextField>();
+        			
         			numCoursesButton.setOnAction((ActionEvent)->{
         				for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
-        					TextField course = new TextField();
-        					course.setPromptText("Between 0.0 and 4.3");
-        					grid.add(new Label("Grade for class" + " " + (i + 1)), 0, i + 1);
-        					grid.add(course, 1, i + 1);
+        					TextField courseNumber = new TextField();
+        					courseNumber.setPromptText("Grade for class");
+        					TextField weightNumber = new TextField();
+        					weightNumber.setPromptText("Weight for class");
+        					grid.add(new Label("Class" + " " + (i + 1)), 0, i + 1);
+        					course.add(courseNumber);
+        					weightForCourse.add(weightNumber);
+        					grid.add(courseNumber, 1, i + 1);
+        					grid.add(weightNumber, 2, i + 1);
         					gpa.getDialogPane().setContent(grid);
         					gpa.getDialogPane().getScene().getWindow().sizeToScene();
         				}
         		    });
+        			
+        			
+        			Optional<String> result = gpa.showAndWait();
+        			if (result.isPresent()) {
+        				double studentGPA = 0.0;
+            			double weightTotal = 0.0;
+            			for (int i = 0; i < course.size(); i++) {
+            				double grade = Double.parseDouble(course.get(i).getText());
+            				double weight = Double.parseDouble(weightForCourse.get(i).getText());
+            				studentGPA += (grade*weight);
+            				weightTotal += weight;	
+            			}
+            			studentGPA /= weightTotal;
+            			double roundedGPA = Math.round(studentGPA * 100.0) / 100.0;
+            			System.out.println(roundedGPA);
+            			
+            			
+            			HashMap<String, User> data = db.getDatabase();
+    					//Student tempStudent = new Student(data.get(Storage.UID));
+    					Student tempStudent = (Student)data.get(Storage.UID); //?
+    					
+    					tempStudent.setCity(cityName.getText());
+    					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+    					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+    					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
+    					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+    					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
+    					System.out.println(dateOfBirth.getValue().toString());
+    					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
+    					tempStudent.setProgramYear(Integer.parseInt(year));
+    					
+    					tempStudent.setGPA(roundedGPA);
+    					f.fileSave(db.getDatabase());
+    					
+    					Stage stage;
+            			Parent root;
+            			stage = (Stage) finishNewStudent.getScene().getWindow();
+            			root = FXMLLoader.load(getClass().getResource("home.fxml"));
 
-        			gpa.showAndWait();
+            			Scene scene = new Scene(root);
+            			stage.setScene(scene);
+            			stage.show();
+        			}
+        			
         			
         		}
 						//otherwise, sign up is completed
@@ -359,7 +410,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 //					System.out.println("UID after:"+ Storage.UID);
 					//tempStudent.printContactInfo(); //holy grail of tests
 
-					f.fileSave(db.getDatabase());
+					
+
 					//--------------------------------------
 
 

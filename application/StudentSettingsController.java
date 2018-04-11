@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Stack;
@@ -136,6 +137,8 @@ public class StudentSettingsController {
 		studentYear.setText(year);
 		studentNumber.setText(tempStudent.getPhoneNumber());
 		studentEmail.setText(tempStudent.getEmail());
+		String GPA = Double.toString(tempStudent.getGPA());
+		studentGPA.setText(GPA);
 
 	}
 	
@@ -352,18 +355,40 @@ public class StudentSettingsController {
 		gpa.getDialogPane().setContent(grid);
 		gpa.setTitle("GPA Calculator");
 		
+		ArrayList<TextField> course = new ArrayList<TextField>();
+		ArrayList<TextField> weightForCourse = new ArrayList<TextField>();
+		
 		numCoursesButton.setOnAction((ActionEvent)->{
 			for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
-				TextField course = new TextField();
-				course.setPromptText("Between 0.0 and 4.3");
-				grid.add(new Label("Grade for class" + " " + (i + 1)), 0, i + 1);
-				grid.add(course, 1, i + 1);
+				TextField courseNumber = new TextField();
+				courseNumber.setPromptText("Grade for class");
+				TextField weightNumber = new TextField();
+				weightNumber.setPromptText("Weight for class");
+				grid.add(new Label("Class" + " " + (i + 1)), 0, i + 1);
+				course.add(courseNumber);
+				weightForCourse.add(weightNumber);
+				grid.add(courseNumber, 1, i + 1);
+				grid.add(weightNumber, 2, i + 1);
 				gpa.getDialogPane().setContent(grid);
 				gpa.getDialogPane().getScene().getWindow().sizeToScene();
 			}
 	    });
-
-		gpa.showAndWait();
+		
+		
+		Optional<String> result = gpa.showAndWait();
+		if (result.isPresent()) {
+			double GPA = 0.0;
+			double weightTotal = 0.0;
+			for (int i = 0; i < course.size(); i++) {
+				double grade = Double.parseDouble(course.get(i).getText());
+				double weight = Double.parseDouble(weightForCourse.get(i).getText());
+				GPA += (grade*weight);
+				weightTotal += weight;	
+			}
+			GPA /= weightTotal;
+			double roundedGPA = Math.round(GPA * 100.0) / 100.0;
+			studentGPA.setText(Double.toString(roundedGPA));
+		}
 	}
 	
 	public void saveButton(ActionEvent event) throws IOException {
@@ -383,6 +408,7 @@ public class StudentSettingsController {
 		tempStudent.setProgramYear(Integer.parseInt(year));
 		tempStudent.setEmail(studentEmail.getText());
 		tempStudent.setPhoneNumber(studentNumber.getText());
+		tempStudent.setGPA(Double.parseDouble(studentGPA.getText()));
 		
 		f.fileSave(db.getDatabase());
 	}
