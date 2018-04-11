@@ -83,8 +83,8 @@ public class Statistics {
 	
 	
 	/** A method that returns the amount of Students have a specific Degree as an int in a HashMap */
-	public int howManyStudentsInDegree(HashMap<String, User> db, String degree){
-		int count = 0;
+	public double howManyStudentsInDegree(HashMap<String, User> db, String degree){
+		double count = 0;
 		for (String key : db.keySet()) {
 				if (db.get(key).getDegree().equals(degree)) { //only students that are in the degree type
 					count += 1;

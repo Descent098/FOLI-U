@@ -402,6 +402,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					System.out.println(dateOfBirth.getValue().toString());
 					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setProgramYear(Integer.parseInt(year));
+					tempStudent.setGPA(0.0);
 					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
 					//testing....
@@ -410,6 +411,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 //					System.out.println("UID after:"+ Storage.UID);
 					//tempStudent.printContactInfo(); //holy grail of tests
 
+					f.fileSave(db.getDatabase());
 					
 
 					//--------------------------------------
