@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -14,18 +13,12 @@
             <Font name="AppleGothic Regular" size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="username" layoutX="160.0" layoutY="230.0" onAction="#signInButtonClicked" />
-      <Label layoutX="52.0" layoutY="234.0" text="Username:">
+      <TextField fx:id="email" layoutX="158.0" layoutY="263.0" onAction="#signInButtonClicked" />
+      <Label layoutX="51.0" layoutY="267.0" text="Email:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="53.0" layoutY="305.0" text="Password:">
-         <font>
-            <Font name="AppleGothic Regular" size="13.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="password" layoutX="160.0" layoutY="301.0" onAction="#signInButtonClicked" />
       <Button fx:id="signIn" layoutX="158.0" layoutY="370.0" mnemonicParsing="false" onAction="#signInButtonClicked" text="Sign In" />
       <Button fx:id="backToMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
    </children>

@@ -14,10 +14,16 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import users.Employer;
 import users.Student;
+import users.User;
+import utilities.Database;
+import utilities.FileIO;
+import utilities.Storage;
 import javafx.scene.Scene;
 import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
+import java.util.HashMap;
 import java.util.Stack;
 import application.Main;
 import javafx.collections.FXCollections;
@@ -32,17 +38,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
-	/**
-	 * main controller as of now
-	 * almost done splitting it all up into separate smaller controller classes
-	 */
-	Student demoStudent = new Student();
-	Employer demoEmployer = new Employer();
-
-
-	@FXML
-	private AnchorPane root;
-
+	private FileIO f = new FileIO();
+	private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
 	/**
 	 * buttons used in controller
 	 */
@@ -74,47 +71,13 @@ public class Controller {
 	@FXML
 	private Button signIn;
 	@FXML
-	private TextField username;
-	@FXML
-	private TextField password;
-
-	//in app home, settings, search, and profile page
-	@FXML
-	private Stack<Scene> pages;
-	@FXML
-	private Button home;
-	@FXML
-	private Button settings;
-	@FXML
-	private Button search;
-	@FXML
-	private Button myProfile;
+	private TextField email;
 	
-
-	private Main mainApp;
-	
-	@FXML
-	private Boolean isStudent = true;
-	
-
 	/**
 	 * initialize method, automatically called after all FXML methods have finished running
 	 */
     public void initialize() {
-        System.out.println("end controller");
     }
-
-    /**
-     * contructor method automatically called at the beginning
-     */
-	public Controller() {
-		System.out.println("new controller");
-	}
-
-	public void setMain(Main mainApp) {
-		this.mainApp = mainApp;
-	}
-
 
 	/**
 	 * method that takes user to new user page when "new user" button is clicked
@@ -158,7 +121,6 @@ public class Controller {
 	 */
 	@FXML
 	public void newStudentClicked(ActionEvent event) throws IOException {
-		isStudent = true;
 		Stage stage;
 		Parent root;
 		stage = (Stage) newStudent.getScene().getWindow();
@@ -176,7 +138,6 @@ public class Controller {
 	 */
 	@FXML
 	public void newEmployerClicked(ActionEvent event) throws IOException {
-		isStudent = false;
 		Stage stage;
 		Parent root;
 		stage = (Stage) newEmployer.getScene().getWindow();
@@ -218,76 +179,55 @@ public class Controller {
 	public void signInButtonClicked(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
 		//alert popup box		
-        if(username.getText().isEmpty() || password.getText().isEmpty()) { //if username and password fields are empty
+        if(email.getText().isEmpty()) { //if username and password fields are empty
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
-        		alert.setContentText("Incorrect username and/or password!");
+        		alert.setContentText("Please enter your email!");
         		alert.showAndWait();
         }
+        else if (!email.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+				"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid email address!");
+			alert.showAndWait();
+		}
         else {
-        		Stage stage;
-        		Parent root;
-        		stage = (Stage) signIn.getScene().getWindow();
-        		root = FXMLLoader.load(getClass().getResource("home.fxml"));
+//        	HashMap<String, User> data = db.getDatabase();
+//			//Student tempStudent = new Student(data.get(Storage.UID));
+//			Student tempStudent = (Student)data.get(Storage.UID); //?
+//			Employer tempEmployer = (Employer)data.get(Storage.employerName);
+//			
+//			if (tempStudent.getEmail().equals(email.getText())) {
+//				Stage stage;
+//	        	Parent root;
+//	        	stage = (Stage) signIn.getScene().getWindow();
+//	        	root = FXMLLoader.load(getClass().getResource("home.fxml"));
+//
+//	        	Scene scene = new Scene(root);
+//	        	stage.setScene(scene);
+//	        	stage.show();
+//			}
+//			else if (tempEmployer.getEmail().equals(email.getText())) {
+//				Stage stage;
+//	        	Parent root;
+//	        	stage = (Stage) signIn.getScene().getWindow();
+//	        	root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
+//
+//	        	Scene scene = new Scene(root);
+//	        	stage.setScene(scene);
+//	        	stage.show();
+//			}
+				Stage stage;
+	        	Parent root;
+	        	stage = (Stage) signIn.getScene().getWindow();
+	        	root = FXMLLoader.load(getClass().getResource("home.fxml"));
 
-        		Scene scene = new Scene(root);
-        		stage.setScene(scene);
-        		stage.show();
+	        	Scene scene = new Scene(root);
+	        	stage.setScene(scene);
+	        	stage.show();
+
         }
 
 	}
-
-	/**
-	 * changes the page in app
-	 * @param event
-	 * @throws IOException
-	 */
-	public void changePage(ActionEvent event) throws IOException {
-		//if home button clicked or if no button specified (default home)
-		if (event.getTarget() == home || event.getTarget() == null) {
-			Stage stage;
-			Parent root;
-    			stage = (Stage) home.getScene().getWindow();
-    			root = FXMLLoader.load(getClass().getResource("home.fxml"));
-
-    			Scene scene = new Scene(root);
-    			stage.setScene(scene);
-    			stage.show();
-		}
-		//if search button clicked
-		else if (event.getTarget() == search) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) search.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("searchpage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		//if settings button clicked
-		}
-		else if (event.getTarget() == settings) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) settings.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("settingspage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-		//if profile button clicked
-		else if (event.getTarget() == myProfile) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) myProfile.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("profilepage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-	}
-
-
 }

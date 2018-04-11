@@ -43,12 +43,6 @@ public class NewEmployerController {
 	@FXML
 	private TextField enterLastName;
 	@FXML
-	private TextField enterUsername;
-	@FXML
-	private TextField enterPassword;
-	@FXML
-	private TextField confirmPassword;
-	@FXML
 	private Button continueNewStudent;
 	@FXML
 	private Button continueNewEmployer;
@@ -117,26 +111,32 @@ public class NewEmployerController {
 	public void continueButtonClickedEmployer(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
 		//makes sure all text fields are filled before user can move onto next page
-        if (enterFirstName.getText().isEmpty() || enterUsername.getText().isEmpty() || enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || emailAddress.getText().isEmpty() ||
+        		phoneNumber.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
+		//checks if email address is in valid format
+		//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+        else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+        		"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+        	alert.setTitle("Error");
+        	alert.setHeaderText(null);
+        	alert.setContentText("Invalid email address!");
+        	alert.showAndWait();
+        }
+		//checks if phone number is in the right format
+		//both 000-000-0000 and 0000000000 work
+		else if (!phoneNumber.getText().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Invalid phone number!");
+			alert.showAndWait();
+		}
 
         //makes sure username is correct length
-        else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
-    				alert.setTitle("Error");
-    				alert.setHeaderText(null);
-    				alert.setContentText("Your username must be between 3 and 20 characters!");
-    				alert.showAndWait();
-    		}		//makes sure that password fields match
-				else if (!enterPassword.getText().equals(confirmPassword.getText())) {
-						alert.setTitle("Error");
-						alert.setHeaderText(null);
-						alert.setContentText("Passwords do not match!");
-						alert.showAndWait();
-				}
         else {
 
 						//saving of entered information into a new employer
@@ -144,6 +144,8 @@ public class NewEmployerController {
 						Employer tempEmployer = new Employer(); 	//creating the temporary employer object
 						tempEmployer.setFirstName(enterFirstName.getText());
 						tempEmployer.setLastName(enterLastName.getText());
+						tempEmployer.setEmail(emailAddress.getText());
+						tempEmployer.setPhoneNumber(phoneNumber.getText());
 
 						Storage.employerName = (tempEmployer.getFirstName() + tempEmployer.getLastName()); //their full name will act as the hashmap key because it is unique
 						(db.getDatabase()).put(Storage.employerName, tempEmployer); 	//putting the employer object into the hashmap
@@ -181,30 +183,13 @@ public class NewEmployerController {
 		Alert alert = new Alert(AlertType.ERROR);
 		//makes sure all fields are filled
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
-        		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || emailAddress.getText().isEmpty() ||
-        		phoneNumber.getText().isEmpty() || lookingToHire.getSelectionModel().isEmpty()) {
+        		companyName.getText().isEmpty() || field.getSelectionModel().isEmpty() || lookingToHire.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
-				//checks if email address is in valid format
-				//letters/digits followed by @ followed by letters/digits followed by . followed by letters
-        else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-		      "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-        		alert.setTitle("Error");
-        		alert.setHeaderText(null);
-        		alert.setContentText("Invalid email address!");
-        		alert.showAndWait();
-        }
-				//checks if phone number is in the right format
-				//both 000-000-0000 and 0000000000 work
-				else if (!phoneNumber.getText().matches("(\\d{3}-){1,2}\\d{4}")) { //check for phone number. \\d = only digits allowed, {3} == three characters, etc.
-          		alert.setTitle("Error");
-          		alert.setHeaderText(null);
-          		alert.setContentText("Invalid phone number!");
-          		alert.showAndWait();
-          }
+
         else {
 
 					//saving information from the second page for the employer
@@ -217,22 +202,11 @@ public class NewEmployerController {
 					tempEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
 					tempEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
 					tempEmployer.setCompanyName(companyName.getText());
-					tempEmployer.setEmail(emailAddress.getText());
-					tempEmployer.setPhoneNumber(phoneNumber.getText());
 					tempEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
 
 					f.fileSave(db.getDatabase()); //saving the hashmap again to the file to finish creation of a new employer
 					//--------------------------------------
 
-
-//        		demoEmployer.setCity(cityName.getText());
-//        		demoEmployer.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-//        		demoEmployer.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-//        		demoEmployer.setCompanyName(companyName.getText());
-//        		demoEmployer.setEmail(emailAddress.getText());
-//        		demoEmployer.setPhoneNumber(phoneNumber.getText());
-//        		demoEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
-//        		System.out.println(demoEmployer.getCountry());
 
         		Stage stage;
         		Parent root;

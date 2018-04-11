@@ -56,7 +56,7 @@ public class EmployerHomeController {
 	private Button myProfile;
 
 	@FXML
-	private PieChart percentageOfStudents;
+	PieChart percentageOfStudents;
 	@FXML
 	CategoryAxis xAxis = new CategoryAxis();
 	@FXML
@@ -87,13 +87,7 @@ public class EmployerHomeController {
 
 		 percentageOfStudents.setData(studentsPercentage);
 		 
-		 //bar graph displays the number of employers and students
-		 XYChart.Series userTypes = new XYChart.Series<>();
-		 userTypes.getData().add(new XYChart.Data("Students", stats.howManyStudents(db.getDatabase())));
-		 userTypes.getData().add(new XYChart.Data("Employers", stats.howManyEmployers(db.getDatabase())));
-		 
-		 numberOfStudents.getData().addAll(userTypes);
-		 
+
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
 		            new PieChart.Data("BIO", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),

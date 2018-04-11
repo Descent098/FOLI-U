@@ -70,12 +70,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	private TextField enterUID;
 	@FXML
-	private TextField enterUsername;
-	@FXML
-	private TextField enterPassword;
-	@FXML
-	private TextField confirmPassword;
-	@FXML
 	private Button continueNewStudent;
 	@FXML
 	private TextField emailAddress;
@@ -169,9 +163,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		//will add if statement to make sure username isn't already taken
 		//will add if statements to check other fields as well
 		//gets the text from user input and checks to make sure it's valid
-        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || enterUsername.getText().isEmpty() ||
-        		enterPassword.getText().isEmpty() || confirmPassword.getText().isEmpty() || emailAddress.getText().isEmpty() ||
-        		phoneNumber.getText().isEmpty()) {
+        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || 
+        		emailAddress.getText().isEmpty() || phoneNumber.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
@@ -182,21 +175,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
     		alert.setHeaderText(null);
     		alert.setContentText("Invalid UID!");
     		alert.showAndWait();
-    }
-				//if the user chooses a username that is too short/long
-        else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
-        		alert.setTitle("Error");
-        		alert.setHeaderText(null);
-        		alert.setContentText("Your username must be longer than 3 characters!");
-        		alert.showAndWait();
         }
-				//if the passwords do not match
-				else if (!enterPassword.getText().equals(confirmPassword.getText())) {
-						alert.setTitle("Error");
-						alert.setHeaderText(null);
-						alert.setContentText("Passwords do not match!");
-						alert.showAndWait();
-				}
 			//checks if email address is in valid format
 			//letters/digits followed by @ followed by letters/digits followed by . followed by letters
 			else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
