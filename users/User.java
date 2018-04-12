@@ -11,6 +11,7 @@ private String email = "";
 private String city = "";
 private String province = "";
 private String country = "";
+private String aboutMe = "";
 
 
 //blank constructor
@@ -214,6 +215,18 @@ public String getCountry(){
         String printedCountry = new String(country);
         return printedCountry;
 }
+
+/** Getter for about me*/
+public String getAboutMe() {
+	String printedAbout = new String(aboutMe);
+	return printedAbout;
+}
+
+/** Setter for about me*/
+public void setAboutMe(String about) {
+	aboutMe = about;
+}
+
 
 public Double getGPA(){   //Class will be overridden in student
         return 0.0;
