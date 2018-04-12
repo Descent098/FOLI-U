@@ -113,6 +113,8 @@ public class StudentProfileController {
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		aboutMe.setText(text.get());
+		tempStudent.setAboutMe(text.get());
+		aboutMe.setText(tempStudent.getAboutMe());
 	}
 
 
