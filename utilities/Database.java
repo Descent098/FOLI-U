@@ -123,7 +123,7 @@ public ArrayList<User> searchNum(double searchTerm, int searchBy) {
         return nameList;
 }
 
-public User searchEmail(String searchTerm) {
+public ArrayList<User> searchEmail(String searchTerm) {
         ArrayList<User> user = new ArrayList<User>();
         for (String key : database.keySet()) {
                 User tempUser = database.get(key); //just a temporary user to do checks with
@@ -131,7 +131,7 @@ public User searchEmail(String searchTerm) {
                         user.add(tempUser);
                 }
         }
-        return user.get(0);
+        return user;
 }
 
 

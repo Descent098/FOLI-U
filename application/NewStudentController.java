@@ -92,8 +92,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	private ComboBox<String> yearOfStudy;
 	@FXML
-	private DatePicker dateOfBirth;
-	@FXML
 	private Button finishNewStudent;
 	@FXML
 	private RadioButton calculateGPA;
@@ -109,32 +107,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	private Button backToNewUser;
 	@FXML
 	private Button backToStudent;
-
-
-	//provinces and states
+	
 	@FXML
-	private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba",
-			"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
-	@FXML
-	private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska" ,"Nevada" ,"New Hampshire", "New Jersey",
-			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
-			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
-
-	//universities that are in alberta
-	@FXML
-	private ObservableList<String> albertaSchools = FXCollections.observableArrayList("University of Calgary", "Mount Royal University", "SAIT", "University of Alberta", "ACAD",
-			"University of Alberta", "University of Lethbridge", "MacEwan University");
-
-	//universities in BC
-	@FXML
-	private ObservableList<String> bcSchools = FXCollections.observableArrayList("University of British Columbia", "University of Victoria",
-			"Simon Fraser University", "Douglas College");
-
-	//list of random universities
-	@FXML
-	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University of Calgary", "University One", "University Two", "University Three", "University Four");
+	PlaceNames places = new PlaceNames();
 
 
 	@FXML
@@ -222,10 +197,10 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	public void changeCountry(ActionEvent event) throws IOException {
 		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canada")) {
-			provinceName.setItems(provinces);
+			provinceName.setItems(places.provinces);
 		}
 		if (countryName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("USA")) {
-			provinceName.setItems(states);
+			provinceName.setItems(places.states);
 		}
 	}
 
@@ -237,16 +212,46 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	public void changeProvince(ActionEvent event) throws IOException {
 		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Alberta")) {
-			universityName.setItems(albertaSchools);
+			universityName.setItems(places.albertaSchools);
 		}
 		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("British Columbia")) {
-			universityName.setItems(bcSchools);
+			universityName.setItems(places.bcSchools);
 		}
-		if (!provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("British Columbia") && !provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Alberta")) {
-			universityName.setItems(otherSchools);
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Nevada")) {
+			universityName.setItems(places.nevadaSchools);
 		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Illinois")) {
+			universityName.setItems(places.illinoisSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Massachusetts")) {
+			universityName.setItems(places.massachusettsSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Saskatchewan")) {
+			universityName.setItems(places.saskSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Manitoba")) {
+			universityName.setItems(places.manitobaSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Ontario")) {
+			universityName.setItems(places.ontarioSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Quebec")) {
+			universityName.setItems(places.quebecSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("California")) {
+			universityName.setItems(places.californiaSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("New York")) {
+			universityName.setItems(places.newyorkSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Arizona")) {
+			universityName.setItems(places.arizonaSchools);
+		}
+		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Florida")) {
+			universityName.setItems(places.floridaSchools);
+		}
+		
 	}
-
 	//finishes student creation
 	@FXML
 	public void finishButtonClickedStudent(ActionEvent event) throws IOException {
@@ -256,17 +261,11 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 				//if user user leaves fields blank
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || degreeType.getSelectionModel().isEmpty() 
-        		|| yearOfStudy.getSelectionModel().isEmpty() || dateOfBirth.getValue().equals(null)) {
+        		|| yearOfStudy.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
-        }
-        else if (dateOfBirth.getValue().isAfter(LocalDate.now())) {
-        	alert.setTitle("Error");
-    		alert.setHeaderText(null);
-    		alert.setContentText("Invalid date of birth!");
-    		alert.showAndWait();
         }
         else {
 
@@ -346,7 +345,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
     					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
     					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
     					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
-    					System.out.println(dateOfBirth.getValue().toString());
     					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
     					tempStudent.setProgramYear(Integer.parseInt(year));
     					
@@ -380,7 +378,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
-					System.out.println(dateOfBirth.getValue().toString());
 					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setProgramYear(Integer.parseInt(year));
 					tempStudent.setGPA(0.0);

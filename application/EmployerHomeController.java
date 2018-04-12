@@ -58,6 +58,23 @@ public class EmployerHomeController {
 	PieChart percentageOfStudents;
 	@FXML
 	private PieChart studentsPerDegree;
+	@FXML
+	private GridPane uniAverages;
+	@FXML
+	private Label gpaAverage;
+	@FXML
+	private Label uniOne;
+	@FXML
+	private Label uniTwo;
+	@FXML
+	private Label uniThree;
+	@FXML
+	private Label uniFour;
+	@FXML
+	private Label uniFive;
+	@FXML
+	private Label uniSix;
+
 
 
 
@@ -72,6 +89,10 @@ public class EmployerHomeController {
 
 	@FXML
 	public void initialize() {
+		
+		double roundedGPA = Math.round(stats.overallMeanGPA(db.getDatabase()) * 100.0) / 100.0;
+		
+		gpaAverage.setText(Double.toString(roundedGPA));
 		//pie chart displays the percentage of employers and students
 		 ObservableList<PieChart.Data> studentsPercentage =
 		            FXCollections.observableArrayList(

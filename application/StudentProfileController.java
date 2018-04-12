@@ -50,8 +50,6 @@ public class StudentProfileController {
 	@FXML
 	private Label studentYear;
 	@FXML
-	private Label studentDOB;
-	@FXML
 	private Label studentID;
 	@FXML
 	private Label studentEmail;

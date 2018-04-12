@@ -23,6 +23,7 @@ import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 import application.Main;
@@ -202,18 +203,26 @@ public class Controller {
         else {
         	HashMap<String, User> data = db.getDatabase();
 			//Student tempStudent = new Student(data.get(Storage.UID));
-			User tempUser = db.searchEmail(email.getText());
+			ArrayList<User> tempUser = db.searchEmail(email.getText());
 			Student tempStudent = new Student();
 			Employer tempEmployer = new Employer();
 			
-			if (tempUser.getEmail().equals(email.getText()) && tempUser instanceof Student) {
+			if (tempUser.isEmpty()) {
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Invalid email!");
+				alert.showAndWait();
+				email.clear();
+			}
+			
+			else if (tempUser.get(0).getEmail().equals(email.getText()) && tempUser.get(0) instanceof Student) {
 				
-				Student tempUserStudent = (Student)db.searchEmail(email.getText());
+				Student tempUserStudent = (Student)db.searchEmail(email.getText()).get(0);
 				
 				tempStudent.setFirstName(tempUserStudent.getFirstName());
 				tempStudent.setLastName(tempUserStudent.getLastName());
 				tempStudent.setUID(tempUserStudent.getUID());
-				tempStudent.setCity(tempUser.getCity());
+				tempStudent.setCity(tempUserStudent.getCity());
 				tempStudent.setProvince(tempUserStudent.getProvince());
 				tempStudent.setCountry(tempUserStudent.getCountry());
 				tempStudent.setUniversity(tempUserStudent.getUniversity());
@@ -236,9 +245,9 @@ public class Controller {
 	        	stage.setScene(scene);
 	        	stage.show();
 			}
-			else if (tempUser.getEmail().equals(email.getText()) && tempUser instanceof Employer) {
+			else if (tempUser.get(0).getEmail().equals(email.getText()) && tempUser.get(0) instanceof Employer) {
 				
-				Employer tempUserEmployer = (Employer)db.searchEmail(email.getText());
+				Employer tempUserEmployer = (Employer)db.searchEmail(email.getText()).get(0);
 				
 				tempEmployer.setFirstName(tempUserEmployer.getFirstName());
 				tempEmployer.setLastName(tempUserEmployer.getLastName());
