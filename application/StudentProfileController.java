@@ -29,8 +29,8 @@ import java.util.Stack;
 public class StudentProfileController {
 
 	/**
-	 * controller for the student profile page
-	 * tkaes user info from database and displays it here
+	 * controller for the student profile page profilepage.fxml
+	 * takes user info from database and displays it here
 	 */
 	@FXML
 	private Label studentName;
@@ -73,6 +73,7 @@ public class StudentProfileController {
 	@FXML
 	private Button myProfile;
 
+	//edits about me 
 	@FXML
 	private Label aboutMe;
 	@FXML
@@ -84,12 +85,12 @@ public class StudentProfileController {
 	private Database db = new Database(f.fileLoad());
 	//HashMap<String, User> data = db.getDatabase();
 	Student tempStudent = (Student)((db.getDatabase()).get(Storage.UID)); //retrieve the student from the hashmap within the database class while casting it
+	
 
-
-
-	@FXML
-	private JohnDoe johnDoe = new JohnDoe();
-
+	/*
+	 * initializes labels with student information from database
+	 * called at the beginning of each instance of controller
+	 */
 	@FXML
 	public void initialize() {
 		studentName.setText(tempStudent.getFirstName() + " " + tempStudent.getLastName());
@@ -103,6 +104,10 @@ public class StudentProfileController {
 		studentType.setText(tempStudent.getStudentType());
 	}
 	
+	/*
+	 * edit the about me label
+	 * saves to database
+	 */
 	public void editAbout(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit About Me");
@@ -114,6 +119,9 @@ public class StudentProfileController {
 	}
 
 
+	/*
+	 * changes pages in main application
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

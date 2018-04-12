@@ -43,7 +43,7 @@ import javafx.scene.control.ToggleGroup;
 public class EmployerSearchController {
 
 	/**
-	 * controller that controls the searchemployer.fxml
+	 * controller that controls the searchpage.fxml (searches for employers from student profile)
 	 * searches for employers in created database, displays information for said employer when selected
 	 * can search by first name, last name, and company
 	 */
@@ -91,32 +91,6 @@ public class EmployerSearchController {
 	 * randomly generated employers to search from
 	 */
 	public EmployerSearchController() {
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
-		// employerData.add(new EmployerJohnDoe());
 
 		//TESTING adding the real database to the search page...
 		//------------------------------------------------------
@@ -207,7 +181,7 @@ public class EmployerSearchController {
     }
 
 	/**
-	 * looks to see if search bar texts matches any emplyoer info
+	 * looks to see if search bar texts matches any employer info
 	 * @param employer
 	 * @return
 	 */
@@ -243,7 +217,7 @@ public class EmployerSearchController {
     }
 
 	/**
-	 * clears the table and reupdates it
+	 * clears the table and re-updates it
 	 */
     private void reapplyTableSortOrder() {
         ArrayList<TableColumn<Employer, ?>> sortOrder = new ArrayList<>(employerList.getSortOrder());

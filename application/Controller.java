@@ -38,6 +38,12 @@ import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
+	/*
+	 * controller that starts up the app
+	 * chooses new user or returning user
+	 * 
+	 */
+	
 	private FileIO f = new FileIO();
 	private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
 	/**
@@ -72,12 +78,7 @@ public class Controller {
 	private Button signIn;
 	@FXML
 	private TextField email;
-	
-	/**
-	 * initialize method, automatically called after all FXML methods have finished running
-	 */
-    public void initialize() {
-    }
+
 
 	/**
 	 * method that takes user to new user page when "new user" button is clicked
@@ -161,6 +162,9 @@ public class Controller {
 		stage.show();
 	}
 	
+	/*
+	 * back button that goes back to very first page
+	 */
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -178,13 +182,15 @@ public class Controller {
 	@FXML
 	public void signInButtonClicked(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
-		//alert popup box		
-        if(email.getText().isEmpty()) { //if username and password fields are empty
+		//alert pop up box	
+		//sign in with user email, looks through the database for the user email and loads up that user
+        if(email.getText().isEmpty()) { //if email text field is empty
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
         		alert.setContentText("Please enter your email!");
         		alert.showAndWait();
         }
+        //if email is not in the right format
         else if (!email.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
 				"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
 			alert.setTitle("Error");
@@ -192,6 +198,7 @@ public class Controller {
 			alert.setContentText("Invalid email address!");
 			alert.showAndWait();
 		}
+        //if everything is correct, then it checks both student and employer database for corresponding user and loads up that info
         else {
 //        	HashMap<String, User> data = db.getDatabase();
 //			//Student tempStudent = new Student(data.get(Storage.UID));

@@ -84,18 +84,9 @@ public class NewEmployerController {
 			"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
 			"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
-
-	@FXML
-	private Stack<Scene> pages;
-	@FXML
-	private Button home;
-	@FXML
-	private Button settings;
-	@FXML
-	private Button search;
-	@FXML
-	private Button myProfile;
-
+	/*
+	 * first called when instance of controller is made
+	 */
 	@FXML
 	public void initialize() {
 		System.out.println("employer controller");
@@ -233,6 +224,7 @@ public class NewEmployerController {
 		stage.show();
 	}
 
+	//back button to go to previous employer creation page
 	@FXML
 	public void backButtonClickedEmployer(ActionEvent event) throws IOException {
 		Stage stage;
@@ -258,51 +250,5 @@ public class NewEmployerController {
 		stage.show();
 	}
 
-	public void changePage(ActionEvent event) throws IOException {
-		//if home button clicked or if no button specified (default home)
-		if (event.getTarget() == home || event.getTarget() == null) {
-			Stage stage;
-			Parent root;
-    			stage = (Stage) home.getScene().getWindow();
-    			root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
-
-    			Scene scene = new Scene(root);
-    			stage.setScene(scene);
-    			stage.show();
-		}
-		//if search button clicked
-		else if (event.getTarget() == search) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) search.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("searchemployer.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		//if settings button clicked
-		}
-		else if (event.getTarget() == settings) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) settings.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("settingsemployer.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-		//if profile button clicked
-		else if (event.getTarget() == myProfile) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) myProfile.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("profileemployer.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-	}
 
 }

@@ -31,7 +31,7 @@ import utilityUsers.JohnDoe;
 public class StudentSettingsController {
 
 	/**
-	 * controller for the student settings page
+	 * controller for the student settings page settingspage.fxml
 	 * takes user info from database and displays it here, allows user to edit their info
 	 */
 	@FXML
@@ -67,6 +67,7 @@ public class StudentSettingsController {
 	@FXML 
 	private Label studentGPA;
 	
+	//edit buttons for student information, saves to database when "save" button is pressed
 	@FXML
 	private Button editFirstName;
 	@FXML
@@ -95,6 +96,8 @@ public class StudentSettingsController {
 	private Button editDOB;
 	@FXML
 	private Button calculateGPA;
+	
+	//saves changes made to database
 	@FXML
 	private Button saveChanges;
 
@@ -118,11 +121,10 @@ public class StudentSettingsController {
 	//HashMap<String, User> data = db.getDatabase();
 	Student tempStudent = (Student)((db.getDatabase()).get(Storage.UID)); //retrieve the student from the hashmap within the database class while casting it
 
-
-
-	@FXML
-	private JohnDoe johnDoe = new JohnDoe();
-
+	/*
+	 * initializes all labels with student information
+	 * called automatically at the beginning of each instance of class
+	 */
 	@FXML
 	public void initialize() {
 		studentFirstName.setText(tempStudent.getFirstName());
@@ -137,29 +139,42 @@ public class StudentSettingsController {
 		studentYear.setText(year);
 		studentNumber.setText(tempStudent.getPhoneNumber());
 		studentEmail.setText(tempStudent.getEmail());
+		if (tempStudent.getGPA() == null) {
+			studentGPA.setText("No info");
+		}
+		else {
 		String GPA = Double.toString(tempStudent.getGPA());
 		studentGPA.setText(GPA);
-
+		}
 	}
 	
+	/*
+	 * edit student first name
+	 * opens new window with text field
+	 */
 	public void editFirstName(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit City");
-		dialog.setContentText("City:");
+		dialog.setTitle("Edit First Name");
+		dialog.setContentText("First Name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		if (text.get().isEmpty()) {
+			//if user leaves input blank, keeps old first name
 			studentFirstName.setText(tempStudent.getFirstName());
 		}
 		else {
+			//updates label with new first name to be saved to database later
 			studentFirstName.setText(text.get());
 		}
 	}
 	
+	/*
+	 * edit student last name
+	 */
 	public void editLastName(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit City");
-		dialog.setContentText("City:");
+		dialog.setTitle("Edit Last Name");
+		dialog.setContentText("Last Name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		if (text.get().isEmpty()) {
@@ -170,6 +185,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit city
+	 */
 	public void editCity(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit City");
@@ -184,6 +202,9 @@ public class StudentSettingsController {
 		}
 	}
 
+	/*
+	 * edit province
+	 */
 	public void editProvince(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Province");
@@ -198,6 +219,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit country
+	 */
 	public void editCountry(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Country");
@@ -212,6 +236,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit university
+	 */
 	public void editUni(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit University");
@@ -226,6 +253,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit degree
+	 */
 	public void editDegree(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Degree");
@@ -240,6 +270,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit year of study
+	 */
 	public void editYear(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Year");
@@ -254,6 +287,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit degree type
+	 */
 	public void editType(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Degree Type");
@@ -268,7 +304,9 @@ public class StudentSettingsController {
 		}
 	}
 	
-	
+	/*
+	 * edit phone number
+	 */
 	public void editNumber(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		Alert alert = new Alert(AlertType.ERROR);
@@ -291,6 +329,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit email address
+	 */
 	public void editEmail(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		Alert alert = new Alert(AlertType.ERROR);
@@ -314,6 +355,9 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * edit GPA
+	 */
 	public void editGPA(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		Alert alert = new Alert(AlertType.ERROR);
@@ -324,6 +368,7 @@ public class StudentSettingsController {
 		if (text.get().isEmpty()) {
 			studentGPA.setText(Double.toString(tempStudent.getGPA()));
 		}
+		//if GPA is not in the correct range
 		else if (Double.parseDouble(text.get()) < 0 || Double.parseDouble(text.get()) > 4.3) {
 			alert.setTitle("Error");
 			alert.setHeaderText(null);
@@ -335,15 +380,18 @@ public class StudentSettingsController {
 		}
 	}
 	
+	/*
+	 * calculates GPA
+	 */
 	public void calculateGPA(ActionEvent event) throws IOException {
 		TextInputDialog gpa = new TextInputDialog();
-		
+		//same as in new student controller
 		GridPane grid = new GridPane();
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(20, 150, 10, 10));
 
-
+		//gets number of courses
 		TextField numOfCourses = new TextField();
 		numOfCourses.setPromptText("0");
 		Button numCoursesButton = new Button("Enter");
@@ -358,6 +406,7 @@ public class StudentSettingsController {
 		ArrayList<TextField> course = new ArrayList<TextField>();
 		ArrayList<TextField> weightForCourse = new ArrayList<TextField>();
 		
+		//makes text fields for each course, adds text field to array lists to access later
 		numCoursesButton.setOnAction((ActionEvent)->{
 			for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
 				TextField courseNumber = new TextField();
@@ -374,7 +423,7 @@ public class StudentSettingsController {
 			}
 	    });
 		
-		
+		//looks at each text field in array lists and calculates GPA
 		Optional<String> result = gpa.showAndWait();
 		if (result.isPresent()) {
 			double GPA = 0.0;
@@ -386,17 +435,22 @@ public class StudentSettingsController {
 				weightTotal += weight;	
 			}
 			GPA /= weightTotal;
+			//rounds GPA to 2 decimal points
 			double roundedGPA = Math.round(GPA * 100.0) / 100.0;
 			studentGPA.setText(Double.toString(roundedGPA));
 		}
 	}
 	
+	/*
+	 * saves changes made into database
+	 */
 	public void saveButton(ActionEvent event) throws IOException {
 		
 		HashMap<String, User> data = db.getDatabase();
 		//Student tempStudent = new Student(data.get(Storage.UID));
 		Student tempStudent = (Student)data.get(Storage.UID); //?
 		
+		//updates database to have same information as on the labels
 		tempStudent.setFirstName(studentFirstName.getText());
 		tempStudent.setLastName(studentLastName.getText());
 		tempStudent.setCity(studentCity.getText());
@@ -413,6 +467,9 @@ public class StudentSettingsController {
 		f.fileSave(db.getDatabase());
 	}
 
+	/*
+	 * changes pages in main application
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

@@ -43,7 +43,7 @@ import javafx.scene.control.ToggleGroup;
 public class StudentSearchController {
 
 	/**
-	 * controller that controls searchpage.fxml
+	 * controller that controls searchemployer.fxml (for employers to search for students in database)
 	 * searches for students in the database and can display their information to the user
 	 */
 	@FXML
@@ -57,32 +57,26 @@ public class StudentSearchController {
 	@FXML
 	private Button myProfile;
 
-	//searching test
+	//variables for search bar/page 
 	@FXML
 	private TextField searchBar;
 	@FXML
-	// private TableView<JohnDoe> studentList;
 	private TableView<Student> studentList;
 	@FXML
-	// private TableColumn<JohnDoe, String> firstNameColumn;
 	private TableColumn<Student, String> firstNameColumn;
 	@FXML
-	// private TableColumn<JohnDoe, String> lastNameColumn;
 	private TableColumn<Student, String> lastNameColumn;
 	@FXML
-	// private TableColumn<JohnDoe, String> degreeColumn;
 	private TableColumn<Student, String> degreeColumn;
 	@FXML
-	// private TableColumn<JohnDoe, String> idColumn;
 	private TableColumn<Student, String> idColumn;
 
 
-	// private ObservableList<JohnDoe> studentData = FXCollections.observableArrayList();
-	// private ObservableList<JohnDoe> filteredStudents = FXCollections.observableArrayList();
+	//list of students with and without filtered results
 	private ObservableList<Student> studentData = FXCollections.observableArrayList();
 	private ObservableList<Student> filteredStudents = FXCollections.observableArrayList();
 
-
+	//allows user to search by name, degree, or UID
 	@FXML
 	private RadioButton searchByName;
 	@FXML
@@ -90,6 +84,7 @@ public class StudentSearchController {
 	@FXML
 	private RadioButton searchByID;
 
+	//toggle group for radiobuttons, so that only one is allowed to be selected at a time
 	@FXML
 	private ToggleGroup toggleGroup = new ToggleGroup();
 
@@ -102,25 +97,6 @@ public class StudentSearchController {
 	 * can search students by name, degree, and university ID number
 	 */
 	public StudentSearchController() {
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-		// studentData.add(new JohnDoe());
-
 		//TESTING adding the real database to the search page...
 		//------------------------------------------------------
 		  for (User s : (db.getDatabase()).values()) {
@@ -205,6 +181,9 @@ public class StudentSearchController {
         reapplyTableSortOrder();
     }
 
+	/*
+	 * if the student information matches input in search bar
+	 */
 	private boolean matchesSearch(Student student) {
         String filterSearch = searchBar.getText();
         if (filterSearch == null || filterSearch.isEmpty()) {
@@ -250,7 +229,9 @@ public class StudentSearchController {
         studentList.getSortOrder().addAll(sortOrder);
     }
 
-
+    /*
+     * changes pages in main application
+     */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {
@@ -297,6 +278,5 @@ public class StudentSearchController {
 			stage.show();
 		}
 	}
-
 
 }

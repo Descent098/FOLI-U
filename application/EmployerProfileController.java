@@ -71,15 +71,11 @@ public class EmployerProfileController {
 	@FXML
 	private Button myProfile;
 
-
+	//edit about me 
 	@FXML
 	private Label aboutMe;
 	@FXML
 	private Button editAboutMe;
-
-	//temporary random employer to display on profile page
-	//@FXML
-	//private EmployerJohnDoe johnDoe = new EmployerJohnDoe();
 
 	//loading the file, and grabbing the current employer out of it to use
 	private FileIO f = new FileIO();
@@ -102,6 +98,10 @@ public class EmployerProfileController {
 		employerHiring.setText(tempEmployer.getOfferingJobs());
 	}
 
+	/*
+	 * edits about me
+	 * opens new window and gets user input, saves to database
+	 */
 	public void editAbout(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit About Me");
@@ -113,7 +113,7 @@ public class EmployerProfileController {
 	}
 
 	/**
-	 * changes page in app
+	 * changes page in application
 	 * @param event
 	 * @throws IOException
 	 */

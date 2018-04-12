@@ -110,16 +110,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	private Button backToStudent;
 
-	@FXML
-	private Stack<Scene> pages;
-	@FXML
-	private Button home;
-	@FXML
-	private Button settings;
-	@FXML
-	private Button search;
-	@FXML
-	private Button myProfile;
 
 	//provinces and states
 	@FXML
@@ -280,15 +270,16 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         }
         else {
 
-						//if user chooses to calculate GPA
+				//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
-							//add code for calculating GPA later
+					//opens new window
         			GridPane grid = new GridPane();
         			grid.setHgap(10);
         			grid.setVgap(10);
         			grid.setPadding(new Insets(20, 150, 10, 10));
 
-
+        			//text field that takes input for number of classes
+        			//will create the correct amount of new text fields corresponding to user input
         			TextField numOfCourses = new TextField();
         			numOfCourses.setPromptText("0");
         			Button numCoursesButton = new Button("Enter");
@@ -300,16 +291,21 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         			gpa.getDialogPane().setContent(grid);
         			gpa.setTitle("GPA Calculator");
         			
+        			//array lists that will include the text fields for each course
         			ArrayList<TextField> course = new ArrayList<TextField>();
         			ArrayList<TextField> weightForCourse = new ArrayList<TextField>();
         			
+        			//iterate through the number of courses and make a grade text field and a weight text field for each one
         			numCoursesButton.setOnAction((ActionEvent)->{
         				for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
         					TextField courseNumber = new TextField();
+        					//creates grade text field
         					courseNumber.setPromptText("Grade for class");
         					TextField weightNumber = new TextField();
         					weightNumber.setPromptText("Weight for class");
+        					//creates weight text field
         					grid.add(new Label("Class" + " " + (i + 1)), 0, i + 1);
+        					//adds text fields to corresponding array list for easy access later
         					course.add(courseNumber);
         					weightForCourse.add(weightNumber);
         					grid.add(courseNumber, 1, i + 1);
@@ -319,26 +315,31 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         				}
         		    });
         			
-        			
+        			//once GPA calculating page is finished being generated
         			Optional<String> result = gpa.showAndWait();
         			if (result.isPresent()) {
         				double studentGPA = 0.0;
             			double weightTotal = 0.0;
+            			//gets info from each text field
             			for (int i = 0; i < course.size(); i++) {
             				double grade = Double.parseDouble(course.get(i).getText());
             				double weight = Double.parseDouble(weightForCourse.get(i).getText());
+            				//math from Student.java
+            				//calculates GPA
             				studentGPA += (grade*weight);
             				weightTotal += weight;	
             			}
             			studentGPA /= weightTotal;
+            			//rounds GPA to 2 decimal places
             			double roundedGPA = Math.round(studentGPA * 100.0) / 100.0;
             			System.out.println(roundedGPA);
             			
-            			
+            			//loads up database
             			HashMap<String, User> data = db.getDatabase();
     					//Student tempStudent = new Student(data.get(Storage.UID));
     					Student tempStudent = (Student)data.get(Storage.UID); //?
     					
+    					//adds all user infomation in for the user
     					tempStudent.setCity(cityName.getText());
     					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
     					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -352,6 +353,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
     					tempStudent.setGPA(roundedGPA);
     					f.fileSave(db.getDatabase());
     					
+    					//student creation is completed, goes to main app
     					Stage stage;
             			Parent root;
             			stage = (Stage) finishNewStudent.getScene().getWindow();
@@ -364,7 +366,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         			
         			
         		}
-						//otherwise, sign up is completed
+				//otherwise, sign up is completed
         		else {
 
 					//saving information from the second page
@@ -409,6 +411,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	}
 
+	/*
+	 * back to new user page
+	 */
 	@FXML
 	public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 		Stage stage;
@@ -421,6 +426,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		stage.show();
 	}
 
+	/*
+	 * back to main page
+	 */
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
 		Stage stage;
@@ -433,6 +441,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		stage.show();
 	}
 
+	/*
+	 * back to previous page in student creation
+	 */
 	@FXML
 	public void backButtonClickedStudent(ActionEvent event) throws IOException {
 		Stage stage;
@@ -443,53 +454,6 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-	}
-
-	public void changePage(ActionEvent event) throws IOException {
-		//if home button clicked or if no button specified (default home)
-		if (event.getTarget() == home || event.getTarget() == null) {
-			Stage stage;
-			Parent root;
-    			stage = (Stage) home.getScene().getWindow();
-    			root = FXMLLoader.load(getClass().getResource("home.fxml"));
-
-    			Scene scene = new Scene(root);
-    			stage.setScene(scene);
-    			stage.show();
-		}
-		//if search button clicked
-		else if (event.getTarget() == search) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) search.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("searchpage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		//if settings button clicked
-		}
-		else if (event.getTarget() == settings) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) settings.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("settingspage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-		//if profile button clicked
-		else if (event.getTarget() == myProfile) {
-			Stage stage;
-			Parent root;
-			stage = (Stage) myProfile.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("profilepage.fxml"));
-
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
 	}
 
 }

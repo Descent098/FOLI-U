@@ -36,8 +36,8 @@
       </Label>
       <TextField fx:id="enterFirstName" layoutX="159.0" layoutY="96.0" />
       <TextField fx:id="enterLastName" layoutX="159.0" layoutY="176.0" />
-      <TextField fx:id="phoneNumber" layoutX="159.0" layoutY="256.0" />
+      <TextField fx:id="phoneNumber" layoutX="159.0" layoutY="256.0" promptText="000-000-0000" />
       <Button fx:id="continueNewEmployer" layoutX="150.0" layoutY="431.0" mnemonicParsing="false" onAction="#continueButtonClickedEmployer" text="Continue" />
-      <TextField fx:id="emailAddress" layoutX="159.0" layoutY="336.0" />
+      <TextField fx:id="emailAddress" layoutX="159.0" layoutY="336.0" promptText="johndoe@hotmail.com" />
    </children>
 </AnchorPane>

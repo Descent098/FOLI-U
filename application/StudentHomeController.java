@@ -39,7 +39,7 @@ import utilities.Statistics;
 public class StudentHomeController {
 
 	/**
-	 * controller for the student home page
+	 * controller for the student home page home.fxml
 	 * takes user info from database and displays it here in charts
 	 * statistics of all users
 	 */
@@ -56,14 +56,9 @@ public class StudentHomeController {
 	@FXML
 	private Button myProfile;
 
+	//pie charts displaying information from statistics
 	@FXML
 	PieChart percentageOfStudents;
-	@FXML
-	CategoryAxis xAxis = new CategoryAxis();
-	@FXML
-	NumberAxis yAxis = new NumberAxis();
-	@FXML
-	BarChart<?, ?> numberOfStudents;
 	@FXML
 	private PieChart studentsPerDegree;
 
@@ -78,8 +73,13 @@ public class StudentHomeController {
 
 
 
+	/*
+	 * initializes graphs for statistics
+	 * called first every time an instance of controller is created
+	 */
 	@FXML
 	public void initialize() {
+		//pie chart for percentage of students and employers in database
 		ObservableList<PieChart.Data> studentsPercentage =
 	            FXCollections.observableArrayList(
 	            new PieChart.Data("Students", stats.percentageofStudents(db.getDatabase())),
@@ -88,7 +88,7 @@ public class StudentHomeController {
 				percentageOfStudents.setData(studentsPercentage);
 	 
 		 
-		 
+		 //pie chart for percentage of students in each degree
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
 		            new PieChart.Data("Biology", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),
@@ -107,7 +107,9 @@ public class StudentHomeController {
 	}
 	
 
-
+	/*
+	 * changes pages in main application
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

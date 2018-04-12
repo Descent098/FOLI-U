@@ -38,12 +38,11 @@ import utilities.Statistics;
 public class EmployerHomeController {
 
 	/**
-	 * controller for the student home page
+	 * controller for the employer home page homeemployer.fxml
 	 * takes user info from database and displays it here in charts
 	 * statistics of all users
 	 */
 	
-
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -55,14 +54,9 @@ public class EmployerHomeController {
 	@FXML
 	private Button myProfile;
 
+	//pie charts to display statistics information
 	@FXML
 	PieChart percentageOfStudents;
-	@FXML
-	CategoryAxis xAxis = new CategoryAxis();
-	@FXML
-	NumberAxis yAxis = new NumberAxis();
-	@FXML
-	BarChart<?, ?> numberOfStudents;
 	@FXML
 	private PieChart studentsPerDegree;
 
@@ -87,7 +81,7 @@ public class EmployerHomeController {
 
 		 percentageOfStudents.setData(studentsPercentage);
 		 
-
+		 //another pie chart to display percentage of users in each major
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
 		            new PieChart.Data("BIO", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),
@@ -106,7 +100,9 @@ public class EmployerHomeController {
 	}
 	
 
-
+	/*
+	 * changes pages in the main app
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {

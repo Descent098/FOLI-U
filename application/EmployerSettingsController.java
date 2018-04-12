@@ -34,7 +34,7 @@ import utilityUsers.EmployerJohnDoe;
 public class EmployerSettingsController {
 
 	/**
-	 * controller for the student settings page
+	 * controller for the employer settings page settingsemployer.fxml
 	 * takes user info from database and displays it here, allows user to edit their info
 	 */
 	@FXML
@@ -60,6 +60,7 @@ public class EmployerSettingsController {
 	@FXML
 	private Label employerHiring;
 	
+	//edit buttons to edit all information
 	@FXML
 	private Button editFirstName;
 	@FXML
@@ -98,14 +99,14 @@ public class EmployerSettingsController {
 	//loading the file, and grabbing the current student out of it to use
 	private FileIO f = new FileIO();
 	private Database db = new Database(f.fileLoad());
-	//HashMap<String, User> data = db.getDatabase();
+	//gets employer user from database
 	Employer tempEmployer = (Employer)((db.getDatabase()).get(Storage.employerName));
 
 
-
-	@FXML
-	private EmployerJohnDoe johnDoe = new EmployerJohnDoe();
-
+	/*
+	 * initializes labels with user information when instance of controller is created
+	 * displays all to user
+	 */
 	@FXML
 	public void initialize() {
 		employerFirstName.setText(tempEmployer.getFirstName());
@@ -120,24 +121,33 @@ public class EmployerSettingsController {
 
 	}
 	
+	/*
+	 * edits user first name
+	 * saves new name to database once "save" button is pressed
+	 */
 	public void editFirstName(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit City");
-		dialog.setContentText("City:");
+		dialog.setTitle("Edit First Name");
+		dialog.setContentText("First Name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		if (text.get().isEmpty()) {
+			//if user leaves text field blank, then keep old first name
 			employerFirstName.setText(tempEmployer.getFirstName());
 		}
 		else {
+			//set label to new first name to be saved to database later
 			employerFirstName.setText(text.get());
 		}
 	}
 	
+	/*
+	 * edit last name
+	 */
 	public void editLastName(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Edit City");
-		dialog.setContentText("City:");
+		dialog.setTitle("Edit Last Name");
+		dialog.setContentText("Last Name:");
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		if (text.get().isEmpty()) {
@@ -148,6 +158,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit city
+	 */
 	public void editCity(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit City");
@@ -162,6 +175,9 @@ public class EmployerSettingsController {
 		}
 	}
 
+	/*
+	 * edit province
+	 */
 	public void editProvince(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Province");
@@ -176,6 +192,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit country
+	 */
 	public void editCountry(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Country");
@@ -190,6 +209,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit company
+	 */
 	public void editCompany(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Edit Company");
@@ -204,6 +226,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit hiring 
+	 */
 	public void editHiring(ActionEvent event) throws IOException {
 		List<String> choices = new ArrayList<>();
 		choices.add("Yes");
@@ -223,6 +248,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit phone number
+	 */
 	public void editNumber(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		Alert alert = new Alert(AlertType.ERROR);
@@ -245,6 +273,9 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * edit email address
+	 */
 	public void editEmail(ActionEvent event) throws IOException {
 		TextInputDialog dialog = new TextInputDialog();
 		Alert alert = new Alert(AlertType.ERROR);
@@ -268,12 +299,16 @@ public class EmployerSettingsController {
 		}
 	}
 	
+	/*
+	 * save button, saves all changed made into database 
+	 */
 	public void saveButton(ActionEvent event) throws IOException {
 		
 		HashMap<String, User> data = db.getDatabase();
 		//Student tempStudent = new Student(data.get(Storage.UID));
 		Employer tempEmployer = (Employer)data.get(Storage.employerName); //?
 		
+		//sets all user information
 		tempEmployer.setFirstName(employerFirstName.getText());
 		tempEmployer.setLastName(employerLastName.getText());
 		tempEmployer.setCity(employerCity.getText());
@@ -284,10 +319,14 @@ public class EmployerSettingsController {
 		tempEmployer.setEmail(employerEmail.getText());
 		tempEmployer.setPhoneNumber(employerNumber.getText());
 		
+		//saves to database
 		f.fileSave(db.getDatabase());
 	}
 
 
+	/*
+	 * changes pages in main application
+	 */
 	public void changePage(ActionEvent event) throws IOException {
 		//if home button clicked or if no button specified (default home)
 		if (event.getTarget() == home || event.getTarget() == null) {
