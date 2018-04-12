@@ -200,31 +200,33 @@ public class Controller {
 		}
         //if everything is correct, then it checks both student and employer database for corresponding user and loads up that info
         else {
-//        	HashMap<String, User> data = db.getDatabase();
-//			//Student tempStudent = new Student(data.get(Storage.UID));
-//			Student tempStudent = (Student)data.get(Storage.UID); //?
-//			Employer tempEmployer = (Employer)data.get(Storage.employerName);
-//			
-//			if (tempStudent.getEmail().equals(email.getText())) {
-//				Stage stage;
-//	        	Parent root;
-//	        	stage = (Stage) signIn.getScene().getWindow();
-//	        	root = FXMLLoader.load(getClass().getResource("home.fxml"));
-//
-//	        	Scene scene = new Scene(root);
-//	        	stage.setScene(scene);
-//	        	stage.show();
-//			}
-//			else if (tempEmployer.getEmail().equals(email.getText())) {
-//				Stage stage;
-//	        	Parent root;
-//	        	stage = (Stage) signIn.getScene().getWindow();
-//	        	root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
-//
-//	        	Scene scene = new Scene(root);
-//	        	stage.setScene(scene);
-//	        	stage.show();
-//			}
+        	HashMap<String, User> data = db.getDatabase();
+			//Student tempStudent = new Student(data.get(Storage.UID));
+			User tempUser = db.searchEmail(email.getText());
+			Student tempStudent = new Student();
+			Employer tempEmployer = new Employer();
+			
+			if (tempUser.getEmail().equals(email.getText()) && tempUser instanceof Student) {
+				
+				Student tempUserStudent = (Student)db.searchEmail(email.getText());
+				
+				tempStudent.setFirstName(tempUserStudent.getFirstName());
+				tempStudent.setLastName(tempUserStudent.getLastName());
+				tempStudent.setUID(tempUserStudent.getUID());
+				tempStudent.setCity(tempUser.getCity());
+				tempStudent.setProvince(tempUserStudent.getProvince());
+				tempStudent.setCountry(tempUserStudent.getCountry());
+				tempStudent.setUniversity(tempUserStudent.getUniversity());
+				tempStudent.setDegree(tempUserStudent.getDegree());
+				tempStudent.setStudentType(tempUserStudent.getStudentType());
+				tempStudent.setProgramYear(tempUserStudent.getProgramYear());
+				tempStudent.setPhoneNumber(tempUserStudent.getPhoneNumber());
+				tempStudent.setEmail(tempUserStudent.getEmail());
+				tempStudent.setGPA(tempUserStudent.getGPA());
+				
+				Storage.UID = (tempStudent.getUID());
+				f.fileSave(db.getDatabase());
+				
 				Stage stage;
 	        	Parent root;
 	        	stage = (Stage) signIn.getScene().getWindow();
@@ -233,7 +235,39 @@ public class Controller {
 	        	Scene scene = new Scene(root);
 	        	stage.setScene(scene);
 	        	stage.show();
+			}
+			else if (tempUser.getEmail().equals(email.getText()) && tempUser instanceof Employer) {
+				
+				Employer tempUserEmployer = (Employer)db.searchEmail(email.getText());
+				
+				tempEmployer.setFirstName(tempUserEmployer.getFirstName());
+				tempEmployer.setLastName(tempUserEmployer.getLastName());
+				tempEmployer.setCity(tempUserEmployer.getCity());
+				tempEmployer.setProvince(tempUserEmployer.getProvince());
+				tempEmployer.setCountry(tempUserEmployer.getCountry());
+				tempEmployer.setCompanyName(tempUserEmployer.getCompanyName());
+				tempEmployer.setOfferingJobs(tempUserEmployer.getOfferingJobs());
+				tempEmployer.setPhoneNumber(tempUserEmployer.getPhoneNumber());
+				tempEmployer.setEmail(tempUserEmployer.getEmail());
+				
+				Storage.employerName = (tempEmployer.getFirstName() + tempEmployer.getLastName());
+				f.fileSave(db.getDatabase());
+				
+				Stage stage;
+	        	Parent root;
+	        	stage = (Stage) signIn.getScene().getWindow();
+	        	root = FXMLLoader.load(getClass().getResource("homeemployer.fxml"));
 
+	        	Scene scene = new Scene(root);
+	        	stage.setScene(scene);
+	        	stage.show();
+			}
+			else {
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Invalid email address!");
+				alert.showAndWait();
+			}
         }
 
 	}

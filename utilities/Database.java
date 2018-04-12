@@ -108,7 +108,7 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
   			System.out.println("Found: "+tempUser.getFirstName());
   			nameList.add(tempUser);
       }
-    }
+    } 
 	}
 	return nameList;
 } //end of method
@@ -126,6 +126,18 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
     }
     return nameList;
   }
+  
+  public User searchEmail(String searchTerm) {
+	  ArrayList<User> user = new ArrayList<User>(); 
+	  for (String key : database.keySet()) {
+	  		User tempUser = database.get(key); //just a temporary user to do checks with
+	  		if (tempUser.getEmail().equals(searchTerm)) {
+	  			user.add(tempUser);
+	  		}
+	  }
+	  return user.get(0);
+  }
+  
 
   // public HashMap<String, String> returnAllNames(){
   //   HashMap<String, String> names = new HashMap();
