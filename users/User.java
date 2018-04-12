@@ -47,6 +47,8 @@ public void setContactInfo(){
         System.out.println("(1)Calgary \n(2)Edmonton \n(3)Lethbridge \n(4)Boston \n(5)Chicago \n(6)Vegas"); //List of Cities
         input = new Scanner(System.in);
         selection = input.nextInt();
+
+
         switch(selection) { //Assign a city based on User input
 
         case 1: this.city = "Calgary";
@@ -99,6 +101,7 @@ public void setContactInfo(){
                 break;
 
 
+
         }
 
         //Sets country based on Province
@@ -122,6 +125,11 @@ public void setContactInfo(){
 
         }
 
+        System.out.println("Tell us about yourself: ");
+        input = new Scanner(System.in);
+        String me = input.nextLine();
+        this.aboutMe = me;
+
 }
 
 /** A method to allow you to print all a users contact into*/
@@ -132,6 +140,7 @@ public void printContactInfo(){
         System.out.println("Country: " + country);
         System.out.println("City: " + city);
         System.out.println("Province: " + province);
+        System.out.println("About Them: " + aboutMe);
 }
 
 
