@@ -1,2 +1,1 @@
-
-java Program
+java -ea Program

@@ -1,6 +1,7 @@
 package utilities;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import users.Employer;
 import users.Student;
@@ -36,6 +37,9 @@ public double percentageofStudents(HashMap<String, User> db){
 																}
 
 								}
+								if(studentCount == 0){
+									return 0.0;
+								}
 
 								return (100*(studentCount/populationCount)); //Multiply by 100 to represent a percentage
 }
@@ -48,6 +52,7 @@ public int howManyEmployers(HashMap<String, User> db){
 																								count += 1;
 																}
 								}
+
 								return count;
 }
 
@@ -61,6 +66,9 @@ public double percentageofEmployers(HashMap<String, User> db){
 																								employerCount += 1;
 																}
 
+								}
+								if(employerCount == 0){
+									return 0.0;
 								}
 
 								return (100*(employerCount/populationCount)); //Multiply by 100 to represent a percentage
@@ -76,6 +84,52 @@ public double howManyStudentsInDegree(HashMap<String, User> db, String degree){
 																}
 								}
 								return count;
+}
+
+/**Method that returns a double representing the overall Mean GPA of all students in the passed HashMap*/
+public double overallMeanGPA(HashMap<String, User> db){
+								ArrayList<Double> GPAs = new ArrayList<Double>();
+								double mean = 0.0; //Value of the mean of the GPA's
+								double totalGPA = 0.0;//Value of all GPA's added together
+								for (String key : db.keySet()) {
+																if (db.get(key).getGPA() > 0.0) { //Only Students
+																								GPAs.add(db.get(key).getGPA());
+
+																}
+													}
+								for ( int i = 0 ; i < GPAs.size(); i++){
+									totalGPA += GPAs.get(i);
+
+								}
+								if(totalGPA == 0.0){
+									return 0.0;
+								}
+						mean = totalGPA/howManyStudents(db);
+						return mean;
+}
+
+/**Method that returns a double representing the Mean GPA of all students in the given university in the passed HashMap*/
+public double universityMeanGPA(HashMap<String, User> db, String university){
+								ArrayList<Double> GPAs = new ArrayList<Double>();
+								double mean = 0.0; //Value of the mean of the GPA's
+								double totalGPA = 0.0;//Value of all GPA's added together
+								double studentCount = 0.0;
+								for (String key : db.keySet()) {
+																if (db.get(key).getUniversity().equals(university)) { //only students that are in the University
+																								GPAs.add(db.get(key).getGPA());
+																								studentCount += 1;
+
+																}
+													}
+								for ( int i = 0 ; i < GPAs.size(); i++){
+									totalGPA += GPAs.get(i);
+
+								}
+						mean = totalGPA/studentCount;
+						if(studentCount == 0.0){//if there are no students at the university
+							return 0.0;
+						}
+						return mean;
 }
 
 
