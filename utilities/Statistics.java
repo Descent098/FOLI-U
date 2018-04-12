@@ -1,6 +1,3 @@
-/**
- *
- */
 package utilities;
 
 import java.util.HashMap;
@@ -39,8 +36,6 @@ public double percentageofStudents(HashMap<String, User> db){
 																}
 
 								}
-								//System.out.println("Total Population: " + populationCount);
-								//System.out.println("Total Student Population: " + studentCount);
 
 								return (100*(studentCount/populationCount)); //Multiply by 100 to represent a percentage
 }
@@ -67,8 +62,6 @@ public double percentageofEmployers(HashMap<String, User> db){
 																}
 
 								}
-								//System.out.println("Total Population: " + populationCount);
-								//System.out.println("Total Student Population: " + studentCount);
 
 								return (100*(employerCount/populationCount)); //Multiply by 100 to represent a percentage
 }

@@ -26,7 +26,6 @@ import users.User;
 import utilities.Database;
 import utilities.FileIO;
 import utilities.Storage;
-import utilityUsers.JohnDoe;
 
 public class StudentSettingsController {
 

@@ -1,9 +1,9 @@
 package utilities;
 import java.util.*;
 
+import users.Employer;
+import users.Student;
 import users.User;
-import utilityUsers.EmployerJohnDoe;
-import utilityUsers.JohnDoe;
 
 import java.io.*;
 
@@ -15,33 +15,36 @@ public HashMap<String, User> database = new HashMap<String, User>();
 public String randomEmployerCount;
 public FileIO f = new FileIO();
 
+/**Default Constructor for Database*/
 public Database() {
 
 }
+
+/**Copy Constructor for Database*/
 public Database(HashMap<String, User> db) {
         database = db;
 }
 /** A method to create Random Students, and add them to the database*/
 public void createRandomStudents() {
-        Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
+        Scanner continuetoSearch = new Scanner(System.in); /*Scanner that takes input as to whether
                                                               or not you want to continue searching */
 
-        int JohnDoeS = howManyRandos();
+        int JohnDoeS = howManyRandos(); //Based on return generate number of students
         for(int i=0; i<JohnDoeS; i++) {
-                JohnDoe temp = new JohnDoe();
+                Student temp = RandomUserFactory.generateRandomStudent();
                 database.put(temp.getUID(), temp);
         }
 }
 
 /** A method to create Random Employers, and add them to the database*/
 public int createRandomEmployers(int count) {
-        Scanner continuetoSearch = new Scanner(System.in); /*scaner that takes input as to whether
+        Scanner continuetoSearch = new Scanner(System.in); /*Scanner that takes input as to whether
                                                               or not you want to continue searching */
 
-        int EmployerJohnDoeS = howManyRandos();
+        int EmployerJohnDoeS = howManyRandos(); //Based on return generate number of Employers
         for(int i=0; i<EmployerJohnDoeS; i++) {
                 randomEmployerCount = Integer.toString(count);
-                EmployerJohnDoe temp = new EmployerJohnDoe();
+                Employer temp = RandomUserFactory.generateRandomEmployer();
                 database.put(randomEmployerCount, temp);
                 count += 1;
         }
@@ -59,13 +62,6 @@ public void searchUser(){
         System.out.println("\nDatabase Returned: ");
         database.get(searchedUser).printContactInfo();
 
-}
-
-
-/** Creates a new random User from class JohnDoe*/
-public JohnDoe newJohnDoe(){
-        JohnDoe JoDo = new JohnDoe();
-        return JoDo;
 }
 
 /** A method that returns user input as an int,

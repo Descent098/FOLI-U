@@ -18,11 +18,6 @@ public Student(){
 
 }
 
-//Copy Constructor used to make user to student
-// Student(User toCopy) {
-//   super(toCopy); //calls the User class's constructor to copy common attributes (like name for example)
-// }
-
 
 /**
  * Method for setting instance variables for student

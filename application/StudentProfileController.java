@@ -12,7 +12,6 @@ import users.Student;
 import utilities.Database;
 import utilities.FileIO;
 import utilities.Storage;
-import utilityUsers.JohnDoe;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;

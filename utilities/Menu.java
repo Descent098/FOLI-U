@@ -4,17 +4,12 @@ import java.util.Scanner;
 import users.Employer;
 import users.Student;
 import users.User;
-import utilityUsers.EmployerJohnDoe;
-import utilityUsers.JohnDoe;
 import java.text.DecimalFormat;
 
 import java.util.ArrayList;
 
 public class Menu {
-// public static Scanner mainclassinput = new Scanner(System.in);
 private Student s1 = new Student();
-private JohnDoe jd = new JohnDoe();
-private EmployerJohnDoe e = new EmployerJohnDoe();
 private Database db = new Database();
 private Employer ep = new Employer();
 private FileIO f = new FileIO();
