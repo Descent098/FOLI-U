@@ -28,15 +28,15 @@ public void fileSave(HashMap<String,User> db) {
                 // if (data.exists()) {
                 //         System.out.println("Error, file name already exists. ");
                 // } else if (!data.exists()) {
-                        try {
-                                data.createNewFile();
-                                createOrLoadFile = true;
-                                System.out.println("File created. ");
-                        } catch (IOException e) {
-                                createOrLoadFile = false;
-                                System.out.println("File could not be created.");
-                                System.err.println("IOException:	"+ e.getMessage());
-                        }
+                try {
+                        data.createNewFile();
+                        createOrLoadFile = true;
+                        System.out.println("File created. ");
+                } catch (IOException e) {
+                        createOrLoadFile = false;
+                        System.out.println("File could not be created.");
+                        System.err.println("IOException:	"+ e.getMessage());
+                }
                 // }
         } while (createOrLoadFile != true);
 
@@ -108,13 +108,13 @@ public boolean exitCheck() {
         File data;
         String fileName = "dataFile";
         /*System.out.println("Enter name of the file to check: ");
-        input = new Scanner(System.in);
-        fileName = input.nextLine();
-        */
+           input = new Scanner(System.in);
+           fileName = input.nextLine();
+         */
         data = new File(fileName + ".dat");
 
         if(data.exists()) {
-          return false;
+                return false;
         }
         return true;
 }

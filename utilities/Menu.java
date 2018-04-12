@@ -48,7 +48,7 @@ public void selectMenu(){
         System.out.println("3 Search for a user: ");
         System.out.println("4 for creating and printing random users:");
         System.out.println("5 Load database: ");
-	      System.out.println("6 Search for multiple users: "); //will expand this to search by other criteria too
+        System.out.println("6 Search for multiple users: "); //will expand this to search by other criteria too
         System.out.println("7 Generate Statistics: ");
         System.out.println("8 Exit program: ");
 
@@ -81,11 +81,11 @@ public void selectMenu(){
                 switch (choice2Selection) { //users choice of what type of class to print
 
                 case 1: db.createRandomStudents();
-                  f.fileSave(db.getDatabase());
+                        f.fileSave(db.getDatabase());
                         break;
 
                 case 2: employerCount = db.createRandomEmployers(employerCount);
-                  f.fileSave(db.getDatabase());
+                        f.fileSave(db.getDatabase());
                         break;
                 }
                 break;
@@ -94,109 +94,109 @@ public void selectMenu(){
                 break;
 
 
-		case 6: System.out.println("Enter 1 to search by first name: ");
-            System.out.println("Enter 2 to search by last name: ");
-            System.out.println("Enter 3 to search by major: ");
-            System.out.println("Enter 4 to search by GPA: ");
+        case 6: System.out.println("Enter 1 to search by first name: ");
+                System.out.println("Enter 2 to search by last name: ");
+                System.out.println("Enter 3 to search by major: ");
+                System.out.println("Enter 4 to search by GPA: ");
 
-            input = new Scanner(System.in);
-            int searchBy = input.nextInt();
-            ArrayList<User> tempList = new ArrayList<User>();
-            if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
-              if (searchBy == 1) {
-                System.out.println("Enter the first name to search for: ");
                 input = new Scanner(System.in);
-    				    String searchTerm = input.nextLine();
-                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-              } else if (searchBy == 2) {
-                System.out.println("Enter the last name to search for: ");
-                input = new Scanner(System.in);
-    				    String searchTerm = input.nextLine();
-                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-              } else if (searchBy == 3) {
-                System.out.println("Enter the major to search for: ");
-                input = new Scanner(System.in);
-    				    String searchTerm = input.nextLine();
-                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-              }
-      				for (User user : tempList) { //iterate through arraylist
-      					user.printContactInfo(); //print each users info,
-      					//#NOTE: this method needs to be changed to work better with the GUI later
-      					//because the method always prints to the console, it should rather return the text
-      				}
-            } else if (searchBy == 4) {
-              if (searchBy == 4) {
-                System.out.println("Enter the minimum GPA to search for: ");
-                input = new Scanner(System.in);
-                double searchTerm = input.nextDouble();
-                tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
-            }
-            for (User user : tempList) { //iterate through arraylist
-              user.printContactInfo(); //print each users info,
-              //#NOTE: this method needs to be changed to work better with the GUI later
-              //because the method always prints to the console, it should rather return the text
-            }
-            }
+                int searchBy = input.nextInt();
+                ArrayList<User> tempList = new ArrayList<User>();
+                if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
+                        if (searchBy == 1) {
+                                System.out.println("Enter the first name to search for: ");
+                                input = new Scanner(System.in);
+                                String searchTerm = input.nextLine();
+                                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
+                        } else if (searchBy == 2) {
+                                System.out.println("Enter the last name to search for: ");
+                                input = new Scanner(System.in);
+                                String searchTerm = input.nextLine();
+                                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
+                        } else if (searchBy == 3) {
+                                System.out.println("Enter the major to search for: ");
+                                input = new Scanner(System.in);
+                                String searchTerm = input.nextLine();
+                                tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
+                        }
+                        for (User user : tempList) { //iterate through arraylist
+                                user.printContactInfo(); //print each users info,
+                                //#NOTE: this method needs to be changed to work better with the GUI later
+                                //because the method always prints to the console, it should rather return the text
+                        }
+                } else if (searchBy == 4) {
+                        if (searchBy == 4) {
+                                System.out.println("Enter the minimum GPA to search for: ");
+                                input = new Scanner(System.in);
+                                double searchTerm = input.nextDouble();
+                                tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
+                        }
+                        for (User user : tempList) { //iterate through arraylist
+                                user.printContactInfo(); //print each users info,
+                                //#NOTE: this method needs to be changed to work better with the GUI later
+                                //because the method always prints to the console, it should rather return the text
+                        }
+                }
 
 
 
-				break;
+                break;
 
 
         case 7: Statistics textStats = new Statistics();
-        DecimalFormat df = new DecimalFormat("#.##"); //Strips everything after the second decimal place for nice printing
-        Scanner degreeChoice = new Scanner(System.in);
-        int selectedChoice;
-          System.out.println("There are: " + textStats.howManyStudents(db.getDatabase()) +  " Student(s) in the database");
-          System.out.println("They Make up: %" + df.format(textStats.percentageofStudents(db.getDatabase())) +  " of the user(s) in the database\n\n");
+                DecimalFormat df = new DecimalFormat("#.##"); //Strips everything after the second decimal place for nice printing
+                Scanner degreeChoice = new Scanner(System.in);
+                int selectedChoice;
+                System.out.println("There are: " + textStats.howManyStudents(db.getDatabase()) +  " Student(s) in the database");
+                System.out.println("They Make up: %" + df.format(textStats.percentageofStudents(db.getDatabase())) +  " of the user(s) in the database\n\n");
 
-          System.out.println("There are: " + textStats.howManyEmployers(db.getDatabase()) +  " Employer(s) in the database");
-          System.out.println("They Make up: %" + df.format(textStats.percentageofEmployers(db.getDatabase())) +  " of the user(s) in the database\n\n");
+                System.out.println("There are: " + textStats.howManyEmployers(db.getDatabase()) +  " Employer(s) in the database");
+                System.out.println("They Make up: %" + df.format(textStats.percentageofEmployers(db.getDatabase())) +  " of the user(s) in the database\n\n");
 
-          System.out.println("Which Degree would you like information about?");
-          System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
+                System.out.println("Which Degree would you like information about?");
+                System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
 
-          selectedChoice = degreeChoice.nextInt();
-          switch(selectedChoice){
-            case 1: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "BIO") +  " Students taking BIO in the database");
-            break;
-            case 2: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "ENG") +  " Students taking ENG in the database");
-            break;
-            case 3: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "MED") +  " Students taking MED in the database");
-            break;
-            case 4: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CPSC") +  " Students taking CPSC in the database");
-            break;
-            case 5: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "COMM") +  " Students taking COMM in the database");
-            break;
-            case 6: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "psyc") +  " Students taking PSYC in the database");
-            break;
-            case 7: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "SOCI") +  " Students taking SOCI in the database");
-            break;
-            case 8: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CMF") +  " Students taking CMF in the database");
-            break;
-            case 9: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "LING") +  " Students taking LING in the database");
-            break;
+                selectedChoice = degreeChoice.nextInt();
+                switch(selectedChoice) {
+                case 1: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "BIO") +  " Students taking BIO in the database");
+                        break;
+                case 2: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "ENG") +  " Students taking ENG in the database");
+                        break;
+                case 3: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "MED") +  " Students taking MED in the database");
+                        break;
+                case 4: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CPSC") +  " Students taking CPSC in the database");
+                        break;
+                case 5: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "COMM") +  " Students taking COMM in the database");
+                        break;
+                case 6: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "psyc") +  " Students taking PSYC in the database");
+                        break;
+                case 7: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "SOCI") +  " Students taking SOCI in the database");
+                        break;
+                case 8: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "CMF") +  " Students taking CMF in the database");
+                        break;
+                case 9: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "LING") +  " Students taking LING in the database");
+                        break;
 
-          }
+                }
 
 
 
-        break;
+                break;
 
         case 8:
                 System.out.println("Checking for save ...");
                 if (f.exitCheck()) {
-                    f.fileSave(db.getDatabase());
+                        f.fileSave(db.getDatabase());
                 } else {
-                  System.out.println("Do you want to overwrite your current database? (Y/N) ");
-                  input = new Scanner(System.in);
-                  String overwrite = input.nextLine().toUpperCase();
-                  if (overwrite.equals("Y")) {
-                    f.fileSave(db.getDatabase());
-                    System.exit(0);
-                  } else {
-                    System.exit(0);
-                  }
+                        System.out.println("Do you want to overwrite your current database? (Y/N) ");
+                        input = new Scanner(System.in);
+                        String overwrite = input.nextLine().toUpperCase();
+                        if (overwrite.equals("Y")) {
+                                f.fileSave(db.getDatabase());
+                                System.exit(0);
+                        } else {
+                                System.exit(0);
+                        }
                 }
 
                 break;
