@@ -33,6 +33,7 @@ public class Main extends Application { //main class
 
         primaryStage.setTitle("Foli-U"); //title of stage
         primaryStage.setScene(mainScene);
+        primaryStage.setResizable(false);
         primaryStage.show(); //displays stage/app
 	}
 
