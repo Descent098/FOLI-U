@@ -125,15 +125,15 @@ public class StudentHomeController {
 		 //pie chart for percentage of students in each degree
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
-		            new PieChart.Data("Biology", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),
-		            new PieChart.Data("Computer Science", stats.howManyStudentsInDegree(db.getDatabase(), "CPSC")),
-		            new PieChart.Data("Engineering", stats.howManyStudentsInDegree(db.getDatabase(), "ENG")),
-		            new PieChart.Data("Medicine", stats.howManyStudentsInDegree(db.getDatabase(), "MED")),
-		            new PieChart.Data("Commerce", stats.howManyStudentsInDegree(db.getDatabase(), "COM")),
-		            new PieChart.Data("Socialogy", stats.howManyStudentsInDegree(db.getDatabase(), "SOCI")),
-		            new PieChart.Data("Psychology", stats.howManyStudentsInDegree(db.getDatabase(), "PSYC")),
-		            new PieChart.Data("Communications, Media, and Film", stats.howManyStudentsInDegree(db.getDatabase(), "CMF")),
-		            new PieChart.Data("Linguistics", stats.howManyStudentsInDegree(db.getDatabase(), "LING")));
+		            new PieChart.Data("BIO", stats.howManyStudentsInDegree(db.getDatabase(), "BIO")),
+		            new PieChart.Data("CPSC", stats.howManyStudentsInDegree(db.getDatabase(), "CPSC")),
+		            new PieChart.Data("ENG", stats.howManyStudentsInDegree(db.getDatabase(), "ENG")),
+		            new PieChart.Data("MED", stats.howManyStudentsInDegree(db.getDatabase(), "MED")),
+		            new PieChart.Data("COM", stats.howManyStudentsInDegree(db.getDatabase(), "COM")),
+		            new PieChart.Data("SOCI", stats.howManyStudentsInDegree(db.getDatabase(), "SOCI")),
+		            new PieChart.Data("PSYC", stats.howManyStudentsInDegree(db.getDatabase(), "PSYC")),
+		            new PieChart.Data("CMF", stats.howManyStudentsInDegree(db.getDatabase(), "CMF")),
+		            new PieChart.Data("LING", stats.howManyStudentsInDegree(db.getDatabase(), "LING")));
 		            
 		 studentsPerDegree.setData(studentsDegree);
 
