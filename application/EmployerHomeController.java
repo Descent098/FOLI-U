@@ -1,7 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Stack;
 
@@ -74,6 +79,15 @@ public class EmployerHomeController {
 	private Label uniFive;
 	@FXML
 	private Label uniSix;
+	@FXML
+	ArrayList<String> universities = new ArrayList<String>();
+	@FXML
+	ArrayList<Double> universityGPAs = new ArrayList<Double>();
+	@FXML
+	HashMap<String, Double> pairs = new HashMap<String, Double>();
+	@FXML
+	ArrayList<String> list = new ArrayList<String>();
+	DecimalFormat format = new DecimalFormat("##.00");
 
 
 
@@ -116,6 +130,42 @@ public class EmployerHomeController {
 		            
 
 		 studentsPerDegree.setData(studentsDegree);
+		 
+		 universities.add("University of Calgary");
+		 universities.add("University of Lethbridge");
+		 universities.add("SAIT");
+		 universities.add("Mount Royal University");
+		 universities.add("Athabasca University");
+		 universities.add("University of Chicago");
+		 universities.add("Boston University");
+		 universities.add("University of Vegas");
+		 universities.add("MIT");
+		 
+		 for (int i = 0; i < universities.size(); i++) {
+			 universityGPAs.add(stats.universityMeanGPA(db.getDatabase(), universities.get(i)));
+			 System.out.println(universityGPAs.get(i));
+			 pairs.put(universities.get(i), universityGPAs.get(i));
+		 }
+		 
+		 Object[] a = pairs.entrySet().toArray();
+		 Arrays.sort(a, new Comparator() {
+		     public int compare(Object o1, Object o2) {
+		         return ((Map.Entry<String, Double>) o2).getValue()
+		                    .compareTo(((Map.Entry<String, Double>) o1).getValue());
+		     }
+		 });
+
+	     for (Object e : a) {
+			    list.add((((Map.Entry<String, Double>) e).getKey() + " : "
+			            + ((format.format(((Map.Entry<String, Double>) e).getValue())))));
+		 }
+	     
+	     uniOne.setText("#1. " + list.get(0));
+	     uniTwo.setText("#2. " + list.get(1));
+	     uniThree.setText("#3. " + list.get(2));
+	     uniFour.setText("#4. " + list.get(3));
+	     uniFive.setText("#5. " + list.get(4));
+	     uniSix.setText("#6. " + list.get(5));
 
 	}
 	

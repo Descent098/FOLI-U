@@ -25,7 +25,7 @@ public class RandomUserFactory{
 		Student randomStudent = new Student();
 		generateRandomContactInfo(randomStudent);
 		randomStudent.setUID(createRandomUIDNumber());
-		randomStudent.setUniversity(createRandomUIDNumber());
+		randomStudent.setUniversity(createRandomUniversity());
 		randomStudent.setProgramYear(createRandomYear());
 		randomStudent.setGPA(createRandomGPA());
 		randomStudent.setDegree(createRandomDegree());
@@ -197,17 +197,12 @@ public class RandomUserFactory{
     }
 
     /** A method to create a random University*/
-    public static String createRandomUniversity(User u1){
+    public static String createRandomUniversity(){
       Random rand = new Random();
       String randomUniversity = null;
-      switch(u1.getProvince()) {
-      
-      case "Alberta":
-    	  String names[] = {"University of Calgary","University of Lethbridge","University of Alberta","Mount Royal University","St. Mary's University"};
-    	  randomUniversity =  (names[(rand.nextInt(4))]);
-    	  break;
-      }
-      
+      String names[] = {"University of Calgary","University of Lethbridge","SAIT","Mount Royal University","Athabasca University", "University of Chicago",
+    		  "Boston University", "University of Vegas", "MIT"};
+      randomUniversity =  (names[(rand.nextInt(9))]);
       
       return(randomUniversity);
     }
