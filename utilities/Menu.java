@@ -92,7 +92,7 @@ public void selectMenu(){
                 }
                 break;
 
-        case 5: db = new Database(f.fileLoad());
+        case 5: db = new Database(f.fileLoad()); //load the database from a file
                 break;
 
 
@@ -106,17 +106,17 @@ public void selectMenu(){
                 int searchBy = validateInt(4,1);
                 ArrayList<User> tempList = new ArrayList<User>();
                 if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
-                        if (searchBy == 1) {
+                        if (searchBy == 1) { //search by first name
                                 System.out.println("Enter the first name to search for: ");
                                 input = new Scanner(System.in);
                                 String searchTerm = input.nextLine();
                                 tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-                        } else if (searchBy == 2) {
+                        } else if (searchBy == 2) { //search by last name
                                 System.out.println("Enter the last name to search for: ");
                                 input = new Scanner(System.in);
                                 String searchTerm = input.nextLine();
                                 tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
-                        } else if (searchBy == 3) {
+                        } else if (searchBy == 3) { //search by major
                                 System.out.println("Enter the major to search for \n(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
                                 input = new Scanner(System.in);
                                 int decision = validateInt(9,1);
@@ -155,20 +155,18 @@ public void selectMenu(){
 
                                 tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
                         }
-                        for (User user : tempList) { //iterate through arraylist
-                                user.printContactInfo(); //print each users info,
-                                //#NOTE: this method needs to be changed to work better with the GUI later
-                                //because the method always prints to the console, it should rather return the text
+                        for (User user : tempList) {      //iterate through arraylist
+                                user.printContactInfo();  //print each users info
                         }
-                } else if (searchBy == 4) {
+                } else if (searchBy == 4) { //search by GPA
                         if (searchBy == 4) {
                                 System.out.println("Enter the minimum GPA to search for: ");
                                 input = new Scanner(System.in);
                                 double searchTerm = input.nextDouble();
                                 tempList = db.searchNum(searchTerm, searchBy); //finds the users with search method
                         }
-                        for (User user : tempList) { //iterate through arraylist
-                                user.printContactInfo(); //print each users info,
+                        for (User user : tempList) {      //iterate through arraylist
+                                user.printContactInfo();  //print each users info
                                 //#NOTE: this method needs to be changed to work better with the GUI later
                                 //because the method always prints to the console, it should rather return the text
                         }
@@ -223,8 +221,6 @@ public void selectMenu(){
 
                 }
 
-
-
                 break;
 
         case 8: //Exit text version
@@ -235,7 +231,7 @@ public void selectMenu(){
                         System.out.println("Do you want to overwrite your current database? (Y/N) ");
                         input = new Scanner(System.in);
                         String overwrite = input.nextLine().toUpperCase();
-                        if (overwrite.equals("Y")) {
+                        if (overwrite.equals("Y")) { //save the current database to files
                                 f.fileSave(db.getDatabase());
                                 System.exit(0);
                         } else {
@@ -247,6 +243,7 @@ public void selectMenu(){
 
         }
 
+<<<<<<< HEAD
 }
 /**Method to validate int selections for the text version*/
 public int validateInt(int max, int min){
@@ -275,5 +272,39 @@ public int validateInt(int max, int min){
         } while(validInput == false);
 
         return numberToValidate;
+=======
+      }
+/** Method to validate int selections for the text version. It helps prevent inproper input.
+  * @param max    int for the maximum number allowed
+  * @param min    int for the minimum number allowed
+  * @return int   validated number
+  */
+public int validateInt(int max, int min){
+
+  boolean validInput = false; //Used to validate if a valid input is given
+  Scanner userInput = new Scanner(System.in);
+  int numberToValidate = 0;
+  do{
+
+    userInput = new Scanner(System.in);
+    try{
+    numberToValidate = userInput.nextInt();
+
+  }catch(Exception e){ //if the input is not a number
+    validInput = false;
+    userInput = new Scanner(System.in);
+  }
+    if (numberToValidate > max || numberToValidate < min){ //if the number is out of range
+      System.out.println("Please enter a value between " + min + "-" + max);
+      userInput = new Scanner(System.in);
+    }
+    if (numberToValidate <= max && numberToValidate >= min){ //if the number is in range
+      validInput = true;
+      userInput = new Scanner(System.in);
+    }
+  }while(validInput == false); //keeps looping until a valid input is entered
+
+  return numberToValidate;
+>>>>>>> 40be4568d815ebdd5496bce0f3434ea4621ccf11
 }
 } //end of class
