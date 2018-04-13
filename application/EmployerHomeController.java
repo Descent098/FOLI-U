@@ -46,7 +46,7 @@ public class EmployerHomeController {
 	 * takes user info from database and displays it here in charts
 	 * statistics of all users
 	 */
-	
+
 	@FXML
 	private Stack<Scene> pages;
 	@FXML
@@ -95,7 +95,6 @@ public class EmployerHomeController {
 	//loading the file, and grabbing the current student out of it to use
 	private FileIO f = new FileIO();
 	private Database db = new Database(f.fileLoad());
-	//HashMap<String, User> data = db.getDatabase();
 	Student tempStudent = (Student)((db.getDatabase()).get(Storage.UID)); //retrieve the student from the hashmap within the database class while casting it
 	private Statistics stats = new Statistics();
 
@@ -103,10 +102,13 @@ public class EmployerHomeController {
 
 	@FXML
 	public void initialize() {
-		
+
 		double roundedGPA = Math.round(stats.overallMeanGPA(db.getDatabase()) * 100.0) / 100.0;
-		
+		double roundedGPASD = Math.round(stats.GPAStandardDeviation(db.getDatabase()) * 100.0) / 100.0;
+
+		//simple text area for number stats
 		gpaAverage.setText(Double.toString(roundedGPA));
+
 		//pie chart displays the percentage of employers and students
 		 ObservableList<PieChart.Data> studentsPercentage =
 		            FXCollections.observableArrayList(
@@ -114,7 +116,7 @@ public class EmployerHomeController {
 		            new PieChart.Data("Employers", stats.percentageofEmployers(db.getDatabase())));
 
 		 percentageOfStudents.setData(studentsPercentage);
-		 
+
 		 //another pie chart to display percentage of users in each major
 		 ObservableList<PieChart.Data> studentsDegree =
 		            FXCollections.observableArrayList(
@@ -127,10 +129,10 @@ public class EmployerHomeController {
 				    new PieChart.Data("PSYC", stats.howManyStudentsInDegree(db.getDatabase(), "PSYC")),
 				    new PieChart.Data("CMF", stats.howManyStudentsInDegree(db.getDatabase(), "CMF")),
 				    new PieChart.Data("LING", stats.howManyStudentsInDegree(db.getDatabase(), "LING")));
-		            
+
 
 		 studentsPerDegree.setData(studentsDegree);
-		 
+
 		 universities.add("University of Calgary");
 		 universities.add("University of Lethbridge");
 		 universities.add("SAIT");
@@ -140,13 +142,13 @@ public class EmployerHomeController {
 		 universities.add("Boston University");
 		 universities.add("University of Vegas");
 		 universities.add("MIT");
-		 
+
 		 for (int i = 0; i < universities.size(); i++) {
 			 universityGPAs.add(stats.universityMeanGPA(db.getDatabase(), universities.get(i)));
 			 System.out.println(universityGPAs.get(i));
 			 pairs.put(universities.get(i), universityGPAs.get(i));
 		 }
-		 
+
 		 Object[] a = pairs.entrySet().toArray();
 		 Arrays.sort(a, new Comparator() {
 		     public int compare(Object o1, Object o2) {
@@ -159,7 +161,7 @@ public class EmployerHomeController {
 			    list.add((((Map.Entry<String, Double>) e).getKey() + " : "
 			            + ((format.format(((Map.Entry<String, Double>) e).getValue())))));
 		 }
-	     
+
 	     uniOne.setText("#1. " + list.get(0));
 	     uniTwo.setText("#2. " + list.get(1));
 	     uniThree.setText("#3. " + list.get(2));
@@ -168,7 +170,7 @@ public class EmployerHomeController {
 	     uniSix.setText("#6. " + list.get(5));
 
 	}
-	
+
 
 	/*
 	 * changes pages in the main app
