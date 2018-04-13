@@ -133,6 +133,7 @@ public class EmployerHomeController {
 
 		 studentsPerDegree.setData(studentsDegree);
 
+		//displays list of universities with top GPA
 		 universities.add("University of Calgary");
 		 universities.add("University of Lethbridge");
 		 universities.add("SAIT");
@@ -143,12 +144,14 @@ public class EmployerHomeController {
 		 universities.add("University of Vegas");
 		 universities.add("MIT");
 
+		//for each university in list, adds the GPA
 		 for (int i = 0; i < universities.size(); i++) {
 			 universityGPAs.add(stats.universityMeanGPA(db.getDatabase(), universities.get(i)));
 			 System.out.println(universityGPAs.get(i));
 			 pairs.put(universities.get(i), universityGPAs.get(i));
 		 }
 
+		//sorts the lists into a pair in descending order for GPA
 		 Object[] a = pairs.entrySet().toArray();
 		 Arrays.sort(a, new Comparator() {
 		     public int compare(Object o1, Object o2) {
@@ -162,6 +165,7 @@ public class EmployerHomeController {
 			            + ((format.format(((Map.Entry<String, Double>) e).getValue())))));
 		 }
 
+	   //sets the labels
 	     uniOne.setText("#1. " + list.get(0));
 	     uniTwo.setText("#2. " + list.get(1));
 	     uniThree.setText("#3. " + list.get(2));

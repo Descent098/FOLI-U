@@ -150,7 +150,7 @@ public class EmployerSearchController {
                 		Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Employer Information");
                     alert.setHeaderText(null);
-                    alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' +
+                    alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +
                     		"Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
                     		'\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
                     		'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +

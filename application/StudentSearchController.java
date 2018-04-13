@@ -153,7 +153,7 @@ public class StudentSearchController {
                 		  Alert alert = new Alert(AlertType.INFORMATION);
                       alert.setTitle("Student Information");
                       alert.setHeaderText(null);
-                      alert.setContentText("Name: " + newValue.getFirstName() + newValue.getLastName() + '\n' +
+                      alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +
                       		"UID: " + newValue.getUID() + '\n' + "University: " + newValue.getUniversity() +
                       		'\n' + "Degree: " + newValue.getDegree() + "Degree Type: " + newValue.getStudentType() + '\n' + "Phone Number: " + newValue.getPhoneNumber() +
                       		'\n' + "Email Address: " + newValue.getEmail() +
