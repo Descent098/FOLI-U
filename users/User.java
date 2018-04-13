@@ -36,13 +36,13 @@ public void setContactInfo(){
         this.lastName = input.nextLine();
 
         System.out.println("\nPlease enter your Phone Number: ");
-        input = new Scanner(System.in);
-        this.phoneNumber = input.nextLine();
+        this.phoneNumber = validatePhoneNumber();
 
-        System.out.println("\nPlease enter your Email: ");
-        input = new Scanner(System.in);
-        this.email = input.nextLine();
+        System.out.println("\nPlease enter your Email: ");       	
+        this.email = validateEmail();
 
+        
+        
         System.out.println("\nPlease Select your City:");
         System.out.println("(1)Calgary \n(2)Edmonton \n(3)Lethbridge \n(4)Boston \n(5)Chicago \n(6)Vegas"); //List of Cities
         input = new Scanner(System.in);
@@ -181,15 +181,61 @@ public String getPhoneNumber(){
         return printedPhoneNumber;
 }
 
+/**Phone Number Validation for Scanner input*/
+public String validatePhoneNumber() {
+	boolean validPhoneNumber = false;
+	String newPhoneNumber = "";
+	Scanner enterPhoneNumber = new Scanner(System.in);
+	while(validPhoneNumber == false){
+		//checks if email address is in valid format
+		//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+		newPhoneNumber = enterPhoneNumber.nextLine();
+	if (!newPhoneNumber.matches("(\\d{3}-){1,2}\\d{4}")) {
+		System.out.println("Invalid Phone Number entered Please Try Again");
+		validPhoneNumber = false;
+	}
+	else {
+		validPhoneNumber = true;
+		}
+	}
+	
+	return newPhoneNumber;
+}
+
+
+
 /** Setter for Email*/
 public void setEmail(String newEmail){
-        email = newEmail;
+	email = newEmail;
 }
 
 /** Getter for Email*/
 public String getEmail(){
         String printedEmail = new String(email);
         return printedEmail;
+}
+
+/** Email Validation for Scanner input*/
+public String validateEmail() {
+	boolean validEmail = false;
+	String newEmail = "";
+	Scanner enterEmail = new Scanner(System.in);
+	while(validEmail == false){
+		//checks if email address is in valid format
+		//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+		newEmail = enterEmail.nextLine();
+	if (!newEmail.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+			"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+		System.out.println("Invalid Email Address entered Please Try Again");
+		validEmail = false;
+	}
+	else {
+		validEmail = true;
+		}
+	}
+	
+	return newEmail;
+	
 }
 
 /** Setter for City*/
