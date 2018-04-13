@@ -72,6 +72,8 @@ public class StudentHomeController {
 	@FXML
 	private Label gpaAverage;
 	@FXML
+	private Label gpaStandard;
+	@FXML
 	private Label uniOne;
 	@FXML
 	private Label uniTwo;
@@ -111,8 +113,10 @@ public class StudentHomeController {
 	public void initialize() {
 		
 		double roundedGPA = Math.round(stats.overallMeanGPA(db.getDatabase()) * 100.0) / 100.0;
+		double roundedGPASD = Math.round(stats.GPAStandardDeviation(db.getDatabase()) * 100.0) / 100.0;
 		
 		gpaAverage.setText(Double.toString(roundedGPA));
+		gpaStandard.setText(Double.toString(roundedGPASD));
 		//pie chart for percentage of students and employers in database
 		ObservableList<PieChart.Data> studentsPercentage =
 	            FXCollections.observableArrayList(

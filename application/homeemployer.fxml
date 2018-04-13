@@ -41,7 +41,7 @@
         </items>
       </ToolBar>
       <PieChart fx:id="percentageOfStudents" layoutX="14.0" layoutY="14.0" prefHeight="154.0" prefWidth="200.0" title="Percentage of Users" />
-      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="176.0" prefHeight="215.0" prefWidth="346.0" title="Most Popular Degrees" />
+      <PieChart fx:id="studentsPerDegree" layoutX="14.0" layoutY="176.0" legendSide="LEFT" prefHeight="215.0" prefWidth="346.0" title="Most Popular Degrees" />
       <GridPane fx:id="uniAverages" layoutX="10.0" layoutY="403.0" prefHeight="116.0" prefWidth="365.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -90,12 +90,22 @@
             <Font name="AppleGothic Regular" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="217.0" layoutY="22.0" text="Average Student GPA">
+      <Label layoutX="217.0" layoutY="22.0" text="Average Student GPA:">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
       <Label fx:id="gpaAverage" layoutX="217.0" layoutY="40.0" text="gpa">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="217.0" layoutY="65.0" text="GPA Standard Deviation:">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="gpaStandard" layoutX="217.0" layoutY="82.0" text="gpa">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>

@@ -68,6 +68,8 @@ public class EmployerHomeController {
 	@FXML
 	private Label gpaAverage;
 	@FXML
+	private Label gpaStandard;
+	@FXML
 	private Label uniOne;
 	@FXML
 	private Label uniTwo;
@@ -108,6 +110,7 @@ public class EmployerHomeController {
 
 		//simple text area for number stats
 		gpaAverage.setText(Double.toString(roundedGPA));
+		gpaStandard.setText(Double.toString(roundedGPASD));
 
 		//pie chart displays the percentage of employers and students
 		 ObservableList<PieChart.Data> studentsPercentage =
