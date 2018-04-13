@@ -35,14 +35,14 @@ public void setContactInfo(){
         input = new Scanner(System.in);
         this.lastName = input.nextLine();
 
-        System.out.println("\nPlease enter your Phone Number: ");
+        System.out.println("\nPlease enter your Phone Number \nin the format 123-123-1234:  ");
         this.phoneNumber = validatePhoneNumber();
 
-        System.out.println("\nPlease enter your Email: ");       	
+        System.out.println("\nPlease enter your Email \nin the format jhondoe@gmail.com: ");
         this.email = validateEmail();
 
-        
-        
+
+
         System.out.println("\nPlease Select your City:");
         System.out.println("(1)Calgary \n(2)Edmonton \n(3)Lethbridge \n(4)Boston \n(5)Chicago \n(6)Vegas"); //List of Cities
         input = new Scanner(System.in);
@@ -198,7 +198,7 @@ public String validatePhoneNumber() {
 		validPhoneNumber = true;
 		}
 	}
-	
+
 	return newPhoneNumber;
 }
 
@@ -233,9 +233,9 @@ public String validateEmail() {
 		validEmail = true;
 		}
 	}
-	
+
 	return newEmail;
-	
+
 }
 
 /** Setter for City*/
