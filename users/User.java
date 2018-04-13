@@ -23,7 +23,8 @@ public User() {
 /**A method called to set up a Users Startup info initially, not a constructor because it's only used in text version*/
 public void setContactInfo(){
         Scanner input = new Scanner(System.in);
-        int selection;
+        int selection =0;
+
 
         System.out.println("Please enter your contact info: \n");
 
@@ -45,9 +46,9 @@ public void setContactInfo(){
 
         System.out.println("\nPlease Select your City:");
         System.out.println("(1)Calgary \n(2)Edmonton \n(3)Lethbridge \n(4)Boston \n(5)Chicago \n(6)Vegas"); //List of Cities
-        input = new Scanner(System.in);
-        selection = input.nextInt();
 
+
+        selection = validateInt(6,1);//Validates selection is between 1 and 6
 
         switch(selection) { //Assign a city based on User input
 
@@ -147,6 +148,34 @@ public void printContactInfo(){
 
 //All setters and Getters are below
 
+/**Method to validate int selections for the text version*/
+public int validateInt(int max, int min){
+
+  boolean validInput = false; //Used to validate if a valid input is given
+  Scanner userInput = new Scanner(System.in);
+  int numberToValidate = 0;
+  do{
+
+    userInput = new Scanner(System.in);
+    try{
+    numberToValidate = userInput.nextInt();
+
+  }catch(Exception e){ //if the input is not a number
+    validInput = false;
+    userInput = new Scanner(System.in);
+  }
+    if (numberToValidate > max || numberToValidate < min){ //if the number is out of range
+      System.out.println("Please enter a value between " + min + "-" + max);
+      userInput = new Scanner(System.in);
+    }
+    if (numberToValidate <= max && numberToValidate >= min){ //if the number is in range
+      validInput = true;
+      userInput = new Scanner(System.in);
+    }
+  }while(validInput == false);
+
+  return numberToValidate;
+}
 
 /** Setter for FirstName*/
 public void setFirstName(String newName){

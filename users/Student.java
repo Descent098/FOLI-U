@@ -29,7 +29,7 @@ public void set_User_Attributes(){
         boolean validNumber = false; //Used to Validate Number choice
         System.out.println("\nWhat year of your degree are you in?:  ");
         input = new Scanner(System.in);
-        programYear = input.nextInt();
+        programYear = validateInt(9,1);
 
         System.out.println("\nWhat university are you at?: ");
         input = new Scanner(System.in);
@@ -39,7 +39,7 @@ public void set_User_Attributes(){
 
         case ("Alberta"):
                 System.out.println("(1)University of Calgary \n(2)University of Lethbridge \n(3)SAIT \n(4)Mount Royal \n(5)Athabasca University");
-                decision = input.nextInt();
+                decision = validateInt(5,1);
 
                 switch(decision) {//Inside Alberta
                 case 1: this.university = "University of Calgary";
@@ -62,7 +62,7 @@ public void set_User_Attributes(){
 
         case ("Illinois"):
                 System.out.println("(1)University of Chicago \n(2)Boston University");
-                decision = input.nextInt();
+                decision = validateInt(2,1);
 
                 switch(decision) {// Inside Illinois
                 case 1: this.university = "University of Chicago";
@@ -76,7 +76,7 @@ public void set_User_Attributes(){
 
         case ("Nevada"):
                 System.out.println("(1)University of Vegas ");
-                decision = input.nextInt();
+                decision = validateInt(1,1);
 
                 switch(decision) {//Inside Nevada
                 case 1: this.university = "University of Vegas";
@@ -87,7 +87,7 @@ public void set_User_Attributes(){
 
         case ("Massachusetts"):
                 System.out.println("(1)MIT");
-                decision = input.nextInt();
+                decision = validateInt(1,1);
 
                 switch(decision) {
                 case 1: this.university = "MIT";
@@ -104,7 +104,7 @@ public void set_User_Attributes(){
         System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
 
         input = new Scanner(System.in);
-        decision = input.nextInt();
+        decision = validateInt(9,1);
 
 
         switch(decision) {
