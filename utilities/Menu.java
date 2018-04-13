@@ -40,10 +40,10 @@ public void selectMenu(){
 
 
         System.out.println("\nPlease select an option:");
-        System.out.println("1 for creating a new Student:");
-        System.out.println("2 for creating an Employer: ");
+        System.out.println("1 For creating a new Student:");
+        System.out.println("2 For creating an Employer: ");
         System.out.println("3 Search for a user: ");
-        System.out.println("4 for creating and printing random users:");
+        System.out.println("4 For creating and printing random users:");
         System.out.println("5 Load database: ");
         System.out.println("6 Search for multiple users: ");
         System.out.println("7 Generate Statistics: ");
