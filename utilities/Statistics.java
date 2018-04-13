@@ -131,6 +131,35 @@ public double universityMeanGPA(HashMap<String, User> db, String university){
 						}
 						return mean;
 }
+/**
+	*	Calculates the standard deviation of all student's GPA and returns import junit.framework.TestCase;
+	* @param db				Hashmap of the Database
+	*	@return Double	standard deviation of all student's GPA
+	*/
+public double GPAStandardDeviation(HashMap<String, User> db) {
+							ArrayList<Double> GPAs = new ArrayList<Double>();
+							double studentCount = 0.0;
+							double summation = 0.0;
+							double meanGPA = overallMeanGPA(db); //getting the mean GPA of students to use in the calculations, using another methods
+							double temp; //just stores partial answers during calculation
+
+							for (String key : db.keySet()) {	//iterate through the database and perform the summation calculcation
+															if (db.get(key).getGPA() == 0.0) {	//if the GPA found is 0, then they are actually an employer! so skip them
+																	break;
+															} else {
+																temp = ((db.get(key).getGPA()) - meanGPA);
+																summation += Math.pow(temp,2); //square it
+																studentCount++;
+															}
+							}
+							//calculating the rest of the formula
+							temp = summation/(studentCount);
+							temp = Math.sqrt(temp); //sqaure rooting it
+
+							return temp;
+
+}
+
 
 
 

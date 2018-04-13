@@ -148,6 +148,8 @@ public void selectMenu(){
                 System.out.println("There are: " + textStats.howManyEmployers(db.getDatabase()) +  " Employer(s) in the database");
                 System.out.println("They Make up: %" + df.format(textStats.percentageofEmployers(db.getDatabase())) +  " of the user(s) in the database\n\n");
 
+                System.out.println("The average GPA of all students is: " + textStats.overallMeanGPA(db.getDatabase()) + " \tSD: " + textStats.GPAStandardDeviation(db.getDatabase()) + "\n");
+
                 System.out.println("Which Degree would you like information about?");
                 System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
 
