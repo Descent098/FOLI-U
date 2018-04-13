@@ -56,11 +56,17 @@ public int createRandomEmployers(int count) {
 public void searchUser(){
         System.out.println(database);
         Scanner searchUID = new Scanner(System.in);
-
         System.out.println("\nPlease enter the UID of the user you would like to find: ");
         String searchedUser = searchUID.nextLine();
+        try{ //if no user is returned print message in line 67
+
+
         System.out.println("\nDatabase Returned: ");
         database.get(searchedUser).printContactInfo();
+
+      }catch(Exception e){
+        System.out.println("User Not found");
+      }
 
 }
 
@@ -69,7 +75,25 @@ public void searchUser(){
 public int howManyRandos(){
         Scanner randos = new Scanner(System.in);
         System.out.println("\nHow Many randos?: ");
-        return randos.nextInt();
+        boolean validInput = false; //Used to validate if a valid input is given
+        int numberToValidate = 0;
+        do{
+
+          randos = new Scanner(System.in);
+          try{
+          numberToValidate = randos.nextInt();
+
+        }catch(Exception e){ //if the input is not a number
+          validInput = false;
+          System.out.println("Invalid input please try again");
+          randos = new Scanner(System.in);
+        }
+          if (numberToValidate >0){ //if the number is larger than 0
+            validInput = true;
+            randos = new Scanner(System.in);
+          }
+        }while(validInput == false);
+        return numberToValidate;
 }
 
 /**A method that returns the Database instance's HashMap*/

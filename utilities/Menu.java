@@ -50,7 +50,7 @@ public void selectMenu(){
         System.out.println("8 Exit program: ");
 
         input = new Scanner(System.in);
-        int choice = input.nextInt();
+        int choice = validateInt(8,1);
 
         switch (choice) { //users choice of action with 9 cases
         case 1: createStudent(); //If they select 1 at the first menu create a new student and add to database
@@ -76,7 +76,7 @@ public void selectMenu(){
                 System.out.println("2 for creating a database of random Employers: ");
 
                 input = new Scanner(System.in);
-                int choice2Selection = input.nextInt();
+                int choice2Selection = validateInt(2,1);
 
                 switch (choice2Selection) { //users choice of what type of class to print
 
@@ -103,7 +103,7 @@ public void selectMenu(){
                 System.out.println("Enter 4 to search by GPA: ");
 
                 input = new Scanner(System.in);
-                int searchBy = input.nextInt();
+                int searchBy = validateInt(4,1);
                 ArrayList<User> tempList = new ArrayList<User>();
                 if (searchBy == 1 || searchBy == 2 || searchBy == 3) {
                         if (searchBy == 1) {
@@ -117,9 +117,42 @@ public void selectMenu(){
                                 String searchTerm = input.nextLine();
                                 tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
                         } else if (searchBy == 3) {
-                                System.out.println("Enter the major to search for: ");
+                                System.out.println("Enter the major to search for \n(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
                                 input = new Scanner(System.in);
-                                String searchTerm = input.nextLine();
+                                int decision = validateInt(9,1);
+                                String searchTerm = "";
+
+
+                                switch(decision) {
+
+                                case 1: searchTerm = "BIO";
+                                        break;
+
+                                case 2: searchTerm = "ENG";
+                                        break;
+
+                                case 3: searchTerm = "MED";
+                                        break;
+
+                                case 4: searchTerm = "CPSC";
+                                        break;
+
+                                case 5: searchTerm = "COMM";
+                                        break;
+
+                                case 6: searchTerm = "PSYC";
+                                        break;
+
+                                case 7: searchTerm = "SOCI";
+                                        break;
+
+                                case 8: searchTerm = "CMF";
+                                        break;
+
+                                case 9: searchTerm = "LING";
+                                        break;
+                                }
+
                                 tempList = db.searchStr(searchTerm, searchBy); //finds the users with search method
                         }
                         for (User user : tempList) { //iterate through arraylist
@@ -167,7 +200,7 @@ public void selectMenu(){
                 System.out.println("Which Degree would you like information about?");
                 System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
 
-                selectedChoice = degreeChoice.nextInt();
+                selectedChoice = validateInt(9,1);
                 switch(selectedChoice) {
                 case 1: System.out.println("There are: " + textStats.howManyStudentsInDegree(db.getDatabase(), "BIO") +  " Students taking BIO in the database");
                         break;
@@ -214,5 +247,33 @@ public void selectMenu(){
 
         }
 
+      }
+/**Method to validate int selections for the text version*/
+public int validateInt(int max, int min){
+
+  boolean validInput = false; //Used to validate if a valid input is given
+  Scanner userInput = new Scanner(System.in);
+  int numberToValidate = 0;
+  do{
+
+    userInput = new Scanner(System.in);
+    try{
+    numberToValidate = userInput.nextInt();
+
+  }catch(Exception e){ //if the input is not a number
+    validInput = false;
+    userInput = new Scanner(System.in);
+  }
+    if (numberToValidate > max || numberToValidate < min){ //if the number is out of range
+      System.out.println("Please enter a value between " + min + "-" + max);
+      userInput = new Scanner(System.in);
+    }
+    if (numberToValidate <= max && numberToValidate >= min){ //if the number is in range
+      validInput = true;
+      userInput = new Scanner(System.in);
+    }
+  }while(validInput == false);
+
+  return numberToValidate;
 }
 } //end of class

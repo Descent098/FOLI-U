@@ -149,7 +149,7 @@ public void set_User_Attributes(){
 
         System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
         input = new Scanner(System.in);
-        GPA = input.nextInt();
+        GPA = validateInt(2,1);
         if (GPA == 1) {
                 System.out.println("\nPlease Enter your GPA: ");
                 input = new Scanner(System.in);
@@ -161,7 +161,7 @@ public void set_User_Attributes(){
 
         System.out.println("\nAre you an (1)undergraduate student, (2)masters student, or (3)doctoral candidate?: ");
         input = new Scanner(System.in);
-        int choice = input.nextInt();
+        int choice = validateInt(3,1);
 
         switch(choice) {
         case 1: studentType = "Undergraduate Student";
@@ -182,7 +182,7 @@ public void calc_GPA(){
         Scanner input = new Scanner(System.in); //GPA Calculation
         System.out.println("Enter number of courses: ");
         input = new Scanner(System.in);
-        int courseAmount = input.nextInt();
+        int courseAmount = validateInt(75,1);
         double weightTotal = 0;
         for (int i = 0; i < courseAmount; i++) {
                 System.out.println("Enter grade for course " + (i+1) + ": ");
