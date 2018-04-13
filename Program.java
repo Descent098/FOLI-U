@@ -20,16 +20,16 @@ public static void main(String[] args) {
         String[] q = new String[1];
         switch(choice) {
 
-        case 1: while(true) { //Launch the GUI version
+        case 1: while(true) {
                         Main.main(q);
         }
 
-        case 2: Menu m1 = new Menu(); //launch the Text UI version
+        case 2: Menu m1 = new Menu();
                 while (true) {
                         m1.selectMenu();
                 }
 
-        case 3: UserTest ut = new UserTest(); //run the Test suite
+        case 3: UserTest ut = new UserTest();
                 System.out.println("\nAll User Tests Completed \n\n");
                 StudentTest st = new StudentTest();
                 System.out.println("\nAll Student Tests Completed \n\n");
