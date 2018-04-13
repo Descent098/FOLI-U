@@ -1,5 +1,6 @@
 package users;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Student extends User {
@@ -25,7 +26,8 @@ public Student(){
 public void set_User_Attributes(){
         setContactInfo();
         Scanner input = new Scanner(System.in);
-        int decision;
+        int decision = 0; //Used to store decision Values
+        boolean validNumber = false; //Used to Validate Number choice
         /** A method to set a users attributes based on user input*/
         System.out.println("\nWhat year of your degree are you in?:  ");
         input = new Scanner(System.in);
@@ -98,14 +100,15 @@ public void set_User_Attributes(){
 
 
         System.out.println("\nPlease put in your 8 digit UID: ");
-        input = new Scanner(System.in);
-        UID = input.nextLine();
+        UID = validateUID();
 
         System.out.println("\nWhat degree program are you in?: ");
         System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
+        
         input = new Scanner(System.in);
         decision = input.nextInt();
-
+    	
+        
         switch(decision) {
 
         case 1: this.degree = "BIO";
@@ -219,6 +222,27 @@ public void printContactInfo(){
 public void setUID(String newUID){
         UID = newUID;
 }
+
+/**Method to validate UID for Scanner input*/
+public String validateUID() {
+	boolean validUID = false;
+	String newUID = "";
+	Scanner enterUID = new Scanner(System.in);
+	
+	while(validUID == false) {
+		
+		newUID = enterUID.nextLine();
+	if (!newUID.matches("[0-9]+") || newUID.length() != 8) {
+		System.out.println("Invalid UID entered Please Try Again");
+		validUID = false;
+	}
+	else {
+		validUID = true;
+	}
+  }
+	return newUID;
+}
+
 
 /** Getter for UID
  * @return UID
