@@ -135,30 +135,6 @@ public ArrayList<User> searchEmail(String searchTerm) {
 }
 
 
-// public HashMap<String, String> returnAllNames(){
-//   HashMap<String, String> names = new HashMap();
-//   for (String key : database.keySet()) {
-//     User tempUser = database.get(key); //just a temporary user to do checks with
-//     names.put(tempUser.getFirstName(), tempUser.getLastName());
-//   }
-//   return names;
-// }
-
-
-//---------------------------------------------------
-//Test suite for Database
-// public static void main(String[] args) {
-//   test_setter_getter();
-// }
-//
-// public static void test_setter_getter() {
-//   Database testDB = new Database();
-//   testDB.database.put("12345678", new Student());
-//
-//   boolean result = ((testDB.getDatabase()).get("12345678")) instanceof Student;
-//   assertEquals("Inserted one student into database hashmap and returned",true,result);
-
-// }
 
 
 } //end of class
