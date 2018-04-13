@@ -48,11 +48,10 @@ import javafx.scene.text.TextAlignment;
 
 public class NewStudentController {
 
-//----------------------------------------
+
 private FileIO f = new FileIO();
 private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
-//Storage locker = new Storage();
-//---------------------------------------
+
 
 	/**
 	 * controller that controls all pages that create a new student
@@ -107,7 +106,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	private Button backToNewUser;
 	@FXML
 	private Button backToStudent;
-	
+
 	@FXML
 	PlaceNames places = new PlaceNames();
 
@@ -125,10 +124,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	@FXML
 	public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.ERROR);
-		//will add if statement to make sure username isn't already taken
-		//will add if statements to check other fields as well
-		//gets the text from user input and checks to make sure it's valid
-        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() || 
+				//gets the text from user input and checks to make sure it's valid
+        if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() ||
         		emailAddress.getText().isEmpty() || phoneNumber.getText().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -160,9 +157,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 			}
 				//continues onto next page
         else {
-        		//Creates a temporary student object and saves the entered info to it, then they are saved to
-				//the hashmap in database. This database object is then saved to a file.
-				//-------------------------------------
+        /*Creates a temporary student object and saves the entered info to it, then they are saved to
+				the hashmap in database. This database object is then saved to a file. */
 				Student tempStudent = new Student();
 				tempStudent.setFirstName(enterFirstName.getText());
 				tempStudent.setLastName(enterLastName.getText());
@@ -174,10 +170,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 				Storage.UID = (tempStudent.getUID());
 				System.out.println("UID before:"+ Storage.UID);
 
-				//FileIO saver = new FileIO();
-				//saver.fileSave(db.getDatabase());
 				f.fileSave(db.getDatabase());
-				//------------------------------------------
 
         		Stage stage;
         		Parent root;
@@ -193,6 +186,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	/*
 	 * changes the province/state combobox depending on whether user chooses canada or usa
+	 * @param 	event
+	 * @throws 	IOException
 	 */
 	@FXML
 	public void changeCountry(ActionEvent event) throws IOException {
@@ -206,8 +201,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	/**
 	 * changes university list to match province/state chosen
-	 * @param event
-	 * @throws IOException
+	 * @param 	event
+	 * @throws 	IOException
 	 */
 	@FXML
 	public void changeProvince(ActionEvent event) throws IOException {
@@ -250,7 +245,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		if (provinceName.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Florida")) {
 			universityName.setItems(places.floridaSchools);
 		}
-		
+
 	}
 	//finishes student creation
 	@FXML
@@ -260,7 +255,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 		TextInputDialog gpa = new TextInputDialog();
 				//if user user leaves fields blank
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
-        		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || degreeType.getSelectionModel().isEmpty() 
+        		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || degreeType.getSelectionModel().isEmpty()
         		|| yearOfStudy.getSelectionModel().isEmpty()) {
         		alert.setTitle("Error");
         		alert.setHeaderText(null);
@@ -269,9 +264,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         }
         else {
 
-				//if user chooses to calculate GPA
+						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
-					//opens new window
+							//opens new window
         			GridPane grid = new GridPane();
         			grid.setHgap(10);
         			grid.setVgap(10);
@@ -282,18 +277,18 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         			TextField numOfCourses = new TextField();
         			numOfCourses.setPromptText("0");
         			Button numCoursesButton = new Button("Enter");
-        			
+
         			grid.add(new Label("Enter number of courses: "), 0, 0);
         			grid.add(numOfCourses, 1, 0);
         			grid.add(numCoursesButton, 2, 0);
-        			
+
         			gpa.getDialogPane().setContent(grid);
         			gpa.setTitle("GPA Calculator");
-        			
+
         			//array lists that will include the text fields for each course
         			ArrayList<TextField> course = new ArrayList<TextField>();
         			ArrayList<TextField> weightForCourse = new ArrayList<TextField>();
-        			
+
         			//iterate through the number of courses and make a grade text field and a weight text field for each one
         			numCoursesButton.setOnAction((ActionEvent)->{
         				for (int i = 0; i < Integer.parseInt(numOfCourses.getText()); i++) {
@@ -313,7 +308,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         					gpa.getDialogPane().getScene().getWindow().sizeToScene();
         				}
         		    });
-        			
+
         			//once GPA calculating page is finished being generated
         			Optional<String> result = gpa.showAndWait();
         			if (result.isPresent()) {
@@ -326,52 +321,20 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
             				//math from Student.java
             				//calculates GPA
             				studentGPA += (grade*weight);
-            				weightTotal += weight;	
+            				weightTotal += weight;
             			}
             			studentGPA /= weightTotal;
             			//rounds GPA to 2 decimal places
             			double roundedGPA = Math.round(studentGPA * 100.0) / 100.0;
-            			System.out.println(roundedGPA);
-            			
-            			//loads up database
-            			HashMap<String, User> data = db.getDatabase();
-    					//Student tempStudent = new Student(data.get(Storage.UID));
-    					Student tempStudent = (Student)data.get(Storage.UID); //?
-    					
-    					//adds all user infomation in for the user
-    					tempStudent.setCity(cityName.getText());
-    					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-    					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-    					tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-    					tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-    					tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
-    					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
-    					tempStudent.setProgramYear(Integer.parseInt(year));
-    					
-    					tempStudent.setGPA(roundedGPA);
-    					f.fileSave(db.getDatabase());
-    					
-    					//student creation is completed, goes to main app
-    					Stage stage;
-            			Parent root;
-            			stage = (Stage) finishNewStudent.getScene().getWindow();
-            			root = FXMLLoader.load(getClass().getResource("home.fxml"));
 
-            			Scene scene = new Scene(root);
-            			stage.setScene(scene);
-            			stage.show();
         			}
-        			
-        			
-        		}
-				//otherwise, sign up is completed
-        		else {
 
+
+        		}
+					//otherwise, sign up is completed
 					//saving information from the second page
-					//---------------------------------------
 					HashMap<String, User> data = db.getDatabase();
-					//Student tempStudent = new Student(data.get(Storage.UID));
-					Student tempStudent = (Student)data.get(Storage.UID); //?
+					Student tempStudent = (Student)data.get(Storage.UID);
 					tempStudent.setCity(cityName.getText());
 					tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
@@ -381,18 +344,9 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 					String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
 					tempStudent.setProgramYear(Integer.parseInt(year));
 					tempStudent.setGPA(0.0);
-					//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
-					//testing....
-//					System.out.println("The temp student's year:"+tempStudent.getProgramYear());
-//					System.out.println("The temp student's name:"+tempStudent.getFirstName());
-//					System.out.println("UID after:"+ Storage.UID);
-					//tempStudent.printContactInfo(); //holy grail of tests
+					f.fileSave(db.getDatabase()); //save the hashmap to the file
 
-					f.fileSave(db.getDatabase());
-					
-
-					//--------------------------------------
 
 
         			Stage stage;
@@ -403,13 +357,14 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         			Scene scene = new Scene(root);
         			stage.setScene(scene);
         			stage.show();
-        		}
         }
 
 	}
 
 	/*
 	 * back to new user page
+	 * @param 	event
+	 * @throws 	IOException
 	 */
 	@FXML
 	public void backButtonClickedNewUser(ActionEvent event) throws IOException {
@@ -425,6 +380,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	/*
 	 * back to main page
+	 * @param 	event
+	 * @throws 	IOException
 	 */
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException {
@@ -440,6 +397,8 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	/*
 	 * back to previous page in student creation
+	 * @param 	event
+	 * @throws 	IOException	
 	 */
 	@FXML
 	public void backButtonClickedStudent(ActionEvent event) throws IOException {
