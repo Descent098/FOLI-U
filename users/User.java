@@ -151,30 +151,30 @@ public void printContactInfo(){
 /**Method to validate int selections for the text version*/
 public int validateInt(int max, int min){
 
-        boolean validInput = false; //Used to validate if a valid input is given
-        Scanner userInput = new Scanner(System.in);
-        int numberToValidate = 0;
-        do {
+  boolean validInput = false; //Used to validate if a valid input is given
+  Scanner userInput = new Scanner(System.in);
+  int numberToValidate = 0;
+  do{
 
-                userInput = new Scanner(System.in);
-                try{
-                        numberToValidate = userInput.nextInt();
+    userInput = new Scanner(System.in);
+    try{
+    numberToValidate = userInput.nextInt();
 
-                }catch(Exception e) { //if the input is not a number
-                        validInput = false;
-                        userInput = new Scanner(System.in);
-                }
-                if (numberToValidate > max || numberToValidate < min) { //if the number is out of range
-                        System.out.println("Please enter a value between " + min + "-" + max);
-                        userInput = new Scanner(System.in);
-                }
-                if (numberToValidate <= max && numberToValidate >= min) { //if the number is in range
-                        validInput = true;
-                        userInput = new Scanner(System.in);
-                }
-        } while(validInput == false);
+  }catch(Exception e){ //if the input is not a number
+    validInput = false;
+    userInput = new Scanner(System.in);
+  }
+    if (numberToValidate > max || numberToValidate < min){ //if the number is out of range
+      System.out.println("Please enter a value between " + min + "-" + max);
+      userInput = new Scanner(System.in);
+    }
+    if (numberToValidate <= max && numberToValidate >= min){ //if the number is in range
+      validInput = true;
+      userInput = new Scanner(System.in);
+    }
+  }while(validInput == false);
 
-        return numberToValidate;
+  return numberToValidate;
 }
 
 /** Setter for FirstName*/
@@ -212,30 +212,30 @@ public String getPhoneNumber(){
 
 /**Phone Number Validation for Scanner input*/
 public String validatePhoneNumber() {
-        boolean validPhoneNumber = false;
-        String newPhoneNumber = "";
-        Scanner enterPhoneNumber = new Scanner(System.in);
-        while(validPhoneNumber == false) {
-                //checks if email address is in valid format
-                //letters/digits followed by @ followed by letters/digits followed by . followed by letters
-                newPhoneNumber = enterPhoneNumber.nextLine();
-                if (!newPhoneNumber.matches("(\\d{3}-){1,2}\\d{4}")) {
-                        System.out.println("Invalid Phone Number entered Please Try Again");
-                        validPhoneNumber = false;
-                }
-                else {
-                        validPhoneNumber = true;
-                }
-        }
+	boolean validPhoneNumber = false;
+	String newPhoneNumber = "";
+	Scanner enterPhoneNumber = new Scanner(System.in);
+	while(validPhoneNumber == false){
+		//checks if email address is in valid format
+		//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+		newPhoneNumber = enterPhoneNumber.nextLine();
+	if (!newPhoneNumber.matches("(\\d{3}-){1,2}\\d{4}")) {
+		System.out.println("Invalid Phone Number entered Please Try Again");
+		validPhoneNumber = false;
+	}
+	else {
+		validPhoneNumber = true;
+		}
+	}
 
-        return newPhoneNumber;
+	return newPhoneNumber;
 }
 
 
 
 /** Setter for Email*/
 public void setEmail(String newEmail){
-        email = newEmail;
+	email = newEmail;
 }
 
 /** Getter for Email*/
@@ -246,24 +246,24 @@ public String getEmail(){
 
 /** Email Validation for Scanner input*/
 public String validateEmail() {
-        boolean validEmail = false;
-        String newEmail = "";
-        Scanner enterEmail = new Scanner(System.in);
-        while(validEmail == false) {
-                //checks if email address is in valid format
-                //letters/digits followed by @ followed by letters/digits followed by . followed by letters
-                newEmail = enterEmail.nextLine();
-                if (!newEmail.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-                                      "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-                        System.out.println("Invalid Email Address entered Please Try Again");
-                        validEmail = false;
-                }
-                else {
-                        validEmail = true;
-                }
-        }
+	boolean validEmail = false;
+	String newEmail = "";
+	Scanner enterEmail = new Scanner(System.in);
+	while(validEmail == false){
+		//checks if email address is in valid format
+		//letters/digits followed by @ followed by letters/digits followed by . followed by letters
+		newEmail = enterEmail.nextLine();
+	if (!newEmail.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+			"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+		System.out.println("Invalid Email Address entered Please Try Again");
+		validEmail = false;
+	}
+	else {
+		validEmail = true;
+		}
+	}
 
-        return newEmail;
+	return newEmail;
 
 }
 
@@ -302,13 +302,13 @@ public String getCountry(){
 
 /** Getter for about me*/
 public String getAboutMe() {
-        String printedAbout = new String(aboutMe);
-        return printedAbout;
+	String printedAbout = new String(aboutMe);
+	return printedAbout;
 }
 
 /** Setter for about me*/
 public void setAboutMe(String about) {
-        aboutMe = about;
+	aboutMe = about;
 }
 
 

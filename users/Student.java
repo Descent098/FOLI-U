@@ -223,22 +223,22 @@ public void setUID(String newUID){
 
 /**Method to validate UID for Scanner input*/
 public String validateUID() {
-        boolean validUID = false;
-        String newUID = "";
-        Scanner enterUID = new Scanner(System.in);
+	boolean validUID = false;
+	String newUID = "";
+	Scanner enterUID = new Scanner(System.in);
 
-        while(validUID == false) {
+	while(validUID == false) {
 
-                newUID = enterUID.nextLine();
-                if (!newUID.matches("[0-9]+") || newUID.length() != 8) {
-                        System.out.println("Invalid UID entered Please Try Again");
-                        validUID = false;
-                }
-                else {
-                        validUID = true;
-                }
-        }
-        return newUID;
+		newUID = enterUID.nextLine();
+	if (!newUID.matches("[0-9]+") || newUID.length() != 8) {
+		System.out.println("Invalid UID entered Please Try Again");
+		validUID = false;
+	}
+	else {
+		validUID = true;
+	}
+  }
+	return newUID;
 }
 
 
@@ -304,8 +304,8 @@ public String getDegree(){
 
 /** Setter for GPA*/
 public void setGPA(Double newGPA){
-        if(newGPA <1.5) {
-                newGPA = 1.5;
+        if(newGPA <1.5){
+          newGPA = 1.5;
         }
         GPA = newGPA;
 }

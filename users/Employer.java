@@ -5,7 +5,7 @@ import java.io.*;
 public class Employer extends User implements Serializable {
 
 private String companyName = "Google";
-private String offeringJobs = "Yes";
+private String offeringJobs = "Yes";  
 
 public Employer() {
 

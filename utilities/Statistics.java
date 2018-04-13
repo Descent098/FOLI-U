@@ -37,8 +37,8 @@ public double percentageofStudents(HashMap<String, User> db){
 																}
 
 								}
-								if(studentCount == 0) {
-																return 0.0;
+								if(studentCount == 0){
+									return 0.0;
 								}
 
 								return (100*(studentCount/populationCount)); //Multiply by 100 to represent a percentage
@@ -67,8 +67,8 @@ public double percentageofEmployers(HashMap<String, User> db){
 																}
 
 								}
-								if(employerCount == 0) {
-																return 0.0;
+								if(employerCount == 0){
+									return 0.0;
 								}
 
 								return (100*(employerCount/populationCount)); //Multiply by 100 to represent a percentage
@@ -96,16 +96,16 @@ public double overallMeanGPA(HashMap<String, User> db){
 																								GPAs.add(db.get(key).getGPA());
 
 																}
-								}
-								for ( int i = 0; i < GPAs.size(); i++) {
-																totalGPA += GPAs.get(i);
+													}
+								for ( int i = 0 ; i < GPAs.size(); i++){
+									totalGPA += GPAs.get(i);
 
 								}
-								if(totalGPA == 0.0) {
-																return 0.0;
+								if(totalGPA == 0.0){
+									return 0.0;
 								}
-								mean = totalGPA/howManyStudents(db);
-								return mean;
+						mean = totalGPA/howManyStudents(db);
+						return mean;
 }
 
 /**Method that returns a double representing the Mean GPA of all students in the given university in the passed HashMap*/
@@ -120,43 +120,43 @@ public double universityMeanGPA(HashMap<String, User> db, String university){
 																								studentCount += 1;
 
 																}
-								}
-								for ( int i = 0; i < GPAs.size(); i++) {
-																totalGPA += GPAs.get(i);
+													}
+								for ( int i = 0 ; i < GPAs.size(); i++){
+									totalGPA += GPAs.get(i);
 
 								}
-								mean = totalGPA/studentCount;
-								if(studentCount == 0.0) {//if there are no students at the university
-																return 0.0;
-								}
-								return mean;
+						mean = totalGPA/studentCount;
+						if(studentCount == 0.0){//if there are no students at the university
+							return 0.0;
+						}
+						return mean;
 }
 /**
- *	Calculates the standard deviation of all student's GPA and returns import junit.framework.TestCase;
- * @param db				Hashmap of the Database
- *	@return Double	standard deviation of all student's GPA
- */
+	*	Calculates the standard deviation of all student's GPA and returns import junit.framework.TestCase;
+	* @param db				Hashmap of the Database
+	*	@return Double	standard deviation of all student's GPA
+	*/
 public double GPAStandardDeviation(HashMap<String, User> db) {
-								ArrayList<Double> GPAs = new ArrayList<Double>();
-								double studentCount = 0.0;
-								double summation = 0.0;
-								double meanGPA = overallMeanGPA(db); //getting the mean GPA of students to use in the calculations, using another methods
-								double temp; //just stores partial answers during calculation
+							ArrayList<Double> GPAs = new ArrayList<Double>();
+							double studentCount = 0.0;
+							double summation = 0.0;
+							double meanGPA = overallMeanGPA(db); //getting the mean GPA of students to use in the calculations, using another methods
+							double temp; //just stores partial answers during calculation
 
-								for (String key : db.keySet()) { //iterate through the database and perform the summation calculcation
-																if (db.get(key).getGPA() == 0.0) { //if the GPA found is 0, then they are actually an employer! so skip them
-																								break;
-																} else {
-																								temp = ((db.get(key).getGPA()) - meanGPA);
-																								summation += Math.pow(temp,2); //square it
-																								studentCount++;
-																}
-								}
-								//calculating the rest of the formula
-								temp = summation/(studentCount);
-								temp = Math.sqrt(temp); //sqaure rooting it
+							for (String key : db.keySet()) {	//iterate through the database and perform the summation calculcation
+															if (db.get(key).getGPA() == 0.0) {	//if the GPA found is 0, then they are actually an employer! so skip them
+																	break;
+															} else {
+																temp = ((db.get(key).getGPA()) - meanGPA);
+																summation += Math.pow(temp,2); //square it
+																studentCount++;
+															}
+							}
+							//calculating the rest of the formula
+							temp = summation/(studentCount);
+							temp = Math.sqrt(temp); //sqaure rooting it
 
-								return temp;
+							return temp;
 
 }
 

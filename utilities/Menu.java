@@ -247,33 +247,33 @@ public void selectMenu(){
 
         }
 
-}
+      }
 /**Method to validate int selections for the text version*/
 public int validateInt(int max, int min){
 
-        boolean validInput = false; //Used to validate if a valid input is given
-        Scanner userInput = new Scanner(System.in);
-        int numberToValidate = 0;
-        do {
+  boolean validInput = false; //Used to validate if a valid input is given
+  Scanner userInput = new Scanner(System.in);
+  int numberToValidate = 0;
+  do{
 
-                userInput = new Scanner(System.in);
-                try{
-                        numberToValidate = userInput.nextInt();
+    userInput = new Scanner(System.in);
+    try{
+    numberToValidate = userInput.nextInt();
 
-                }catch(Exception e) { //if the input is not a number
-                        validInput = false;
-                        userInput = new Scanner(System.in);
-                }
-                if (numberToValidate > max || numberToValidate < min) { //if the number is out of range
-                        System.out.println("Please enter a value between " + min + "-" + max);
-                        userInput = new Scanner(System.in);
-                }
-                if (numberToValidate <= max && numberToValidate >= min) { //if the number is in range
-                        validInput = true;
-                        userInput = new Scanner(System.in);
-                }
-        } while(validInput == false);
+  }catch(Exception e){ //if the input is not a number
+    validInput = false;
+    userInput = new Scanner(System.in);
+  }
+    if (numberToValidate > max || numberToValidate < min){ //if the number is out of range
+      System.out.println("Please enter a value between " + min + "-" + max);
+      userInput = new Scanner(System.in);
+    }
+    if (numberToValidate <= max && numberToValidate >= min){ //if the number is in range
+      validInput = true;
+      userInput = new Scanner(System.in);
+    }
+  }while(validInput == false);
 
-        return numberToValidate;
+  return numberToValidate;
 }
 } //end of class

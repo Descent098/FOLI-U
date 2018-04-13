@@ -61,12 +61,12 @@ public void searchUser(){
         try{ //if no user is returned print message in line 67
 
 
-                System.out.println("\nDatabase Returned: ");
-                database.get(searchedUser).printContactInfo();
+        System.out.println("\nDatabase Returned: ");
+        database.get(searchedUser).printContactInfo();
 
-        }catch(Exception e) {
-                System.out.println("User Not found");
-        }
+      }catch(Exception e){
+        System.out.println("User Not found");
+      }
 
 }
 
@@ -77,22 +77,22 @@ public int howManyRandos(){
         System.out.println("\nHow Many randos?: ");
         boolean validInput = false; //Used to validate if a valid input is given
         int numberToValidate = 0;
-        do {
+        do{
 
-                randos = new Scanner(System.in);
-                try{
-                        numberToValidate = randos.nextInt();
+          randos = new Scanner(System.in);
+          try{
+          numberToValidate = randos.nextInt();
 
-                }catch(Exception e) { //if the input is not a number
-                        validInput = false;
-                        System.out.println("Invalid input please try again");
-                        randos = new Scanner(System.in);
-                }
-                if (numberToValidate >0) { //if the number is larger than 0
-                        validInput = true;
-                        randos = new Scanner(System.in);
-                }
-        } while(validInput == false);
+        }catch(Exception e){ //if the input is not a number
+          validInput = false;
+          System.out.println("Invalid input please try again");
+          randos = new Scanner(System.in);
+        }
+          if (numberToValidate >0){ //if the number is larger than 0
+            validInput = true;
+            randos = new Scanner(System.in);
+          }
+        }while(validInput == false);
         return numberToValidate;
 }
 
