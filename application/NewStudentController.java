@@ -48,11 +48,9 @@ import javafx.scene.text.TextAlignment;
 
 public class NewStudentController {
 
-//----------------------------------------
 private FileIO f = new FileIO();
 private Database db = new Database(f.fileLoad()); //loads the current file each time this controller is used
-//Storage locker = new Storage();
-//---------------------------------------
+
 
 /**
  * controller that controls all pages that create a new student
@@ -125,8 +123,6 @@ public void initialize() {
 @FXML
 public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 								Alert alert = new Alert(AlertType.ERROR);
-								//will add if statement to make sure username isn't already taken
-								//will add if statements to check other fields as well
 								//gets the text from user input and checks to make sure it's valid
 								if (enterFirstName.getText().isEmpty() || enterLastName.getText().isEmpty() || enterUID.getText().isEmpty() ||
 												emailAddress.getText().isEmpty() || phoneNumber.getText().isEmpty()) {
@@ -160,9 +156,8 @@ public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 								}
 								//continues onto next page
 								else {
-																//Creates a temporary student object and saves the entered info to it, then they are saved to
-																//the hashmap in database. This database object is then saved to a file.
-																//-------------------------------------
+																/* Creates a temporary student object and saves the entered info to it, then they are saved to
+																the hashmap in database. This database object is then saved to a file.*/
 																Student tempStudent = new Student();
 																tempStudent.setFirstName(enterFirstName.getText());
 																tempStudent.setLastName(enterLastName.getText());
@@ -174,10 +169,7 @@ public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 																Storage.UID = (tempStudent.getUID());
 																System.out.println("UID before:"+ Storage.UID);
 
-																//FileIO saver = new FileIO();
-																//saver.fileSave(db.getDatabase());
-																f.fileSave(db.getDatabase());
-																//------------------------------------------
+																f.fileSave(db.getDatabase()); //saves the hashmap to the file
 
 																Stage stage;
 																Parent root;
@@ -193,6 +185,8 @@ public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 
 /*
  * changes the province/state combobox depending on whether user chooses canada or usa
+ * @param event
+ * @throws IOException
  */
 @FXML
 public void changeCountry(ActionEvent event) throws IOException {
@@ -252,7 +246,10 @@ public void changeProvince(ActionEvent event) throws IOException {
 								}
 
 }
-//finishes student creation
+/** finishes student creation
+	* @param event
+	* @throws IOException
+	*/
 @FXML
 public void finishButtonClickedStudent(ActionEvent event) throws IOException {
 
@@ -331,86 +328,46 @@ public void finishButtonClickedStudent(ActionEvent event) throws IOException {
 																																studentGPA /= weightTotal;
 																																//rounds GPA to 2 decimal places
 																																double roundedGPA = Math.round(studentGPA * 100.0) / 100.0;
-																																System.out.println(roundedGPA);
+																															System.out.println(roundedGPA);
 
-																																//loads up database
-																																HashMap<String, User> data = db.getDatabase();
-																																//Student tempStudent = new Student(data.get(Storage.UID));
-																																Student tempStudent = (Student)data.get(Storage.UID); //?
-
-																																//adds all user infomation in for the user
-																																tempStudent.setCity(cityName.getText());
-																																tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-																																tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-																																tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-																																tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-																																tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
-																																String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
-																																tempStudent.setProgramYear(Integer.parseInt(year));
-
-																																tempStudent.setGPA(roundedGPA);
-																																f.fileSave(db.getDatabase());
-
-																																//student creation is completed, goes to main app
-																																Stage stage;
-																																Parent root;
-																																stage = (Stage) finishNewStudent.getScene().getWindow();
-																																root = FXMLLoader.load(getClass().getResource("home.fxml"));
-
-																																Scene scene = new Scene(root);
-																																stage.setScene(scene);
-																																stage.show();
 																								}
 
 
 																}
-																//otherwise, sign up is completed
-																else {
+																//sign up is completed
+																//saving information from the second page
+																HashMap<String, User> data = db.getDatabase();
+																Student tempStudent = (Student)data.get(Storage.UID);
+																tempStudent.setCity(cityName.getText());
+																tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
+																tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
+																tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
+																tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
+																tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
+																String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
+																tempStudent.setProgramYear(Integer.parseInt(year));
+																tempStudent.setGPA(0.0);
 
-																								//saving information from the second page
-																								//---------------------------------------
-																								HashMap<String, User> data = db.getDatabase();
-																								//Student tempStudent = new Student(data.get(Storage.UID));
-																								Student tempStudent = (Student)data.get(Storage.UID); //?
-																								tempStudent.setCity(cityName.getText());
-																								tempStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-																								tempStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-																								tempStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-																								tempStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-																								tempStudent.setStudentType(degreeType.getSelectionModel().getSelectedItem().toString());
-																								String year = (yearOfStudy.getSelectionModel().getSelectedItem().toString());
-																								tempStudent.setProgramYear(Integer.parseInt(year));
-																								tempStudent.setGPA(0.0);
-																								//(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
+																f.fileSave(db.getDatabase());
 
-																								//testing....
-//					System.out.println("The temp student's year:"+tempStudent.getProgramYear());
-//					System.out.println("The temp student's name:"+tempStudent.getFirstName());
-//					System.out.println("UID after:"+ Storage.UID);
-																								//tempStudent.printContactInfo(); //holy grail of tests
+																Stage stage;
+																Parent root;
+																stage = (Stage) finishNewStudent.getScene().getWindow();
+																root = FXMLLoader.load(getClass().getResource("home.fxml"));
 
-																								f.fileSave(db.getDatabase());
+																Scene scene = new Scene(root);
+																stage.setScene(scene);
+																stage.show();
 
-
-																								//--------------------------------------
-
-
-																								Stage stage;
-																								Parent root;
-																								stage = (Stage) finishNewStudent.getScene().getWindow();
-																								root = FXMLLoader.load(getClass().getResource("home.fxml"));
-
-																								Scene scene = new Scene(root);
-																								stage.setScene(scene);
-																								stage.show();
-																}
 								}
 
 }
 
-/*
- * back to new user page
- */
+/**
+ 	* back to new user page
+ 	* @param event
+ 	* @throws IOException
+ 	*/
 @FXML
 public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 								Stage stage;
@@ -423,9 +380,11 @@ public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 								stage.show();
 }
 
-/*
- * back to main page
- */
+/**
+ 	* back to main page
+ 	* @param event
+ 	* @throws IOException
+ 	*/
 @FXML
 public void backButtonClicked(ActionEvent event) throws IOException {
 								Stage stage;
@@ -438,9 +397,11 @@ public void backButtonClicked(ActionEvent event) throws IOException {
 								stage.show();
 }
 
-/*
- * back to previous page in student creation
- */
+/**
+ 	* back to previous page in student creation
+ 	* @param event
+ 	* @throws IOException
+ 	*/
 @FXML
 public void backButtonClickedStudent(ActionEvent event) throws IOException {
 								Stage stage;
@@ -453,4 +414,4 @@ public void backButtonClickedStudent(ActionEvent event) throws IOException {
 								stage.show();
 }
 
-}
+} //end of class
