@@ -95,6 +95,7 @@ public class EmployerProfileController {
 		employerEmail.setText(tempEmployer.getEmail());
 		employerNumber.setText(tempEmployer.getPhoneNumber());
 		employerHiring.setText(tempEmployer.getOfferingJobs());
+		aboutMe.setText(tempEmployer.getAboutMe());
 	}
 
 	/*
@@ -109,6 +110,9 @@ public class EmployerProfileController {
 		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
 		Optional<String> text = dialog.showAndWait();
 		aboutMe.setText(text.get());
+		tempEmployer.setAboutMe(text.get());
+		
+		f.fileSave(db.getDatabase());
 	}
 
 	/**

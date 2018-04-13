@@ -99,6 +99,7 @@ public class StudentProfileController {
 		studentNumber.setText(tempStudent.getPhoneNumber());
 		studentEmail.setText(tempStudent.getEmail());
 		studentType.setText(tempStudent.getStudentType());
+		aboutMe.setText(tempStudent.getAboutMe());
 	}
 	
 	/*
@@ -114,7 +115,8 @@ public class StudentProfileController {
 		Optional<String> text = dialog.showAndWait();
 		aboutMe.setText(text.get());
 		tempStudent.setAboutMe(text.get());
-		aboutMe.setText(tempStudent.getAboutMe());
+		
+		f.fileSave(db.getDatabase());
 	}
 
 
