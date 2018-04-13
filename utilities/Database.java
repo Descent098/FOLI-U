@@ -72,12 +72,13 @@ public int howManyRandos(){
         return randos.nextInt();
 }
 
+/**A method that returns the Database instance's HashMap*/
 public HashMap<String, User> getDatabase() {
         return database;
 }
 
 
-//-------------------------------------------------------
+
 /**
  * TEST VERSION: searches the database for a certainn trait of the user and returns them
  * @param name        search criteria
@@ -109,6 +110,7 @@ public ArrayList<User> searchStr(String searchTerm, int searchBy) {
         return nameList;
 } //end of method
 
+/**A method that searches the database for a specific double based on input*/
 public ArrayList<User> searchNum(double searchTerm, int searchBy) {
         ArrayList<User> nameList = new ArrayList<User>();
         for (String key : database.keySet()) {
@@ -123,6 +125,7 @@ public ArrayList<User> searchNum(double searchTerm, int searchBy) {
         return nameList;
 }
 
+/**A method that searches the database for a specific email*/
 public ArrayList<User> searchEmail(String searchTerm) {
         ArrayList<User> user = new ArrayList<User>();
         for (String key : database.keySet()) {
@@ -133,7 +136,6 @@ public ArrayList<User> searchEmail(String searchTerm) {
         }
         return user;
 }
-
 
 
 
