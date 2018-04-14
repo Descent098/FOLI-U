@@ -154,12 +154,11 @@ public void set_User_Attributes(){
         }
 
         System.out.println("\nWould You like to input or calculate your GPA? (1 for input 2 for calcuate): ");
-        input = new Scanner(System.in);
         GPA = validateInt(2,1);
         if (GPA == 1) {
                 System.out.println("\nPlease Enter your GPA: ");
-                input = new Scanner(System.in);
-                setGPA(input.nextDouble());
+
+                setGPA(validateDouble(4.0,1.0));
         }
         if (GPA == 2) {
                 calc_GPA();
@@ -185,25 +184,50 @@ public void set_User_Attributes(){
  */
 public void calc_GPA(){
         GPA = 0;
-        Scanner input = new Scanner(System.in); //GPA Calculation
         System.out.println("Enter number of courses: ");
-        input = new Scanner(System.in);
         int courseAmount = validateInt(75,1);
         double weightTotal = 0;
         for (int i = 0; i < courseAmount; i++) {
                 System.out.println("Enter grade for course " + (i+1) + ": ");
                 double grade = 0;
-                input = new Scanner(System.in);
-                grade = input.nextDouble();
+                grade = validateDouble(4.0,1.0);
                 System.out.println("Enter weight for course " + (i+1) + ": ");
                 double weight = 0;
-                input = new Scanner(System.in);
-                weight = input.nextDouble();
+                weight = validateDouble(6.0,3.0); //3 is a half course and 6 is full course
                 GPA += (grade*weight);
                 weightTotal += weight;
         }
         GPA /= weightTotal;
         System.out.println("Your GPA is: " + GPA);
+}
+
+/**A method that validates that a double within the range specified has been provided*/
+public double validateDouble(double max, double min){
+
+        boolean validInput = false; //Used to validate if a valid input is given
+        Scanner userInput = new Scanner(System.in);
+        double numberToValidate = 0.0;
+        do {
+
+                userInput = new Scanner(System.in);
+                try{
+                        numberToValidate = userInput.nextDouble();
+
+                }catch(Exception e) { //if the input is not a number
+                        validInput = false;
+                        userInput = new Scanner(System.in);
+                }
+                if (numberToValidate > max || numberToValidate < min) { //if the number is out of range
+                        System.out.println("Please enter a value between " + min + "-" + max);
+                        userInput = new Scanner(System.in);
+                }
+                if (numberToValidate <= max && numberToValidate >= min) { //if the number is in range
+                        validInput = true;
+                        userInput = new Scanner(System.in);
+                }
+        } while(validInput == false);
+
+        return numberToValidate;
 }
 
 /**

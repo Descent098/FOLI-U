@@ -20,16 +20,17 @@ public static void main(String[] args) {
         String[] q = new String[1];
         switch(choice) {
 
-        case 1: while(true) {
+        case 1: while(true) { //Run the text version
                         Main.main(q);
         }
 
-        case 2: Menu m1 = new Menu();
+        case 2: Menu m1 = new Menu(); //Run the GUI version
                 while (true) {
                         m1.selectMenu();
                 }
 
-        case 3: UserTest ut = new UserTest();
+        case 3: //Run Tests
+                UserTest ut = new UserTest();
                 System.out.println("\nAll User Tests Completed \n\n");
                 StudentTest st = new StudentTest();
                 System.out.println("\nAll Student Tests Completed \n\n");
@@ -37,9 +38,7 @@ public static void main(String[] args) {
                 System.out.println("\nAll Employer Tests Completed \n\n");
                 StatisticsTest stat1 = new StatisticsTest();
                 System.out.println("\nAll Statistics Tests Completed \n\n");
-                System.out.println("\nAll Tests Completed, enter anything to quit");
-
-                choice = GUIorText.nextInt(); //allows you to see test results before abrubtly ending
+                System.out.println("\nAll Tests Completed");
 
         }
 }
