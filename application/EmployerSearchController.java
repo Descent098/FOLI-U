@@ -133,9 +133,7 @@ private void initialize() {
 								// if search bar text field is changed, updates the employers shown
 								searchBar.textProperty().addListener(new ChangeListener<String>() {
 																								@Override
-																								public void changed(ObservableValue<? extends String> observable,
-																																												String oldValue, String newValue) {
-
+																								public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 																																updateFilteredEmployers();
 																								}
 																});
@@ -149,10 +147,10 @@ private void initialize() {
 																																								alert.setTitle("Employer Information");
 																																								alert.setHeaderText(null);
 																																								alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +
-																																																													"Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
-																																																													'\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
-																																																													'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
-																																																													"City: " + newValue.getCity());
+																																																 		 "Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
+																																																		 '\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
+																																																		 '\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
+																																																		 "City: " + newValue.getCity());
 
 																																								alert.showAndWait();
 																																}
@@ -277,4 +275,4 @@ public void changePage(ActionEvent event) throws IOException {
 }
 
 
-}
+} //end of class

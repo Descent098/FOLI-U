@@ -287,7 +287,7 @@ public void editEmail(ActionEvent event) throws IOException {
 																employerEmail.setText(tempEmployer.getEmail());
 								}
 								else if (!text.get().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-																																					"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+																						 "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
 																alert.setTitle("Error");
 																alert.setHeaderText(null);
 																alert.setContentText("Invalid email address!");
@@ -372,4 +372,5 @@ public void changePage(ActionEvent event) throws IOException {
 																stage.show();
 								}
 }
-}
+
+} //end of class
