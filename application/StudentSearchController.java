@@ -97,8 +97,7 @@ private Database db = new Database(f.fileLoad());
  * can search students by name, degree, and university ID number
  */
 public StudentSearchController() {
-								//TESTING adding the real database to the search page...
-								//------------------------------------------------------
+
 								for (User s : (db.getDatabase()).values()) {
 																if (s instanceof Student) {
 																								System.out.println("Found a student!"+ s.getFirstName());

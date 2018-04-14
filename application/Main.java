@@ -11,7 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Main extends Application { //main class
+/**
+	* Acts as the starting point for the GUI application. Will lauch it through
+	* JavaFX
+	*/
+public class Main extends Application { 
 
 private Stage stage;
 private AnchorPane mainPage;
@@ -45,6 +49,7 @@ public Stage getPrimaryStage() {
 								return stage;
 }
 
+/** blank version of main */
 public Main() {
 }
 
@@ -55,4 +60,5 @@ public Main() {
 public static void main(String[] args) {
 								launch(args);
 }
-}
+
+} //end of class
