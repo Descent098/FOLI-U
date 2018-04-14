@@ -2,15 +2,21 @@ package users;
 import java.util.Scanner;
 import java.io.*;
 
+/**
+  * Employer is the child of User, and containts unique methods and attributes for a company. Represents
+  * all employers in the database.
+  */
 public class Employer extends User implements Serializable {
 
 private String companyName = "Google";
 private String offeringJobs = "Yes";
 
+/** Blank constructor */
 public Employer() {
 
 }
 
+/** Sets up a new employers attributes in the text UI */
 public void setEmployerAttributes() {
         Scanner input1 = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
@@ -25,10 +31,9 @@ public void setEmployerAttributes() {
 
 }
 
+/** Prints employers set_User_Attributes */
 @Override
 public void printContactInfo(){
-        /** A method that prints a users atributes*/
-
         super.printContactInfo();
         System.out.println("User Company: "+ getCompanyName());
         System.out.println("Offering Jobs: "+ getOfferingJobs());
@@ -46,14 +51,15 @@ public String getCompanyName(){
         return printedCompanyName;
 }
 
+/** setter for OfferingJobs */
 public void setOfferingJobs(String newOfferingJobs){
         offeringJobs = newOfferingJobs;
 
 }
 
-
+/** setter for CompanyName*/
 public void setCompanyName(String newCompanyName){
         companyName = newCompanyName;
 }
 
-}
+} //end of class

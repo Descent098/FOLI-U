@@ -37,7 +37,9 @@ public static void main(String[] args) {
                 System.out.println("\nAll Employer Tests Completed \n\n");
                 StatisticsTest stat1 = new StatisticsTest();
                 System.out.println("\nAll Statistics Tests Completed \n\n");
-                System.out.println("\nAll Tests Completed");
+                System.out.println("\nAll Tests Completed, enter anything to quit");
+
+                choice = GUIorText.nextInt(); //allows you to see test results before abrubtly ending
 
         }
 }

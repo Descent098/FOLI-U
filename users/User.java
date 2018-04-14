@@ -2,6 +2,10 @@ package users;
 import java.util.*;
 import java.io.*;
 
+/**
+  * User is the super class of Student and Employer. It containts the basic methods and attributes for a normal person
+  * to be used in the Database class.
+  */
 public class User implements Serializable {
 
 private String firstName = "";
@@ -148,7 +152,11 @@ public void printContactInfo(){
 
 //All setters and Getters are below
 
-/**Method to validate int selections for the text version*/
+/** Method to validate int selections for the text version. Prevents illegal int entries.
+  * @param max   maximum int value allowed to enter
+  * @param min   minimum int value allowed to enter
+  * @return int  validated number
+  */
 public int validateInt(int max, int min){
 
         boolean validInput = false; //Used to validate if a valid input is given
@@ -340,4 +348,4 @@ public String getDOB() {
         return "hello";
 }
 
-}
+} //end of class

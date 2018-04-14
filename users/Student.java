@@ -3,11 +3,15 @@ package users;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+  * Student is a child of User, and containts unique methods and attributes for a student like GPA. Represents
+  * all student objets within the databas.
+  */
 public class Student extends User {
 
 
 private int programYear;
-private String UID;   //university ID number
+private String UID;          //university ID number
 private String university;   //Create a dropdown list of options
 private String degree;
 private double GPA;
@@ -94,8 +98,10 @@ public void set_User_Attributes(){
                         break;
                 }
                 break;
-        }
 
+        //cases are not inclusive of all possible locations, but the principle is there
+
+        }
 
         System.out.println("\nPlease put in your 8 digit UID: ");
         UID = validateUID();
@@ -107,7 +113,7 @@ public void set_User_Attributes(){
         decision = validateInt(9,1);
 
 
-        switch(decision) {
+        switch(decision) { //choose degree
 
         case 1: this.degree = "BIO";
                 System.out.println("\nDegree Program set to BIO (Biology)");
@@ -163,7 +169,7 @@ public void set_User_Attributes(){
         input = new Scanner(System.in);
         int choice = validateInt(3,1);
 
-        switch(choice) {
+        switch(choice) { //choose student type
         case 1: studentType = "Undergraduate Student";
                 break;
         case 2: studentType = "Masters Student";
@@ -206,7 +212,7 @@ public void calc_GPA(){
 @Override
 public void printContactInfo(){
         System.out.println("\nSearching database for: " + getFirstName());
-        super.printContactInfo();
+        super.printContactInfo(); //calls User class' method to print common attributes
         System.out.println("Users UID is: "+ getUID());
         System.out.println("Users University is: "+ getUniversity());
         System.out.println("User is a: "+ getStudentType());
@@ -318,4 +324,4 @@ public Double getGPA(){
         return printedGPA;
 }
 
-}
+} //end of class

@@ -328,10 +328,8 @@ public void finishButtonClickedStudent(ActionEvent event) throws IOException {
 																																studentGPA /= weightTotal;
 																																//rounds GPA to 2 decimal places
 																																double roundedGPA = Math.round(studentGPA * 100.0) / 100.0;
-																															System.out.println(roundedGPA);
 
 																								}
-
 
 																}
 																//sign up is completed
