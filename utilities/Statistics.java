@@ -7,7 +7,9 @@ import users.Employer;
 import users.Student;
 import users.User;
 
-/**Has multiple methods to compute statistics of a database*/
+/**
+	* Has methods to compute the statistics of a database.
+	*/
 public class Statistics {
 
 
@@ -15,7 +17,10 @@ public class Statistics {
 public Statistics() {
 }
 
-/** A method that returns the amount of Students as an int in a HashMap */
+/** A method that returns the amount of Students as an int in a HashMap
+	* @param db					Hashmap of the Database
+	* @return int				number of students in database
+	*/
 public int howManyStudents(HashMap<String, User> db){
 								int count = 0;
 								for (String key : db.keySet()) {
@@ -26,7 +31,10 @@ public int howManyStudents(HashMap<String, User> db){
 								return count;
 }
 
-/**Method returns a double representing the percentage of the population that is students*/
+/**Method returns a double representing the percentage of the population that is students
+	* @param db					Hashmap of the Database
+	* @return Double		percentage of database that is students
+	*/
 public double percentageofStudents(HashMap<String, User> db){
 								double populationCount = 0.0; //The count of all users
 								double studentCount = 0.0; //Count of how many students are in the HashMap
@@ -44,7 +52,10 @@ public double percentageofStudents(HashMap<String, User> db){
 								return (100*(studentCount/populationCount)); //Multiply by 100 to represent a percentage
 }
 
-/** A method that returns the amount of Employers as an int in a HashMap */
+/** A method that returns the amount of Employers as an int in a HashMap
+	* @param db					Hashmap of the Database
+	* @return int 			number of employers in the database
+	*/
 public int howManyEmployers(HashMap<String, User> db){
 								int count = 0;
 								for (String key : db.keySet()) {
@@ -56,7 +67,10 @@ public int howManyEmployers(HashMap<String, User> db){
 								return count;
 }
 
-/**Method returns a double representing the percentage of the population that is Employers*/
+/**Method returns a double representing the percentage of the population that is Employers
+	* @param db					Hashmap of the Database
+	* @return Double		percentage of database that is employers
+	*/
 public double percentageofEmployers(HashMap<String, User> db){
 								double populationCount = 0.0; //The count of all users
 								double employerCount = 0.0; //Count of how many Employers are in the HashMap
@@ -75,7 +89,11 @@ public double percentageofEmployers(HashMap<String, User> db){
 }
 
 
-/** A method that returns the amount of Students have a specific Degree as an int in a HashMap */
+/** A method that returns the amount of Students that have a specific Degree as an int in a HashMap
+	* @param db					Hashmap of the Database
+	* @param degree 		degree to search by
+	* @return Double		number of students in the degree
+	*/
 public double howManyStudentsInDegree(HashMap<String, User> db, String degree){
 								double count = 0;
 								for (String key : db.keySet()) {
@@ -86,7 +104,10 @@ public double howManyStudentsInDegree(HashMap<String, User> db, String degree){
 								return count;
 }
 
-/**Method that returns a double representing the overall Mean GPA of all students in the passed HashMap*/
+/**	Method that returns a double representing the overall Mean GPA of all students in the passed HashMap
+	* @param db					Hashmap of the Database
+	* @return Double		total average GPA of all students
+	*/
 public double overallMeanGPA(HashMap<String, User> db){
 								ArrayList<Double> GPAs = new ArrayList<Double>();
 								double mean = 0.0; //Value of the mean of the GPA's
@@ -108,7 +129,11 @@ public double overallMeanGPA(HashMap<String, User> db){
 								return mean;
 }
 
-/**Method that returns a double representing the Mean GPA of all students in the given university in the passed HashMap*/
+/**Method that returns a double representing the Mean GPA of all students in the given university in the passed HashMap
+* @param db						Hashmap of the Database
+* @param university 	String of university to search
+* @return Double			university's mean GPA
+*/
 public double universityMeanGPA(HashMap<String, User> db, String university){
 								ArrayList<Double> GPAs = new ArrayList<Double>();
 								double mean = 0.0; //Value of the mean of the GPA's
@@ -132,9 +157,9 @@ public double universityMeanGPA(HashMap<String, User> db, String university){
 								return mean;
 }
 /**
- *	Calculates the standard deviation of all student's GPA and returns import junit.framework.TestCase;
+ * Calculates the standard deviation of all student's GPA and returns it
  * @param db				Hashmap of the Database
- *	@return Double	standard deviation of all student's GPA
+ * @return Double		standard deviation of all student's GPA
  */
 public double GPAStandardDeviation(HashMap<String, User> db) {
 								ArrayList<Double> GPAs = new ArrayList<Double>();
@@ -152,6 +177,7 @@ public double GPAStandardDeviation(HashMap<String, User> db) {
 																								studentCount++;
 																}
 								}
+
 								//calculating the rest of the formula
 								temp = summation/(studentCount);
 								temp = Math.sqrt(temp); //sqaure rooting it
@@ -159,8 +185,6 @@ public double GPAStandardDeviation(HashMap<String, User> db) {
 								return temp;
 
 }
-
-
 
 
 }
