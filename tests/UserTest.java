@@ -2,7 +2,9 @@ package tests;
 
 import users.User;
 
-/**Class to test the User class and validate functionality*/
+/**
+  * Class to test the User class and validate functionality
+  */
 public class UserTest {
 
 /**Constructor that starts all the tests*/

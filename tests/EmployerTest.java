@@ -2,15 +2,15 @@ package tests;
 
 import users.Employer;
 
-/**Class to test the Employer class and validate functionality*/
+/**
+  * Class to test the Employer class and validate functionality.
+  */
 public class EmployerTest {
 
 public EmployerTest() {
         test_Setter_and_Getter_Names_valid();
         test_Setter_and_Getter_Locations_valid();
         test_Setter_and_Getter_Contact_valid();
-
-
 
 }
 
@@ -59,10 +59,6 @@ public static void test_Setter_and_Getter_Contact_valid(){
         assert (pn.equals("(123)123-1234")) : "Phone Number Test Failed, Was looking for (123)123-1234 and got " + ContactTest.getPhoneNumber();
         System.out.println("All Employer tests for Contact Info passed");
 }
-
-
-
-
 
 
 }

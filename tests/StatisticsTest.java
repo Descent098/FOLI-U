@@ -7,7 +7,9 @@ import users.Student;
 import users.User;
 import utilities.Statistics;
 
-/**Class to test the Statistics class and validate functionality*/
+/**
+	* Class to test the Statistics class and validate functionality
+	*/
 public class StatisticsTest {
 
 /**Constructor that starts all the tests*/

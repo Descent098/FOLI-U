@@ -2,7 +2,9 @@ package tests;
 
 import users.Student;
 
-/**Class to test the Student class and validate functionality*/
+/**
+  * Class to test the Student class and validate functionality
+  */
 public class StudentTest {
 
 /**Constructor that starts all the tests*/
@@ -12,7 +14,6 @@ public StudentTest() {
         test_Setter_and_Getter_Contact_valid();
         test_Setter_and_Getter_GPA_valid();
         test_Setter_and_Getter_degree_valid();
-
 
 }
 
