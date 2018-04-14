@@ -5,7 +5,10 @@ import users.Employer;
 import users.Student;
 import users.User;
 
-/**Class that generates random Users*/
+/**
+	* Class that generates random Users. Methods are static so that can be used
+	* easily from anywhere.
+	*/
 public class RandomUserFactory {
 
 /**Method that generates random User Variables that are used by all extended classes*/
@@ -22,7 +25,9 @@ public static void generateRandomContactInfo(User u1) {
 
 }
 
-/**Method that generates a random Student and returns it*/
+/** Method that generates a random Student and returns it
+	* @return Student 	randomly generated student
+	*/
 public static Student generateRandomStudent() {
 								Student randomStudent = new Student();
 								generateRandomContactInfo(randomStudent);
@@ -49,7 +54,9 @@ public static Student generateRandomStudent() {
 
 }
 
-/**Method that creates a Random Employer and returns it*/
+/** Method that creates a Random Employer and returns it
+	* @return Employer 	randomly generated employer
+	*/
 public static Employer generateRandomEmployer() {
 								Employer randomEmployer = new Employer();
 								generateRandomContactInfo(randomEmployer);
@@ -60,9 +67,12 @@ public static Employer generateRandomEmployer() {
 								return randomEmployer;
 }
 
+
 //The code below is for creating contact info for random Users
 
-/** A method to create a random Fist Name*/
+/** A method to create a random Fist Name
+	* @return String 	random first name
+	*/
 public static String createRandomFirstName(){
 								Random rand = new Random();
 								String names[] = {"Nicola","Synthia","Hank","Antonietta","Melda","Aileen","Burton","Inge","Kurtis","Robbyn","Jerrold","Gena","Micha","Conchita","Hobert","Elissa","Towanda","Rubin","Elouise","Williams","Lurlene","Lacresha","Elodia","Calvin","Richie","Agnus","Drew","Sona","Fred", "Kitty", "Elon"};
@@ -70,7 +80,9 @@ public static String createRandomFirstName(){
 								return(randomFullName);
 }
 
-/** A method to create a random lastName*/
+/** A method to create a random lastName
+	* @return String 	random last name
+	*/
 public static String createRandomLastName(){
 								Random rand = new Random();
 								String names[] = {"Racine","Mershon","Carboni","Chambers","Kimmer","Agron","Hemingway","Fort","Popham","Hutto","Berrios","Moniz","Erb","Holtzman","Cawley","Hogge","Merideth","Landis","Chance","Losee","Merrihew","Mackey","Fischbach", "Caouette","Esterly","Collman","Wolfe","Orme","Whelan", "Royals"};
@@ -78,7 +90,9 @@ public static String createRandomLastName(){
 								return(randomFullName);
 }
 
-/** A method to create a random Company Name*/
+/** A method to create a random Company Name
+	* @return String	random email
+	*/
 public static String createRandomEmail(){
 								Random rand = new Random();
 								String names[] = {"mthurn@live.com", "fangorn@hotmail.com","euice@outlook.com","rgarcia@optonline.net","mxiao@yahoo.com", "firstpr@att.net","webdragon@comcast.net", "jguyer@aol.com", "sakusha@yahoo.ca","crandall@sbcglobal.net","drezet@me.com", "miyop@icloud.com"};
@@ -86,7 +100,9 @@ public static String createRandomEmail(){
 								return(randomEmail);
 }
 
-/** A method to create a random Country Name*/
+/** A method to create a random Country Name
+  * @return String 	random country
+  */
 public static String createRandomCountry(){
 								Random rand = new Random();
 								double choice = rand.nextDouble();
@@ -98,7 +114,9 @@ public static String createRandomCountry(){
 								}
 }
 
-/** A method to create a random Phone number*/
+/** A method to create a random Phone number
+  * @return string		random phone number
+  */
 public static String createRandomPhoneNumber(){
 								Random rand = new Random();
 								String names[] = {"(403)251-1234 ", "(403)679-1234","(403)382-1234","(403)765-1234", "(403)257-3124"};
@@ -106,7 +124,9 @@ public static String createRandomPhoneNumber(){
 								return(randomPhoneNumber);
 }
 
-/** A method to create a random Province/State*/
+/** A method to create a random Province/State
+  * @return String 	random province or state
+  */
 public static String createRandomProvinceState(User u1){
 								Random rand = new Random();
 								String randomProvinceState = null;
@@ -124,7 +144,9 @@ public static String createRandomProvinceState(User u1){
 								return(randomProvinceState);
 }
 
-/** A method to create a random City based on State/Province*/
+/** A method to create a random City based on State/Province
+  * @return String 	random city
+  */
 public static String createRandomCity(User u1){
 								Random rand = new Random();
 								String randomCity = null;
@@ -392,7 +414,9 @@ public static String createRandomCity(User u1){
 
 //Code below is for generating random Student Attributes
 
-/** A method to create a random UID #*/
+/** A method to create a random UID #
+ * @return String 	random UID
+ */
 public static String createRandomUIDNumber(){
 								Random rand = new Random();
 
@@ -401,7 +425,9 @@ public static String createRandomUIDNumber(){
 								return(randomUID);
 }
 
-/** A method to create a random University*/
+/** A method to create a random University
+ * @return String 	random university
+ */
 public static String createRandomUniversity(User u1){
 								Random rand = new Random();
 								String randomUniversity = null;
@@ -419,23 +445,29 @@ public static String createRandomUniversity(User u1){
 								return(randomUniversity);
 }
 
-/** A method to create a random Year*/
+/** A method to create a random Year
+	* @return int 	random year
+	*/
 public static int createRandomYear(){
 								Random rand = new Random();
 								int n = (rand.nextInt(7)+1);
 								return(n);
 }
 
-/** A method to create a random GPA*/
+/** A method to create a random GPA
+	* @return double 	random GPA
+	*/
 public static double createRandomGPA(){
-								double rangeMin = 2.0;
+								double rangeMin = 1.0;
 								double rangeMax = 4.0;
 								Random rand = new Random();
 								double n = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();
 								return(n);
 }
 
-/** A method to create a random Degree*/
+/** A method to create a random Degree
+	* @return String	random dgree
+	*/
 public static String createRandomDegree(){
 								Random rand = new Random();
 								String names[] = {"CPSC","BIO", "MED", "ENG", "SOCI", "PSYC", "COMM",  "CMF", "LING"};
@@ -447,7 +479,9 @@ public static String createRandomDegree(){
 //Code below is for generating random Employer Attributes
 
 
-/** A method to create a random Company Name*/
+/** A method to create a random Company Name
+ 	* @return String 	random company name
+ 	*/
 public static String createRandomCompany(){
 								Random rand = new Random();
 								String names[] = {"Driive","Google","Rosignol","Nike","Addidas","Audi","Tesla","Enmax","the futur","Coca-Cola","Mcdonalds","Taco Time","Blind Studios","Blizzard","Electronic Arts","Apple","American Eagle","Bootlegger","Walmart","Helly Hansen","University of Calgary","Bob's Burgers","Microsoft","North Face","Samsung","Sandisk","Intel","AMD","ASUS", "Gigabyte"};
