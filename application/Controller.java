@@ -193,7 +193,7 @@ public void signInButtonClicked(ActionEvent event) throws IOException {
 								}
 								//if email is not in the right format
 								else if (!email.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-																																										"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+																									"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
 																alert.setTitle("Error");
 																alert.setHeaderText(null);
 																alert.setContentText("Invalid email address!");
@@ -214,9 +214,9 @@ public void signInButtonClicked(ActionEvent event) throws IOException {
 																								alert.showAndWait();
 																								email.clear();
 																}
-
+																//check if a matching student
 																else if (tempUser.get(0).getEmail().equals(email.getText()) && tempUser.get(0) instanceof Student) {
-
+																								//load their information
 																								Student tempUserStudent = (Student)db.searchEmail(email.getText()).get(0);
 
 																								tempStudent.setFirstName(tempUserStudent.getFirstName());
@@ -245,8 +245,9 @@ public void signInButtonClicked(ActionEvent event) throws IOException {
 																								stage.setScene(scene);
 																								stage.show();
 																}
+																//check if a matching employer
 																else if (tempUser.get(0).getEmail().equals(email.getText()) && tempUser.get(0) instanceof Employer) {
-
+																								//load their information
 																								Employer tempUserEmployer = (Employer)db.searchEmail(email.getText()).get(0);
 
 																								tempEmployer.setFirstName(tempUserEmployer.getFirstName());
@@ -271,7 +272,7 @@ public void signInButtonClicked(ActionEvent event) throws IOException {
 																								stage.setScene(scene);
 																								stage.show();
 																}
-																else {
+																else { 	//if no match found
 																								alert.setTitle("Error");
 																								alert.setHeaderText(null);
 																								alert.setContentText("Invalid email address!");
@@ -280,4 +281,5 @@ public void signInButtonClicked(ActionEvent event) throws IOException {
 								}
 
 }
-}
+
+} //end of class
