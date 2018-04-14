@@ -144,13 +144,14 @@ private void initialize() {
 																								public void changed(ObservableValue<? extends Employer> observable, Employer oldValue, Employer newValue){
 																																if(newValue!=null) {
 																																								Alert alert = new Alert(AlertType.INFORMATION);
+																																								alert.getDialogPane().setPrefSize(300, 325);
 																																								alert.setTitle("Employer Information");
 																																								alert.setHeaderText(null);
 																																								alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +
 																																																 		 "Company: " + newValue.getCompanyName() + '\n' + "Offering Jobs: " + newValue.getOfferingJobs() +
 																																																		 '\n' + "Phone Number: " + newValue.getPhoneNumber() + '\n' + "Email Address: " + newValue.getEmail() +
 																																																		 '\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
-																																																		 "City: " + newValue.getCity());
+																																																		 "City: " + newValue.getCity() + '\n' + '\n' + "About me: " + '\n' + newValue.getAboutMe());
 
 																																								alert.showAndWait();
 																																}

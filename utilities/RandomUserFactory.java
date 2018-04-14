@@ -21,7 +21,7 @@ public static void generateRandomContactInfo(User u1) {
 								u1.setPhoneNumber(createRandomPhoneNumber());
 								u1.setProvince(createRandomProvinceState(u1));
 								u1.setCity(createRandomCity(u1));
-								u1.setAboutMe("I like long walks on the beach, and spending time in "+ u1.getCity() + ",the air is so nice in "+ u1.getCountry());
+								u1.setAboutMe("I like long walks on the beach, and spending time in "+ u1.getCity() + ", the air is so nice in "+ u1.getCountry());
 
 }
 
@@ -458,7 +458,7 @@ public static int createRandomYear(){
 	* @return double 	random GPA
 	*/
 public static double createRandomGPA(){
-								double rangeMin = 1.0;
+								double rangeMin = 2.0;
 								double rangeMax = 4.0;
 								Random rand = new Random();
 								double n = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();

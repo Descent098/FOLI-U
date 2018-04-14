@@ -150,6 +150,7 @@ private void initialize() {
 																								public void changed(ObservableValue<? extends Student> observable,Student oldValue, Student newValue){
 																																if(newValue!=null) {
 																																								Alert alert = new Alert(AlertType.INFORMATION);
+																																								alert.getDialogPane().setPrefSize(300, 325);
 																																								alert.setTitle("Student Information");
 																																								alert.setHeaderText(null);
 																																								alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +
@@ -158,7 +159,7 @@ private void initialize() {
 																																																													"GPA: " + Math.round(newValue.getGPA() * 100.0)/100.0 + '\n' + "Phone Number: " + newValue.getPhoneNumber() +
 																																																													'\n' + "Email Address: " + newValue.getEmail() +
 																																																													'\n' + "Country: " + newValue.getCountry() + '\n' + "Province: " + newValue.getProvince() + '\n' +
-																																																													"City: " + newValue.getCity());
+																																																													"City: " + newValue.getCity() + '\n' + '\n' + "About me: " + '\n' + newValue.getAboutMe());
 
 																																								alert.showAndWait();
 																																}
