@@ -100,7 +100,7 @@ public StudentSearchController() {
 
 								for (User s : (db.getDatabase()).values()) {
 																if (s instanceof Student) {
-																								System.out.println("Found a student!"+ s.getFirstName());
+																								//System.out.println("Found a student!"+ s.getFirstName()); //for testing
 																								studentData.add((Student)s);
 																}
 
@@ -150,7 +150,7 @@ private void initialize() {
 																								public void changed(ObservableValue<? extends Student> observable,Student oldValue, Student newValue){
 																																if(newValue!=null) {
 																																								Alert alert = new Alert(AlertType.INFORMATION);
-																																								alert.getDialogPane().setPrefSize(300, 325);
+																																								alert.getDialogPane().setPrefSize(350, 325);
 																																								alert.setTitle("Student Information");
 																																								alert.setHeaderText(null);
 																																								alert.setContentText("Name: " + newValue.getFirstName() + " " + newValue.getLastName() + '\n' +

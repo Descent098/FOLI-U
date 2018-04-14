@@ -166,8 +166,7 @@ public void continueButtonClickedStudent(ActionEvent event) throws IOException {
 																tempStudent.setEmail(emailAddress.getText());
 																(db.getDatabase()).put(tempStudent.getUID(), tempStudent);
 
-																Storage.UID = (tempStudent.getUID());
-																System.out.println("UID before:"+ Storage.UID);
+																Storage.UID = (tempStudent.getUID()); //setting the globabl variable to use later 
 
 																f.fileSave(db.getDatabase()); //saves the hashmap to the file
 

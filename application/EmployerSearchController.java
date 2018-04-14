@@ -94,7 +94,7 @@ public EmployerSearchController() {
 
 								for (User s : (db.getDatabase()).values()) {
 																if (s instanceof Employer) {
-																								System.out.println("Found an employer!"+ s.getFirstName());
+																								//System.out.println("Found an employer!"+ s.getFirstName()); //for testing
 																								employerData.add((Employer)s);
 																}
 

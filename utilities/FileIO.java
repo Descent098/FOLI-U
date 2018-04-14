@@ -46,7 +46,7 @@ public void fileSave(HashMap<String,User> db) {
                 FileOutputStream out = new FileOutputStream(data);
                 ObjectOutputStream writer = new ObjectOutputStream(out);
 
-                System.out.println(db);
+                System.out.println("file saved");
                 writer.writeObject(db);
 
                 writer.close();
@@ -95,7 +95,7 @@ public HashMap<String, User> fileLoad() {
                                 System.out.println("Class could not be used to cast object.");
                                 System.err.println("ClassNotFoundException: " + e.getMessage());
                         }
-                } 
+                }
 
         } while (createOrLoadFile != true);
         return null;

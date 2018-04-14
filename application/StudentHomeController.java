@@ -155,7 +155,7 @@ public void initialize() {
 								//for each university in list, adds the GPA
 								for (int i = 0; i < universities.size(); i++) {
 																universityGPAs.add(stats.universityMeanGPA(db.getDatabase(), universities.get(i)));
-																System.out.println(universityGPAs.get(i));
+																//System.out.println(universityGPAs.get(i)); //for testing
 																pairs.put(universities.get(i), universityGPAs.get(i));
 								}
 

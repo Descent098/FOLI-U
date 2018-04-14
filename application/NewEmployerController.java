@@ -87,7 +87,6 @@ private ObservableList<String> states = FXCollections.observableArrayList("Alaba
 @FXML
 public void initialize() {
 								System.out.println("employer controller");
-								System.out.println("say something");
 }
 
 /**
