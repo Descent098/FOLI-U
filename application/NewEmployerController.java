@@ -26,11 +26,8 @@ import javafx.stage.Stage;
 
 public class NewEmployerController {
 
-
-//----------------------------------------
 public FileIO f = new FileIO();
 private Database db = new Database(f.fileLoad());  //loads the current file each time this controller is used
-//---------------------------------------
 
 
 /**
@@ -76,13 +73,13 @@ private Button backToEmployer;
 //lists for provinces and states that will change depending on country chosen
 @FXML
 private ObservableList<String> provinces = FXCollections.observableArrayList("Alberta", "British Columbia", "Manitoba",
-																																																																													"New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
+																																						 "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut");
 @FXML
 private ObservableList<String> states = FXCollections.observableArrayList("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-																																																																										"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-																																																																										"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska","Nevada","New Hampshire", "New Jersey",
-																																																																										"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
-																																																																										"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
+																																					"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+																																					"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska","Nevada","New Hampshire", "New Jersey",
+																																					"New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+																																					"South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming");
 
 /*
  * first called when instance of controller is made
@@ -112,7 +109,7 @@ public void continueButtonClickedEmployer(ActionEvent event) throws IOException 
 								//checks if email address is in valid format
 								//letters/digits followed by @ followed by letters/digits followed by . followed by letters
 								else if (!emailAddress.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-																																																	"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+																												 "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
 																alert.setTitle("Error");
 																alert.setHeaderText(null);
 																alert.setContentText("Invalid email address!");
@@ -131,7 +128,6 @@ public void continueButtonClickedEmployer(ActionEvent event) throws IOException 
 								else {
 
 																//saving of entered information into a new employer
-																//-------------------------------------
 																Employer tempEmployer = new Employer(); //creating the temporary employer object
 																tempEmployer.setFirstName(enterFirstName.getText());
 																tempEmployer.setLastName(enterLastName.getText());
@@ -142,8 +138,8 @@ public void continueButtonClickedEmployer(ActionEvent event) throws IOException 
 																(db.getDatabase()).put(Storage.employerName, tempEmployer); //putting the employer object into the hashmap
 
 																f.fileSave(db.getDatabase()); //saving the hashmap to the database file
-																//------------------------------------------
 
+																//setting up the next page
 																Stage stage;
 																Parent root;
 																stage = (Stage) continueNewEmployer.getScene().getWindow();
@@ -184,7 +180,6 @@ public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
 								else {
 
 																//saving information from the second page for the employer
-																//---------------------------------------
 																HashMap<String, User> data = db.getDatabase(); //making a convenience variable of the hashmap
 																Employer tempEmployer = (Employer)data.get(Storage.employerName); //getting the emplyer back out of the hashmap to keep editing
 
@@ -196,8 +191,6 @@ public void finishButtonClickedEmployer(ActionEvent event) throws IOException {
 																tempEmployer.setOfferingJobs(lookingToHire.getSelectionModel().getSelectedItem().toString());
 
 																f.fileSave(db.getDatabase()); //saving the hashmap again to the file to finish creation of a new employer
-																//--------------------------------------
-
 
 																Stage stage;
 																Parent root;
@@ -250,5 +243,4 @@ public void backButtonClickedNewUser(ActionEvent event) throws IOException {
 								stage.show();
 }
 
-
-}
+} //end of class

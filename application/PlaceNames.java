@@ -4,6 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
+/**
+	* Act similar to an enum, but for observableArrayLists with JavaFX. Stores a collection of
+	* possible locations to set a user to in groups. Is used by NewStudentController and NewEmployerController.
+	*/
 public class PlaceNames {
 
 //provinces in canada
@@ -67,4 +71,5 @@ public ObservableList<String> nevadaSchools = FXCollections.observableArrayList(
 public ObservableList<String> massachusettsSchools = FXCollections.observableArrayList("MIT");
 
 
+//Note: not an exhaustive list but the concept is there
 }
