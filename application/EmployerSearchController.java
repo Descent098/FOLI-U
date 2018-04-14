@@ -92,8 +92,6 @@ private Database db = new Database(f.fileLoad());
  */
 public EmployerSearchController() {
 
-								//TESTING adding the real database to the search page...
-								//------------------------------------------------------
 								for (User s : (db.getDatabase()).values()) {
 																if (s instanceof Employer) {
 																								System.out.println("Found an employer!"+ s.getFirstName());
